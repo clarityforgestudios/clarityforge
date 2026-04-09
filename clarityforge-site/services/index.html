@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Podcast Production & Brand Strategy for Energy Leaders | ClarityForge</title>
+<meta name="description" content="Podcast production, executive visibility, and strategic media partnerships for energy leaders. From story clarity to platform growth.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+/* ========================================
+   CSS CUSTOM PROPERTIES — BRAND SYSTEM
+   ======================================== */
+:root {
+  --deep-navy: #1A2A3A;
+  --navy: #2A3D4F;
+  --gold: #FFB64D;
+  --orange: #E8713A;
+  --orange-dark: #D4622E;
+  --near-black: #1C1E22;
+  --dark-gray: #3D4550;
+  --medium-gray: #6B7785;
+  --light-gray: #B0B8C1;
+  --border-gray: #DFE2E6;
+  --section-gray: #F2F3F5;
+  --warm-white: #FAFAF8;
+  --pure-white: #FFFFFF;
+  --success: #4A8C5E;
+  --error: #C0392B;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --section-pad: clamp(4rem, 8vw, 7rem);
+  --container: min(1200px, 90vw);
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ========================================
+   RESET & BASE
+   ======================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--dark-gray);
+  background: var(--warm-white);
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* ========================================
+   UTILITY
+   ======================================== */
+.container { width: var(--container); margin: 0 auto; }
+
+/* ========================================
+   STAGGERED ENTRY ANIMATIONS
+   ======================================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.anim-entry { opacity: 0; animation: fadeUp 0.7s var(--ease) forwards; }
+.anim-d1 { animation-delay: 0ms; }
+.anim-d2 { animation-delay: 150ms; }
+.anim-d3 { animation-delay: 300ms; }
+
+/* ========================================
+   NAVIGATION
+   ======================================== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--deep-navy);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-inner {
+  width: var(--container); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 0; gap: 2rem;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 0.65rem;
+  font-family: var(--font-body); font-weight: 600; font-size: 1.05rem;
+  color: var(--warm-white); letter-spacing: -0.01em;
+}
+.nav-logo svg { width: auto; height: 28px; }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: var(--light-gray); font-size: 0.9rem; font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  background: var(--gold); color: var(--navy); font-weight: 700;
+  padding: 0.6rem 1.4rem; border-radius: 6px; font-size: 0.85rem;
+  transition: background 0.2s, transform 0.15s; border: none; cursor: pointer;
+  letter-spacing: 0.01em;
+}
+.nav-cta:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-1px); }
+.nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--warm-white); margin: 5px 0; transition: 0.3s; }
+
+/* ========================================
+   HERO
+   ======================================== */
+.hero {
+  background: var(--deep-navy);
+  padding: calc(var(--section-pad) + 4rem) 0 var(--section-pad);
+  min-height: 60vh; display: flex; align-items: center;
+  position: relative; overflow: hidden;
+}
+.hero::after {
+  content: ''; position: absolute; top: 0; right: 0;
+  width: 40%; height: 100%;
+  background: radial-gradient(ellipse at 80% 40%, rgba(255,182,77,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 2; max-width: 720px; }
+.hero h1 {
+  font-family: var(--font-display); font-size: clamp(2.8rem, 6vw, 4.2rem);
+  color: var(--warm-white); line-height: 1.15; margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+.hero h1 em {
+  font-style: normal; color: var(--gold);
+  display: inline-block;
+}
+.hero-sub {
+  font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--light-gray);
+  max-width: 560px; margin-bottom: 2.5rem; line-height: 1.65;
+}
+.hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--gold); color: var(--navy); font-weight: 700;
+  padding: 0.9rem 2rem; border-radius: 6px; font-size: 1rem;
+  transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
+  box-shadow: 0 2px 12px rgba(255,182,77,0.2);
+}
+.btn-primary:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(232,113,58,0.3); }
+.btn-primary:active { background: var(--orange-dark); transform: translateY(0); }
+
+/* ========================================
+   JOURNEY FRAMEWORK
+   ======================================== */
+.journey {
+  padding: var(--section-pad) 0;
+  background: var(--section-gray);
+}
+.journey h2 {
+  font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  color: var(--near-black); text-align: center; margin-bottom: 1rem;
+}
+.journey > .container > p {
+  text-align: center; color: var(--medium-gray); margin-bottom: 3.5rem;
+  max-width: 560px; margin-left: auto; margin-right: auto; font-size: 0.95rem;
+}
+.journey-steps {
+  display: flex; align-items: flex-start; gap: 0; position: relative;
+  max-width: 900px; margin: 0 auto;
+}
+.journey-step {
+  flex: 1; text-align: center; position: relative; padding: 0 1.5rem;
+}
+.journey-dot {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(255,182,77,0.15); border: 3px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.25rem;
+  font-family: var(--font-display); font-size: 1.3rem; color: var(--gold);
+  position: relative; z-index: 2;
+}
+.journey-step h3 {
+  font-family: var(--font-display); font-size: 1.3rem;
+  color: var(--near-black); margin-bottom: 0.5rem;
+}
+.journey-step p {
+  font-size: 0.92rem; color: var(--dark-gray); line-height: 1.55;
+}
+.journey-line {
+  position: absolute; top: 28px; left: 16.66%; right: 16.66%;
+  height: 2px; background: var(--border-gray); z-index: 1;
+}
+
+/* ========================================
+   SERVICE LANES (EXPANDED)
+   ======================================== */
+.lanes {
+  padding: var(--section-pad) 0;
+  background: var(--warm-white);
+}
+.lane {
+  display: grid; grid-template-columns: 1.8fr 1fr; gap: 4rem;
+  align-items: center; padding: 3rem 0;
+}
+.lane + .lane { border-top: 1px solid var(--border-gray); }
+.lane:nth-child(even) .lane-text { order: 2; }
+.lane:nth-child(even) .lane-visual { order: 1; }
+.lane-label {
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--gold); margin-bottom: 0.5rem;
+}
+.lane h3 {
+  font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2rem);
+  color: var(--near-black); margin-bottom: 0.4rem; line-height: 1.25;
+}
+.lane .lane-for {
+  font-size: 0.88rem; color: var(--medium-gray); margin-bottom: 1.25rem;
+  font-style: italic;
+}
+.lane p { margin-bottom: 1rem; }
+.lane-includes {
+  list-style: none; margin: 1.25rem 0; padding: 0;
+}
+.lane-includes li {
+  padding: 0.35rem 0 0.35rem 1.6rem; position: relative;
+  font-size: 0.92rem; color: var(--dark-gray);
+}
+.lane-includes li::before {
+  content: ''; position: absolute; left: 0; top: 0.75rem;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--gold);
+}
+.lane-outcome {
+  font-weight: 600; color: var(--near-black); margin-top: 1rem;
+}
+.lane-proof {
+  font-size: 0.88rem; color: var(--medium-gray); margin-top: 0.75rem;
+  font-style: italic;
+}
+.lane-proof a {
+  color: var(--navy); font-weight: 600;
+  border-bottom: 1px solid var(--gold);
+  transition: color 0.2s;
+}
+.lane-proof a:hover { color: var(--gold); }
+.lane-cta-link {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  margin-top: 1.25rem; font-weight: 700; font-size: 0.95rem;
+  color: var(--navy); transition: color 0.2s, gap 0.2s;
+}
+.lane-cta-link:hover { color: var(--gold); gap: 0.7rem; }
+.lane-cta-link::after { content: '\2192'; }
+.lane-visual {
+  display: flex; align-items: center; justify-content: center;
+}
+.lane-icon-large {
+  width: 200px; height: 200px; color: var(--gold); opacity: 0.2;
+}
+
+/* ========================================
+   DIFFERENTIATION
+   ======================================== */
+.diff {
+  padding: var(--section-pad) 0;
+  background: var(--section-gray);
+}
+.diff h2 {
+  font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  color: var(--near-black); text-align: center; margin-bottom: 3rem;
+}
+.diff-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
+  max-width: 900px; margin: 0 auto;
+}
+.diff-card {
+  border-radius: 10px; padding: 2.5rem 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.diff-card-left {
+  background: var(--pure-white); border: 1px solid var(--border-gray);
+}
+.diff-card-right {
+  background: rgba(255,182,77,0.06); border: 1px solid rgba(255,182,77,0.2);
+}
+.diff-card h3 {
+  font-family: var(--font-body); font-size: 0.82rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+.diff-card-left h3 { color: var(--medium-gray); }
+.diff-card-right h3 { color: var(--gold); }
+.diff-item {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  padding: 0.6rem 0; font-size: 0.92rem; color: var(--dark-gray);
+}
+.diff-icon {
+  flex-shrink: 0; width: 20px; height: 20px; margin-top: 2px;
+}
+.diff-card-left .diff-icon { color: var(--light-gray); }
+.diff-card-right .diff-icon { color: var(--gold); }
+
+/* ========================================
+   WHO WE WORK WITH
+   ======================================== */
+.audience {
+  padding: 3.5rem 0;
+  background: var(--warm-white);
+  border-top: 1px solid var(--border-gray);
+  border-bottom: 1px solid var(--border-gray);
+}
+.audience h2 {
+  font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  color: var(--near-black); text-align: center; margin-bottom: 2rem;
+}
+.audience-tags {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
+}
+.audience-tag {
+  padding: 0.6rem 1.5rem; border-radius: 100px;
+  background: var(--section-gray); border: 1px solid var(--border-gray);
+  font-size: 0.88rem; font-weight: 500; color: var(--navy);
+}
+
+/* ========================================
+   FAQ ACCORDION
+   ======================================== */
+.faq {
+  padding: var(--section-pad) 0;
+  background: var(--section-gray);
+}
+.faq h2 {
+  font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  color: var(--near-black); text-align: center; margin-bottom: 3rem;
+}
+.faq-list {
+  max-width: 900px; margin: 0 auto;
+}
+.faq-item {
+  border-bottom: 1px solid var(--border-gray);
+}
+.faq-item summary {
+  padding: 1.25rem 2rem 1.25rem 0; cursor: pointer;
+  font-family: var(--font-body); font-weight: 600; font-size: 1rem;
+  color: var(--near-black); list-style: none; position: relative;
+  line-height: 1.4;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+'; position: absolute; right: 0; top: 50%;
+  transform: translateY(-50%); font-size: 1.4rem; font-weight: 400;
+  color: var(--gold); transition: transform 0.3s;
+}
+.faq-item[open] summary::after { content: '\2212'; }
+.faq-answer {
+  padding: 0 0 1.5rem; font-size: 0.95rem; color: var(--dark-gray);
+  line-height: 1.65;
+}
+
+/* ========================================
+   CLOSING CTA
+   ======================================== */
+.closing-cta {
+  padding: var(--section-pad) 0;
+  background: var(--deep-navy);
+  text-align: center;
+}
+.closing-cta h2 {
+  font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  color: var(--warm-white); margin-bottom: 0.75rem; max-width: 600px;
+  margin-left: auto; margin-right: auto; line-height: 1.25;
+}
+.closing-cta .cta-body {
+  color: var(--light-gray); font-size: 0.95rem; max-width: 520px;
+  margin: 0 auto 2rem; line-height: 1.6;
+}
+.closing-cta .btn-primary { font-size: 1.05rem; padding: 1rem 2.5rem; }
+.closing-micro {
+  margin-top: 1.25rem; font-size: 0.82rem; color: var(--light-gray);
+}
+.closing-secondary {
+  display: inline-block; margin-top: 1rem;
+  color: var(--light-gray); font-size: 0.85rem;
+  border-bottom: 1px solid rgba(176,184,193,0.3);
+  padding-bottom: 2px; transition: color 0.2s, border-color 0.2s;
+}
+.closing-secondary:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer {
+  background: var(--near-black);
+  padding: 4rem 0 2rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-grid {
+  display: grid; grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 3rem; margin-bottom: 3rem;
+}
+.footer-brand h3 {
+  font-family: var(--font-body); font-weight: 600;
+  color: var(--warm-white); font-size: 1rem; margin-bottom: 0.5rem;
+}
+.footer-brand p { font-size: 0.82rem; color: var(--medium-gray); line-height: 1.6; }
+.footer-links h4, .footer-contact h4 {
+  font-size: 0.78rem; color: var(--light-gray);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 1rem; font-weight: 600;
+}
+.footer-links a, .footer-contact a {
+  display: block; font-size: 0.88rem; color: var(--medium-gray);
+  padding: 0.25rem 0; transition: color 0.2s;
+}
+.footer-links a:hover, .footer-contact a:hover { color: var(--gold); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 1.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.78rem; color: var(--medium-gray);
+}
+.footer-bottom a { color: var(--medium-gray); transition: color 0.2s; }
+.footer-bottom a:hover { color: var(--gold); }
+
+/* ========================================
+   MOBILE STICKY CTA
+   ======================================== */
+.mobile-cta {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--deep-navy); padding: 0.75rem 1rem;
+  border-top: 2px solid var(--gold); z-index: 99;
+  text-align: center;
+}
+.mobile-cta .btn-primary { width: 100%; justify-content: center; font-size: 0.95rem; padding: 0.8rem; }
+
+/* ========================================
+   SCROLL-DEPTH CTA
+   ======================================== */
+.scroll-cta {
+  position: fixed; bottom: 1.5rem; right: 1.5rem;
+  background: var(--deep-navy); border: 1px solid rgba(255,182,77,0.3);
+  border-radius: 10px; padding: 1.25rem 1.5rem;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  z-index: 98; max-width: 320px;
+  transform: translateY(120%); opacity: 0;
+  transition: transform 0.4s var(--ease), opacity 0.4s;
+}
+.scroll-cta.visible { transform: translateY(0); opacity: 1; }
+.scroll-cta p {
+  font-size: 0.88rem; color: var(--light-gray); margin-bottom: 0.75rem; line-height: 1.4;
+}
+.scroll-cta .btn-primary { font-size: 0.82rem; padding: 0.6rem 1.2rem; }
+.scroll-cta-close {
+  position: absolute; top: 0.5rem; right: 0.75rem;
+  background: none; border: none; color: var(--light-gray);
+  font-size: 1.1rem; cursor: pointer; padding: 0.25rem;
+  line-height: 1;
+}
+.scroll-cta-close:hover { color: var(--gold); }
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 960px) {
+  .lane { grid-template-columns: 1fr; }
+  .lane:nth-child(even) .lane-text { order: 1; }
+  .lane:nth-child(even) .lane-visual { order: 2; }
+  .lane-visual { display: none; }
+  .diff-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .journey-steps { flex-direction: column; align-items: center; gap: 2rem; }
+  .journey-line { display: none; }
+}
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: block; }
+  .nav-inner .nav-cta { display: none; }
+  .mobile-cta { display: block; }
+  body { padding-bottom: 60px; }
+  .scroll-cta { display: none; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  .audience-tags { gap: 0.6rem; }
+  .audience-tag { font-size: 0.82rem; padding: 0.5rem 1.1rem; }
+}
+@media (max-width: 480px) {
+  .hero-ctas { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg viewBox="0 0 400 565" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 109.366V336.996C0 349.904 12.155 359.369 24.6645 356.282L131.375 329.656V216.829C131.375 204.174 139.985 193.139 152.292 190.102L383.591 132.752C393.112 130.373 399.747 121.869 399.747 112.1V19.8733C399.747 6.96569 387.592-2.4999 375.082 0.587803L15.0924 90.0807C6.22943 92.2573 0 100.255 0 109.366Z" fill="#FFB64D"/>
+        <path d="M375.488 269.137L131.426 329.676V551.991C131.426 564.291 146.873 569.707 154.571 560.141L246.645 435.974C246.898 435.62 247.303 435.417 247.708 435.316L383.54 401.503C393.214 399.074 400.051 390.418 400.051 380.446V288.372C400.051 275.565 387.997 266.1 375.538 269.187L375.488 269.137Z" fill="#FF682C"/>
+      </svg>
+      ClarityForge Studios
+    </a>
+    <ul class="nav-links">
+      <li><a href="/services">Services</a></li>
+      <li><a href="/work">Work</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/resources">Resources</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+    <a href="/story-sprint" class="nav-cta">Start a Story Sprint</a>
+    <button class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== SECTION 1: HERO ===== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="anim-entry anim-d1">We don't make content.<br><em>We build authority.</em></h1>
+      <p class="hero-sub anim-entry anim-d2">Every engagement follows the same arc: Clarity, Consistency, Growth. We meet you where you are and build what's next.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 2: JOURNEY FRAMEWORK ===== -->
+<section class="journey">
+  <div class="container">
+    <h2>How Every Engagement Works</h2>
+    <p>A proven arc that turns expertise into visible, compounding authority.</p>
+    <div class="journey-steps">
+      <div class="journey-line"></div>
+      <div class="journey-step">
+        <div class="journey-dot">1</div>
+        <h3>Clarity</h3>
+        <p>Define your message, your audience, and your plan. Every client starts here.</p>
+      </div>
+      <div class="journey-step">
+        <div class="journey-dot">2</div>
+        <h3>Consistency</h3>
+        <p>Show up every week without the burden of production. We handle the system so your mind stays free for the work that matters.</p>
+      </div>
+      <div class="journey-step">
+        <div class="journey-dot">3</div>
+        <h3>Growth</h3>
+        <p>Expand your audience with intention. Signal quality over vanity metrics. Deeper trust, not just bigger numbers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 3: THREE SERVICE LANES (EXPANDED) ===== -->
+<section class="lanes">
+  <div class="container">
+
+    <!-- LANE 1: PODCAST AUTHORITY -->
+    <div class="lane">
+      <div class="lane-text">
+        <p class="lane-label">Lane 1</p>
+        <h3>Podcast Authority</h3>
+        <p class="lane-for">For energy policy experts, analysts, and conference speakers ready to scale.</p>
+        <p>You have deep expertise and an audience that wants to hear from you more often. What's missing is the operational backbone to make that happen consistently. Production, distribution, clips, newsletters, growth strategy. That's what we build.</p>
+        <p>You show up and record. We turn each conversation into a media ecosystem that compounds every week.</p>
+        <ul class="lane-includes">
+          <li>Full podcast production (editing, mastering, distribution)</li>
+          <li>Short-form clips optimized for LinkedIn, YouTube, and social</li>
+          <li>Newsletter/Substack production aligned with your voice</li>
+          <li>Show notes, timestamps, and SEO-optimized episode content</li>
+          <li>Growth strategy and distribution sequencing</li>
+          <li>Sponsorship strategy and packaging (when your audience is ready)</li>
+        </ul>
+        <p class="lane-outcome">Outcome: A podcast-to-platform engine that runs every week without you thinking about production.</p>
+        <p class="lane-proof">We doubled podcast downloads for the Energy Capital Podcast in six months. <a href="/work/energy-capital">Read the case study</a></p>
+        <a href="/podcast-production" class="lane-cta-link">Explore Podcast Authority</a>
+      </div>
+      <div class="lane-visual">
+        <svg class="lane-icon-large" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="65" y="20" width="70" height="110" rx="35"/>
+          <path d="M55 100a45 45 0 0090 0"/>
+          <line x1="100" y1="145" x2="100" y2="175"/>
+          <line x1="70" y1="175" x2="130" y2="175"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- LANE 2: EXECUTIVE VISIBILITY -->
+    <div class="lane">
+      <div class="lane-text">
+        <p class="lane-label">Lane 2</p>
+        <h3>Executive Visibility</h3>
+        <p class="lane-for">For COOs, CEOs, and senior advisors in energy with deep expertise and room to grow their presence.</p>
+        <p>You've spent decades building expertise in energy procurement, policy, or infrastructure. You can explain the grid, model a PPA, or navigate a regulatory process. Your credibility is real. Your visibility should match it.</p>
+        <p>We build executive authority systems that connect your expertise to the people who need to see it. Video, LinkedIn positioning, content systems, and audience targeting tied to real business outcomes.</p>
+        <ul class="lane-includes">
+          <li>90-day authority roadmap targeting your specific buyer</li>
+          <li>Video content (batch filming sessions, short-form breakdowns)</li>
+          <li>LinkedIn post copywriting and positioning strategy</li>
+          <li>Connection and engagement strategy tied to your ICP</li>
+          <li>KPI tracking tied to real outcomes (inbound DMs, calls booked, profile views from target titles)</li>
+        </ul>
+        <p class="lane-outcome">Outcome: A visible, credible executive presence that drives real business conversations.</p>
+        <p class="lane-proof">Our executive authority roadmaps have generated inbound advisory conversations within the first 60 days.</p>
+        <a href="/executive-visibility" class="lane-cta-link">Explore Executive Visibility</a>
+      </div>
+      <div class="lane-visual">
+        <svg class="lane-icon-large" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="100" cy="60" r="30"/>
+          <path d="M40 180v-16a48 48 0 0196 0"/>
+          <polyline points="140,115 155,100 170,115"/>
+          <line x1="155" y1="100" x2="155" y2="150"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- LANE 3: STRATEGIC MEDIA PARTNER -->
+    <div class="lane">
+      <div class="lane-text">
+        <p class="lane-label">Lane 3</p>
+        <h3>Strategic Media Partner</h3>
+        <p class="lane-for">For infrastructure firms, consulting firms, trade associations, and organizations with leadership depth.</p>
+        <p>Your organization has leaders who could be shaping the industry conversation. Right now, that potential is untapped. We build authority infrastructure across your leadership bench so the market sees the full depth of your team.</p>
+        <p>Topic ownership mapping, multi-leader amplification, and performance dashboards that track signal quality, not vanity metrics. When your leaders are visible, your organization attracts better talent, stronger partners, and more influence.</p>
+        <ul class="lane-includes">
+          <li>Everything in Lane 1 or 2, plus:</li>
+          <li>Messaging architecture across your leadership bench</li>
+          <li>Topic ownership mapping (who speaks to what)</li>
+          <li>Monthly Signal Brief: priority narratives, opportunities, emerging issues</li>
+          <li>Cross-post coordination so multiple leaders amplify without overlap</li>
+          <li>Quarterly strategy workshop</li>
+          <li>Performance dashboard tracking institutional engagement quality</li>
+        </ul>
+        <p class="lane-outcome">Outcome: Firm-wide authority that compounds across your entire leadership team.</p>
+        <p class="lane-proof">We designed institutional video series and authority infrastructure for energy and national security firms.</p>
+        <a href="/strategic-partnerships" class="lane-cta-link">Explore Strategic Partnerships</a>
+      </div>
+      <div class="lane-visual">
+        <svg class="lane-icon-large" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="100" cy="100" r="24"/>
+          <circle cx="40" cy="40" r="16"/>
+          <circle cx="160" cy="40" r="16"/>
+          <circle cx="40" cy="160" r="16"/>
+          <circle cx="160" cy="160" r="16"/>
+          <line x1="80" y1="84" x2="52" y2="52"/>
+          <line x1="120" y1="84" x2="148" y2="52"/>
+          <line x1="80" y1="116" x2="52" y2="148"/>
+          <line x1="120" y1="116" x2="148" y2="148"/>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== SECTION 4: DIFFERENTIATION ===== -->
+<section class="diff">
+  <div class="container">
+    <h2>This Is Not a Podcast Agency</h2>
+    <div class="diff-grid">
+      <div class="diff-card diff-card-left">
+        <h3>What Most Agencies Do</h3>
+        <div class="diff-item">
+          <svg class="diff-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="4" x2="16" y2="16"/><line x1="16" y1="4" x2="4" y2="16"/></svg>
+          <span>Edit your audio and hand it back</span>
+        </div>
+        <div class="diff-item">
+          <svg class="diff-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="4" x2="16" y2="16"/><line x1="16" y1="4" x2="4" y2="16"/></svg>
+          <span>Focus on production quality as the end goal</span>
+        </div>
+        <div class="diff-item">
+          <svg class="diff-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="4" x2="16" y2="16"/><line x1="16" y1="4" x2="4" y2="16"/></svg>
+          <span>Serve any industry, no specialization</span>
+        </div>
+        <div class="diff-item">
+          <svg class="diff-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="4" x2="16" y2="16"/><line x1="16" y1="4" x2="4" y2="16"/></svg>
+          <span>Measure downloads and subscriber counts</span>
+        </div>
+        <div class="diff-item">
+          <svg class="diff-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="4" x2="16" y2="16"/><line x1="16" y1="4" x2="4" y2="16"/></svg>
+          <span>Offer podcast or brand strategy, not both</span>
+        </div>
+      </div>
+      <div class="diff-card diff-card-right">
+        <h3>What ClarityForge Does</h3>
+        <div class="diff-item">
+          <svg class="diff-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4,10 8,14 16,6"/></svg>
+          <span>Build a media system that turns one recording into 10+ assets</span>
+        </div>
+        <div class="diff-item">
+          <svg class="diff-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4,10 8,14 16,6"/></svg>
+          <span>Treat production as a means to authority, not an end in itself</span>
+        </div>
+        <div class="diff-item">
+          <svg class="diff-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4,10 8,14 16,6"/></svg>
+          <span>Specialize exclusively in energy, infrastructure, and science</span>
+        </div>
+        <div class="diff-item">
+          <svg class="diff-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4,10 8,14 16,6"/></svg>
+          <span>Measure signal quality: engagement from target titles, inbound conversations, speaking invitations</span>
+        </div>
+        <div class="diff-item">
+          <svg class="diff-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4,10 8,14 16,6"/></svg>
+          <span>Deliver end-to-end: from brand clarity to content systems to distribution</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 5: WHO WE WORK WITH ===== -->
+<section class="audience">
+  <div class="container">
+    <h2>Who We Work With</h2>
+    <div class="audience-tags">
+      <span class="audience-tag">Energy & Infrastructure Leaders</span>
+      <span class="audience-tag">Science & Research Communicators</span>
+      <span class="audience-tag">Policy & Advocacy Organizations</span>
+      <span class="audience-tag">Clean Energy Trade Associations</span>
+      <span class="audience-tag">Mission-Driven Founders</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 6: FAQ ===== -->
+<section class="faq">
+  <div class="container">
+    <h2>Common Questions</h2>
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary>How much of my time does this require?</summary>
+        <p class="faq-answer">For podcast clients, you show up and record. We handle everything else. Most clients spend 1-2 hours per week on their media presence. For executive visibility, we batch film 4-6 videos in one session, then produce and distribute them over the following weeks. Your time commitment is one session per month plus reviewing drafts.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How is this different from hiring a marketing agency?</summary>
+        <p class="faq-answer">Marketing agencies build campaigns. We build infrastructure. A campaign runs for 90 days and stops. Our systems compound over time. We also specialize exclusively in energy, which means we understand the policy dynamics, the regulatory landscape, and the audience you're trying to reach.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>I've tried content before and it didn't work.</summary>
+        <p class="faq-answer">Most experts who've tried content either did it all themselves and burned out, or hired a generalist agency that didn't understand their audience. We solve both problems. You focus on your expertise. We build the system. And because we know the energy sector, the content resonates with the right people from day one.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>We're a small team. Is this realistic?</summary>
+        <p class="faq-answer">Our smallest engagement is $750/month. Our largest is $7,500+. We work with solo experts and firms with 20+ leaders. The Story Sprint exists specifically to figure out what makes sense before you commit to anything.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What does the first month look like?</summary>
+        <p class="faq-answer">Every engagement starts with a Story Sprint. From there, we define your system, set up your production pipeline, and begin publishing within 2-3 weeks. By the end of month one, you have a working rhythm and your first batch of content live.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Why can't I just hire a freelancer or give this to my marketing person?</summary>
+        <p class="faq-answer">You can, and many people try. The freelancer edits your audio and hands it back. Your marketing person adds it to the queue between the website update and the trade show booth. Neither of them understands energy policy, neither builds a system that compounds, and neither is thinking about how this episode connects to your LinkedIn strategy, your newsletter, your guest coordination, and your authority positioning six months from now. If all you need is editing, hire a freelancer. If you need a media system that builds credibility over time, that's a different thing.</p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 7: CLOSING CTA ===== -->
+<section class="closing-cta">
+  <div class="container">
+    <h2>Most clients start with a Story Sprint.</h2>
+    <p class="cta-body">A focused strategy session that defines your message, your audience, and the system that fits. 60 minutes. You leave with a clear plan.</p>
+    <a href="/story-sprint" class="btn-primary">Start Your Story Sprint</a>
+        <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a href="/contact" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Or just get in touch</a></p>
+    <p class="closing-micro">100% of clients start here. 100% retention rate.</p>
+    <a href="#lead-magnet" class="closing-secondary">Not ready yet? Download: 5 Signs Your Expertise Is Bigger Than Your Platform</a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>ClarityForge Studios</h3>
+        <p>Media systems for energy leaders.<br>Bend, Oregon.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigate</h4>
+        <a href="/services">Services</a>
+        <a href="/podcast-production">Podcast Production</a>
+        <a href="/executive-visibility">Executive Visibility</a>
+        <a href="/strategic-partnerships">Strategic Partnerships</a>
+        <a href="/work">Work</a>
+        <a href="/about">About</a>
+        <a href="/blog">Blog</a>
+        <a href="/resources">Resources</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Get in Touch</h4>
+        <a href="/cdn-cgi/l/email-protection#234a4d454c63404f42514a575a454c514446505756474a4c500d404c4e"><span class="__cf_email__" data-cfemail="9af3f4fcf5daf9f6fbe8f3eee3fcf5e8fdffe9eeeffef3f5e9b4f9f5f7">[email&#160;protected]</span></a>
+        <a href="tel:5125696612">(512) 569-6612</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ClarityForge Studios LLC</span>
+      <a href="/privacy-policy">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== MOBILE STICKY CTA ===== -->
+<div class="mobile-cta">
+  <a href="/story-sprint" class="btn-primary">Start a Story Sprint</a>
+</div>
+
+<!-- ===== SCROLL-DEPTH CTA (60% trigger, once per session) ===== -->
+<div class="scroll-cta" id="scrollCta">
+  <button class="scroll-cta-close" id="scrollCtaClose" aria-label="Dismiss">&times;</button>
+  <p>Ready to explore this? Start with a Story Sprint.</p>
+  <a href="/story-sprint" class="btn-primary">Book a Story Sprint &rarr;</a>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+(function() {
+  var cta = document.getElementById('scrollCta');
+  var closeBtn = document.getElementById('scrollCtaClose');
+  var shown = false;
+  var dismissed = false;
+
+  try { dismissed = sessionStorage.getItem('cf_scroll_cta_dismissed') === '1'; } catch(e) {}
+
+  if (!dismissed) {
+    window.addEventListener('scroll', function() {
+      if (shown || dismissed) return;
+      var scrollPct = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+      if (scrollPct > 0.6) {
+        cta.classList.add('visible');
+        sh

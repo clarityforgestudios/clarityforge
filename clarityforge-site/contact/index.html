@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact ClarityForge Studios</title>
+<meta name="description" content="Get in touch with ClarityForge Studios. We work with energy leaders on podcast production, executive visibility, and strategic media partnerships.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep-navy: #1A2A3A; --navy: #2A3D4F; --gold: #FFB64D; --orange: #E8713A; --orange-dark: #D4622E;
+  --near-black: #1C1E22; --dark-gray: #3D4550; --medium-gray: #6B7785; --light-gray: #B0B8C1;
+  --border-gray: #DFE2E6; --section-gray: #F2F3F5; --warm-white: #FAFAF8; --pure-white: #FFFFFF;
+  --font-display: 'DM Serif Display', Georgia, serif; --font-body: 'DM Sans', system-ui, sans-serif;
+  --section-pad: clamp(4rem, 8vw, 7rem); --container: min(1200px, 90vw);
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font-body); font-size: 18px; line-height: 1.7; color: var(--dark-gray); background: var(--warm-white); }
+img { max-width: 100%; display: block; } a { text-decoration: none; color: inherit; }
+.container { width: var(--container); margin: 0 auto; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.anim-entry { opacity: 0; animation: fadeUp 0.7s var(--ease) forwards; }
+.anim-d1 { animation-delay: 0ms; } .anim-d2 { animation-delay: 150ms; } .anim-d3 { animation-delay: 300ms; }
+
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--deep-navy); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.nav-inner { width: var(--container); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; gap: 2rem; }
+.nav-logo { display: flex; align-items: center; gap: 0.65rem; font-family: var(--font-body); font-weight: 600; font-size: 1.05rem; color: var(--warm-white); }
+.nav-logo svg { width: auto; height: 28px; }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { color: var(--light-gray); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { background: var(--gold); color: var(--navy); font-weight: 700; padding: 0.6rem 1.4rem; border-radius: 6px; font-size: 0.85rem; transition: background 0.2s, transform 0.15s; border: none; cursor: pointer; }
+.nav-cta:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-1px); }
+.nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--warm-white); margin: 5px 0; }
+
+/* HERO */
+.hero { background: var(--deep-navy); padding: calc(var(--section-pad) + 4rem) 0 var(--section-pad); position: relative; overflow: hidden; }
+.hero::after { content: ''; position: absolute; top: 0; right: 0; width: 40%; height: 100%; background: radial-gradient(ellipse at 80% 40%, rgba(255,182,77,0.06) 0%, transparent 70%); pointer-events: none; }
+.hero-content { position: relative; z-index: 2; max-width: 640px; }
+.hero h1 { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 3.4rem); color: var(--warm-white); line-height: 1.2; margin-bottom: 1rem; }
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero-sub { font-size: clamp(1rem, 1.8vw, 1.1rem); color: var(--light-gray); max-width: 520px; line-height: 1.65; }
+
+/* FORM SECTION */
+.contact-section { padding: var(--section-pad) 0; background: var(--warm-white); }
+.contact-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 5rem; align-items: start; }
+
+/* FORM */
+.form-card { background: var(--pure-white); border-radius: 12px; padding: 3rem; border: 1px solid var(--border-gray); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
+.form-group { display: flex; flex-direction: column; }
+.form-group-full { margin-bottom: 1.25rem; }
+.form-label { font-size: 0.82rem; font-weight: 600; color: var(--near-black); margin-bottom: 0.4rem; }
+.form-label .req { color: var(--gold); }
+.form-input, .form-select, .form-textarea {
+  font-family: var(--font-body); font-size: 0.92rem; padding: 0.75rem 1rem;
+  border: 1px solid var(--border-gray); border-radius: 6px; background: var(--warm-white);
+  color: var(--near-black); transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(255,182,77,0.12);
+}
+.form-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%236B7785' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+.form-textarea { min-height: 120px; resize: vertical; }
+.form-context { font-size: 0.82rem; color: var(--navy); background: rgba(255,182,77,0.08); border-left: 3px solid var(--gold); padding: 0.75rem 1rem; border-radius: 0 6px 6px 0; margin-top: 0.5rem; display: none; line-height: 1.45; }
+.form-context.visible { display: block; }
+.form-submit {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--gold); color: var(--navy); font-family: var(--font-body);
+  font-weight: 700; padding: 0.9rem 2.5rem; border-radius: 6px; font-size: 1rem;
+  border: none; cursor: pointer; transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
+  box-shadow: 0 2px 12px rgba(255,182,77,0.2); margin-top: 0.5rem;
+}
+.form-submit:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(232,113,58,0.3); }
+
+/* SIDEBAR */
+.contact-sidebar {}
+.sidebar-block { margin-bottom: 2.5rem; }
+.sidebar-block:last-child { margin-bottom: 0; }
+.sidebar-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 0.75rem; }
+.sidebar-block h3 { font-family: var(--font-display); font-size: 1.15rem; color: var(--near-black); margin-bottom: 0.5rem; }
+.sidebar-block p { font-size: 0.92rem; color: var(--dark-gray); line-height: 1.5; }
+.sidebar-link { display: block; font-size: 0.92rem; color: var(--navy); font-weight: 500; padding: 0.3rem 0; transition: color 0.2s; }
+.sidebar-link:hover { color: var(--gold); }
+.sidebar-response { margin-top: 2rem; padding: 1.5rem; background: var(--section-gray); border-radius: 10px; border: 1px solid var(--border-gray); }
+.sidebar-response p { font-size: 0.85rem; color: var(--dark-gray); }
+.sidebar-response strong { color: var(--near-black); }
+
+.footer { background: var(--near-black); padding: 4rem 0 2rem; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand h3 { font-family: var(--font-body); font-weight: 600; color: var(--warm-white); font-size: 1rem; margin-bottom: 0.5rem; }
+.footer-brand p { font-size: 0.82rem; color: var(--medium-gray); line-height: 1.6; }
+.footer-links h4, .footer-contact h4 { font-size: 0.78rem; color: var(--light-gray); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; font-weight: 600; }
+.footer-links a, .footer-contact a { display: block; font-size: 0.88rem; color: var(--medium-gray); padding: 0.25rem 0; transition: color 0.2s; }
+.footer-links a:hover, .footer-contact a:hover { color: var(--gold); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--medium-gray); }
+.footer-bottom a { color: var(--medium-gray); transition: color 0.2s; }
+.footer-bottom a:hover { color: var(--gold); }
+
+@media (max-width: 960px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: block; }
+  .nav-inner .nav-cta { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .form-card { padding: 2rem 1.5rem; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg viewBox="0 0 400 565" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 109.366V336.996C0 349.904 12.155 359.369 24.6645 356.282L131.375 329.656V216.829C131.375 204.174 139.985 193.139 152.292 190.102L383.591 132.752C393.112 130.373 399.747 121.869 399.747 112.1V19.8733C399.747 6.96569 387.592-2.4999 375.082 0.587803L15.0924 90.0807C6.22943 92.2573 0 100.255 0 109.366Z" fill="#FFB64D"/>
+        <path d="M375.488 269.137L131.426 329.676V551.991C131.426 564.291 146.873 569.707 154.571 560.141L246.645 435.974C246.898 435.62 247.303 435.417 247.708 435.316L383.54 401.503C393.214 399.074 400.051 390.418 400.051 380.446V288.372C400.051 275.565 387.997 266.1 375.538 269.187L375.488 269.137Z" fill="#FF682C"/>
+      </svg>
+      ClarityForge Studios
+    </a>
+    <ul class="nav-links">
+      <li><a href="/services">Services</a></li>
+      <li><a href="/work">Work</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/story-sprint">Story Sprint</a></li>
+    </ul>
+    <a href="/story-sprint" class="nav-cta">Start a Story Sprint</a>
+    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="anim-entry anim-d1">Let's talk about <em>what you're building.</em></h1>
+      <p class="hero-sub anim-entry anim-d2">Tell us about your work and we'll follow up within 24 hours with a proposed time to connect.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM + SIDEBAR -->
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- FORM -->
+      <div class="form-card">
+        <h2 style="font-family: var(--font-display); font-size: 1.4rem; color: var(--near-black); margin-bottom: 0.25rem;">Tell us about your project</h2>
+        <p style="font-size: 0.78rem; color: var(--medium-gray); margin-bottom: 2rem;">Fields marked with <span style="color: var(--gold);">*</span> are required.</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First name <span class="req">*</span></label>
+            <input type="text" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last name</label>
+            <input type="text" class="form-input">
+          </div>
+        </div>
+        <div class="form-group-full">
+          <label class="form-label">Email <span class="req">*</span></label>
+          <input type="email" class="form-input" required>
+        </div>
+        <div class="form-group-full">
+          <label class="form-label">Organization</label>
+          <input type="text" class="form-input">
+        </div>
+        <div class="form-group-full">
+          <label class="form-label">What are you most interested in?</label>
+          <select class="form-select" id="interestSelect">
+            <option value="">Select one</option>
+            <option value="podcast">Podcast Production</option>
+            <option value="visibility">Executive Visibility</option>
+            <option value="partnership">Strategic Partnership</option>
+            <option value="sprint">Story Sprint</option>
+            <option value="unsure">Not Sure Yet</option>
+          </select>
+          <div class="form-context" id="contextPodcast">Most podcast clients start with a Story Sprint ($500-$750). We'll walk you through the process on our call.</div>
+          <div class="form-context" id="contextVisibility">We typically start with a 60-minute Story Sprint to define your positioning and build your roadmap.</div>
+          <div class="form-context" id="contextPartnership">Institutional engagements start with a working session. We'll propose a time after reviewing your submission.</div>
+          <div class="form-context" id="contextSprint">Story Sprints are 60 minutes, $500-$750, and usually scheduled within a week of inquiry.</div>
+          <div class="form-context" id="contextUnsure">No worries. Tell us about your work and we'll figure out the right starting point together.</div>
+        </div>
+        <div class="form-group-full">
+          <label class="form-label">Tell us about your project</label>
+          <textarea class="form-textarea" placeholder="What are you working on? Who's your audience? What have you tried so far? Any context helps us prepare for the conversation."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send It</button>
+        <p style="font-size: 0.78rem; color: var(--medium-gray); margin-top: 1rem;">100% client retention. Every engagement starts with a conversation like this.</p>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="contact-sidebar">
+        <div class="sidebar-block">
+          <p class="sidebar-label">What happens next</p>
+          <div style="display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 0.75rem;">
+            <span style="font-family: var(--font-display); font-size: 1.1rem; color: var(--gold); line-height: 1.4; flex-shrink: 0;">1.</span>
+            <p style="font-size: 0.85rem; color: var(--dark-gray); line-height: 1.45;">You submit the form (or email us directly).</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 0.75rem;">
+            <span style="font-family: var(--font-display); font-size: 1.1rem; color: var(--gold); line-height: 1.4; flex-shrink: 0;">2.</span>
+            <p style="font-size: 0.85rem; color: var(--dark-gray); line-height: 1.45;">We review within 24 hours.</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 0.75rem;">
+            <span style="font-family: var(--font-display); font-size: 1.1rem; color: var(--gold); line-height: 1.4; flex-shrink: 0;">3.</span>
+            <p style="font-size: 0.85rem; color: var(--dark-gray); line-height: 1.45;">We reply with a proposed time for a 30-minute call.</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+            <span style="font-family: var(--font-display); font-size: 1.1rem; color: var(--gold); line-height: 1.4; flex-shrink: 0;">4.</span>
+            <p style="font-size: 0.85rem; color: var(--dark-gray); line-height: 1.45;">No prep needed. We'll ask the questions.</p>
+          </div>
+        </div>
+        <div class="sidebar-block">
+          <p class="sidebar-label">Contact directly</p>
+          <a href="/cdn-cgi/l/email-protection#a7c9c6d3cfc6c9e7c4cbc6d5ced3dec1c8d5c0c2d4d3d2c3cec8d489c4c8ca" class="sidebar-link"><span class="__cf_email__" data-cfemail="264847524e474866454a47544f525f4049544143555253424f49550845494b">[email&#160;protected]</span></a>
+          <a href="tel:5125696612" class="sidebar-link">(512) 569-6612</a>
+          <p style="font-size: 0.78rem; color: var(--medium-gray); margin-top: 0.5rem;">Same 24-hour response time.</p>
+        </div>
+        <div class="sidebar-block">
+          <p class="sidebar-label">Location</p>
+          <p>Based in Bend, Oregon.<br>Working with energy leaders nationwide.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><h3>ClarityForge Studios</h3><p>Media systems for energy leaders.<br>Bend, Oregon.</p></div>
+      <div class="footer-links"><h4>Navigate</h4><a href="/services">Services</a><a href="/podcast-production">Podcast Production</a><a href="/executive-visibility">Executive Visibility</a><a href="/strategic-partnerships">Strategic Partnerships</a><a href="/work">Work</a><a href="/about">About</a><a href="/blog">Blog</a></div>
+      <div class="footer-contact"><h4>Get in Touch</h4><a href="/cdn-cgi/l/email-protection#553c3b333a15363934273c212c333a273230262120313c3a267b363a38"><span class="__cf_email__" data-cfemail="e58c8b838aa5868984978c919c838a978280969190818c8a96cb868a88">[email&#160;protected]</span></a><a href="tel:5125696612">(512) 569-6612</a></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 ClarityForge Studios LLC</span><a href="/privacy-policy">Privacy Policy</a></div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+(function() {
+  var select = document.getElementById('interestSelect');
+  var contexts = {
+    podcast: document.getElementById('contextPodcast'),
+    visibility: document.getElementById('contextVisibility'),
+    partnershi

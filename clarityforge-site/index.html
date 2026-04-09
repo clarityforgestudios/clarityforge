@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media Systems for Energy Leaders | ClarityForge Studios</title>
+<meta name="description" content="ClarityForge builds podcast, video, and authority infrastructure for energy leaders and science experts. Grow your influence with systems that compound.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+/* ========================================
+   CSS CUSTOM PROPERTIES — BRAND SYSTEM
+   ======================================== */
+:root {
+  /* Primary */
+  --deep-navy: #1A2A3A;
+  --navy: #2A3D4F;
+  --gold: #FFB64D;
+  --orange: #E8713A;
+  --orange-dark: #D4622E;
+  /* Neutrals */
+  --near-black: #1C1E22;
+  --dark-gray: #3D4550;
+  --medium-gray: #6B7785;
+  --light-gray: #B0B8C1;
+  --border-gray: #DFE2E6;
+  --section-gray: #F2F3F5;
+  --warm-white: #FAFAF8;
+  --pure-white: #FFFFFF;
+  /* Functional */
+  --success: #4A8C5E;
+  /* Typography */
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  /* Spacing */
+  --section-pad: clamp(4rem, 8vw, 7rem);
+  --container: min(1200px, 90vw);
+  /* Transitions */
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ========================================
+   RESET & BASE
+   ======================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--dark-gray);
+  background: var(--warm-white);
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* ========================================
+   UTILITY
+   ======================================== */
+.container { width: var(--container); margin: 0 auto; }
+
+/* ========================================
+   STAGGERED ENTRY ANIMATIONS
+   ======================================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.anim-entry { opacity: 0; animation: fadeUp 0.7s var(--ease) forwards; }
+.anim-d1 { animation-delay: 0ms; }
+.anim-d2 { animation-delay: 150ms; }
+.anim-d3 { animation-delay: 300ms; }
+.anim-d4 { animation-delay: 450ms; }
+
+/* ========================================
+   NAVIGATION
+   ======================================== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--deep-navy);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-inner {
+  width: var(--container); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 0; gap: 2rem;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 0.65rem;
+  font-family: var(--font-body); font-weight: 600; font-size: 1.05rem;
+  color: var(--warm-white); letter-spacing: -0.01em;
+}
+.nav-logo svg { width: auto; height: 28px; }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: var(--light-gray); font-size: 0.9rem; font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  background: var(--gold); color: var(--navy); font-weight: 700;
+  padding: 0.6rem 1.4rem; border-radius: 6px; font-size: 0.85rem;
+  transition: background 0.2s, transform 0.15s; border: none; cursor: pointer;
+  letter-spacing: 0.01em;
+}
+.nav-cta:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-1px); }
+.nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--warm-white); margin: 5px 0; transition: 0.3s; }
+
+/* ========================================
+   SECTION 1: HERO
+   ======================================== */
+.hero {
+  background: var(--deep-navy);
+  padding: calc(var(--section-pad) + 4rem) 0 var(--section-pad);
+  min-height: 85vh; display: flex; align-items: center;
+  position: relative; overflow: hidden;
+}
+.hero::after {
+  content: ''; position: absolute; top: 0; right: 0;
+  width: 40%; height: 100%;
+  background: radial-gradient(ellipse at 80% 40%, rgba(255,182,77,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 2; max-width: 720px; }
+.hero h1 {
+  font-family: var(--font-display); font-size: clamp(2.8rem, 6vw, 4.2rem);
+  color: var(--warm-white); line-height: 1.15; margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+.hero h1 em {
+  font-style: normal; color: var(--gold);
+  display: inline-block; position: relative;
+}
+.hero-sub {
+  font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--light-gray);
+  max-width: 560px; margin-bottom: 2.5rem; line-height: 1.65;
+}
+.hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--gold); color: var(--navy); font-weight: 700;
+  padding: 0.9rem 2rem; border-radius: 6px; font-size: 1rem;
+  transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
+  box-shadow: 0 2px 12px rgba(255,182,77,0.2);
+}
+.btn-primary:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(232,113,58,0.3); }
+.btn-primary:active { background: var(--orange-dark); transform: translateY(0); }
+.hero-secondary {
+  color: var(--light-gray); font-size: 0.9rem;
+  border-bottom: 1px solid rgba(176,184,193,0.3);
+  padding-bottom: 2px; transition: color 0.2s, border-color 0.2s;
+}
+.hero-secondary:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ========================================
+   SECTION 2: THE PROBLEM
+   ======================================== */
+.problem {
+  padding: var(--section-pad) 0;
+  background: var(--warm-white);
+}
+.problem-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+  align-items: center;
+}
+.problem h2 {
+  font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  color: var(--near-black); margin-bottom: 1.5rem; line-height: 1.25;
+}
+.problem p { margin-bottom: 1.2rem; color: var(--dark-gray); }
+.problem p:last-of-type { margin-bottom: 0; }
+
+/* Credibility Gap — Before/After */
+.gap-viz { position: relative; padding: 1rem; }
+.gap-states { display: flex; gap: 2rem; }
+.gap-state {
+  flex: 1; text-align: center; padding: 2rem 1.5rem;
+  border-radius: 10px;
+}
+.gap-state-before {
+  background: rgba(42,61,79,0.06); border: 1px solid var(--border-gray);
+}
+.gap-state-after {
+  background: rgba(255,182,77,0.08); border: 1px solid rgba(255,182,77,0.25);
+}
+.gap-state-label {
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; margin-bottom: 1.5rem;
+  color: var(--medium-gray);
+}
+.gap-state-after .gap-state-label { color: var(--gold); }
+.gap-mini-bars { display: flex; align-items: flex-end; gap: 1.2rem; height: 140px; justify-content: center; margin-bottom: 1rem; }
+.gap-mini-bar {
+  width: 48px; border-radius: 4px 4px 0 0;
+  transition: height 1s var(--ease);
+}
+.gap-mini-label {
+  font-size: 0.7rem; font-weight: 600; color: var(--medium-gray);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.4rem;
+}
+.gap-state-before .bar-c { background: var(--navy); height: 120px; }
+.gap-state-before .bar-v { background: var(--light-gray); height: 30px; }
+.gap-state-after .bar-c { background: var(--navy); height: 120px; }
+.gap-state-after .bar-v { background: var(--gold); height: 110px; }
+.gap-state-caption {
+  font-size: 0.85rem; color: var(--dark-gray); margin-top: 0.75rem;
+  font-weight: 500; line-height: 1.4;
+}
+.gap-state-after .gap-state-caption { color: var(--navy); font-weight: 600; }
+
+/* ========================================
+   SECTION 3: THREE LANES
+   ======================================== */
+.services-lanes {
+  padding: var(--section-pad) 0;
+  background: var(--section-gray);
+}
+.services-lanes h2 {
+  font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  color: var(--near-black); text-align: center; margin-bottom: 3.5rem;
+}
+.lanes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.lane-card {
+  background: var(--pure-white); border-radius: 10px; padding: 2.5rem 2rem;
+  border: 1px solid var(--border-gray);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s;
+  display: flex; flex-direction: column;
+}
+.lane-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+.lane-icon {
+  width: 48px; height: 48px; margin-bottom: 1.5rem;
+  color: var(--gold);
+}
+.lane-card h3 {
+  font-family: var(--font-display); font-size: 1.4rem;
+  color: var(--near-black); margin-bottom: 0.4rem;
+}
+.lane-card .lane-for {
+  font-size: 0.85rem; color: var(--gold); font-weight: 600;
+  margin-bottom: 1rem; letter-spacing: 0.02em;
+}
+.lane-card p { font-size: 0.95rem; color: var(--dark-gray); flex: 1; margin-bottom: 1.5rem; }
+.lane-link {
+  font-size: 0.9rem; font-weight: 600; color: var(--navy);
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  transition: color 0.2s, gap 0.2s;
+}
+.lane-link:hover { color: var(--gold); gap: 0.6rem; }
+.lane-link::after { content: '\2192'; }
+
+/* ========================================
+   SECTION 3b: SELF-SELECTOR QUIZ
+   ======================================== */
+.quiz-section {
+  padding: 3.5rem 0;
+  background: var(--warm-white);
+  border-top: 1px solid var(--border-gray);
+  border-bottom: 1px solid var(--border-gray);
+}
+.quiz-wrap { text-align: center; max-width: 640px; margin: 0 auto; }
+.quiz-wrap h2 {
+  font-family: var(--font-display); font-size: 1.6rem;
+  color: var(--near-black); margin-bottom: 0.6rem;
+}
+.quiz-wrap > p { color: var(--medium-gray); margin-bottom: 2rem; font-size: 0.95rem; }
+.quiz-container { display: none; text-align: left; }
+.quiz-container.active { display: block; }
+.quiz-step { display: none; }
+.quiz-step.active { display: block; }
+.quiz-step h3 {
+  font-family: var(--font-body); font-size: 1.05rem; font-weight: 600;
+  color: var(--near-black); margin-bottom: 1.2rem;
+}
+.quiz-progress {
+  display: flex; gap: 0.5rem; margin-bottom: 1.5rem; justify-content: center;
+}
+.quiz-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--border-gray); transition: background 0.3s;
+}
+.quiz-dot.active { background: var(--gold); }
+.quiz-option {
+  display: block; width: 100%; text-align: left;
+  padding: 1rem 1.25rem; margin-bottom: 0.75rem;
+  border: 2px solid var(--border-gray); border-radius: 8px;
+  background: var(--pure-white); cursor: pointer;
+  font-size: 0.95rem; color: var(--near-black);
+  font-family: var(--font-body); font-weight: 500;
+  transition: border-color 0.2s, background 0.2s;
+}
+.quiz-option:hover { border-color: var(--gold); background: rgba(255,182,77,0.04); }
+.quiz-result {
+  display: none; text-align: center; padding: 1.5rem 0;
+}
+.quiz-result.active { display: block; }
+.quiz-result h3 {
+  font-family: var(--font-display); font-size: 1.3rem;
+  color: var(--near-black); margin-bottom: 0.75rem;
+}
+.quiz-result p { color: var(--dark-gray); margin-bottom: 1.5rem; }
+.quiz-result .btn-primary { font-size: 0.9rem; }
+.quiz-result-alt {
+  font-size: 0.85rem; color: var(--medium-gray); margin-top: 1rem;
+}
+.quiz-result-alt a { color: var(--navy); font-weight: 600; border-bottom: 1px solid var(--gold); }
+.quiz-start-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--navy); color: var(--warm-white); font-weight: 600;
+  padding: 0.75rem 1.8rem; border-radius: 6px; font-size: 0.9rem;
+  border: none; cursor: pointer; transition: background 0.2s, transform 0.15s;
+  font-family: var(--font-body);
+}
+.quiz-start-btn:hover { background: var(--gold); color: var(--navy); transform: translateY(-1px); }
+
+/* ========================================
+   SECTION 4: PROOF / METRICS
+   ======================================== */
+.proof {
+  padding: var(--section-pad) 0;
+  background: var(--deep-navy);
+}
+.metrics-row {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+  text-align: center; margin-bottom: 3rem;
+}
+.metric-item h3 {
+  font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--gold); margin-bottom: 0.4rem;
+}
+.metric-item p {
+  font-size: 0.85rem; color: var(--light-gray);
+  line-height: 1.4; max-width: 180px; margin: 0 auto;
+}
+.proof-logos {
+  display: flex; justify-content: center; align-items: center;
+  gap: 3rem; opacity: 0.5; flex-wrap: wrap;
+}
+.proof-logo {
+  width: 80px; height: 80px; border-radius: 10px;
+  background: rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; color: var(--light-gray); text-align: center;
+  padding: 0.5rem;
+}
+
+/* ========================================
+   SECTION 5: CASE STUDY PREVIEWS
+   ======================================== */
+.case-studies {
+  padding: var(--section-pad) 0;
+  background: var(--warm-white);
+}
+.case-studies h2 {
+  font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  color: var(--near-black); text-align: center; margin-bottom: 3rem;
+}
+.cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+.case-card {
+  background: var(--pure-white); border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--border-gray);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.case-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+.case-thumb {
+  height: 200px; background: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-family: var(--font-display); font-size: 1.2rem;
+  position: relative; overflow: hidden;
+}
+.case-thumb::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(42,61,79,0.9), rgba(26,42,58,0.95));
+}
+.case-thumb span { position: relative; z-index: 2; }
+.case-body { padding: 2rem; }
+.case-body h3 {
+  font-family: var(--font-display); font-size: 1.3rem;
+  color: var(--near-black); margin-bottom: 0.75rem;
+}
+.case-body p { font-size: 0.92rem; color: var(--dark-gray); margin-bottom: 1.25rem; }
+.case-link {
+  font-size: 0.88rem; font-weight: 600; color: var(--navy);
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  transition: color 0.2s, gap 0.2s;
+}
+.case-link:hover { color: var(--gold); gap: 0.6rem; }
+.case-link::after { content: '\2192'; }
+
+/* ========================================
+   SECTION 5b: TESTIMONIALS
+   ======================================== */
+.testimonials {
+  padding: 4rem 0;
+  background: var(--section-gray);
+}
+.testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+.testimonial-card {
+  background: var(--pure-white); border-radius: 10px;
+  padding: 2.5rem; border-left: 4px solid var(--gold);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.testimonial-card blockquote {
+  font-family: var(--font-display); font-size: 1.15rem;
+  color: var(--near-black); line-height: 1.5;
+  margin-bottom: 1.25rem; font-style: italic;
+}
+.testimonial-card cite {
+  font-style: normal; font-size: 0.85rem; color: var(--medium-gray);
+  display: block;
+}
+.testimonial-card cite strong { color: var(--navy); font-weight: 600; }
+
+/* ========================================
+   SECTION 6: FOUNDER
+   ======================================== */
+.founder {
+  padding: var(--section-pad) 0;
+  background: var(--warm-white);
+}
+.founder-grid {
+  display: grid; grid-template-columns: 280px 1fr; gap: 4rem;
+  align-items: center;
+}
+.founder-photo {
+  width: 280px; height: 320px; border-radius: 10px;
+  background: var(--navy); position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--light-gray); font-size: 0.85rem; text-align: center;
+}
+.founder-photo::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 4px; background: var(--gold);
+}
+.founder-text h2 {
+  font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2rem);
+  color: var(--near-black); margin-bottom: 1.25rem;
+}
+.founder-text p { margin-bottom: 1rem; color: var(--dark-gray); }
+.founder-location {
+  font-size: 0.88rem; color: var(--medium-gray);
+  margin-top: 0.5rem; font-weight: 500;
+}
+.founder-link {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-top: 1.25rem; font-weight: 600; font-size: 0.92rem;
+  color: var(--navy); transition: color 0.2s;
+}
+.founder-link:hover { color: var(--gold); }
+.founder-link::after { content: '\2192'; }
+
+/* ========================================
+   SECTION 7: NEWSLETTER
+   ======================================== */
+.newsletter {
+  padding: 3.5rem 0;
+  background: var(--section-gray);
+  border-top: 1px solid var(--border-gray);
+}
+.newsletter-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 2rem; flex-wrap: wrap;
+}
+.newsletter-text h2 {
+  font-family: var(--font-display); font-size: 1.4rem;
+  color: var(--near-black); margin-bottom: 0.3rem;
+}
+.newsletter-text p { font-size: 0.88rem; color: var(--medium-gray); }
+.newsletter-form { display: flex; gap: 0.75rem; }
+.newsletter-input {
+  padding: 0.75rem 1.2rem; border: 2px solid var(--border-gray);
+  border-radius: 6px; font-size: 0.92rem; font-family: var(--font-body);
+  background: var(--pure-white); color: var(--near-black);
+  width: 280px; transition: border-color 0.2s;
+}
+.newsletter-input:focus { outline: none; border-color: var(--gold); }
+.newsletter-input::placeholder { color: var(--light-gray); }
+.newsletter-btn {
+  background: var(--gold); color: var(--navy); font-weight: 700;
+  padding: 0.75rem 1.5rem; border-radius: 6px; border: none;
+  cursor: pointer; font-family: var(--font-body); font-size: 0.9rem;
+  transition: background 0.2s;
+}
+.newsletter-btn:hover { background: var(--orange); color: var(--pure-white); }
+
+/* ========================================
+   SECTION 8: CLOSING CTA
+   ======================================== */
+.closing-cta {
+  padding: var(--section-pad) 0;
+  background: var(--deep-navy);
+  text-align: center;
+}
+.closing-cta h2 {
+  font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  color: var(--warm-white); margin-bottom: 2rem; max-width: 600px;
+  margin-left: auto; margin-right: auto; line-height: 1.25;
+}
+.closing-cta .btn-primary { font-size: 1.05rem; padding: 1rem 2.5rem; }
+.closing-micro {
+  margin-top: 1.25rem; font-size: 0.82rem; color: var(--light-gray);
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer {
+  background: var(--near-black);
+  padding: 4rem 0 2rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-grid {
+  display: grid; grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 3rem; margin-bottom: 3rem;
+}
+.footer-brand h3 {
+  font-family: var(--font-body); font-weight: 600;
+  color: var(--warm-white); font-size: 1rem; margin-bottom: 0.5rem;
+}
+.footer-brand p { font-size: 0.82rem; color: var(--medium-gray); line-height: 1.6; }
+.footer-links h4 {
+  font-size: 0.78rem; color: var(--light-gray);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 1rem; font-weight: 600;
+}
+.footer-links a {
+  display: block; font-size: 0.88rem; color: var(--medium-gray);
+  padding: 0.25rem 0; transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-contact a {
+  display: block; font-size: 0.88rem; color: var(--medium-gray);
+  padding: 0.25rem 0; transition: color 0.2s;
+}
+.footer-contact a:hover { color: var(--gold); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 1.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.78rem; color: var(--medium-gray);
+}
+.footer-bottom a { color: var(--medium-gray); transition: color 0.2s; }
+.footer-bottom a:hover { color: var(--gold); }
+
+/* ========================================
+   MOBILE STICKY CTA
+   ======================================== */
+.mobile-cta {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--deep-navy); padding: 0.75rem 1rem;
+  border-top: 2px solid var(--gold); z-index: 99;
+  text-align: center;
+}
+.mobile-cta .btn-primary { width: 100%; justify-content: center; font-size: 0.95rem; padding: 0.8rem; }
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 960px) {
+  .lanes-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  .problem-grid { grid-template-columns: 1fr; }
+  .gap-viz { margin-top: 2rem; }
+  .cases-grid { grid-template-columns: 1fr; }
+  .testimonial-grid { grid-template-columns: 1fr; }
+  .founder-grid { grid-template-columns: 1fr; text-align: center; }
+  .founder-photo { margin: 0 auto; }
+  .metrics-row { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: block; }
+  .nav-inner .nav-cta { display: none; }
+  .mobile-cta { display: block; }
+  body { padding-bottom: 60px; }
+  .newsletter-inner { flex-direction: column; text-align: center; }
+  .newsletter-form { flex-direction: column; width: 100%; }
+  .newsletter-input { width: 100%; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+@media (max-width: 480px) {
+  .metrics-row { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .hero-ctas { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg viewBox="0 0 400 565" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 109.366V336.996C0 349.904 12.155 359.369 24.6645 356.282L131.375 329.656V216.829C131.375 204.174 139.985 193.139 152.292 190.102L383.591 132.752C393.112 130.373 399.747 121.869 399.747 112.1V19.8733C399.747 6.96569 387.592-2.4999 375.082 0.587803L15.0924 90.0807C6.22943 92.2573 0 100.255 0 109.366Z" fill="#FFB64D"/>
+        <path d="M375.488 269.137L131.426 329.676V551.991C131.426 564.291 146.873 569.707 154.571 560.141L246.645 435.974C246.898 435.62 247.303 435.417 247.708 435.316L383.54 401.503C393.214 399.074 400.051 390.418 400.051 380.446V288.372C400.051 275.565 387.997 266.1 375.538 269.187L375.488 269.137Z" fill="#FF682C"/>
+      </svg>
+      ClarityForge Studios
+    </a>
+    <ul class="nav-links">
+      <li><a href="/services">Services</a></li>
+      <li><a href="/work">Work</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/resources">Resources</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+    <a href="/story-sprint" class="nav-cta">Start a Story Sprint</a>
+    <button class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== SECTION 1: HERO ===== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="anim-entry anim-d1">You've built the credibility.<br><em>Now build the platform.</em></h1>
+      <p class="hero-sub anim-entry anim-d2">ClarityForge builds media systems for energy leaders ready to shape the public conversation. Podcast, video, LinkedIn, distribution. All of it.</p>
+      <div class="hero-ctas anim-entry anim-d3">
+        <a href="/services" class="btn-primary">See How We Work</a>
+        <a href="#lead-magnet" class="hero-secondary">Download: 5 Signs Your Expertise Is Bigger Than Your Platform</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 2: THE PROBLEM ===== -->
+<section class="problem">
+  <div class="container">
+    <div class="problem-grid">
+      <div class="problem-text">
+        <h2>The Visibility Gap in Energy</h2>
+        <p>The public conversation about energy is being shaped by people with distribution strategies, not domain expertise. AI-generated content and misinformation campaigns have built-in production systems. The people who actually understand the grid, policy, and markets don't.</p>
+        <p>The problem isn't that experts are silent. It's that expertise alone was never built for content production. Without systems, a team, or dedicated time, even the most credible voice stays invisible.</p>
+        <p>But this isn't a permanent condition. Every expert we work with already has the credibility. They just need the infrastructure to make it visible. That's a solvable problem.</p>
+        <p><strong>ClarityForge builds that infrastructure.</strong></p>
+      </div>
+      <div class="gap-viz">
+        <div class="gap-states">
+          <div class="gap-state gap-state-before">
+            <div class="gap-state-label">Without a system</div>
+            <div class="gap-mini-bars">
+              <div>
+                <div class="gap-mini-bar bar-c"></div>
+                <p class="gap-mini-label">Credibility</p>
+              </div>
+              <div>
+                <div class="gap-mini-bar bar-v"></div>
+                <p class="gap-mini-label">Visibility</p>
+              </div>
+            </div>
+            <p class="gap-state-caption">Deep expertise.<br>Nobody knows.</p>
+          </div>
+          <div class="gap-state gap-state-after">
+            <div class="gap-state-label">With ClarityForge</div>
+            <div class="gap-mini-bars">
+              <div>
+                <div class="gap-mini-bar bar-c"></div>
+                <p class="gap-mini-label">Credibility</p>
+              </div>
+              <div>
+                <div class="gap-mini-bar bar-v"></div>
+                <p class="gap-mini-label">Visibility</p>
+              </div>
+            </div>
+            <p class="gap-state-caption">Same expertise.<br>Now everyone knows.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 3: THREE LANES ===== -->
+<section class="services-lanes">
+  <div class="container">
+    <h2>Three Ways We Work With Energy Leaders</h2>
+    <div class="lanes-grid">
+      <div class="lane-card">
+        <svg class="lane-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="16" y="4" width="16" height="28" rx="8"/>
+          <path d="M16 24a8 8 0 0016 0"/>
+          <line x1="24" y1="32" x2="24" y2="40"/>
+          <line x1="16" y1="40" x2="32" y2="40"/>
+        </svg>
+        <h3>Podcast Authority</h3>
+        <p class="lane-for">Own the conversation in your field</p>
+        <p>We build podcast-to-platform engines: production, distribution, clips, newsletters, and growth strategy. You show up, talk about what you know, and we turn it into a media ecosystem.</p>
+        <a href="/podcast-production" class="lane-link">Learn More</a>
+      </div>
+      <div class="lane-card">
+        <svg class="lane-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="24" cy="14" r="8"/>
+          <path d="M8 44v-4a12 12 0 0124 0"/>
+          <polyline points="32,28 36,24 40,28"/>
+          <line x1="36" y1="24" x2="36" y2="36"/>
+        </svg>
+        <h3>Executive Visibility</h3>
+        <p class="lane-for">Be the authority your buyers trust</p>
+        <p>We build executive authority pipelines: video, LinkedIn positioning, content systems, and audience targeting tied to real business outcomes like inbound conversations, speaking invitations, and partnership opportunities.</p>
+        <a href="/executive-visibility" class="lane-link">Learn More</a>
+      </div>
+      <div class="lane-card">
+        <svg class="lane-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="24" cy="24" r="6"/>
+          <circle cx="10" cy="10" r="4"/>
+          <circle cx="38" cy="10" r="4"/>
+          <circle cx="10" cy="38" r="4"/>
+          <circle cx="38" cy="38" r="4"/>
+          <line x1="19" y1="20" x2="13" y2="13"/>
+          <line x1="29" y1="20" x2="35" y2="13"/>
+          <line x1="19" y1="28" x2="13" y2="35"/>
+          <line x1="29" y1="28" x2="35" y2="35"/>
+        </svg>
+        <h3>Strategic Media Partner</h3>
+        <p class="lane-for">Make your leadership bench impossible to ignore</p>
+        <p>We build authority infrastructure across your leadership bench: topic ownership mapping, multi-leader amplification, and performance dashboards that track signal quality, not vanity metrics.</p>
+        <a href="/strategic-partnerships" class="lane-link">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 3b: SELF-SELECTOR ===== -->
+<section class="quiz-section">
+  <div class="container">
+    <div class="quiz-wrap">
+      <h2>Not sure which path fits?</h2>
+      <p>Take 60 seconds to find out. Three questions. We'll point you to the right starting point.</p>
+      <button class="quiz-start-btn" id="quizStart">Find Your Starting Point</button>
+
+      <div class="quiz-container" id="quizContainer">
+        <div class="quiz-progress">
+          <span class="quiz-dot active" data-step="1"></span>
+          <span class="quiz-dot" data-step="2"></span>
+          <span class="quiz-dot" data-step="3"></span>
+        </div>
+
+        <div class="quiz-step active" data-step="1">
+          <h3>What best describes you?</h3>
+          <button class="quiz-option" data-value="individual" data-next="2">I'm an individual expert (researcher, analyst, executive)</button>
+          <button class="quiz-option" data-value="organization" data-next="2">I represent an organization (firm, association, institute)</button>
+        </div>
+
+        <div class="quiz-step" data-step="2">
+          <h3>What are you trying to solve right now?</h3>
+          <button class="quiz-option" data-value="no-presence" data-next="3">I have expertise but no public presence yet</button>
+          <button class="quiz-option" data-value="inconsistent" data-next="3">I'm creating content but need a system to make it consistent</button>
+          <button class="quiz-option" data-value="org-invisible" data-next="3">My organization has great leaders who should be more visible</button>
+        </div>
+
+        <div class="quiz-step" data-step="3">
+          <h3>What would success look like in 6 months?</h3>
+          <button class="quiz-option" data-value="podcast" data-next="result">A podcast and content system running without me thinking about production</button>
+          <button class="quiz-option" data-value="authority" data-next="result">Visible executive authority that drives real business conversations</button>
+          <button class="quiz-option" data-value="bench" data-next="result">Multiple leaders at my firm recognized as industry voices</button>
+        </div>
+
+        <div class="quiz-result" id="quizResult">
+          <h3 id="resultTitle"></h3>
+          <p id="resultDesc"></p>
+          <a href="" class="btn-primary" id="resultLink">Learn More</a>
+          <p class="quiz-result-alt">Or start with a <a href="/story-sprint">Story Sprint</a> — every client begins here.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 4: PROOF ===== -->
+<section class="proof">
+  <div class="container">
+    <div class="metrics-row">
+      <div class="metric-item">
+        <h3>+120%</h3>
+        <p>Average client reach growth in first 6 months</p>
+      </div>
+      <div class="metric-item">
+        <h3>100%</h3>
+        <p>Client retention rate</p>
+      </div>
+      <div class="metric-item">
+        <h3>Millions</h3>
+        <p>Monthly impressions across client platforms</p>
+      </div>
+      <div class="metric-item">
+        <h3>50+</h3>
+        <p>Podcasts, newsletters, and campaigns delivered</p>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 5: CASE STUDIES ===== -->
+<section class="case-studies">
+  <div class="container">
+    <h2>Recent Work</h2>
+    <div class="cases-grid">
+      <a href="/work/energy-capital" class="case-card">
+        <div class="case-thumb"><span>Energy Capital Podcast</span></div>
+        <div class="case-body">
+          <h3>Energy Capital Podcast</h3>
+          <p>How we helped a Texas energy policy voice double podcast downloads and build a multi-platform media ecosystem reaching millions.</p>
+          <span class="case-link">Read the full story</span>
+        </div>
+      </a>
+      <a href="/work/project-vanguard" class="case-card">
+        <div class="case-thumb"><span>Project Vanguard</span></div>
+        <div class="case-body">
+          <h3>Project Vanguard</h3>
+          <p>How we helped an Army veteran build a podcast connecting military talent to energy careers, earning board-level recognition and industry partnerships.</p>
+          <span class="case-link">Read the full story</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 5b: TESTIMONIALS ===== -->
+<section class="testimonials">
+  <div class="container">
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <blockquote>"[Your testimonial from Josh, Kevin, or Doug goes here. Even a short quote makes this section real.]"</blockquote>
+        <cite><strong>Client Name</strong> — Title, Organization</cite>
+      </div>
+      <div class="testimonial-card">
+        <blockquote>"[Second testimonial from a different client. This validates the pattern, not just one experience.]"</blockquote>
+        <cite><strong>Client Name</strong> — Title, Organization</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 6: FOUNDER ===== -->
+<section class="founder">
+  <div class="container">
+    <div class="founder-grid">
+      <div class="founder-photo">
+        Your headshot here
+      </div>
+      <div class="founder-text">
+        <h2>Built by Nate Peavey</h2>
+        <p>I started ClarityForge because the most credible voices in energy had no infrastructure to match their expertise.</p>
+        <p>The people who understand the grid, who've spent decades in policy and procurement, who can actually explain what's happening and what it means. They deserve to be heard. And when they are, the public conversation gets sharper, the decisions get better, and the right people get noticed.</p>
+        <p>That's what I build. Media systems that make credible voices impossible to ignore.</p>
+        <p class="founder-location">Based in Bend, Oregon. Working with energy leaders nationwide.</p>
+        <a href="/about" class="founder-link">About ClarityForge</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 7: NEWSLETTER ===== -->
+<section class="newsletter">
+  <div class="container">
+    <div class="newsletter-inner">
+      <div class="newsletter-text">
+        <h2>Get the energy media briefing.</h2>
+        <p>Every two weeks. What's working in energy media, what's not, and what to do about it.</p>
+      </div>
+      <form class="newsletter-form" onsubmit="return false;">
+        <input type="email" class="newsletter-input" placeholder="Your email address" required>
+        <button type="submit" class="newsletter-btn">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 8: CLOSING CTA ===== -->
+<section class="closing-cta">
+  <div class="container">
+    <h2>Ready to be the voice your industry turns to?</h2>
+    <a href="/story-sprint" class="btn-primary">Start a Story Sprint</a>
+        <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a href="/contact" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Or just get in touch</a></p>
+    <p class="closing-micro">Every ClarityForge client starts here. 100% retention rate.</p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>ClarityForge Studios</h3>
+        <p>Media systems for energy leaders.<br>Bend, Oregon.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigate</h4>
+        <a href="/services">Services</a>
+        <a href="/podcast-production">Podcast Production</a>
+        <a href="/executive-visibility">Executive Visibility</a>
+        <a href="/strategic-partnerships">Strategic Partnerships</a>
+        <a href="/work">Work</a>
+        <a href="/about">About</a>
+        <a href="/blog">Blog</a>
+        <a href="/resources">Resources</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Get in Touch</h4>
+        <a href="/cdn-cgi/l/email-protection#6a03040c052a09060b18031e130c05180d0f191e1f0e03051944090507"><span class="__cf_email__" data-cfemail="f49d9a929bb4979895869d808d929b869391878081909d9b87da979b99">[email&#160;protected]</span></a>
+        <a href="tel:5125696612">(512) 569-6612</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ClarityForge Studios LLC</span>
+      <a href="/privacy-policy">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== MOBILE STICKY CTA ===== -->
+<div class="mobile-cta">
+  <a href="/story-sprint" class="btn-primary">Start a Story Sprint</a>
+</div>
+
+<!-- ===== QUIZ LOGIC ===== -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+(function() {
+  var answers = {};
+  var quizStart = document.getElementById('quizStart');
+  var quizContainer = document.getElementById('quizContainer');
+  var quizResult = document.getElementById('quizResult');
+
+  quizStart.addEventListener('click', function() {
+    quizStart.style.display = 'none';
+    quizContainer.classList.add('active');
+  });
+
+  document.querySelectorAll('.quiz-option').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var step = this.closest('.quiz-step').getAttribute('data-step');
+      answers['q' + step] = this.getAttribute('data-value');
+      var next = this.getAttribute('data-next');
+
+      this.closest('.quiz-step').classList.remove('active');
+
+      if (next === 'result') {
+        showResult();
+      } else {
+        document.querySelector('.quiz-step[data-step="' + next + '"]').classList.add('active');
+        document.querySelectorAll('.quiz-dot').forEach(function(dot) {
+          dot.classList.toggle('active', parseInt(dot.getAttribute('data-step')) <= parseInt(next));
+        });
+      }
+    });
+  });
+
+  function showResult() {
+    document.querySelectorAll('.quiz-dot').forEach(function(d) { d.classList.add('active'); });
+    quizResult.classList.add('active');
+
+    var title, desc, link;
+
+    if (answers.q1 === 'organization') {
+      title = 'Strategic Media Partner';
+      desc = 'Institutional authority infrastructure that makes your entire leadership bench visible and recognized.';
+      link = '/strategic-partnerships';
+    } else if (answers.q3 === 'podcast') {
+      title = 'Podcast Authority';
+      desc = 'A podcast-to-platform engine that runs every week without you thinking about production. You talk, we build.';
+      link = '/podcast-production';
+    } else if (answers.q3 === 'authority') {
+      title = 'Executive Visibility';
+      desc = 'An authority pipeline that turns your deep expertise into visible,

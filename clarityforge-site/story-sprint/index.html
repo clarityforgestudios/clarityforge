@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Story Sprint — Define Your Message in 60 Minutes | ClarityForge</title>
+<meta name="description" content="The Story Sprint is a focused strategy session for energy leaders. Define your positioning, audience, content pillars, and 30-day plan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep-navy: #1A2A3A; --navy: #2A3D4F; --gold: #FFB64D; --orange: #E8713A; --orange-dark: #D4622E;
+  --near-black: #1C1E22; --dark-gray: #3D4550; --medium-gray: #6B7785; --light-gray: #B0B8C1;
+  --border-gray: #DFE2E6; --section-gray: #F2F3F5; --warm-white: #FAFAF8; --pure-white: #FFFFFF;
+  --font-display: 'DM Serif Display', Georgia, serif; --font-body: 'DM Sans', system-ui, sans-serif;
+  --section-pad: clamp(4rem, 8vw, 7rem); --container: min(1200px, 90vw);
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font-body); font-size: 18px; line-height: 1.7; color: var(--dark-gray); background: var(--warm-white); }
+img { max-width: 100%; display: block; } a { text-decoration: none; color: inherit; }
+.container { width: var(--container); margin: 0 auto; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.anim-entry { opacity: 0; animation: fadeUp 0.7s var(--ease) forwards; }
+.anim-d1 { animation-delay: 0ms; } .anim-d2 { animation-delay: 150ms; } .anim-d3 { animation-delay: 300ms; }
+
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--deep-navy); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.nav-inner { width: var(--container); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; gap: 2rem; }
+.nav-logo { display: flex; align-items: center; gap: 0.65rem; font-family: var(--font-body); font-weight: 600; font-size: 1.05rem; color: var(--warm-white); }
+.nav-logo svg { width: auto; height: 28px; }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { color: var(--light-gray); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--warm-white); margin: 5px 0; }
+
+/* HERO */
+.hero { background: var(--deep-navy); padding: calc(var(--section-pad) + 4rem) 0 var(--section-pad); position: relative; overflow: hidden; }
+.hero::after { content: ''; position: absolute; top: 0; right: 0; width: 40%; height: 100%; background: radial-gradient(ellipse at 80% 40%, rgba(255,182,77,0.06) 0%, transparent 70%); pointer-events: none; }
+.hero-content { position: relative; z-index: 2; max-width: 640px; }
+.hero h1 { font-family: var(--font-display); font-size: clamp(2.6rem, 5.5vw, 4rem); color: var(--warm-white); line-height: 1.15; margin-bottom: 1.5rem; }
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero-sub { font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--light-gray); max-width: 520px; line-height: 1.65; margin-bottom: 2.5rem; }
+.btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--gold); color: var(--navy); font-weight: 700; padding: 0.9rem 2rem; border-radius: 6px; font-size: 1rem; transition: background 0.25s, transform 0.15s, box-shadow 0.25s; box-shadow: 0 2px 12px rgba(255,182,77,0.2); }
+.btn-primary:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(232,113,58,0.3); }
+.btn-lg { font-size: 1.1rem; padding: 1rem 2.5rem; }
+.hero-micro { margin-top: 1rem; font-size: 0.82rem; color: var(--medium-gray); }
+
+/* DELIVERABLES */
+.deliverables { padding: var(--section-pad) 0; background: var(--warm-white); }
+.deliverables h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--near-black); text-align: center; margin-bottom: 2.5rem; }
+.del-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 800px; margin: 0 auto; }
+.del-card { background: var(--pure-white); border-radius: 10px; padding: 2rem; border: 1px solid var(--border-gray); box-shadow: 0 2px 8px rgba(0,0,0,0.04); display: flex; gap: 1rem; align-items: flex-start; }
+.del-check { width: 28px; height: 28px; flex-shrink: 0; color: var(--gold); margin-top: 2px; }
+.del-card h3 { font-family: var(--font-body); font-size: 0.95rem; font-weight: 700; color: var(--near-black); margin-bottom: 0.25rem; }
+.del-card p { font-size: 0.85rem; color: var(--dark-gray); line-height: 1.45; }
+
+/* WHO THIS IS FOR */
+.who-for { padding: var(--section-pad) 0; background: var(--section-gray); }
+.who-for h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--near-black); margin-bottom: 2rem; }
+.who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 900px; }
+.who-list { list-style: none; }
+.who-list li { padding: 0.6rem 0 0.6rem 2rem; position: relative; font-size: 0.95rem; color: var(--dark-gray); }
+.who-list li::before { content: ''; position: absolute; left: 0; top: 1rem; width: 10px; height: 10px; border-radius: 50%; background: var(--gold); }
+.who-note { padding: 2rem; background: var(--pure-white); border-radius: 10px; border: 1px solid rgba(255,182,77,0.2); }
+.who-note h3 { font-family: var(--font-display); font-size: 1.1rem; color: var(--near-black); margin-bottom: 0.5rem; }
+.who-note p { font-size: 0.88rem; color: var(--dark-gray); line-height: 1.5; }
+
+/* HOW IT WORKS */
+.how { padding: var(--section-pad) 0; background: var(--warm-white); }
+.how h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--near-black); text-align: center; margin-bottom: 2.5rem; }
+.how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 900px; margin: 0 auto; }
+.how-step { text-align: center; }
+.how-number { font-family: var(--font-display); font-size: 2.2rem; color: var(--gold); margin-bottom: 0.5rem; }
+.how-step h3 { font-family: var(--font-body); font-size: 1rem; font-weight: 700; color: var(--near-black); margin-bottom: 0.4rem; }
+.how-step p { font-size: 0.88rem; color: var(--dark-gray); line-height: 1.5; }
+
+/* INVESTMENT */
+.investment { padding: var(--section-pad) 0; background: var(--deep-navy); text-align: center; }
+.invest-price { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 3.5rem); color: var(--gold); margin-bottom: 0.5rem; }
+.invest-label { font-size: 0.92rem; color: var(--light-gray); margin-bottom: 2rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+.invest-credit { display: inline-block; background: rgba(255,182,77,0.1); border: 1px solid rgba(255,182,77,0.25); border-radius: 8px; padding: 1rem 2rem; margin-bottom: 2.5rem; }
+.invest-credit p { font-size: 0.92rem; color: var(--warm-white); }
+.invest-credit strong { color: var(--gold); }
+
+/* FAQ */
+.faq { padding: var(--section-pad) 0; background: var(--section-gray); }
+.faq h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2rem); color: var(--near-black); text-align: center; margin-bottom: 2.5rem; }
+.faq-list { max-width: 700px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--border-gray); }
+.faq-q { width: 100%; background: none; border: none; padding: 1.25rem 2rem 1.25rem 0; text-align: left; font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; color: var(--near-black); cursor: pointer; position: relative; }
+.faq-q::after { content: '+'; position: absolute; right: 0; top: 50%; transform: translateY(-50%); font-size: 1.3rem; color: var(--gold); transition: transform 0.2s; }
+.faq-q.open::after { content: '\2212'; }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+.faq-a.open { max-height: 300px; padding-bottom: 1.25rem; }
+.faq-a p { font-size: 0.88rem; color: var(--dark-gray); line-height: 1.55; }
+
+/* CLOSING CTA */
+.closing-cta { padding: var(--section-pad) 0; background: var(--warm-white); text-align: center; }
+.closing-cta h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--near-black); margin-bottom: 2rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+.closing-micro { margin-top: 1.25rem; font-size: 0.82rem; color: var(--medium-gray); }
+
+.footer { background: var(--near-black); padding: 4rem 0 2rem; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand h3 { font-family: var(--font-body); font-weight: 600; color: var(--warm-white); font-size: 1rem; margin-bottom: 0.5rem; }
+.footer-brand p { font-size: 0.82rem; color: var(--medium-gray); line-height: 1.6; }
+.footer-links h4, .footer-contact h4 { font-size: 0.78rem; color: var(--light-gray); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; font-weight: 600; }
+.footer-links a, .footer-contact a { display: block; font-size: 0.88rem; color: var(--medium-gray); padding: 0.25rem 0; transition: color 0.2s; }
+.footer-links a:hover, .footer-contact a:hover { color: var(--gold); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--medium-gray); }
+.footer-bottom a { color: var(--medium-gray); transition: color 0.2s; }
+.footer-bottom a:hover { color: var(--gold); }
+.mobile-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--deep-navy); padding: 0.75rem 1rem; border-top: 2px solid var(--gold); z-index: 99; text-align: center; }
+.mobile-cta .btn-primary { width: 100%; justify-content: center; font-size: 0.95rem; padding: 0.8rem; }
+
+@media (max-width: 960px) {
+  .del-grid { grid-template-columns: 1fr; max-width: 440px; }
+  .who-grid { grid-template-columns: 1fr; }
+  .how-steps { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: block; }
+  .mobile-cta { display: block; }
+  body { padding-bottom: 60px; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg viewBox="0 0 400 565" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 109.366V336.996C0 349.904 12.155 359.369 24.6645 356.282L131.375 329.656V216.829C131.375 204.174 139.985 193.139 152.292 190.102L383.591 132.752C393.112 130.373 399.747 121.869 399.747 112.1V19.8733C399.747 6.96569 387.592-2.4999 375.082 0.587803L15.0924 90.0807C6.22943 92.2573 0 100.255 0 109.366Z" fill="#FFB64D"/>
+        <path d="M375.488 269.137L131.426 329.676V551.991C131.426 564.291 146.873 569.707 154.571 560.141L246.645 435.974C246.898 435.62 247.303 435.417 247.708 435.316L383.54 401.503C393.214 399.074 400.051 390.418 400.051 380.446V288.372C400.051 275.565 387.997 266.1 375.538 269.187L375.488 269.137Z" fill="#FF682C"/>
+      </svg>
+      ClarityForge Studios
+    </a>
+    <ul class="nav-links"></ul>
+    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="anim-entry anim-d1">Get clarity <em>in 60 minutes.</em></h1>
+      <p class="hero-sub anim-entry anim-d2">The Story Sprint is a focused strategy session that turns everything swirling in your head into a plan you can act on.</p>
+      <a href="/contact" class="btn-primary btn-lg anim-entry anim-d3">Book Your Story Sprint</a>
+      <p class="hero-micro anim-entry anim-d3">$500-$750. Every ClarityForge engagement starts here.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU LEAVE WITH -->
+<section class="deliverables">
+  <div class="container">
+    <h2>What You Leave With</h2>
+    <div class="del-grid">
+      <div class="del-card">
+        <svg class="del-check" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="14" cy="14" r="12"/><line x1="14" y1="8" x2="14" y2="16"/><circle cx="14" cy="19" r="1" fill="currentColor" stroke="none"/></svg>
+        <div>
+          <h3>Positioning Statement</h3>
+          <p>One clear sentence that explains who you are, who you serve, and why your voice matters. The foundation everything else builds on.</p>
+        </div>
+      </div>
+      <div class="del-card">
+        <svg class="del-check" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="4"/><circle cx="20" cy="12" r="3"/><path d="M4 24v-2a6 6 0 0112 0"/><path d="M16 24v-1a5 5 0 018 0v1"/></svg>
+        <div>
+          <h3>Audience Profiles + 3-5 Content Pillars</h3>
+          <p>Named audience segments with specific needs, and 3-5 content pillars that connect your expertise to what those audiences care about.</p>
+        </div>
+      </div>
+      <div class="del-card">
+        <svg class="del-check" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="20" height="20" rx="2"/><line x1="4" y1="10" x2="24" y2="10"/><line x1="10" y1="4" x2="10" y2="10"/><line x1="9" y1="15" x2="13" y2="15"/><line x1="9" y1="19" x2="16" y2="19"/></svg>
+        <div>
+          <h3>30-Day Publishing Plan</h3>
+          <p>A concrete plan with dates, channels, and topics across LinkedIn, podcast, Substack, or YouTube. Not a vague strategy. A calendar you can execute.</p>
+        </div>
+      </div>
+      <div class="del-card">
+        <svg class="del-check" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 14h6l3-8 6 16 3-8h6"/></svg>
+        <div>
+          <h3>Next Steps Recommendation</h3>
+          <p>An honest assessment of what ongoing support (if any) makes sense for your goals. No pressure. You walk away with the plan either way.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO THIS IS FOR -->
+<section class="who-for">
+  <div class="container">
+    <h2>Who the Story Sprint Is For</h2>
+    <div class="who-grid">
+      <ul class="who-list">
+        <li>Energy leaders who know their work matters but can't articulate it concisely</li>
+        <li>Experts who've been meaning to "start putting themselves out there" for months or years</li>
+        <li>Anyone with a podcast, newsletter, or LinkedIn presence that feels inconsistent</li>
+        <li>Leaders who want to grow their influence but don't know where to begin</li>
+        <li>Organizations considering a media partner and want to test the relationship first</li>
+      </ul>
+      <div class="who-note">
+        <h3>After your Story Sprint</h3>
+        <p>You'll know exactly who you're talking to, what you're saying, and where to show up. The uncertainty that's been holding you back will be replaced with a system you can execute on immediately.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="container">
+    <h2>How It Works</h2>
+    <div class="how-steps">
+      <div class="how-step">
+        <p class="how-number">1</p>
+        <h3>Book Your Session</h3>
+        <p>Pick a time that works. You'll get a short prep questionnaire (about 10 minutes) so we can hit the ground running.</p>
+      </div>
+      <div class="how-step">
+        <p class="how-number">2</p>
+        <h3>60-Minute Video Call</h3>
+        <p>We ask the right questions, you talk about what you know. Together we shape your message, name your audience, and define your content pillars.</p>
+      </div>
+      <div class="how-step">
+        <p class="how-number">3</p>
+        <h3>Your Plan in 48 Hours</h3>
+        <p>You receive your positioning statement, content pillars, audience map, and 30-day publishing plan. Ready to execute.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTMENT -->
+<section class="investment">
+  <div class="container">
+    <p class="invest-price">$500-$750</p>
+    <p class="invest-label">A single focused session. You leave with a positioning statement, audience profiles, content pillars, and a 30-day plan.</p>
+    <div class="invest-credit">
+      <p>If we decide to work together on ongoing production or strategy, <strong>100% of your Story Sprint investment applies to the first month.</strong></p>
+    </div>
+    <a href="/contact" class="btn-primary btn-lg">Book Your Story Sprint</a>
+    <p style="margin-top: 1rem; font-size: 0.78rem; color: var(--medium-gray);">Limited availability. We take a small number of Story Sprints per month.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <h2>Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">What happens during the 60 minutes?</button>
+        <div class="faq-a">
+          <p>It's a structured conversation, not a presentation. We ask questions about your expertise, your audience, your goals, and what you've tried before. By the end of the session, we've shaped your positioning and identified the content system that fits.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What if I'm not ready for ongoing services?</button>
+        <div class="faq-a">
+          <p>That's completely fine. The Story Sprint is designed to stand on its own. You walk away with a complete plan whether we continue working together or not. Many clients use the Story Sprint plan to get started on their own and come back when they're ready for production support.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is this only for people who want a podcast?</button>
+        <div class="faq-a">
+          <p>No. The Story Sprint covers any channel: LinkedIn, podcast, newsletter, YouTube, or a combination. The session identifies which channels make sense for your goals and expertise. Some clients leave with a podcast plan. Others leave with a LinkedIn strategy. The format follows the message.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How is this different from a free consultation?</button>
+        <div class="faq-a">
+          <p>A free consultation is a sales call. This is a strategy session. You pay for the work, and you leave with deliverables: a positioning statement, content pillars, audience profiles, and a 30-day plan. The investment ensures both sides show up prepared to do real work.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAND -->
+<section style="padding: 3rem 0; background: var(--deep-navy);">
+  <div class="container">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 4rem; flex-wrap: wrap;">
+      <div style="text-align: center;">
+        <p style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); color: var(--gold);">100%</p>
+        <p style="font-size: 0.82rem; color: var(--light-gray);">Client retention rate</p>
+      </div>
+      <div style="text-align: center;">
+        <p style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); color: var(--gold);">+120%</p>
+        <p style="font-size: 0.82rem; color: var(--light-gray);">Average reach growth in 6 months</p>
+      </div>
+      <div style="text-align: center;">
+        <p style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); color: var(--gold);">100%</p>
+        <p style="font-size: 0.82rem; color: var(--light-gray);">Story Sprint clients continued to partnerships</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section class="closing-cta">
+  <div class="container">
+    <h2>60 minutes. You leave with a plan.</h2>
+    <a href="/contact" class="btn-primary btn-lg">Book Your Story Sprint</a>
+    <p class="closing-micro">$500-$750. 100% applies to your first month if we continue working together.</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><h3>ClarityForge Studios</h3><p>Media systems for energy leaders.<br>Bend, Oregon.</p></div>
+      <div class="footer-links"><h4>Navigate</h4><a href="/services">Services</a><a href="/podcast-production">Podcast Production</a><a href="/executive-visibility">Executive Visibility</a><a href="/strategic-partnerships">Strategic Partnerships</a><a href="/work">Work</a><a href="/about">About</a><a href="/blog">Blog</a></div>
+      <div class="footer-contact"><h4>Get in Touch</h4><a href="/cdn-cgi/l/email-protection#87eee9e1e8c7e4ebe6f5eef3fee1e8f5e0e2f4f3f2e3eee8f4a9e4e8ea"><span class="__cf_email__" data-cfemail="147d7a727b54777875667d606d727b667371676061707d7b673a777b79">[email&#160;protected]</span></a><a href="tel:5125696612">(512) 569-6612</a><a href="/contact">Contact</a></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 ClarityForge Studios LLC</span><a href="/privacy-policy">Privacy Policy</a></div>
+  </div>
+</footer>
+<div class="mobile-cta"><a href="/contact" class="btn-primary">Book Your Story Sprint</a></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+(function() {
+  var qs = document.querySelectorAll('.faq-q');
+  qs.forEach(function(q) {
+    q.addEventListener('click', function() {
+      var a = this.nextElementSibling;
+      var isOpen = a.classList.contains('open');
+      document.querySelectorAll('.faq-a.open').forEach(function(el) 

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive Visibility for Energy Leaders | ClarityForge Studios</title>
+<meta name="description" content="LinkedIn authority, video content, and pipeline-building systems for energy executives. Visibility that drives real business outcomes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep-navy: #1A2A3A; --navy: #2A3D4F; --gold: #FFB64D; --orange: #E8713A; --orange-dark: #D4622E;
+  --near-black: #1C1E22; --dark-gray: #3D4550; --medium-gray: #6B7785; --light-gray: #B0B8C1;
+  --border-gray: #DFE2E6; --section-gray: #F2F3F5; --warm-white: #FAFAF8; --pure-white: #FFFFFF;
+  --success: #4A8C5E;
+  --font-display: 'DM Serif Display', Georgia, serif; --font-body: 'DM Sans', system-ui, sans-serif;
+  --section-pad: clamp(4rem, 8vw, 7rem); --container: min(1200px, 90vw);
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font-body); font-size: 18px; line-height: 1.7; color: var(--dark-gray); background: var(--warm-white); }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+.container { width: var(--container); margin: 0 auto; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.anim-entry { opacity: 0; animation: fadeUp 0.7s var(--ease) forwards; }
+.anim-d1 { animation-delay: 0ms; } .anim-d2 { animation-delay: 150ms; } .anim-d3 { animation-delay: 300ms; }
+
+/* NAV */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--deep-navy); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.nav-inner { width: var(--container); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; gap: 2rem; }
+.nav-logo { display: flex; align-items: center; gap: 0.65rem; font-family: var(--font-body); font-weight: 600; font-size: 1.05rem; color: var(--warm-white); }
+.nav-logo svg { width: auto; height: 28px; }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { color: var(--light-gray); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { background: var(--gold); color: var(--navy); font-weight: 700; padding: 0.6rem 1.4rem; border-radius: 6px; font-size: 0.85rem; transition: background 0.2s, transform 0.15s; border: none; cursor: pointer; }
+.nav-cta:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-1px); }
+.nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--warm-white); margin: 5px 0; }
+
+/* HERO */
+.hero { background: var(--deep-navy); padding: calc(var(--section-pad) + 4rem) 0 var(--section-pad); min-height: 60vh; display: flex; align-items: center; position: relative; overflow: hidden; }
+.hero::after { content: ''; position: absolute; top: 0; right: 0; width: 40%; height: 100%; background: radial-gradient(ellipse at 80% 40%, rgba(255,182,77,0.06) 0%, transparent 70%); pointer-events: none; }
+.hero-content { position: relative; z-index: 2; max-width: 720px; }
+.hero h1 { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 3.6rem); color: var(--warm-white); line-height: 1.2; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+.hero h1 em { font-style: normal; color: var(--gold); display: inline-block; }
+.hero-sub { font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--light-gray); max-width: 560px; margin-bottom: 2.5rem; line-height: 1.65; }
+.hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; }
+.btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--gold); color: var(--navy); font-weight: 700; padding: 0.9rem 2rem; border-radius: 6px; font-size: 1rem; transition: background 0.25s, transform 0.15s, box-shadow 0.25s; box-shadow: 0 2px 12px rgba(255,182,77,0.2); }
+.btn-primary:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(232,113,58,0.3); }
+.btn-primary:active { background: var(--orange-dark); transform: translateY(0); }
+.hero-secondary { color: var(--light-gray); font-size: 0.9rem; border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+.hero-secondary:hover { color: var(--gold); border-color: var(--gold); }
+
+/* WHO FOR */
+.who-for { padding: 2.5rem 0; background: var(--warm-white); border-bottom: 1px solid var(--border-gray); }
+.who-for-inner { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.who-for-label { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--medium-gray); white-space: nowrap; }
+.who-for-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.who-for-tag { padding: 0.4rem 1.1rem; border-radius: 100px; background: var(--section-gray); border: 1px solid var(--border-gray); font-size: 0.82rem; font-weight: 500; color: var(--navy); }
+
+/* PROBLEM (rebalanced) */
+.problem { padding: var(--section-pad) 0; background: var(--warm-white); }
+.problem-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; }
+.problem-text h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem); color: var(--near-black); margin-bottom: 1.5rem; line-height: 1.25; }
+.problem-text p { margin-bottom: 1.2rem; }
+.problem-text p:last-of-type { margin-bottom: 0; }
+.problem-text strong { color: var(--near-black); }
+
+/* BEFORE/AFTER VISUAL */
+.ba-cards { display: flex; gap: 1.5rem; }
+.ba-card { flex: 1; border-radius: 10px; padding: 2rem 1.5rem; text-align: center; }
+.ba-before { background: rgba(42,61,79,0.06); border: 1px solid var(--border-gray); }
+.ba-after { background: rgba(255,182,77,0.06); border: 1px solid rgba(255,182,77,0.2); }
+.ba-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1.5rem; }
+.ba-before .ba-label { color: var(--medium-gray); }
+.ba-after .ba-label { color: var(--gold); }
+.ba-bars { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1rem; }
+.ba-bar-row { display: flex; align-items: center; gap: 0.5rem; }
+.ba-bar-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--medium-gray); width: 80px; text-align: right; }
+.ba-bar { height: 24px; border-radius: 4px; transition: width 1s var(--ease); }
+.ba-before .ba-bar-profile { background: var(--light-gray); width: 30px; }
+.ba-before .ba-bar-inbound { background: var(--light-gray); width: 15px; }
+.ba-before .ba-bar-speaking { background: var(--light-gray); width: 8px; }
+.ba-after .ba-bar-profile { background: var(--gold); width: 140px; }
+.ba-after .ba-bar-inbound { background: var(--gold); width: 100px; }
+.ba-after .ba-bar-speaking { background: var(--gold); width: 60px; }
+.ba-caption { font-size: 0.82rem; color: var(--dark-gray); font-weight: 500; line-height: 1.3; margin-top: 0.5rem; }
+.ba-after .ba-caption { color: var(--navy); font-weight: 600; }
+
+/* TIERS */
+.tiers { padding: var(--section-pad) 0; background: var(--section-gray); }
+.tiers h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem); color: var(--near-black); text-align: center; margin-bottom: 1rem; }
+.tiers-sub { text-align: center; color: var(--medium-gray); font-size: 0.92rem; margin-bottom: 3rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+.tiers-grid { display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 1.5rem; align-items: start; max-width: 1050px; margin: 0 auto; }
+.tier-card { background: var(--pure-white); border-radius: 10px; padding: 2.5rem 2rem; border: 1px solid var(--border-gray); box-shadow: 0 2px 8px rgba(0,0,0,0.04); position: relative; }
+.tier-card-featured { border-color: var(--gold); box-shadow: 0 4px 24px rgba(255,182,77,0.15); }
+.tier-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--navy); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.3rem 1rem; border-radius: 100px; white-space: nowrap; }
+.tier-card h3 { font-family: var(--font-display); font-size: 1.2rem; color: var(--near-black); margin-bottom: 0.25rem; }
+.tier-price { font-family: var(--font-display); font-size: 1.6rem; color: var(--gold); margin-bottom: 1.5rem; }
+.tier-price span { font-size: 0.85rem; color: var(--medium-gray); font-family: var(--font-body); }
+.tier-list { list-style: none; }
+.tier-list li { padding: 0.4rem 0 0.4rem 1.4rem; position: relative; font-size: 0.85rem; color: var(--dark-gray); line-height: 1.45; }
+.tier-list li::before { content: ''; position: absolute; left: 0; top: 0.7rem; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+.tier-cta { display: block; text-align: center; margin-top: 2rem; padding: 0.75rem; border-radius: 6px; font-weight: 700; font-size: 0.88rem; transition: background 0.2s, transform 0.15s; }
+.tier-cta-default { background: var(--section-gray); color: var(--navy); border: 1px solid var(--border-gray); }
+.tier-cta-default:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); transform: translateY(-1px); }
+.tier-cta-primary { background: var(--gold); color: var(--navy); border: 1px solid var(--gold); }
+.tier-cta-primary:hover { background: var(--orange); color: var(--pure-white); border-color: var(--orange); transform: translateY(-1px); }
+
+/* WHAT THIS LOOKS LIKE */
+.outcomes { padding: var(--section-pad) 0; background: var(--warm-white); }
+.outcomes h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem); color: var(--near-black); text-align: center; margin-bottom: 2.5rem; }
+.outcomes-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 2rem; max-width: 960px; margin: 0 auto; }
+.outcomes-grid .outcome-card:nth-child(1) { grid-column: 1 / 3; }
+.outcomes-grid .outcome-card:nth-child(2) { grid-column: 3 / 5; }
+.outcomes-grid .outcome-card:nth-child(3) { grid-column: 5 / 7; }
+.outcomes-grid .outcome-card:nth-child(4) { grid-column: 2 / 4; }
+.outcomes-grid .outcome-card:nth-child(5) { grid-column: 4 / 6; }
+.outcome-card { text-align: center; padding: 2rem 1.5rem; }
+.outcome-icon { width: 48px; height: 48px; color: var(--gold); margin: 0 auto 1rem; }
+.outcome-card h3 { font-family: var(--font-body); font-size: 1rem; font-weight: 700; color: var(--near-black); margin-bottom: 0.4rem; }
+.outcome-card p { font-size: 0.88rem; color: var(--dark-gray); line-height: 1.5; }
+
+/* PROOF */
+.proof-band { padding: 3rem 0; background: var(--deep-navy); }
+.proof-inner { display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+.proof-stat { text-align: center; }
+.proof-stat-number { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); color: var(--gold); }
+.proof-stat-label { font-size: 0.82rem; color: var(--light-gray); max-width: 180px; margin: 0 auto; }
+
+/* CTA */
+.closing-cta { padding: var(--section-pad) 0; background: var(--section-gray); text-align: center; }
+.closing-cta h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--near-black); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.25; }
+.closing-cta .btn-primary { font-size: 1.05rem; padding: 1rem 2.5rem; }
+.closing-micro { margin-top: 1.25rem; font-size: 0.82rem; color: var(--medium-gray); }
+
+/* FOOTER */
+.footer { background: var(--near-black); padding: 4rem 0 2rem; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand h3 { font-family: var(--font-body); font-weight: 600; color: var(--warm-white); font-size: 1rem; margin-bottom: 0.5rem; }
+.footer-brand p { font-size: 0.82rem; color: var(--medium-gray); line-height: 1.6; }
+.footer-links h4, .footer-contact h4 { font-size: 0.78rem; color: var(--light-gray); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; font-weight: 600; }
+.footer-links a, .footer-contact a { display: block; font-size: 0.88rem; color: var(--medium-gray); padding: 0.25rem 0; transition: color 0.2s; }
+.footer-links a:hover, .footer-contact a:hover { color: var(--gold); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--medium-gray); }
+.footer-bottom a { color: var(--medium-gray); transition: color 0.2s; }
+.footer-bottom a:hover { color: var(--gold); }
+
+.mobile-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--deep-navy); padding: 0.75rem 1rem; border-top: 2px solid var(--gold); z-index: 99; text-align: center; }
+.mobile-cta .btn-primary { width: 100%; justify-content: center; font-size: 0.95rem; padding: 0.8rem; }
+
+.scroll-cta { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--deep-navy); border: 1px solid rgba(255,182,77,0.3); border-radius: 10px; padding: 1.25rem 1.5rem; box-shadow: 0 8px 30px rgba(0,0,0,0.2); z-index: 98; max-width: 320px; transform: translateY(120%); opacity: 0; transition: transform 0.4s var(--ease), opacity 0.4s; }
+.scroll-cta.visible { transform: translateY(0); opacity: 1; }
+.scroll-cta p { font-size: 0.88rem; color: var(--light-gray); margin-bottom: 0.75rem; line-height: 1.4; }
+.scroll-cta .btn-primary { font-size: 0.82rem; padding: 0.6rem 1.2rem; }
+.scroll-cta-close { position: absolute; top: 0.5rem; right: 0.75rem; background: none; border: none; color: var(--light-gray); font-size: 1.1rem; cursor: pointer; padding: 0.25rem; line-height: 1; }
+.scroll-cta-close:hover { color: var(--gold); }
+
+@media (max-width: 960px) {
+  .problem-grid { grid-template-columns: 1fr; }
+  .ba-cards { margin-top: 2rem; }
+  .tiers-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+  .tier-card-featured { order: -1; }
+  .outcomes-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .outcomes-grid .outcome-card:nth-child(1),
+  .outcomes-grid .outcome-card:nth-child(2),
+  .outcomes-grid .outcome-card:nth-child(3),
+  .outcomes-grid .outcome-card:nth-child(4),
+  .outcomes-grid .outcome-card:nth-child(5) { grid-column: 1 / -1; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: block; }
+  .nav-inner .nav-cta { display: none; }
+  .mobile-cta { display: block; }
+  body { padding-bottom: 60px; }
+  .scroll-cta { display: none; }
+  .ba-cards { flex-direction: column; }
+  .proof-inner { flex-direction: column; gap: 1.5rem; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  .hero-ctas { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg viewBox="0 0 400 565" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 109.366V336.996C0 349.904 12.155 359.369 24.6645 356.282L131.375 329.656V216.829C131.375 204.174 139.985 193.139 152.292 190.102L383.591 132.752C393.112 130.373 399.747 121.869 399.747 112.1V19.8733C399.747 6.96569 387.592-2.4999 375.082 0.587803L15.0924 90.0807C6.22943 92.2573 0 100.255 0 109.366Z" fill="#FFB64D"/>
+        <path d="M375.488 269.137L131.426 329.676V551.991C131.426 564.291 146.873 569.707 154.571 560.141L246.645 435.974C246.898 435.62 247.303 435.417 247.708 435.316L383.54 401.503C393.214 399.074 400.051 390.418 400.051 380.446V288.372C400.051 275.565 387.997 266.1 375.538 269.187L375.488 269.137Z" fill="#FF682C"/>
+      </svg>
+      ClarityForge Studios
+    </a>
+    <ul class="nav-links">
+      <li><a href="/services">Services</a></li>
+      <li><a href="/work">Work</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/resources">Resources</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+    <a href="/story-sprint" class="nav-cta">Start a Story Sprint</a>
+    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="anim-entry anim-d1">Your competitor has half your expertise.<br><em>They have twice your visibility.</em></h1>
+      <p class="hero-sub anim-entry anim-d2">We build executive authority systems that turn deep energy expertise into visible, measurable credibility.</p>
+      <div class="hero-ctas anim-entry anim-d3">
+        <a href="/story-sprint" class="btn-primary">Start a Story Sprint</a>
+        <a href="#pricing" class="hero-secondary">See pricing tiers</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO FOR -->
+<section class="who-for">
+  <div class="container">
+    <div class="who-for-inner">
+      <span class="who-for-label">Built for:</span>
+      <div class="who-for-tags">
+        <span class="who-for-tag">COOs and CEOs</span>
+        <span class="who-for-tag">Senior energy advisors</span>
+        <span class="who-for-tag">Procurement leaders</span>
+        <span class="who-for-tag">Data center executives</span>
+        <span class="who-for-tag">Clean energy principals</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE CASE FOR EXECUTIVE VISIBILITY -->
+<section class="problem">
+  <div class="container">
+    <div class="problem-grid">
+      <div class="problem-text">
+        <h2>Visibility Isn't Vanity. It's Your Strongest Channel.</h2>
+        <p>Personal profiles get roughly 5x more organic engagement than company pages. That's not a quirk of the algorithm. Platforms are built to amplify human voices over brand voices. Your personal presence is the most effective channel your organization has. And right now, it's probably sitting idle.</p>
+        <p>When an executive shows up consistently with short-form video, written insights, and educational content across LinkedIn, YouTube, and their industry's key channels, the effects compound. Inbound conversations increase. Speaking invitations arrive. The company page performs better because the algorithm sees active humans behind the brand. Recruiting gets easier because top talent follows leaders, not logos.</p>
+        <p>This isn't about going viral or building a personal brand for its own sake. It's about building a structured authority presence across the channels where your buyers, partners, and talent already spend time. <strong>That's a system, and it's buildable in 90 days.</strong></p>
+      </div>
+      <div class="ba-cards">
+        <div class="ba-card ba-before">
+          <p class="ba-label">Day 1</p>
+          <div class="ba-bars">
+            <div class="ba-bar-row"><span class="ba-bar-label">Profile views</span><div class="ba-bar ba-bar-profile"></div></div>
+            <div class="ba-bar-row"><span class="ba-bar-label">Inbound DMs</span><div class="ba-bar ba-bar-inbound"></div></div>
+            <div class="ba-bar-row"><span class="ba-bar-label">Speaking</span><div class="ba-bar ba-bar-speaking"></div></div>
+          </div>
+          <p class="ba-caption">Deep expertise.<br>No one outside your network knows.</p>
+        </div>
+        <div class="ba-card ba-after">
+          <p class="ba-label">Day 90</p>
+          <div class="ba-bars">
+            <div class="ba-bar-row"><span class="ba-bar-label">Profile views</span><div class="ba-bar ba-bar-profile"></div></div>
+            <div class="ba-bar-row"><span class="ba-bar-label">Inbound DMs</span><div class="ba-bar ba-bar-inbound"></div></div>
+            <div class="ba-bar-row"><span class="ba-bar-label">Speaking</span><div class="ba-bar ba-bar-speaking"></div></div>
+          </div>
+          <p class="ba-caption">Same expertise.<br>Now the right people see it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY THIS MATTERS FOR YOUR ORGANIZATION -->
+<section style="padding: 3rem 0; background: var(--section-gray);">
+  <div class="container">
+    <div style="max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: center;">
+      <div style="font-family: var(--font-display); font-size: clamp(3rem, 5vw, 4rem); color: var(--gold); line-height: 1;">5x</div>
+      <div>
+        <p style="font-size: 1.05rem; color: var(--near-black); font-weight: 600; margin-bottom: 0.5rem;">Personal profiles get roughly 5x more organic reach than company pages.</p>
+        <p style="font-size: 0.92rem; color: var(--dark-gray);">When your executives are visible, your company brand benefits. The algorithm sees active humans behind the organization and distributes company content further. This isn't a personal expense. It's the highest-leverage marketing investment your organization can make.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING TIERS -->
+<section class="tiers" id="pricing">
+  <div class="container">
+    <h2>Three Ways to Build Executive Visibility</h2>
+    <p class="tiers-sub">Every engagement starts with a Story Sprint to define your roadmap. Then we build the system that fits.</p>
+    <div class="tiers-grid">
+
+      <div class="tier-card">
+        <h3>Production Support</h3>
+        <p class="tier-price">$750<span>/mo</span></p>
+        <ul class="tier-list">
+          <li>1 batch filming session per month (4-6 short-form videos: expert takes, educational breakdowns, industry commentary)</li>
+          <li>Light content structuring before recording</li>
+          <li>Clean captions, formatting, and platform optimization</li>
+          <li>Execution against a defined authority roadmap</li>
+          <li>Distribution across LinkedIn, YouTube, and your priority channels</li>
+        </ul>
+        <a href="/story-sprint" class="tier-cta tier-cta-default">Start Here</a>
+      </div>
+
+      <div class="tier-card tier-card-featured">
+        <span class="tier-badge">Recommended</span>
+        <h3>Authority + Pipeline Builder</h3>
+        <p class="tier-price">$2,000-$2,500<span>/mo</span></p>
+        <ul class="tier-list">
+          <li>2 recording sessions/month (8-12 polished videos: expert takes, prospect-facing explainers, event recaps, myth-busting breakdowns)</li>
+          <li>Post copywriting (2-3 posts/week across LinkedIn and priority channels)</li>
+          <li>ICP definition and messaging alignment</li>
+          <li>Engagement and connection strategy targeting your buyer titles</li>
+          <li>Monthly strategy session</li>
+          <li>KPI tracking: profile views from VP+, inbound DMs from target accounts, speaking invitations, engagement from target job titles</li>
+        </ul>
+        <a href="/story-sprint" class="tier-cta tier-cta-primary">Start Here</a>
+      </div>
+
+      <div class="tier-card">
+        <h3>Pipeline Accelerator</h3>
+        <p class="tier-price">$3,500-$4,000<span>/mo</span></p>
+        <ul class="tier-list">
+          <li>Everything in Authority + Pipeline Builder</li>
+          <li>Target account list (50-100 buyers)</li>
+          <li>Outbound playbook and DM conversation mapping</li>
+          <li>CTA optimization across all content</li>
+          <li>KPI dashboard tied to calls booked and introductions made</li>
+          <li>Monthly pipeline review</li>
+        </ul>
+        <a href="/story-sprint" class="tier-cta tier-cta-default">Start Here</a>
+      </div>
+
+    </div>
+    <div style="max-width: 700px; margin: 2.5rem auto 0; background: var(--pure-white); border: 1px solid rgba(255,182,77,0.25); border-radius: 10px; padding: 2rem; display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+      <svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="#FFB64D" stroke-width="2" stroke-linecap="round"><path d="M6 36l10-10 8 8L42 12"/><polyline points="30,12 42,12 42,24"/></svg>
+      <div>
+        <p style="font-size: 0.95rem; font-weight: 700; color: var(--near-black); margin-bottom: 0.3rem;">Optional: Paid Amplification</p>
+        <p style="font-size: 0.88rem; color: var(--dark-gray); line-height: 1.5;">We can put targeted ad spend behind your highest-performing content using Thought Leader Ads and sponsored posts. This accelerates reach into specific buyer segments without changing your organic strategy. Available at any tier.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES (expanded) -->
+<section class="outcomes">
+  <div class="container">
+    <h2>What Visibility Actually Produces</h2>
+    <div class="outcomes-grid">
+      <div class="outcome-card">
+        <svg class="outcome-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 36l10-10 8 8L42 12"/><polyline points="30,12 42,12 42,24"/></svg>
+        <h3>Inbound Conversations</h3>
+        <p>Target buyers reaching out because they've seen your expertise, not because someone referred them.</p>
+      </div>
+      <div class="outcome-card">
+        <svg class="outcome-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="24" cy="24" r="18"/><path d="M24 14v10l7 7"/></svg>
+        <h3>Brand Awareness</h3>
+        <p>Your name and your organization become recognized in the rooms and feeds where decisions get made.</p>
+      </div>
+      <div class="outcome-card">
+        <svg class="outcome-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="18" width="36" height="24" rx="3"/><path d="M6 24l18 10 18-10"/></svg>
+        <h3>Speaking Invitations</h3>
+        <p>Conference organizers find you because your expertise is visible where they're looking.</p>
+      </div>
+      <div class="outcome-card">
+        <svg class="outcome-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="8" y="6" width="32" height="28" rx="3"/><path d="M16 38v4M32 38v4M12 42h24"/><path d="M18 20l4 4 8-8"/></svg>
+        <h3>Product and Service Visibility</h3>
+        <p>Your offerings get seen by the right people because your authority creates context for what you sell.</p>
+      </div>
+      <div class="outcome-card">
+        <svg class="outcome-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="24" cy="16" r="8"/><path d="M8 44v-4a16 16 0 0132 0v4"/></svg>
+        <h3>Recruiting and Partnership Pull</h3>
+        <p>Top talent and strategic partners reach out because they see a leader worth aligning with.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAND -->
+<section class="proof-band">
+  <div class="container">
+    <div class="proof-inner">
+      <div class="proof-stat">
+        <p class="proof-stat-number">60 days</p>
+        <p class="proof-stat-label">From roadmap to inbound advisory conversations</p>
+      </div>
+      <div class="proof-stat">
+        <p class="proof-stat-number">100%</p>
+        <p class="proof-stat-label">Client retention rate</p>
+      </div>
+      <div class="proof-stat">
+        <p class="proof-stat-number">+120%</p>
+        <p class="proof-stat-label">Average client reach growth in 6 months</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY REFERENCE -->
+<section style="padding: 3rem 0; background: var(--warm-white); text-align: center; border-bottom: 1px solid var(--border-gray);">
+  <div class="container">
+    <p style="font-size: 0.95rem; color: var(--dark-gray); max-width: 560px; margin: 0 auto 1rem;">We built an executive visibility system from zero for a veteran-led energy workforce initiative. Brand identity, LinkedIn strategy, podcast production, and content distribution.</p>
+    <a href="/work/project-vanguard" style="font-size: 0.92rem; font-weight: 700; color: var(--navy); display: inline-flex; align-items: center; gap: 0.4rem; transition: color 0.2s;">Read the Project Vanguard case study <span style="transition: margin-left 0.2s;">&rarr;</span></a>
+  </div>
+</section>
+
+<!-- CTA -->
+    <a href="/story-sprint" class="btn-primary">Start a Story Sprint</a>
+        <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a href="/contact" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Or just get in touch</a></p>
+    <p class="closing-micro">Every engagement starts with a Story Sprint. You leave with a 90-day authority roadmap.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>ClarityForge Studios</h3>
+        <p>Media systems for energy leaders.<br>Bend, Oregon.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigate</h4>
+        <a href="/services">Services</a>
+        <a href="/podcast-production">Podcast Production</a>
+        <a href="/executive-visibility">Executive Visibility</a>
+        <a href="/strategic-partnerships">Strategic Partnerships</a>
+        <a href="/work">Work</a>
+        <a href="/about">About</a>
+        <a href="/blog">Blog</a>
+        <a href="/resources">Resources</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Get in Touch</h4>
+        <a href="/cdn-cgi/l/email-protection#fb92959d94bb98979a89928f829d94899c9e888f8e9f929488d5989496"><span class="__cf_email__" data-cfemail="f79e999198b7949b96859e838e9198859092848382939e9884d994989a">[email&#160;protected]</span></a>
+        <a href="tel:5125696612">(512) 569-6612</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ClarityForge Studios LLC</span>
+      <a href="/privacy-policy">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-cta"><a href="/story-sprint" class="btn-primary">Start a Story Sprint</a></div>
+
+<div class="scroll-cta" id="scrollCta">
+  <button class="scroll-cta-close" id="scrollCtaClose" aria-label="Dismiss">&times;</button>
+  <p>Ready to explore this? Start with a Story Sprint.</p>
+  <a href="/story-sprint" class="btn-primary">Book a Story Sprint &rarr;</a>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+(function() {
+  var cta = document.getElementById('scrollCta'), closeBtn = document.getElementById('scrollCtaClose');
+  var shown = false, dismissed = false;
+  try { dismissed = sessionStorage.getItem('cf_scroll_cta_dismissed') === '1'; } catch(e) {}
+  if (!dismissed) { window.addEventListener('scroll', function() { if (shown || dismissed) return; if ((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight > 0.6) { cta.c

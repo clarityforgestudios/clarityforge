@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Energy Capital Podcast Case Study | ClarityForge Studios</title>
+<meta name="description" content="How ClarityForge helped the Energy Capital Podcast double downloads, reach millions, and build a multi-platform media ecosystem for Texas energy policy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep-navy: #1A2A3A; --navy: #2A3D4F; --gold: #FFB64D; --orange: #E8713A; --orange-dark: #D4622E;
+  --near-black: #1C1E22; --dark-gray: #3D4550; --medium-gray: #6B7785; --light-gray: #B0B8C1;
+  --border-gray: #DFE2E6; --section-gray: #F2F3F5; --warm-white: #FAFAF8; --pure-white: #FFFFFF;
+  --font-display: 'DM Serif Display', Georgia, serif; --font-body: 'DM Sans', system-ui, sans-serif;
+  --section-pad: clamp(4rem, 8vw, 7rem); --container: min(1200px, 90vw);
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font-body); font-size: 18px; line-height: 1.7; color: var(--dark-gray); background: var(--warm-white); }
+img { max-width: 100%; display: block; } a { text-decoration: none; color: inherit; }
+.container { width: var(--container); margin: 0 auto; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.anim-entry { opacity: 0; animation: fadeUp 0.7s var(--ease) forwards; }
+.anim-d1 { animation-delay: 0ms; } .anim-d2 { animation-delay: 150ms; } .anim-d3 { animation-delay: 300ms; }
+
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--deep-navy); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.nav-inner { width: var(--container); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; gap: 2rem; }
+.nav-logo { display: flex; align-items: center; gap: 0.65rem; font-family: var(--font-body); font-weight: 600; font-size: 1.05rem; color: var(--warm-white); }
+.nav-logo svg { width: auto; height: 28px; }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { color: var(--light-gray); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { background: var(--gold); color: var(--navy); font-weight: 700; padding: 0.6rem 1.4rem; border-radius: 6px; font-size: 0.85rem; transition: background 0.2s, transform 0.15s; border: none; cursor: pointer; }
+.nav-cta:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-1px); }
+.nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--warm-white); margin: 5px 0; }
+
+/* CASE HERO */
+.case-hero { background: var(--deep-navy); padding: calc(var(--section-pad) + 4rem) 0 var(--section-pad); position: relative; overflow: hidden; }
+.case-hero::after { content: ''; position: absolute; top: 0; right: 0; width: 40%; height: 100%; background: radial-gradient(ellipse at 80% 40%, rgba(255,182,77,0.06) 0%, transparent 70%); pointer-events: none; }
+.case-hero-inner { position: relative; z-index: 2; }
+.case-hero-back { font-size: 0.82rem; color: var(--light-gray); margin-bottom: 2rem; display: inline-flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
+.case-hero-back:hover { color: var(--gold); }
+.case-hero-back::before { content: '\2190'; }
+.case-hero-lane { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 0.75rem; }
+.case-hero h1 { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 3.6rem); color: var(--warm-white); line-height: 1.2; margin-bottom: 1rem; max-width: 720px; }
+.case-hero-sub { font-size: clamp(1rem, 1.8vw, 1.15rem); color: var(--light-gray); max-width: 600px; line-height: 1.65; }
+
+/* METRICS BAND */
+.metrics-band { padding: 3rem 0; background: var(--navy); }
+.metrics-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; }
+.metric-card { text-align: center; }
+.metric-card-number { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--gold); line-height: 1; margin-bottom: 0.3rem; }
+.metric-card-label { font-size: 0.75rem; color: var(--light-gray); line-height: 1.3; }
+
+/* NARRATIVE SECTIONS */
+.case-section { padding: var(--section-pad) 0; }
+.case-section-light { background: var(--warm-white); }
+.case-section-gray { background: var(--section-gray); }
+.case-section h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--near-black); margin-bottom: 1.5rem; }
+.case-section p { max-width: 720px; margin-bottom: 1.2rem; }
+.case-section p:last-of-type { margin-bottom: 0; }
+
+/* CLIENT INFO */
+.client-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 900px; }
+.client-detail-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 0.4rem; }
+.client-detail-value { font-size: 0.95rem; color: var(--near-black); font-weight: 500; margin-bottom: 1.25rem; }
+.client-detail-value:last-child { margin-bottom: 0; }
+
+/* PIPELINE VISUAL */
+.pipeline-flow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; max-width: 960px; margin: 2rem 0; position: relative; }
+.pipeline-flow::before { content: ''; position: absolute; top: 24px; left: 8%; right: 8%; height: 3px; background: var(--border-gray); z-index: 1; }
+.pipeline-step { text-align: center; position: relative; z-index: 2; padding: 0 0.25rem; }
+.pipeline-dot { width: 48px; height: 48px; border-radius: 50%; margin: 0 auto 0.75rem; display: flex; align-items: center; justify-content: center; font-family: var(--font-body); font-weight: 700; font-size: 0.85rem; color: var(--pure-white); background: var(--navy); }
+.pipeline-step:last-child .pipeline-dot { background: var(--gold); color: var(--navy); }
+.pipeline-step-label { font-size: 0.72rem; font-weight: 600; color: var(--near-black); line-height: 1.3; }
+
+/* RESULTS CARDS */
+.results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 960px; margin-top: 2rem; }
+.result-card { background: var(--pure-white); border-radius: 10px; padding: 2rem 1.5rem; border: 1px solid var(--border-gray); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.result-card-number { font-family: var(--font-display); font-size: 1.8rem; color: var(--gold); line-height: 1; margin-bottom: 0.4rem; }
+.result-card-label { font-size: 0.85rem; color: var(--dark-gray); line-height: 1.4; }
+
+/* EVOLUTION TIMELINE */
+.evolution { padding: var(--section-pad) 0; background: var(--section-gray); }
+.evolution h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--near-black); margin-bottom: 1rem; }
+.evolution > .container > p { max-width: 720px; margin-bottom: 2.5rem; }
+.evo-phases { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; max-width: 900px; }
+.evo-card { border-radius: 10px; padding: 2.5rem 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.evo-card-before { background: rgba(42,61,79,0.06); border: 1px solid var(--border-gray); }
+.evo-card-after { background: rgba(255,182,77,0.06); border: 1px solid rgba(255,182,77,0.2); }
+.evo-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1rem; }
+.evo-card-before .evo-label { color: var(--medium-gray); }
+.evo-card-after .evo-label { color: var(--gold); }
+.evo-card h3 { font-family: var(--font-display); font-size: 1.15rem; color: var(--near-black); margin-bottom: 0.75rem; }
+.evo-card-after h3 { color: var(--navy); }
+.evo-list { list-style: none; }
+.evo-list li { padding: 0.35rem 0 0.35rem 1.4rem; position: relative; font-size: 0.85rem; color: var(--dark-gray); line-height: 1.45; }
+.evo-list li::before { content: ''; position: absolute; left: 0; top: 0.65rem; width: 7px; height: 7px; border-radius: 50%; }
+.evo-card-before .evo-list li::before { background: var(--light-gray); }
+.evo-card-after .evo-list li::before { background: var(--gold); }
+.evo-tier { margin-top: 1rem; font-size: 0.78rem; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* MULTI-FORMAT SECTION */
+.formats { padding: var(--section-pad) 0; background: var(--warm-white); }
+.formats h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--near-black); margin-bottom: 1rem; }
+.formats > .container > p { max-width: 720px; margin-bottom: 2rem; }
+.formats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 960px; }
+.format-card { background: var(--pure-white); border-radius: 10px; padding: 1.5rem; border: 1px solid var(--border-gray); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.format-card-icon { width: 36px; height: 36px; color: var(--gold); margin-bottom: 0.75rem; }
+.format-card h3 { font-family: var(--font-body); font-size: 0.92rem; font-weight: 700; color: var(--near-black); margin-bottom: 0.3rem; }
+.format-card p { font-size: 0.82rem; color: var(--dark-gray); line-height: 1.45; }
+
+/* DISTRIBUTION BAND */
+.distro-band { padding: 2.5rem 0; background: var(--navy); }
+.distro-inner { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
+.distro-item { text-align: center; padding: 0 1.5rem; border-right: 1px solid rgba(255,255,255,0.12); }
+.distro-item:last-child { border-right: none; }
+.distro-item-name { font-size: 0.92rem; font-weight: 600; color: var(--warm-white); letter-spacing: 0.02em; }
+
+/* WHERE THEY ARE NOW */
+.where-now { padding: var(--section-pad) 0; background: var(--section-gray); }
+.where-now h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--near-black); margin-bottom: 1.5rem; }
+.where-now p { color: var(--dark-gray); max-width: 720px; margin-bottom: 1.2rem; line-height: 1.6; }
+
+/* CTA */
+.closing-cta { padding: var(--section-pad) 0; background: var(--warm-white); text-align: center; }
+.closing-cta h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--near-black); margin-bottom: 2rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+.btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--gold); color: var(--navy); font-weight: 700; padding: 0.9rem 2rem; border-radius: 6px; font-size: 1rem; transition: background 0.25s, transform 0.15s, box-shadow 0.25s; box-shadow: 0 2px 12px rgba(255,182,77,0.2); }
+.btn-primary:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(232,113,58,0.3); }
+.closing-micro { margin-top: 1.25rem; font-size: 0.82rem; color: var(--medium-gray); }
+
+.footer { background: var(--near-black); padding: 4rem 0 2rem; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand h3 { font-family: var(--font-body); font-weight: 600; color: var(--warm-white); font-size: 1rem; margin-bottom: 0.5rem; }
+.footer-brand p { font-size: 0.82rem; color: var(--medium-gray); line-height: 1.6; }
+.footer-links h4, .footer-contact h4 { font-size: 0.78rem; color: var(--light-gray); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; font-weight: 600; }
+.footer-links a, .footer-contact a { display: block; font-size: 0.88rem; color: var(--medium-gray); padding: 0.25rem 0; transition: color 0.2s; }
+.footer-links a:hover, .footer-contact a:hover { color: var(--gold); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--medium-gray); }
+.footer-bottom a { color: var(--medium-gray); transition: color 0.2s; }
+.footer-bottom a:hover { color: var(--gold); }
+.mobile-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--deep-navy); padding: 0.75rem 1rem; border-top: 2px solid var(--gold); z-index: 99; text-align: center; }
+.mobile-cta .btn-primary { width: 100%; justify-content: center; font-size: 0.95rem; padding: 0.8rem; }
+
+@media (max-width: 960px) {
+  .metrics-grid { grid-template-columns: repeat(3, 1fr); }
+  .client-grid { grid-template-columns: 1fr; }
+  .pipeline-flow { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .pipeline-flow::before { display: none; }
+  .results-grid { grid-template-columns: 1fr; max-width: 400px; }
+  .evo-phases { grid-template-columns: 1fr; }
+  .formats-grid { grid-template-columns: 1fr; max-width: 400px; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: block; }
+  .nav-inner .nav-cta { display: none; }
+  .mobile-cta { display: block; }
+  body { padding-bottom: 60px; }
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .pipeline-flow { grid-template-columns: repeat(2, 1fr); }
+  .distro-inner { gap: 1.5rem; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg viewBox="0 0 400 565" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 109.366V336.996C0 349.904 12.155 359.369 24.6645 356.282L131.375 329.656V216.829C131.375 204.174 139.985 193.139 152.292 190.102L383.591 132.752C393.112 130.373 399.747 121.869 399.747 112.1V19.8733C399.747 6.96569 387.592-2.4999 375.082 0.587803L15.0924 90.0807C6.22943 92.2573 0 100.255 0 109.366Z" fill="#FFB64D"/>
+        <path d="M375.488 269.137L131.426 329.676V551.991C131.426 564.291 146.873 569.707 154.571 560.141L246.645 435.974C246.898 435.62 247.303 435.417 247.708 435.316L383.54 401.503C393.214 399.074 400.051 390.418 400.051 380.446V288.372C400.051 275.565 387.997 266.1 375.538 269.187L375.488 269.137Z" fill="#FF682C"/>
+      </svg>
+      ClarityForge Studios
+    </a>
+    <ul class="nav-links">
+      <li><a href="/services">Services</a></li>
+      <li><a href="/work">Work</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/resources">Resources</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+    <a href="/story-sprint" class="nav-cta">Start a Story Sprint</a>
+    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- CASE HERO -->
+<section class="case-hero">
+  <div class="container">
+    <div class="case-hero-inner">
+      <a href="/work" class="case-hero-back">Back to Case Studies</a>
+      <p class="case-hero-lane anim-entry anim-d1">Podcast Authority</p>
+      <h1 class="anim-entry anim-d2">Energy Capital Podcast</h1>
+      <p class="case-hero-sub anim-entry anim-d3">From podcast production to a full media ecosystem. How a Texas energy policy platform grew through a major transition, landed sponsorships, and reached millions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS BAND -->
+<section class="metrics-band">
+  <div class="container">
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <p class="metric-card-number">+100%</p>
+        <p class="metric-card-label">Podcast downloads in 6 months</p>
+      </div>
+      <div class="metric-card">
+        <p class="metric-card-number">12K+</p>
+        <p class="metric-card-label">Newsletter subscribers</p>
+      </div>
+      <div class="metric-card">
+        <p class="metric-card-number">30K+</p>
+        <p class="metric-card-label">Total followers across show and host channels</p>
+      </div>
+      <div class="metric-card">
+        <p class="metric-card-number">170+</p>
+        <p class="metric-card-label">Government subscribers</p>
+      </div>
+      <div class="metric-card">
+        <p class="metric-card-number">115</p>
+        <p class="metric-card-label">Countries reached</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE CLIENT -->
+<section class="case-section case-section-light">
+  <div class="container">
+    <h2>The Client</h2>
+    <div class="client-grid">
+      <div>
+        <p class="client-detail-label">Show</p>
+        <p class="client-detail-value">Energy Capital Podcast / Texas Energy & Power Media</p>
+        <p class="client-detail-label">Focus</p>
+        <p class="client-detail-value">Texas power grid transformation, ERCOT market dynamics, grid reliability, regulatory economics, and emerging energy technology</p>
+      </div>
+      <div>
+        <p class="client-detail-label">Hosts</p>
+        <p class="client-detail-value">Joshua D. Rhodes, PhD (UT Austin Research Scientist, Columbia CGEP Fellow) and Matthew Boms (Executive Director, TAEBA)</p>
+        <p class="client-detail-label">Editorial Partners</p>
+        <p class="client-detail-value">Steve Scheibal and Elizabeth Souder-Philyaw</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE CHALLENGE -->
+<section class="case-section case-section-light">
+  <div class="container">
+    <h2>The Challenge</h2>
+    <p>Energy Capital had strong institutional credibility and expert hosts. What it didn't have was operational infrastructure to publish consistently, repurpose content across platforms, and grow audience reach. The hosts were doing the hard part: having substantive, policy-relevant conversations. Everything else was a bottleneck.</p>
+    <p>Then the engagement got harder. The show navigated a major host transition mid-stride. A lesser production system would have stalled. The goal became not just maintaining cadence but using the transition as an opportunity to expand the platform into something bigger than a podcast.</p>
+  </div>
+</section>
+
+<!-- WHAT WE BUILT -->
+<section class="case-section case-section-light">
+  <div class="container">
+    <h2>What We Built</h2>
+    <p>A full podcast-to-platform production pipeline. Every episode goes through six production phases (intake, processing, editing, clips, written content, distribution), and every episode generates 10+ pieces of content across podcast platforms, Substack, LinkedIn, YouTube, and social channels.</p>
+    <p>We also built a journalism-grade editorial standard (the Scheibal Filter) that governs all written content. Declarative sentences. No editorial commentary. Every piece of written content reads like it was produced by a newsroom, not a marketing agency.</p>
+  </div>
+</section>
+
+<!-- HOW THE ENGAGEMENT EVOLVED -->
+<section class="evolution">
+  <div class="container">
+    <h2>How the Engagement Evolved</h2>
+    <p>This didn't stay a production engagement. As the show grew and the platform expanded, the system grew with it. Here's what it looked like at the beginning versus what it looks like now.</p>
+    <div class="evo-phases">
+      <div class="evo-card evo-card-before">
+        <p class="evo-label">Where we started</p>
+        <h3>Production Partner</h3>
+        <ul class="evo-list">
+          <li>Single host pairing</li>
+          <li>Weekly podcast episodes</li>
+          <li>Audio editing and mastering</li>
+          <li>Basic show notes and distribution</li>
+          <li>Clips for LinkedIn</li>
+        </ul>
+      </div>
+      <div class="evo-card evo-card-after">
+        <p class="evo-label">Where we are now</p>
+        <h3>Full Media Ecosystem</h3>
+        <ul class="evo-list">
+          <li>Multiple hosts across different episode formats</li>
+          <li>Weekly episodes plus special reports and educational content</li>
+          <li>Full newsletter/Substack production to 12K+ subscribers</li>
+          <li>Cross-platform distribution: Substack, LinkedIn, X, Bluesky, YouTube</li>
+          <li>Host channel growth strategy across personal profiles</li>
+          <li>Journalism-grade editorial standard on all written content</li>
+          <li>Guest amplification and coordination system</li>
+          <li>Live recordings and panels at major events (SXSW, CERAWeek, industry conferences)</li>
+          <li>Sponsorship strategy, packaging, and landed podcast sponsorships</li>
+        </ul>
+        <p class="evo-tier">Strategy + Production tier</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MID-PAGE CTA -->
+<section style="padding: 2.5rem 0; background: var(--section-gray); text-align: center; border-top: 1px solid var(--border-gray); border-bottom: 1px solid var(--border-gray);">
+  <div class="container">
+    <p style="font-size: 1.05rem; color: var(--near-black); font-weight: 600; margin-bottom: 0.75rem;">Want to see what an engagement like this would look like for your organization?</p>
+    <a href="/story-sprint" class="btn-primary" style="font-size: 0.9rem; padding: 0.75rem 1.8rem;">Start a Story Sprint</a>
+  </div>
+</section>
+
+<!-- CONTENT FORMATS -->
+<section class="formats">
+  <div class="container">
+    <h2>Not Just a Podcast</h2>
+    <p>The system produces multiple content formats from the same editorial infrastructure. This is what makes it a media ecosystem, not just a show.</p>
+    <div class="formats-grid">
+      <div class="format-card">
+        <svg class="format-card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="8" y="4" width="20" height="28" rx="4"/><path d="M18 24a4 4 0 100-8 4 4 0 000 8z"/><line x1="18" y1="28" x2="18" y2="32"/></svg>
+        <h3>Weekly Episodes</h3>
+        <p>Full-length conversations with energy policy experts, regulators, and industry leaders. 45-60 minutes.</p>
+      </div>
+      <div class="format-card">
+        <svg class="format-card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="8" width="28" height="20" rx="2"/><path d="M15 14l8 5-8 5V14z"/></svg>
+        <h3>Special Reports</h3>
+        <p>Focused deep-dives on specific policy events, market shifts, or regulatory developments. Educational, not episodic.</p>
+      </div>
+      <div class="format-card">
+        <svg class="format-card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="6" width="24" height="18" rx="2"/><line x1="6" y1="12" x2="30" y2="12"/><rect x="10" y="28" width="16" height="2" rx="1"/><line x1="18" y1="24" x2="18" y2="28"/></svg>
+        <h3>Short-Form Clips</h3>
+        <p>3-5 clips per episode optimized for LinkedIn, YouTube, and social. Designed to stop the scroll and drive back to the full episode.</p>
+      </div>
+      <div class="format-card">
+        <svg class="format-card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="4" width="24" height="28" rx="2"/><line x1="12" y1="10" x2="24" y2="10"/><line x1="12" y1="16" x2="24" y2="16"/><line x1="12" y1="22" x2="20" y2="22"/></svg>
+        <h3>Newsletter Editions</h3>
+        <p>Every episode becomes a Substack edition to 12K+ subscribers. Editorial-grade writing, not AI-generated summaries.</p>
+      </div>
+      <div class="format-card">
+        <svg class="format-card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 4l4 8h8l-6 5 2 8-8-5-8 5 2-8-6-5h8z"/></svg>
+        <h3>LinkedIn Copy</h3>
+        <p>Post copy for full episodes, clips, and guest amplification across host profiles and the show's channels.</p>
+      </div>
+      <div class="format-card">
+        <svg class="format-card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="18" r="14"/><path d="M12 18l4 4 8-8"/></svg>
+        <h3>SEO Content</h3>
+        <p>Show notes, timestamps, transcripts, and blog posts designed to surface in search and drive long-tail discovery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISTRIBUTION BAND -->
+<section class="distro-band">
+  <div class="container">
+    <div class="distro-inner">
+      <div class="distro-item"><p class="distro-item-name">Apple Podcasts</p></div>
+      <div class="distro-item"><p class="distro-item-name">Spotify</p></div>
+      <div class="distro-item"><p class="distro-item-name">YouTube</p></div>
+      <div class="distro-item"><p class="distro-item-name">Substack</p></div>
+      <div class="distro-item"><p class="distro-item-name">LinkedIn</p></div>
+      <div class="distro-item"><p class="distro-item-name">X / Twitter</p></div>
+      <div class="distro-item"><p class="distro-item-name">Bluesky</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- THE RESULTS -->
+<section style="padding: var(--section-pad) 0; background: var(--deep-navy);">
+  <div class="container">
+    <h2 style="font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--warm-white); margin-bottom: 2rem;">The Results</h2>
+    <div class="results-grid">
+      <div class="result-card" style="background: var(--navy); border-color: rgba(255,255,255,0.08);">
+        <p class="result-card-number">+100%</p>
+        <p class="result-card-label" style="color: var(--light-gray);">Podcast downloads doubled within six months</p>
+      </div>
+      <div class="result-card" style="background: var(--navy); border-color: rgba(255,255,255,0.08);">
+        <p class="result-card-number">12K+</p>
+        <p class="result-card-label" style="color: var(--light-gray);">Email subscribers with massive growth through the transition</p>
+      </div>
+      <div class="result-card" style="background: var(--navy); border-color: rgba(255,255,255,0.08);">
+        <p class="result-card-number">Paid subs</p>
+        <p class="result-card-label" style="color: var(--light-gray);">Significant growth in paid Substack subscribers</p>
+      </div>
+      <div class="result-card" style="background: var(--navy); border-color: rgba(255,255,255,0.08);">
+        <p class="result-card-number">Millions</p>
+        <p class="result-card-label" style="color: var(--light-gray);">Monthly impressions across all platforms combined</p>
+      </div>
+      <div class="result-card" style="background: var(--navy); border-color: rgba(255,255,255,0.08);">
+        <p class="result-card-number">374 orgs</p>
+        <p class="result-card-label" style="color: var(--light-gray);">Organizations with 3+ regular newsletter readers</p>
+      </div>
+      <div class="result-card" style="background: var(--navy); border-color: rgba(255,255,255,0.08);">
+        <p class="result-card-number">170+</p>
+        <p class="result-card-label" style="color: var(--light-gray);">Government subscribers across federal and state agencies</p>
+      </div>
+      <div class="result-card" style="background: var(--navy); border-color: rgba(255,255,255,0.08);">
+        <p class="result-card-number">Survived</p>
+        <p class="result-card-label" style="color: var(--light-gray);">Navigated a major host transition without missing a week</p>
+      </div>
+      <div class="result-card" style="background: var(--navy); border-color: rgba(255,255,255,0.08);">
+        <p class="result-card-number">Sponsors</p>
+        <p class="result-card-label" style="color: var(--light-gray);">Landed podcast sponsorships through structured packaging</p>
+      </div>
+      <div class="result-card" style="background: var(--navy); border-color: rgba(255,255,255,0.08);">
+        <p class="result-card-number">Live events</p>
+        <p class="result-card-label" style="color: var(--light-gray);">SXSW, CERAWeek, and industry conference recordings</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE THEY ARE NOW -->
+<section class="where-now">
+  <div class="container">
+    <h2>Where They Are Now</h2>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2.5rem; max-width: 900px;">
+      <div style="background: var(--pure-white); border-radius: 10px; padding: 1.5rem; border: 1px solid var(--border-gray); box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+        <p style="font-family: var(--font-display); font-size: 1.3rem; color: var(--gold); margin-bottom: 0.3rem;">Weekly</p>
+        <p style="font-size: 0.82rem; color: var(--dark-gray);">Episodes, special reports, and educational content publishing continuously</p>
+      </div>
+      <div style="background: var(--pure-white); border-radius: 10px; padding: 1.5rem; border: 1px solid var(--border-gray); box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+        <p style="font-family: var(--font-display); font-size: 1.3rem; color: var(--gold); margin-bottom: 0.3rem;">Multi-host</p>
+        <p style="font-size: 0.82rem; color: var(--dark-gray);">Multiple hosts across different episode formats and topic areas</p>
+      </div>
+      <div style="background: var(--pure-white); border-radius: 10px; padding: 1.5rem; border: 1px solid var(--border-gray); box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+        <p style="font-family: var(--font-display); font-size: 1.3rem; color: var(--gold); margin-bottom: 0.3rem;">7 platforms</p>
+        <p style="font-size: 0.82rem; color: var(--dark-gray);">Active distribution across podcast, Substack, LinkedIn, X, Bluesky, YouTube</p>
+      </div>
+    </div>
+    <p>Energy Capital is in continuous production with ClarityForge. The show didn't just survive a major transition. It grew through it. The newsletter reaches 12,000+ subscribers, including direct readership inside PUC, ERCOT, the Texas Legislature, FERC, DOE, and major utilities.</p>
+    <p>What started as podcast production is now a full media ecosystem with active sponsorships, event presence, and compounding institutional authority. The hosts show up, have the conversation, and the rest compounds.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="closing-cta">
+  <div class="container">
+    <h2>Want to build a system like this for your show?</h2>
+    <a href="/story-sprint" class="btn-primary">Start a Story Sprint</a>
+        <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a href="/contact" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Or just get in touch</a></p>
+    <p class="closing-micro">Every podcast client starts with a Story Sprint.</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><h3>ClarityForge Studios</h3><p>Media systems for energy leaders.<br>Bend, Oregon.</p></div>
+      <div class="footer-links"><h4>Navigate</h4><a href="/services">Services</a><a href="/podcast-production">Podcast Production</a><a href="/executive-visibility">Executive Visibility</a><a href="/strategic-partnerships">Strategic Partnerships</a><a href="/work">Work</a><a href="/about">About</a><a href="/blog">Blog</a></div>
+      <div class="footer-contact"><h4>Get in Touch</h4><a href="/cdn-cgi/l/email-protection#afc6c1c9c0efccc3ceddc6dbd6c9c0ddc8cadcdbdacbc6c0dc81ccc0c2"><span class="__cf_email__" data-cfemail="82ebece4edc2e1eee3f0ebf6fbe4edf0e5e7f1f6f7e6ebedf1ace1edef">[email&#160;protected]</span></a><a href="tel:5125696612">(512) 569-6612</a><a href="/contact">Contact</a></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 ClarityForge Studios LLC</span><a href="/privacy-policy">Privac
