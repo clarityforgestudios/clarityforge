@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Vanguard Case Study | ClarityForge Studios</title>
+<meta name="description" content="How ClarityForge helped a veteran-led energy workforce initiative build a media platform from zero, earning board-level recognition and industry partnerships.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep-navy: #1A2A3A; --navy: #2A3D4F; --gold: #FFB64D; --orange: #E8713A; --orange-dark: #D4622E;
+  --near-black: #1C1E22; --dark-gray: #3D4550; --medium-gray: #6B7785; --light-gray: #B0B8C1;
+  --border-gray: #DFE2E6; --section-gray: #F2F3F5; --warm-white: #FAFAF8; --pure-white: #FFFFFF;
+  --font-display: 'DM Serif Display', Georgia, serif; --font-body: 'DM Sans', system-ui, sans-serif;
+  --section-pad: clamp(4rem, 8vw, 7rem); --container: min(1200px, 90vw);
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font-body); font-size: 18px; line-height: 1.7; color: var(--dark-gray); background: var(--warm-white); }
+img { max-width: 100%; display: block; } a { text-decoration: none; color: inherit; }
+.container { width: var(--container); margin: 0 auto; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.anim-entry { opacity: 0; animation: fadeUp 0.7s var(--ease) forwards; }
+.anim-d1 { animation-delay: 0ms; } .anim-d2 { animation-delay: 150ms; } .anim-d3 { animation-delay: 300ms; }
+
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--deep-navy); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.nav-inner { width: var(--container); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; gap: 2rem; }
+.nav-logo { display: flex; align-items: center; gap: 0.65rem; font-family: var(--font-body); font-weight: 600; font-size: 1.05rem; color: var(--warm-white); }
+.nav-logo svg { width: auto; height: 28px; }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { color: var(--light-gray); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { background: var(--gold); color: var(--navy); font-weight: 700; padding: 0.6rem 1.4rem; border-radius: 6px; font-size: 0.85rem; transition: background 0.2s, transform 0.15s; border: none; cursor: pointer; }
+.nav-cta:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-1px); }
+.nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--warm-white); margin: 5px 0; }
+
+.case-hero { background: var(--deep-navy); padding: calc(var(--section-pad) + 4rem) 0 var(--section-pad); position: relative; overflow: hidden; }
+.case-hero::after { content: ''; position: absolute; top: 0; right: 0; width: 40%; height: 100%; background: radial-gradient(ellipse at 80% 40%, rgba(255,182,77,0.06) 0%, transparent 70%); pointer-events: none; }
+.case-hero-inner { position: relative; z-index: 2; }
+.case-hero-back { font-size: 0.82rem; color: var(--light-gray); margin-bottom: 2rem; display: inline-flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
+.case-hero-back:hover { color: var(--gold); }
+.case-hero-back::before { content: '\2190'; }
+.case-hero-lane { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 0.75rem; }
+.case-hero h1 { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 3.6rem); color: var(--warm-white); line-height: 1.2; margin-bottom: 1rem; max-width: 720px; }
+.case-hero-sub { font-size: clamp(1rem, 1.8vw, 1.15rem); color: var(--light-gray); max-width: 600px; line-height: 1.65; }
+
+.metrics-band { padding: 3rem 0; background: var(--navy); }
+.metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.metric-card { text-align: center; }
+.metric-card-number { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--gold); line-height: 1; margin-bottom: 0.3rem; }
+.metric-card-label { font-size: 0.75rem; color: var(--light-gray); line-height: 1.3; }
+
+.case-section { padding: var(--section-pad) 0; }
+.case-section-light { background: var(--warm-white); }
+.case-section-gray { background: var(--section-gray); }
+.case-section h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--near-black); margin-bottom: 1.5rem; }
+.case-section p { max-width: 720px; margin-bottom: 1.2rem; }
+
+.client-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 900px; }
+.client-detail-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 0.4rem; }
+.client-detail-value { font-size: 0.95rem; color: var(--near-black); font-weight: 500; margin-bottom: 1.25rem; }
+
+/* WHAT WE BUILT LIST */
+.built-list { list-style: none; max-width: 720px; margin-top: 1.5rem; }
+.built-list li { padding: 0.5rem 0 0.5rem 2rem; position: relative; font-size: 0.95rem; color: var(--dark-gray); border-bottom: 1px solid var(--border-gray); }
+.built-list li:last-child { border-bottom: none; }
+.built-list li::before { content: ''; position: absolute; left: 0; top: 0.95rem; width: 10px; height: 10px; border-radius: 50%; background: var(--gold); }
+
+.results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 960px; margin-top: 2rem; }
+.result-card { background: var(--pure-white); border-radius: 10px; padding: 2rem 1.5rem; border: 1px solid var(--border-gray); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.result-card-number { font-family: var(--font-display); font-size: 1.8rem; color: var(--gold); line-height: 1; margin-bottom: 0.4rem; }
+.result-card-label { font-size: 0.85rem; color: var(--dark-gray); line-height: 1.4; }
+
+.where-now { padding: var(--section-pad) 0; background: var(--deep-navy); }
+.where-now h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--warm-white); margin-bottom: 1.5rem; }
+.where-now p { color: var(--light-gray); max-width: 720px; margin-bottom: 1.2rem; line-height: 1.6; }
+
+.closing-cta { padding: var(--section-pad) 0; background: var(--section-gray); text-align: center; }
+.closing-cta h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--near-black); margin-bottom: 2rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+.btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--gold); color: var(--navy); font-weight: 700; padding: 0.9rem 2rem; border-radius: 6px; font-size: 1rem; transition: background 0.25s, transform 0.15s, box-shadow 0.25s; box-shadow: 0 2px 12px rgba(255,182,77,0.2); }
+.btn-primary:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(232,113,58,0.3); }
+.closing-micro { margin-top: 1.25rem; font-size: 0.82rem; color: var(--medium-gray); }
+
+.footer { background: var(--near-black); padding: 4rem 0 2rem; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand h3 { font-family: var(--font-body); font-weight: 600; color: var(--warm-white); font-size: 1rem; margin-bottom: 0.5rem; }
+.footer-brand p { font-size: 0.82rem; color: var(--medium-gray); line-height: 1.6; }
+.footer-links h4, .footer-contact h4 { font-size: 0.78rem; color: var(--light-gray); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; font-weight: 600; }
+.footer-links a, .footer-contact a { display: block; font-size: 0.88rem; color: var(--medium-gray); padding: 0.25rem 0; transition: color 0.2s; }
+.footer-links a:hover, .footer-contact a:hover { color: var(--gold); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--medium-gray); }
+.footer-bottom a { color: var(--medium-gray); transition: color 0.2s; }
+.footer-bottom a:hover { color: var(--gold); }
+.mobile-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--deep-navy); padding: 0.75rem 1rem; border-top: 2px solid var(--gold); z-index: 99; text-align: center; }
+.mobile-cta .btn-primary { width: 100%; justify-content: center; font-size: 0.95rem; padding: 0.8rem; }
+
+@media (max-width: 960px) {
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  .client-grid { grid-template-columns: 1fr; }
+  .results-grid { grid-template-columns: 1fr; max-width: 400px; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: block; }
+  .nav-inner .nav-cta { display: none; }
+  .mobile-cta { display: block; }
+  body { padding-bottom: 60px; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg viewBox="0 0 400 565" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 109.366V336.996C0 349.904 12.155 359.369 24.6645 356.282L131.375 329.656V216.829C131.375 204.174 139.985 193.139 152.292 190.102L383.591 132.752C393.112 130.373 399.747 121.869 399.747 112.1V19.8733C399.747 6.96569 387.592-2.4999 375.082 0.587803L15.0924 90.0807C6.22943 92.2573 0 100.255 0 109.366Z" fill="#FFB64D"/>
+        <path d="M375.488 269.137L131.426 329.676V551.991C131.426 564.291 146.873 569.707 154.571 560.141L246.645 435.974C246.898 435.62 247.303 435.417 247.708 435.316L383.54 401.503C393.214 399.074 400.051 390.418 400.051 380.446V288.372C400.051 275.565 387.997 266.1 375.538 269.187L375.488 269.137Z" fill="#FF682C"/>
+      </svg>
+      ClarityForge Studios
+    </a>
+    <ul class="nav-links">
+      <li><a href="/services">Services</a></li>
+      <li><a href="/work">Work</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/resources">Resources</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+    <a href="/story-sprint" class="nav-cta">Start a Story Sprint</a>
+    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- CASE HERO -->
+<section class="case-hero">
+  <div class="container">
+    <div class="case-hero-inner">
+      <a href="/work" class="case-hero-back">Back to Case Studies</a>
+      <p class="case-hero-lane anim-entry anim-d1">Podcast Authority + Executive Visibility</p>
+      <h1 class="anim-entry anim-d2">Project Vanguard</h1>
+      <p class="case-hero-sub anim-entry anim-d3">How we helped an Army veteran build a media platform connecting military talent to energy careers, from zero audience to board-level recognition.</p>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS BAND -->
+<section class="metrics-band">
+  <div class="container">
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <p class="metric-card-number">0 → platform</p>
+        <p class="metric-card-label">Built from zero audience</p>
+      </div>
+      <div class="metric-card">
+        <p class="metric-card-number">Board-level</p>
+        <p class="metric-card-label">Content impact recognized by advisory board</p>
+      </div>
+      <div class="metric-card">
+        <p class="metric-card-number">4 channels</p>
+        <p class="metric-card-label">Podcast, LinkedIn, Facebook, YouTube</p>
+      </div>
+      <div class="metric-card">
+        <p class="metric-card-number">Ongoing</p>
+        <p class="metric-card-label">Continuous full-system engagement</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE CLIENT -->
+<section class="case-section case-section-light">
+  <div class="container">
+    <h2>The Client</h2>
+    <div class="client-grid">
+      <div>
+        <p class="client-detail-label">Organization</p>
+        <p class="client-detail-value">Project Vanguard</p>
+        <p class="client-detail-label">Mission</p>
+        <p class="client-detail-value">Connecting military veterans to energy sector careers through community, content, and industry partnerships</p>
+      </div>
+      <div>
+        <p class="client-detail-label">Founder</p>
+        <p class="client-detail-value">Kevin Doffing, Army veteran and energy sector leader</p>
+        <p class="client-detail-label">Starting Point</p>
+        <p class="client-detail-value">Deep credibility and a clear mission. No content infrastructure, no public platform, no media presence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE CHALLENGE -->
+<section class="case-section case-section-gray">
+  <div class="container">
+    <h2>The Challenge</h2>
+    <p>Kevin had spent years building relationships across the energy sector and veteran community. He had a clear mission and real credibility. What he didn't have was any infrastructure to make that mission visible beyond his personal network.</p>
+    <p>No podcast. No newsletter. No LinkedIn strategy. No brand identity. The organization needed a media presence that matched the seriousness of its mission, built from scratch, in a voice that felt like Kevin: direct, plainspoken, and mission-driven.</p>
+  </div>
+</section>
+
+<!-- WHAT WE BUILT -->
+<section class="case-section case-section-light">
+  <div class="container">
+    <h2>What We Built</h2>
+    <p>We built the entire media infrastructure for Project Vanguard from the ground up.</p>
+    <ul class="built-list">
+      <li>Brand identity and voice bible (direct, plainspoken, gritty, mission-driven)</li>
+      <li>Full podcast production pipeline: recording, editing, mastering, clips, distribution</li>
+      <li>LinkedIn content strategy and posting cadence for Kevin's personal profile</li>
+      <li>Short-form clip production optimized for LinkedIn, YouTube, and Facebook</li>
+      <li>Guest coordination system for recruiting energy and military leaders</li>
+      <li>Community leader amplification strategy across the PV network</li>
+      <li>Multi-platform distribution: podcast, LinkedIn, Facebook, YouTube</li>
+    </ul>
+  </div>
+</section>
+
+<!-- THE RESULTS -->
+<section class="case-section case-section-gray">
+  <div class="container">
+    <h2>The Results</h2>
+    <div class="results-grid">
+      <div class="result-card">
+        <p class="result-card-number">From zero</p>
+        <p class="result-card-label">Built a recognized media platform from no existing audience or content infrastructure</p>
+      </div>
+      <div class="result-card">
+        <p class="result-card-number">Board-level</p>
+        <p class="result-card-label">Advisory board members citing the podcast and content as a driver of organizational visibility</p>
+      </div>
+      <div class="result-card">
+        <p class="result-card-number">Partnerships</p>
+        <p class="result-card-label">Industry partnerships formed directly through podcast visibility and guest relationships</p>
+      </div>
+      <div class="result-card">
+        <p class="result-card-number">Weekly</p>
+        <p class="result-card-label">Consistent publishing cadence with full operational support from day one</p>
+      </div>
+      <div class="result-card">
+        <p class="result-card-number">100%</p>
+        <p class="result-card-label">Client retention. Kevin has been a continuous engagement since the beginning.</p>
+      </div>
+      <div class="result-card">
+        <p class="result-card-number">Voice</p>
+        <p class="result-card-label">A distinct brand identity that sounds like Kevin, not like a marketing agency</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE THEY ARE NOW -->
+<section class="where-now">
+  <div class="container">
+    <h2>Where They Are Now</h2>
+    <p>Project Vanguard is in continuous production with ClarityForge under an ongoing engagement. The podcast has become a recognized platform connecting veterans to energy sector careers, with partnerships, community events, and board-level visibility that didn't exist before the content infrastructure was built.</p>
+    <p>Kevin shows up and has the conversation. We handle everything else. The brand voice bible ensures every piece of content sounds like him, whether it's a LinkedIn post, a podcast intro, or a clip caption. The system runs because it was built to run.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="closing-cta">
+  <div class="container">
+    <h2>Building something from zero? We've done it before.</h2>
+    <a href="/story-sprint" class="btn-primary">Start a Story Sprint</a>
+        <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a href="/contact" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Or just get in touch</a></p>
+    <p class="closing-micro">Every engagement starts with a Story Sprint. You leave with a plan.</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><h3>ClarityForge Studios</h3><p>Media systems for energy leaders.<br>Bend, Oregon.</p></div>
+      <div class="footer-links"><h4>Navigate</h4><a href="/services">Services</a><a href="/podcast-production">Podcast Production</a><a href="/executive-visibility">Executive Visibility</a><a href="/strategic-partnerships">Strategic Partnerships</a><a href="/work">Work</a><a href="/about">About</a><a href="/blog">Blog</a></div>
+      <div class="footer-contact"><h4>Get in Touch</h4><a href="/cdn-cgi/l/email-protection#422b2c242d02212e23302b363b242d302527313637262b2d316c212d2f"><span class="__cf_email__" data-cfemail="8ce5e2eae3ccefe0edfee5f8f5eae3feebe9fff8f9e8e5e3ffa2efe3e1">[email&#160;protected]</span></a><a href="tel:5125696612">(512) 569-6612</a><a href="/contact">Contact</a></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 ClarityForge Studios LLC</span><a href="/privacy-policy">Privac
