@@ -170,7 +170,6 @@ a { text-decoration: none; color: inherit; }
   display: flex; align-items: center; justify-content: center;
   margin: 0 auto 1.25rem;
   font-family: var(--font-display); font-size: 1.3rem; color: var(--gold);
-  position: relative; z-index: 2;
 }
 .journey-step h3 {
   font-family: var(--font-display); font-size: 1.3rem;
@@ -178,10 +177,6 @@ a { text-decoration: none; color: inherit; }
 }
 .journey-step p {
   font-size: 0.92rem; color: var(--dark-gray); line-height: 1.55;
-}
-.journey-line {
-  position: absolute; top: 28px; left: 16.66%; right: 16.66%;
-  height: 2px; background: var(--border-gray); z-index: 1;
 }
 
 /* ========================================
@@ -192,15 +187,17 @@ a { text-decoration: none; color: inherit; }
   background: var(--warm-white);
 }
 .lane {
-  display: grid; grid-template-columns: 1.8fr 1fr; gap: 4rem;
-  align-items: center; padding: 3rem 0;
+  display: grid; grid-template-columns: 1fr; gap: 2rem;
+  padding: 3rem 0;
 }
 .lane + .lane { border-top: 1px solid var(--border-gray); }
-.lane:nth-child(even) .lane-text { order: 2; }
-.lane:nth-child(even) .lane-visual { order: 1; }
+.lane-visual { display: none; }
 .lane-label {
   font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
   letter-spacing: 0.12em; color: var(--gold); margin-bottom: 0.5rem;
+}
+.lane-text {
+  max-width: 780px;
 }
 .lane h3 {
   font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2rem);
@@ -454,14 +451,9 @@ a { text-decoration: none; color: inherit; }
    RESPONSIVE
    ======================================== */
 @media (max-width: 960px) {
-  .lane { grid-template-columns: 1fr; }
-  .lane:nth-child(even) .lane-text { order: 1; }
-  .lane:nth-child(even) .lane-visual { order: 2; }
-  .lane-visual { display: none; }
   .diff-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .journey-steps { flex-direction: column; align-items: center; gap: 2rem; }
-  .journey-line { display: none; }
 }
 @media (max-width: 768px) {
   body { font-size: 16px; }
@@ -523,7 +515,6 @@ a { text-decoration: none; color: inherit; }
     <h2>How Every Engagement Works</h2>
     <p>A proven arc that turns expertise into visible, compounding authority.</p>
     <div class="journey-steps">
-      <div class="journey-line"></div>
       <div class="journey-step">
         <div class="journey-dot">1</div>
         <h3>Clarity</h3>
@@ -787,7 +778,7 @@ a { text-decoration: none; color: inherit; }
       </div>
       <div class="footer-contact">
         <h4>Get in Touch</h4>
-        <a href="/cdn-cgi/l/email-protection#234a4d454c63404f42514a575a454c514446505756474a4c500d404c4e"><span class="__cf_email__" data-cfemail="9af3f4fcf5daf9f6fbe8f3eee3fcf5e8fdffe9eeeffef3f5e9b4f9f5f7">[email&#160;protected]</span></a>
+        <a href="mailto:info@clarityforgestudios.com">info@clarityforgestudios.com</a>
         <a href="tel:5125696612">(512) 569-6612</a>
         <a href="/contact">Contact</a>
       </div>
@@ -811,7 +802,7 @@ a { text-decoration: none; color: inherit; }
   <a href="/story-sprint" class="btn-primary">Book a Story Sprint &rarr;</a>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 (function() {
   var cta = document.getElementById('scrollCta');
   var closeBtn = document.getElementById('scrollCtaClose');
@@ -826,4 +817,18 @@ a { text-decoration: none; color: inherit; }
       var scrollPct = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
       if (scrollPct > 0.6) {
         cta.classList.add('visible');
-        sh
+        shown = true;
+      }
+    });
+  }
+
+  closeBtn.addEventListener('click', function() {
+    cta.classList.remove('visible');
+    dismissed = true;
+    try { sessionStorage.setItem('cf_scroll_cta_dismissed', '1'); } catch(e) {}
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Energy Leader Visibility Scorecard | ClarityForge Studios</title>
+<meta name="description" content="Rate your visibility across 10 dimensions in 2 minutes. See where you stand and what to build next.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+/* ========================================
+   CSS CUSTOM PROPERTIES — BRAND SYSTEM
+   ======================================== */
+:root {
+  --deep-navy: #1A2A3A;
+  --navy: #2A3D4F;
+  --gold: #FFB64D;
+  --orange: #E8713A;
+  --orange-dark: #D4622E;
+  --near-black: #1C1E22;
+  --dark-gray: #3D4550;
+  --medium-gray: #6B7785;
+  --light-gray: #B0B8C1;
+  --border-gray: #DFE2E6;
+  --section-gray: #F2F3F5;
+  --warm-white: #FAFAF8;
+  --pure-white: #FFFFFF;
+  --success: #4A8C5E;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --section-pad: clamp(4rem, 8vw, 7rem);
+  --container: min(1200px, 90vw);
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ========================================
+   RESET & BASE
+   ======================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--dark-gray);
+  background: var(--warm-white);
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+.container { width: var(--container); margin: 0 auto; }
+
+/* ========================================
+   NAVIGATION
+   ======================================== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--deep-navy);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-inner {
+  width: var(--container); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 0; gap: 2rem;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 0.65rem;
+  font-family: var(--font-body); font-weight: 600; font-size: 1.05rem;
+  color: var(--warm-white); letter-spacing: -0.01em;
+}
+.nav-logo svg { width: auto; height: 28px; }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: var(--light-gray); font-size: 0.9rem; font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  background: var(--gold); color: var(--navy); font-weight: 700;
+  padding: 0.6rem 1.4rem; border-radius: 6px; font-size: 0.85rem;
+  transition: background 0.2s, transform 0.15s; border: none; cursor: pointer;
+  letter-spacing: 0.01em;
+}
+.nav-cta:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-1px); }
+.nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--warm-white); margin: 5px 0; transition: 0.3s; }
+
+/* ========================================
+   HERO
+   ======================================== */
+.hero {
+  background: var(--deep-navy);
+  padding: calc(var(--section-pad) + 4rem) 0 var(--section-pad);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: ''; position: absolute; top: 0; right: 0;
+  width: 40%; height: 100%;
+  background: radial-gradient(ellipse at 80% 40%, rgba(255,182,77,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
+.hero h1 {
+  font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem);
+  color: var(--warm-white); line-height: 1.15; margin-bottom: 1.2rem;
+  letter-spacing: -0.02em;
+}
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero-sub {
+  font-size: clamp(1rem, 1.8vw, 1.1rem); color: var(--light-gray);
+  max-width: 520px; margin: 0 auto 2rem; line-height: 1.6;
+}
+.hero-meta {
+  display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+}
+.hero-meta-item { text-align: center; }
+.hero-meta-item strong {
+  display: block; color: var(--gold);
+  font-size: 1.6rem; font-family: var(--font-display);
+}
+.hero-meta-item span { color: var(--light-gray); font-size: 0.8rem; }
+
+/* ========================================
+   STICKY LEGEND
+   ======================================== */
+.legend-bar {
+  background: var(--pure-white);
+  border-bottom: 1px solid var(--border-gray);
+  padding: 0.8rem 0;
+  position: sticky; top: 62px; z-index: 10;
+}
+.legend-inner {
+  width: var(--container); margin: 0 auto;
+  display: flex; align-items: center; justify-content: center; gap: 2rem;
+}
+.legend-scale { display: flex; gap: 1.2rem; }
+.legend-item { text-align: center; font-size: 0.65rem; color: var(--medium-gray); }
+.legend-item strong { display: block; font-size: 0.75rem; color: var(--dark-gray); }
+.legend-score {
+  font-size: 0.85rem; font-weight: 600; color: var(--dark-gray);
+  background: var(--section-gray); padding: 0.4rem 1rem; border-radius: 20px;
+}
+.legend-score .val { color: var(--gold); font-size: 1rem; font-family: var(--font-display); }
+
+/* ========================================
+   QUESTIONS
+   ======================================== */
+.questions-wrap {
+  width: min(700px, 90vw); margin: 0 auto;
+  padding: 2rem 0 3rem;
+}
+.q-card {
+  background: var(--pure-white);
+  border: 1px solid var(--border-gray);
+  border-radius: 10px; padding: 1.4rem;
+  margin-bottom: 0.9rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.q-card:hover { border-color: var(--light-gray); }
+.q-card.answered { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold); }
+.q-top { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; }
+.q-num {
+  flex-shrink: 0; width: 28px; height: 28px;
+  background: var(--deep-navy); color: var(--pure-white);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem; font-weight: 700;
+}
+.q-text { flex: 1; font-size: 0.92rem; color: var(--near-black); font-weight: 500; line-height: 1.45; }
+.q-dim { flex-shrink: 0; font-size: 0.7rem; color: var(--medium-gray); font-style: italic; padding-top: 0.25rem; }
+.q-btns { display: flex; gap: 0.5rem; }
+.q-btn {
+  flex: 1; border: 1.5px solid var(--border-gray); background: var(--warm-white);
+  border-radius: 8px; padding: 0.6rem 0.25rem; text-align: center;
+  cursor: pointer; transition: all 0.15s;
+}
+.q-btn:hover { border-color: var(--gold); background: #FFF8ED; }
+.q-btn.sel { border-color: var(--gold); background: var(--gold); }
+.q-btn .num { display: block; font-size: 1rem; font-weight: 700; color: var(--dark-gray); line-height: 1; }
+.q-btn.sel .num { color: var(--deep-navy); }
+.q-btn .lbl { display: block; font-size: 0.55rem; color: var(--medium-gray); margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.3px; }
+.q-btn.sel .lbl { color: var(--deep-navy); opacity: 0.7; }
+
+/* ========================================
+   RESULTS (ungated)
+   ======================================== */
+.results {
+  width: min(700px, 90vw); margin: 0 auto; padding-bottom: 2rem; display: none;
+}
+.results.vis { display: block; }
+.res-hero {
+  text-align: center; padding: 2.5rem 1.5rem;
+  background: var(--deep-navy); border-radius: 12px; margin-bottom: 1.2rem;
+}
+.res-big { font-family: var(--font-display); font-size: 3.5rem; color: var(--gold); line-height: 1; }
+.res-big span { font-size: 1.2rem; color: var(--light-gray); }
+.res-tier { font-family: var(--font-display); font-size: 1.4rem; color: var(--pure-white); margin-top: 0.5rem; }
+.res-card {
+  background: var(--pure-white); border: 1px solid var(--border-gray);
+  border-radius: 10px; padding: 1.5rem 1.6rem; border-left: 4px solid var(--gold);
+}
+.res-card h3 { font-family: var(--font-display); font-size: 1.1rem; color: var(--near-black); margin-bottom: 0.5rem; }
+.res-card p { font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.6rem; }
+.res-card .cta-line { font-weight: 700; color: var(--near-black); }
+
+/* ========================================
+   BREAKDOWN GATE
+   ======================================== */
+.gate {
+  width: min(700px, 90vw); margin: 0 auto; padding-bottom: 2rem; display: none;
+}
+.gate-card {
+  background: var(--deep-navy); border-radius: 12px;
+  padding: 2.2rem 2rem; text-align: center;
+}
+.gate-card h2 { font-family: var(--font-display); color: var(--pure-white); font-size: 1.5rem; margin-bottom: 0.4rem; }
+.gate-card > p { color: var(--light-gray); font-size: 0.88rem; margin-bottom: 1.2rem; }
+.gate-form { display: flex; gap: 0.6rem; max-width: 400px; margin: 0 auto; }
+.gate-form input {
+  flex: 1; padding: 0.75rem 1rem;
+  border: 1.5px solid var(--navy); background: var(--navy);
+  color: var(--pure-white); border-radius: 8px;
+  font-family: var(--font-body); font-size: 0.88rem;
+  outline: none; transition: border-color 0.2s;
+}
+.gate-form input::placeholder { color: var(--medium-gray); }
+.gate-form input:focus { border-color: var(--gold); }
+.gate-form button {
+  padding: 0.75rem 1.4rem; background: var(--gold); color: var(--deep-navy);
+  border: none; border-radius: 8px; font-family: var(--font-body);
+  font-size: 0.88rem; font-weight: 700; cursor: pointer;
+  white-space: nowrap; transition: background 0.15s;
+}
+.gate-form button:hover { background: var(--orange); color: var(--pure-white); }
+.gate-form button:disabled { opacity: 0.5; cursor: not-allowed; }
+.gate-note { color: var(--medium-gray); font-size: 0.68rem; margin-top: 0.6rem; }
+
+/* ========================================
+   BREAKDOWN
+   ======================================== */
+.breakdown {
+  width: min(700px, 90vw); margin: 0 auto; padding-bottom: 3rem; display: none;
+}
+.breakdown.vis { display: block; }
+.bd-header { font-family: var(--font-display); font-size: 1.2rem; color: var(--near-black); margin-bottom: 0.25rem; }
+.bd-sub { font-size: 0.82rem; color: var(--medium-gray); margin-bottom: 1rem; }
+.dim-card {
+  display: flex; align-items: center; gap: 0.8rem;
+  background: var(--pure-white); border: 1px solid var(--border-gray);
+  border-radius: 8px; padding: 0.85rem 1.1rem; margin-bottom: 0.5rem;
+}
+.dim-card.weak { border-left: 4px solid var(--orange); }
+.dim-card.mid { border-left: 4px solid var(--gold); }
+.dim-card.strong { border-left: 4px solid var(--success); }
+.dim-circle {
+  flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.95rem;
+}
+.dim-card.weak .dim-circle { background: #FFF0E8; color: var(--orange); }
+.dim-card.mid .dim-circle { background: #FFF8ED; color: var(--orange-dark); }
+.dim-card.strong .dim-circle { background: #E8F5E9; color: #388E3C; }
+.dim-name { flex: 1; font-weight: 500; font-size: 0.9rem; color: var(--near-black); }
+.dim-verdict { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.dim-card.weak .dim-verdict { color: var(--orange); }
+.dim-card.mid .dim-verdict { color: var(--gold); }
+.dim-card.strong .dim-verdict { color: var(--success); }
+.bd-insight {
+  background: var(--section-gray); border-radius: 10px;
+  padding: 1.4rem; margin: 1rem 0 1.2rem;
+}
+.bd-insight h4 { font-family: var(--font-display); font-size: 0.95rem; color: var(--near-black); margin-bottom: 0.4rem; }
+.bd-insight p { font-size: 0.85rem; color: var(--dark-gray); line-height: 1.6; }
+.cta-block {
+  text-align: center; padding: 2rem;
+  background: var(--section-gray); border-radius: 10px; margin-top: 1.2rem;
+}
+.cta-block h3 { font-family: var(--font-display); font-size: 1.15rem; color: var(--near-black); margin-bottom: 0.4rem; }
+.cta-block p { font-size: 0.88rem; color: var(--dark-gray); margin-bottom: 1rem; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--gold); color: var(--navy); font-weight: 700;
+  padding: 0.9rem 2rem; border-radius: 6px; font-size: 1rem;
+  transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
+  box-shadow: 0 2px 12px rgba(255,182,77,0.2);
+}
+.btn-primary:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(232,113,58,0.3); }
+
+/* ========================================
+   PROGRESS
+   ======================================== */
+.progress-bar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  height: 4px; background: var(--border-gray); z-index: 20;
+}
+.progress-fill { height: 100%; background: var(--gold); width: 0%; transition: width 0.3s ease; }
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer {
+  background: var(--near-black);
+  padding: 4rem 0 2rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-grid {
+  display: grid; grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 3rem; margin-bottom: 3rem;
+}
+.footer-brand h3 {
+  font-family: var(--font-body); font-weight: 600;
+  color: var(--warm-white); font-size: 1rem; margin-bottom: 0.5rem;
+}
+.footer-brand p { font-size: 0.82rem; color: var(--medium-gray); line-height: 1.6; }
+.footer-links h4 {
+  font-size: 0.78rem; color: var(--light-gray);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 1rem; font-weight: 600;
+}
+.footer-links a {
+  display: block; font-size: 0.88rem; color: var(--medium-gray);
+  padding: 0.25rem 0; transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-contact a {
+  display: block; font-size: 0.88rem; color: var(--medium-gray);
+  padding: 0.25rem 0; transition: color 0.2s;
+}
+.footer-contact a:hover { color: var(--gold); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 1.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.78rem; color: var(--medium-gray);
+}
+.footer-bottom a { color: var(--medium-gray); transition: color 0.2s; }
+.footer-bottom a:hover { color: var(--gold); }
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 960px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: block; }
+  .nav-inner .nav-cta { display: none; }
+  .hero { padding: calc(var(--section-pad) + 3rem) 0 2.5rem; }
+  .q-card { padding: 1rem; }
+  .q-btn .lbl { display: none; }
+  .gate-form { flex-direction: column; }
+  .legend-scale { gap: 0.8rem; }
+  .q-dim { display: none; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg viewBox="0 0 400 565" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 109.366V336.996C0 349.904 12.155 359.369 24.6645 356.282L131.375 329.656V216.829C131.375 204.174 139.985 193.139 152.292 190.102L383.591 132.752C393.112 130.373 399.747 121.869 399.747 112.1V19.8733C399.747 6.96569 387.592-2.4999 375.082 0.587803L15.0924 90.0807C6.22943 92.2573 0 100.255 0 109.366Z" fill="#FFB64D"/>
+        <path d="M375.488 269.137L131.426 329.676V551.991C131.426 564.291 146.873 569.707 154.571 560.141L246.645 435.974C246.898 435.62 247.303 435.417 247.708 435.316L383.54 401.503C393.214 399.074 400.051 390.418 400.051 380.446V288.372C400.051 275.565 387.997 266.1 375.538 269.187L375.488 269.137Z" fill="#FF682C"/>
+      </svg>
+      ClarityForge Studios
+    </a>
+    <ul class="nav-links">
+      <li><a href="/services">Services</a></li>
+      <li><a href="/work">Work</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/resources">Resources</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+    <a href="/story-sprint" class="nav-cta">Start a Story Sprint</a>
+    <button class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Energy Leader<br><em>Visibility Scorecard</em></h1>
+    <p class="hero-sub">10 questions. 2 minutes. A clear picture of where you stand.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>10</strong><span>Questions</span></div>
+      <div class="hero-meta-item"><strong>50</strong><span>Points possible</span></div>
+      <div class="hero-meta-item"><strong>3</strong><span>Score tiers</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STICKY LEGEND ===== -->
+<div class="legend-bar">
+  <div class="legend-inner">
+    <div class="legend-scale">
+      <div class="legend-item"><strong>1</strong>Never</div>
+      <div class="legend-item"><strong>2</strong>Rarely</div>
+      <div class="legend-item"><strong>3</strong>Sometimes</div>
+      <div class="legend-item"><strong>4</strong>Usually</div>
+      <div class="legend-item"><strong>5</strong>Always</div>
+    </div>
+    <div class="legend-score">Score: <span class="val" id="runScore">0</span>/50</div>
+  </div>
+</div>
+
+<!-- ===== QUESTIONS ===== -->
+<section class="questions-wrap" id="qWrap"></section>
+
+<!-- ===== RESULTS (ungated) ===== -->
+<section class="results" id="results">
+  <div class="res-hero" id="resHero"></div>
+  <div id="resCard"></div>
+</section>
+
+<!-- ===== BREAKDOWN GATE ===== -->
+<div class="gate" id="gate">
+  <div class="gate-card">
+    <h2>Get Your Full Breakdown</h2>
+    <p>See which dimensions are holding you back and what to fix first.</p>
+    <div class="gate-form">
+      <input type="email" id="emailIn" placeholder="your@email.com" required>
+      <button id="unlockBtn" onclick="unlock()">Send My Breakdown</button>
+    </div>
+    <p class="gate-note">We'll email your detailed results and a link to book a free review call.</p>
+  </div>
+</div>
+
+<!-- ===== BREAKDOWN ===== -->
+<section class="breakdown" id="breakdown">
+  <div id="dimCards"></div>
+  <div class="cta-block">
+    <h3>Want to walk through this together?</h3>
+    <p>Book a free 15-minute call. We'll review your scores and show you what to build next.</p>
+    <a href="/contact" class="btn-primary">Book a Call</a>
+  </div>
+</section>
+
+<!-- ===== PROGRESS BAR ===== -->
+<div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>ClarityForge Studios</h3>
+        <p>Media systems for energy leaders.<br>Bend, Oregon.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigate</h4>
+        <a href="/services">Services</a>
+        <a href="/podcast-production">Podcast Production</a>
+        <a href="/executive-visibility">Executive Visibility</a>
+        <a href="/strategic-partnerships">Strategic Partnerships</a>
+        <a href="/work">Work</a>
+        <a href="/about">About</a>
+        <a href="/blog">Blog</a>
+        <a href="/resources">Resources</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Get in Touch</h4>
+        <a href="mailto:info@clarityforgestudios.com">info@clarityforgestudios.com</a>
+        <a href="tel:5125696612">(512) 569-6612</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ClarityForge Studios LLC</span>
+      <a href="/privacy-policy">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const QS = [
+  { t: "Do you publish content at least once per week?", d: "Cadence" },
+  { t: "Can you name your specific audience in one sentence?", d: "Audience Clarity" },
+  { t: "Do you have 3-5 defined content pillars you consistently cover?", d: "Strategy" },
+  { t: "Does your content generate inbound messages or meeting requests?", d: "Conversion" },
+  { t: "Are you present on more than one platform with consistent messaging?", d: "Distribution" },
+  { t: "Do you have a system that creates content without you doing all the work?", d: "Infrastructure" },
+  { t: "Can someone understand your expertise within 30 seconds of seeing your profile?", d: "Positioning" },
+  { t: "Have you been invited to speak, guest, or contribute based on your content?", d: "Authority Signals" },
+  { t: "Do you know which of your content performs best and why?", d: "Measurement" },
+  { t: "Could your content engine run for 2 weeks without your direct involvement?", d: "Scalability" },
+];
+const LBL = ["Never","Rarely","Sometimes","Usually","Always"];
+const sc = new Array(10).fill(0);
+const wrap = document.getElementById('qWrap');
+
+QS.forEach((q,i) => {
+  const c = document.createElement('div');
+  c.className = 'q-card'; c.id = 'q'+i;
+  c.innerHTML = '<div class="q-top"><div class="q-num">'+(i+1)+'</div><div class="q-text">'+q.t+'</div><div class="q-dim">'+q.d+'</div></div><div class="q-btns">'+[1,2,3,4,5].map(function(v){return '<div class="q-btn" onclick="pick('+i+','+v+',this)" role="button" tabindex="0"><span class="num">'+v+'</span><span class="lbl">'+LBL[v-1]+'</span></div>';}).join('')+'</div>';
+  wrap.appendChild(c);
+});
+
+function pick(qi, val, el) {
+  sc[qi] = val;
+  var card = document.getElementById('q'+qi);
+  card.querySelectorAll('.q-btn').forEach(function(b){b.classList.remove('sel');});
+  el.classList.add('sel');
+  card.classList.add('answered');
+  var tot = sc.reduce(function(a,b){return a+b;},0);
+  document.getElementById('runScore').textContent = tot;
+  var ans = sc.filter(function(s){return s>0;}).length;
+  document.getElementById('prog').style.width = (ans/10*100)+'%';
+  if (ans === 10) showResults();
+}
+
+function showResults() {
+  var tot = sc.reduce(function(a,b){return a+b;},0);
+  var tier, clr, body, cta;
+  if (tot <= 20) { tier="Foundation Needed"; clr="#E8713A"; body="You have expertise but no public infrastructure. Your knowledge is trapped in meetings, emails, and conference hallways. The gap isn't what you know. It's that nobody outside your direct network can find it."; cta="Start with a Story Sprint to define your positioning and build a plan."; }
+  else if (tot <= 35) { tier="Pieces Without a System"; clr="#FFB64D"; body="You're doing some things right but it's not compounding. You publish when you have time. Your content doesn't connect across platforms. Good weeks happen, but they don't build on each other."; cta="A Story Sprint will identify what's working, what's not, and what to build next."; }
+  else { tier="Ready to Scale"; clr="#4CAF50"; body="You have the foundation. Audience, positioning, and some content systems are in place. Now you need a partner to build the engine that turns this into a compounding machine."; cta="You don't need more planning. You need a production partner. Let's talk."; }
+
+  document.getElementById('resHero').innerHTML = '<div class="res-big">'+tot+'<span> / 50</span></div><div class="res-tier" style="color:'+clr+'">'+tier+'</div>';
+  document.getElementById('resCard').innerHTML = '<div class="res-card" style="border-left-color:'+clr+'"><h3>'+tier+'</h3><p>'+body+'</p><p class="cta-line">'+cta+'</p></div>';
+  document.getElementById('results').classList.add('vis');
+  document.getElementById('gate').style.display = 'block';
+  setTimeout(function(){ document.getElementById('results').scrollIntoView({ behavior:'smooth' }); }, 200);
+}
+
+function unlock() {
+  var email = document.getElementById('emailIn').value;
+  if (!email || email.indexOf('@') === -1) { document.getElementById('emailIn').style.borderColor='#E8713A'; return; }
+  var btn = document.getElementById('unlockBtn');
+  btn.disabled = true; btn.textContent = 'Sending...';
+
+  var tot = sc.reduce(function(a,b){return a+b;},0);
+  var sorted = QS.map(function(q,i){return {d:q.d,s:sc[i]};}).sort(function(a,b){return a.s-b.s;});
+  var weakest = sorted.slice(0,3).map(function(x){return x.d+' ('+x.s+'/5)';}).join(', ');
+
+  fetch('https://formspree.io/f/mdaprklq', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ email:email, source:'Visibility Scorecard', total_score:tot, weakest_dimensions:weakest, all_scores:sc.map(function(s,i){return QS[i].d+': '+s;}).join(', ') })
+  }).then(function(){showBreakdown();}).catch(function(){showBreakdown();});
+}
+
+function showBreakdown() {
+  document.getElementById('gate').style.display = 'none';
+  var dims = QS.map(function(q,i){return {d:q.d,s:sc[i]};}).sort(function(a,b){return a.s-b.s;});
+  var weak = dims.filter(function(d){return d.s<=2;});
+  var h = '<h3 class="bd-header">Your Dimension Breakdown</h3><p class="bd-sub">Sorted weakest to strongest. Focus on the orange dimensions first.</p>';
+  dims.forEach(function(d) {
+    var cls='mid', v='Building';
+    if(d.s<=2){cls='weak';v='Gap';}else if(d.s>=4){cls='strong';v='Solid';}
+    h += '<div class="dim-card '+cls+'"><div class="dim-circle">'+d.s+'</div><div class="dim-name">'+d.d+'</div><div class="dim-verdict">'+v+'</div></div>';
+  });
+  if (weak.length > 0) {
+    var wn = weak.map(function(d){return d.d;}).join(', ');
+    h += '<div class="bd-insight"><h4>Where to focus first</h4><p>Your biggest gaps are in '+wn+'. These are the dimensions holding your visibility back the most. A Story Sprint would address '+(weak.length===1?'this dimension':'these dimensions')+' directly.</p></div>';
+  } else {
+    h += '<div class="bd-insight"><h4>You\'re in strong shape</h4><p>No major gaps. The opportunity now is building the system that compounds what you already have. That\'s where a production partner changes the trajectory.</p></div>';
+  }
+  document.getElementById('dimCards').innerHTML = h;
+  var bd = document.getElementById('breakdown');
+  bd.classList.add('vis');
+  setTimeout(function(){ bd.scrollIntoView({ behavior:'smooth' }); }, 200);
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.target.classList.contains('q-btn') && (e.key==='Enter'||e.key===' ')) { e.preventDefault(); e.target.click(); }
+});
+</script>
+</body>
+</html>
