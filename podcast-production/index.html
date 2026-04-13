@@ -24,6 +24,8 @@
   --section-gray: #F2F3F5;
   --warm-white: #FAFAF8;
   --pure-white: #FFFFFF;
+  --gold-soft: rgba(255,182,77,0.08);
+  --gold-border: rgba(255,182,77,0.25);
   --success: #4A8C5E;
   --font-display: 'DM Serif Display', Georgia, serif;
   --font-body: 'DM Sans', system-ui, sans-serif;
@@ -89,14 +91,331 @@ a { text-decoration: none; color: inherit; }
 .engine-stat-label { font-size: 0.92rem; color: var(--dark-gray); line-height: 1.4; }
 .engine-stat-sub { font-size: 0.82rem; color: var(--medium-gray); margin-top: 0.75rem; }
 
-/* WHAT YOU GET */
-.included { padding: var(--section-pad) 0; background: var(--section-gray); }
-.included h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem); color: var(--near-black); margin-bottom: 2.5rem; text-align: center; }
-.included-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 4rem; max-width: 960px; margin: 0 auto; }
-.included-grid li { padding: 0.65rem 0 0.65rem 2rem; position: relative; font-size: 0.95rem; color: var(--dark-gray); border-bottom: 1px solid var(--border-gray); list-style: none; }
-.included-grid li:last-child { border-bottom: none; }
-.included-grid li::before { content: ''; position: absolute; left: 0; top: 1rem; width: 10px; height: 10px; border-radius: 50%; background: var(--gold); }
 
+/* ── PRICING EXPLORER ── */
+.pricing-explorer { padding: var(--section-pad) 0; background: var(--section-gray); scroll-margin-top: 80px; }
+/* HEADER */
+.pricing-header { text-align: center; margin-bottom: 1.5rem; }
+.pricing-header h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem); color: var(--near-black); margin-bottom: 0.75rem; line-height: 1.25; }
+.pricing-header p { font-size: 1rem; color: var(--dark-gray); max-width: 640px; margin: 0 auto; line-height: 1.6; }
+
+/* ── ANCHOR BAR ── */
+.anchor-bar {
+  max-width: 860px;
+  margin: 0 auto 2.5rem;
+  background: var(--deep-navy);
+  border-radius: 10px;
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.anchor-item { text-align: center; }
+.anchor-num { font-family: var(--font-display); font-size: 1.3rem; color: var(--gold); line-height: 1.1; }
+.anchor-label { font-size: 0.72rem; color: var(--light-gray); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; margin-top: 0.2rem; }
+
+/* STEP LABELS */
+.step-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.step-number {
+  width: 32px; height: 32px;
+  background: var(--deep-navy);
+  color: var(--pure-white);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.82rem; font-weight: 700;
+  flex-shrink: 0;
+}
+.step-text { font-family: var(--font-display); font-size: 1.25rem; color: var(--near-black); }
+.step-sub { font-size: 0.85rem; color: var(--medium-gray); font-family: var(--font-body); font-weight: 400; margin-left: 0.5rem; }
+
+/* ── STEP 1: PRODUCTION LEVEL ── */
+.prod-section { margin-bottom: 3rem; }
+
+.prod-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; max-width: 860px; margin: 0 auto; }
+
+.prod-card {
+  background: var(--pure-white);
+  border: 2px solid var(--border-gray);
+  border-radius: 12px;
+  padding: 1.75rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  position: relative;
+}
+.prod-card:hover { border-color: var(--gold-border); box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
+.prod-card.selected { border-color: var(--gold); box-shadow: 0 4px 20px rgba(255,182,77,0.15); }
+
+.prod-card-radio {
+  position: absolute;
+  top: 1.25rem; right: 1.25rem;
+  width: 20px; height: 20px;
+  border: 2px solid var(--border-gray);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s var(--ease);
+}
+.prod-card.selected .prod-card-radio { border-color: var(--gold); }
+.prod-card-radio-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  transform: scale(0);
+  transition: transform 0.2s var(--ease);
+}
+.prod-card.selected .prod-card-radio-dot { transform: scale(1); }
+
+.prod-pilot-tag {
+  display: inline-block;
+  background: rgba(74,140,94,0.1);
+  color: var(--success);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+  margin-bottom: 0.5rem;
+}
+.prod-pop-tag {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+  margin-bottom: 0.5rem;
+}
+
+.prod-card-name { font-family: var(--font-display); font-size: 1.2rem; color: var(--near-black); margin-bottom: 0.25rem; }
+.prod-card-desc { font-size: 0.82rem; color: var(--medium-gray); line-height: 1.5; margin-bottom: 1rem; }
+
+.prod-card-includes { list-style: none; margin-bottom: 1rem; }
+.prod-card-includes li {
+  padding: 0.25rem 0 0.25rem 1.35rem;
+  position: relative;
+  font-size: 0.82rem;
+  color: var(--dark-gray);
+  line-height: 1.45;
+}
+.prod-card-includes li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0.55rem;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.prod-card-includes li.excluded {
+  color: var(--light-gray);
+  text-decoration: line-through;
+  text-decoration-color: var(--border-gray);
+}
+.prod-card-includes li.excluded::before { background: var(--border-gray); }
+
+.prod-card-time { font-size: 0.78rem; color: var(--medium-gray); padding-top: 0.5rem; border-top: 1px solid var(--section-gray); }
+.prod-card-time strong { color: var(--near-black); font-weight: 600; }
+
+/* ── STEP 2: FREQUENCY ── */
+.freq-section { margin-bottom: 3rem; }
+
+.freq-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; max-width: 860px; margin: 0 auto; }
+
+.freq-card {
+  background: var(--pure-white);
+  border: 2px solid var(--border-gray);
+  border-radius: 10px;
+  padding: 1.25rem 1rem;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  text-align: center;
+}
+.freq-card:hover { border-color: var(--gold-border); }
+.freq-card.selected { border-color: var(--gold); background: var(--gold-soft); }
+
+.freq-card-num { font-family: var(--font-display); font-size: 1.75rem; color: var(--near-black); line-height: 1; margin-bottom: 0.25rem; }
+.freq-card-label { font-size: 0.82rem; color: var(--dark-gray); font-weight: 500; margin-bottom: 0.65rem; }
+.freq-card-price { font-family: var(--font-display); font-size: 1.15rem; color: var(--near-black); margin-bottom: 0.15rem; }
+.freq-card-per { font-size: 0.75rem; color: var(--gold); font-weight: 600; }
+.freq-card-save { display: inline-block; font-size: 0.68rem; font-weight: 700; color: var(--success); background: rgba(74,140,94,0.08); padding: 0.15rem 0.5rem; border-radius: 100px; margin-top: 0.35rem; }
+
+/* ── STEP 3: LAYERS ── */
+.layers-section { margin-bottom: 2rem; }
+
+.layers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 860px; margin: 0 auto; }
+
+.layer-card {
+  background: var(--pure-white);
+  border: 1px solid var(--border-gray);
+  border-radius: 10px;
+  padding: 1.15rem 1.35rem;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.85rem;
+  align-items: center;
+  user-select: none;
+}
+.layer-card:hover { border-color: var(--gold-border); box-shadow: 0 2px 12px rgba(255,182,77,0.08); }
+.layer-card.selected { border-color: var(--gold); background: var(--gold-soft); }
+
+.layer-check {
+  width: 20px; height: 20px;
+  border: 2px solid var(--border-gray);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s var(--ease);
+  flex-shrink: 0;
+}
+.layer-card.selected .layer-check { border-color: var(--gold); background: var(--gold); }
+.layer-checkmark { display: none; color: var(--navy); font-weight: 700; font-size: 0.7rem; }
+.layer-card.selected .layer-checkmark { display: block; }
+
+.layer-info h4 { font-size: 0.85rem; font-weight: 600; color: var(--near-black); margin-bottom: 0.1rem; }
+.layer-info p { font-size: 0.75rem; color: var(--medium-gray); line-height: 1.4; }
+
+.layer-price { font-size: 0.82rem; font-weight: 700; color: var(--navy); white-space: nowrap; }
+
+/* BUNDLE */
+.bundle-callout {
+  max-width: 860px;
+  margin: 1rem auto 0;
+  background: rgba(42,61,79,0.04);
+  border: 1px dashed var(--navy);
+  border-radius: 8px;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  user-select: none;
+}
+.bundle-callout:hover { background: rgba(42,61,79,0.06); }
+.bundle-callout.selected { background: rgba(255,182,77,0.06); border-color: var(--gold); border-style: solid; }
+.bundle-check {
+  width: 20px; height: 20px;
+  border: 2px solid var(--navy);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s var(--ease);
+  flex-shrink: 0;
+}
+.bundle-callout.selected .bundle-check { border-color: var(--gold); background: var(--gold); }
+.bundle-checkmark { display: none; color: var(--navy); font-weight: 700; font-size: 0.7rem; }
+.bundle-callout.selected .bundle-checkmark { display: block; }
+.bundle-info { flex: 1; }
+.bundle-info h4 { font-size: 0.88rem; font-weight: 700; color: var(--near-black); margin-bottom: 0.1rem; }
+.bundle-info p { font-size: 0.78rem; color: var(--medium-gray); line-height: 1.4; }
+.bundle-price { font-size: 0.88rem; font-weight: 700; color: var(--navy); white-space: nowrap; }
+.bundle-save { display: inline-block; font-size: 0.65rem; font-weight: 700; color: var(--success); background: rgba(74,140,94,0.08); padding: 0.1rem 0.4rem; border-radius: 100px; margin-left: 0.5rem; }
+
+/* ── TOTAL BAR ── */
+.total-bar {
+  max-width: 860px;
+  margin: 2.5rem auto 0;
+  background: var(--deep-navy);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.total-left {}
+.total-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: var(--gold); margin-bottom: 0.25rem; }
+.total-amount { font-family: var(--font-display); font-size: 2rem; color: var(--pure-white); line-height: 1.1; }
+.total-breakdown { font-size: 0.78rem; color: var(--light-gray); margin-top: 0.25rem; }
+
+.total-right { display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; }
+.total-cta { background: var(--gold); color: var(--navy); font-weight: 700; padding: 0.75rem 1.75rem; border-radius: 6px; font-size: 0.9rem; transition: all 0.25s var(--ease); font-family: var(--font-body); border: none; cursor: pointer; white-space: nowrap; }
+.total-cta:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-1px); }
+.total-outputs { font-size: 0.78rem; color: var(--light-gray); text-align: right; }
+.total-outputs strong { color: var(--gold); font-weight: 700; }
+
+/* ── STORY SPRINT CALLOUT ── */
+.sprint-callout {
+  max-width: 860px;
+  margin: 1.5rem auto 0;
+  background: var(--pure-white);
+  border: 1px solid var(--gold-border);
+  border-radius: 10px;
+  padding: 1.25rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.sprint-left {}
+.sprint-left h4 { font-size: 0.92rem; font-weight: 700; color: var(--near-black); margin-bottom: 0.2rem; }
+.sprint-left p { font-size: 0.82rem; color: var(--dark-gray); line-height: 1.5; }
+.sprint-left p strong { color: var(--gold); font-weight: 700; }
+.sprint-cta { background: var(--gold); color: var(--navy); font-weight: 700; padding: 0.65rem 1.4rem; border-radius: 6px; font-size: 0.85rem; transition: all 0.25s var(--ease); font-family: var(--font-body); border: none; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
+.sprint-cta:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-1px); }
+
+/* ── NUDGE ── */
+.comparison-nudge {
+  max-width: 860px;
+  margin: 1.5rem auto 0;
+  background: var(--pure-white);
+  border: 1px solid var(--border-gray);
+  border-radius: 10px;
+  padding: 1.5rem 1.75rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.15rem;
+  align-items: start;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.nudge-icon { width: 32px; height: 32px; flex-shrink: 0; margin-top: 2px; }
+.nudge-title { font-size: 0.9rem; font-weight: 700; color: var(--near-black); margin-bottom: 0.2rem; }
+.nudge-text { font-size: 0.82rem; color: var(--dark-gray); line-height: 1.55; }
+
+/* MARKET BAR */
+.market-bar {
+  max-width: 860px;
+  margin: 1.5rem auto 0;
+  background: rgba(42,61,79,0.04);
+  border: 1px solid rgba(42,61,79,0.08);
+  border-radius: 10px;
+  padding: 0.85rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+.market-item { text-align: center; }
+.market-num { font-family: var(--font-display); font-size: 1rem; color: var(--navy); }
+.market-label { font-size: 0.68rem; color: var(--medium-gray); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  .prod-cards { grid-template-columns: 1fr; max-width: 480px; }
+  .freq-cards { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; }
+  .layers-grid { grid-template-columns: 1fr; max-width: 480px; }
+  .total-bar { flex-direction: column; text-align: center; }
+  .total-right { align-items: center; }
+  .sprint-callout { flex-direction: column; text-align: center; }
+  .comparison-nudge { grid-template-columns: 1fr; text-align: center; }
+  .nudge-icon { margin: 0 auto; }
+  .market-bar { flex-direction: column; gap: 0.5rem; }
+  .bundle-callout { flex-direction: column; text-align: center; }
+  .anchor-bar { gap: 1.5rem; }
+}
 /* REAL EXAMPLE */
 .real-example { padding: var(--section-pad) 0; background: var(--warm-white); }
 .real-example h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2rem); color: var(--near-black); margin-bottom: 0.5rem; text-align: center; }
@@ -130,10 +449,9 @@ a { text-decoration: none; color: inherit; }
 .cycle { padding: var(--section-pad) 0; background: var(--warm-white); }
 .cycle h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem); color: var(--near-black); margin-bottom: 1rem; text-align: center; }
 .cycle-sub { text-align: center; color: var(--medium-gray); font-size: 0.92rem; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-.cycle-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; max-width: 960px; margin: 0 auto; }
-.cycle-row::before { content: ''; position: absolute; top: 12px; left: 12.5%; right: 12.5%; height: 3px; background: var(--navy); z-index: 1; }
-.cycle-step { text-align: center; position: relative; z-index: 2; padding: 0 0.75rem; }
-.cycle-dot { width: 24px; height: 24px; border-radius: 50%; background: var(--gold); border: 3px solid var(--navy); margin: 0 auto 1rem; }
+.cycle-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 960px; margin: 0 auto; }
+.cycle-step { background: var(--section-gray); border-radius: 10px; padding: 1.5rem 1.25rem; text-align: center; border: 1px solid var(--border-gray); }
+.cycle-dot { display: none; }
 .cycle-step h3 { font-family: var(--font-body); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); margin-bottom: 0.4rem; }
 .cycle-step p { font-size: 0.85rem; color: var(--dark-gray); line-height: 1.5; }
 .cycle-bottom { text-align: center; margin-top: 2.5rem; font-size: 0.95rem; color: var(--dark-gray); max-width: 600px; margin-left: auto; margin-right: auto; }
@@ -178,18 +496,30 @@ a { text-decoration: none; color: inherit; }
 .scroll-cta-close { position: absolute; top: 0.5rem; right: 0.75rem; background: none; border: none; color: var(--light-gray); font-size: 1.1rem; cursor: pointer; padding: 0.25rem; line-height: 1; }
 .scroll-cta-close:hover { color: var(--gold); }
 
+
 /* RESPONSIVE */
 @media (max-width: 960px) {
   .engine-grid { grid-template-columns: 1fr; }
   .engine-stat { margin-top: 2rem; }
-  .included-grid { grid-template-columns: 1fr; }
   .example-cards { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .pipeline-flow { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   .pipeline-flow::before { display: none; }
-  .cycle-row { grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .cycle-row::before { display: none; }
+  .cycle-row { grid-template-columns: 1fr 1fr; gap: 1rem; }
   .case-preview-inner { grid-template-columns: 1fr; text-align: center; }
   .footer-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 860px) {
+  .prod-cards { grid-template-columns: 1fr; max-width: 480px; }
+  .freq-cards { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; }
+  .layers-grid { grid-template-columns: 1fr; max-width: 480px; }
+  .total-bar { flex-direction: column; text-align: center; }
+  .total-right { align-items: center; }
+  .sprint-callout { flex-direction: column; text-align: center; }
+  .comparison-nudge { grid-template-columns: 1fr; text-align: center; }
+  .nudge-icon { margin: 0 auto; }
+  .market-bar { flex-direction: column; gap: 0.5rem; }
+  .bundle-callout { flex-direction: column; text-align: center; }
+  .anchor-bar { gap: 1.5rem; }
 }
 @media (max-width: 768px) {
   body { font-size: 16px; }
@@ -200,7 +530,7 @@ a { text-decoration: none; color: inherit; }
   body { padding-bottom: 60px; }
   .scroll-cta { display: none; }
   .pipeline-flow { grid-template-columns: repeat(2, 1fr); }
-  .cycle-row { grid-template-columns: 1fr; gap: 1.5rem; }
+  .cycle-row { grid-template-columns: 1fr; gap: 0.75rem; }
   .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
   .hero-ctas { flex-direction: column; align-items: flex-start; }
 }
@@ -239,7 +569,7 @@ a { text-decoration: none; color: inherit; }
       <p class="hero-sub anim-entry anim-d2">We produce podcasts for energy leaders who want their ideas to travel further than a conference room. Full production, no friction.</p>
       <div class="hero-ctas anim-entry anim-d3">
         <a href="/story-sprint" class="btn-primary">Start a Story Sprint</a>
-        <a href="#whats-included" class="hero-secondary">See what's included</a>
+        <a href="#pricing" class="hero-secondary">See pricing</a>
       </div>
     </div>
   </div>
@@ -261,15 +591,15 @@ a { text-decoration: none; color: inherit; }
   </div>
 </section>
 
-<!-- THE ENGINE (replaces weak Section 2) -->
+<!-- THE ENGINE -->
 <section class="engine">
   <div class="container">
     <div class="engine-grid">
       <div class="engine-text">
         <h2>A Podcast Is a Content Engine</h2>
         <p>A podcast isn't just a show. It's the most efficient way to produce a full content system on a predictable schedule. One conversation becomes clips, newsletters, social posts, SEO content, and guest amplification. Every week or every two weeks, the engine runs.</p>
-        <p>The barrier used to be cost. Big agencies charge $2,000 per episode for production alone. No distribution. No content repurposing. No growth strategy. That gap has never been more favorable for the people who should be doing this.</p>
-        <p>ClarityForge delivers full production, distribution, and content repurposing at 40-50% of what the big shops charge. And because we specialize in energy, the content actually resonates with your audience.</p>
+        <p>Most experts try to build this system manually. They record, edit, write show notes, cut clips, post to social, and manage distribution themselves. It takes 10-14 hours per episode. That's not a content strategy. That's a second job.</p>
+        <p>ClarityForge handles the full pipeline. You have the conversation. We turn it into a content system that reaches your audience across every channel that matters.</p>
       </div>
       <div class="engine-stat">
         <p class="engine-stat-number">10+</p>
@@ -280,21 +610,248 @@ a { text-decoration: none; color: inherit; }
   </div>
 </section>
 
-<!-- WHAT YOU GET -->
-<section class="included" id="whats-included">
+<!-- PRICING EXPLORER -->
+<section class="pricing-explorer" id="pricing">
   <div class="container">
-    <h2>What You Get</h2>
-    <ul class="included-grid">
-      <li>Professional editing and audio mastering (broadcast-quality)</li>
-      <li>Short-form clip production for LinkedIn, YouTube, and social</li>
-      <li>Newsletter/Substack production from each episode</li>
-      <li>Show notes, timestamps, and SEO-optimized descriptions</li>
-      <li>Guest coordination and prep guidance</li>
-      <li>Distribution across all major platforms</li>
-      <li>Episode-to-content repurposing (1 episode becomes 10+ pieces). <a href="/work/energy-capital" style="color: var(--gold); font-weight: 600;">See how this works for Energy Capital.</a></li>
-      <li>Sponsorship strategy and packaging (when your audience is ready)</li>
-      <li>Monthly performance review and growth recommendations</li>
-    </ul>
+
+    <div class="pricing-header">
+      <h2>Build Your Podcast Partnership</h2>
+      <p>Start with a production level, choose your publishing pace, and add strategic capabilities as you grow. Every combination begins with a Story Sprint.</p>
+    </div>
+
+    <!-- ════ ANCHOR BAR ════ -->
+    <div class="anchor-bar">
+      <div class="anchor-item">
+        <p class="anchor-num">10-14 hours</p>
+        <p class="anchor-label">DIY production time per episode</p>
+      </div>
+      <div class="anchor-item">
+        <p class="anchor-num">$1,000-$1,400</p>
+        <p class="anchor-label">Opportunity cost per episode<br>for a B2B executive</p>
+      </div>
+      <div class="anchor-item">
+        <p class="anchor-num">$1,500-$5,000+</p>
+        <p class="anchor-label">Typical agency retainer<br>per month</p>
+      </div>
+    </div>
+
+    <!-- ════ STEP 1: PRODUCTION LEVEL ════ -->
+    <div class="prod-section">
+      <div class="step-label">
+        <div class="step-number">1</div>
+        <span class="step-text">Choose your production level</span>
+      </div>
+
+      <div class="prod-cards">
+        <!-- LAUNCH PAD -->
+        <div class="prod-card" id="prodPilot" onclick="selectProd('pilot')">
+          <div class="prod-card-radio"><div class="prod-card-radio-dot"></div></div>
+          <span class="prod-pilot-tag">3-Month Pilot</span>
+          <h3 class="prod-card-name">Launch Pad</h3>
+          <p class="prod-card-desc">Find out if podcasting works for you with minimal risk. Clean audio, basic publishing, one clip per episode.</p>
+          <ul class="prod-card-includes">
+            <li>Audio cleanup and mastering</li>
+            <li>Basic show notes</li>
+            <li>1 short-form clip per episode</li>
+            <li>Hosting and publishing</li>
+          </ul>
+          <p class="prod-card-time"><strong>Your time:</strong> 60 min recording + 10 min review. We handle 3-4 hours.</p>
+        </div>
+
+        <!-- FULL PRODUCTION -->
+        <div class="prod-card selected" id="prodFull" onclick="selectProd('full')">
+          <div class="prod-card-radio"><div class="prod-card-radio-dot"></div></div>
+          <span class="prod-pop-tag">Most Popular</span>
+          <h3 class="prod-card-name">Full Production</h3>
+          <p class="prod-card-desc">Every episode becomes 10+ pieces of distributed content. Professional editing, clips, written content, and distribution handled for you.</p>
+          <ul class="prod-card-includes">
+            <li>Professional editing and mastering</li>
+            <li>Show notes + SEO blog post</li>
+            <li>3-4 short-form clips per episode</li>
+            <li>Newsletter or Substack draft</li>
+            <li>LinkedIn post copy for host</li>
+            <li>Guest amplification package</li>
+            <li>Multi-platform distribution</li>
+          </ul>
+          <p class="prod-card-time"><strong>Your time:</strong> 60 min recording + 15 min review. We handle 10-14 hours.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ STEP 2: FREQUENCY ════ -->
+    <div class="freq-section">
+      <div class="step-label">
+        <div class="step-number">2</div>
+        <span class="step-text">Pick your publishing pace</span>
+      </div>
+
+      <div class="freq-cards">
+        <div class="freq-card selected" id="freq1" onclick="selectFreq(1)">
+          <p class="freq-card-num">1</p>
+          <p class="freq-card-label">episode per month</p>
+          <p class="freq-card-price" id="freqPrice1">$750/mo</p>
+          <p class="freq-card-per" id="freqPer1">$750 per episode</p>
+        </div>
+        <div class="freq-card" id="freq2" onclick="selectFreq(2)">
+          <p class="freq-card-num">2</p>
+          <p class="freq-card-label">episodes per month</p>
+          <p class="freq-card-price" id="freqPrice2">$1,300/mo</p>
+          <p class="freq-card-per" id="freqPer2">$650 per episode</p>
+          <span class="freq-card-save" id="freqSave2">Save 13%</span>
+        </div>
+        <div class="freq-card" id="freq4" onclick="selectFreq(4)">
+          <p class="freq-card-num">4</p>
+          <p class="freq-card-label">episodes per month</p>
+          <p class="freq-card-price" id="freqPrice4">$2,200/mo</p>
+          <p class="freq-card-per" id="freqPer4">$550 per episode</p>
+          <span class="freq-card-save" id="freqSave4">Save 27%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ STEP 3: STRATEGY + CAPABILITY LAYERS ════ -->
+    <div class="layers-section">
+      <div class="step-label">
+        <div class="step-number">3</div>
+        <span class="step-text">Add strategic layers</span>
+        <span class="step-sub">Optional. Available at either production level.</span>
+      </div>
+
+      <div class="layers-grid">
+        <div class="layer-card" onclick="toggleLayer(this, 'narrative', 625)" data-layer="narrative">
+          <div class="layer-check"><span class="layer-checkmark">&#10003;</span></div>
+          <div class="layer-info">
+            <h4>Narrative Strategy</h4>
+            <p>Your show stops being reactive and starts shaping the conversation in your industry.</p>
+          </div>
+          <span class="layer-price">+$500-$750/mo</span>
+        </div>
+
+        <div class="layer-card" onclick="toggleLayer(this, 'growth', 625)" data-layer="growth">
+          <div class="layer-check"><span class="layer-checkmark">&#10003;</span></div>
+          <div class="layer-info">
+            <h4>Growth + Performance</h4>
+            <p>You see exactly what's working, who's listening, and where to double down next quarter.</p>
+          </div>
+          <span class="layer-price">+$500-$750/mo</span>
+        </div>
+
+        <div class="layer-card" onclick="toggleLayer(this, 'video', 400)" data-layer="video">
+          <div class="layer-check"><span class="layer-checkmark">&#10003;</span></div>
+          <div class="layer-info">
+            <h4>YouTube Video Editing</h4>
+            <p>Your show reaches the second-largest search engine with chapters, thumbnails, and full formatting.</p>
+          </div>
+          <span class="layer-price">+$300-$500/mo</span>
+        </div>
+
+        <div class="layer-card" onclick="toggleLayer(this, 'guests', 750)" data-layer="guests">
+          <div class="layer-check"><span class="layer-checkmark">&#10003;</span></div>
+          <div class="layer-info">
+            <h4>Guest Booking Support</h4>
+            <p>You stop settling for who's available and start booking the voices that move your industry.</p>
+          </div>
+          <span class="layer-price">+$500-$1,000/mo</span>
+        </div>
+
+        <div class="layer-card" onclick="toggleLayer(this, 'ads', 500)" data-layer="ads">
+          <div class="layer-check"><span class="layer-checkmark">&#10003;</span></div>
+          <div class="layer-info">
+            <h4>Thought Leader Ads</h4>
+            <p>Your best clips reach decision-makers who haven't found you yet, in the titles and companies you choose.</p>
+          </div>
+          <span class="layer-price">+$500/mo + ad spend</span>
+        </div>
+
+        <div class="layer-card" onclick="toggleLayer(this, 'sponsorship', 500)" data-layer="sponsorship">
+          <div class="layer-check"><span class="layer-checkmark">&#10003;</span></div>
+          <div class="layer-info">
+            <h4>Sponsorship Sales Support</h4>
+            <p>Your show starts paying for itself through partnerships aligned with your audience and mission.</p>
+          </div>
+          <span class="layer-price">+$500/mo</span>
+        </div>
+      </div>
+
+      <!-- AUTHORITY ENGINE BUNDLE -->
+      <div class="bundle-callout" id="bundleCallout" onclick="toggleBundle()">
+        <div class="bundle-check"><span class="bundle-checkmark">&#10003;</span></div>
+        <div class="bundle-info">
+          <h4>Authority Engine Bundle <span class="bundle-save">Save ~15%</span></h4>
+          <p>Narrative Strategy + Growth &amp; Performance + Guest Booking together. The full strategic layer for shows ready to scale influence.</p>
+        </div>
+        <span class="bundle-price">+$1,250-$2,000/mo</span>
+      </div>
+    </div>
+
+    <!-- ════ TOTAL ════ -->
+    <div class="total-bar" id="totalBar">
+      <div class="total-left">
+        <p class="total-label">Your monthly investment</p>
+        <p class="total-amount" id="totalAmount">$750/mo</p>
+        <p class="total-breakdown" id="totalBreakdown">Full Production, 1 episode/month</p>
+      </div>
+      <div class="total-right">
+        <a href="/story-sprint" class="total-cta">Start with a Story Sprint</a>
+        <p class="total-outputs" id="totalOutputs"><strong>10+</strong> distributed pieces per month</p>
+      </div>
+    </div>
+
+    <!-- ════ STORY SPRINT CALLOUT ════ -->
+    <div class="sprint-callout">
+      <div class="sprint-left">
+        <h4>Not sure which combination is right?</h4>
+        <p>Every engagement starts with a Story Sprint ($500-$750). You leave with a positioning statement, content pillars, and a 30-day publishing plan. <strong>100% applies to your first month.</strong></p>
+        <p style="margin-top: 0.5rem; font-size: 0.78rem; color: var(--medium-gray);">Or <a href="/podcast-checklist" style="color: var(--navy); font-weight: 600; border-bottom: 1px solid var(--gold);">take the Podcast Readiness Checklist</a> to see where you stand, or <a href="/content-engine" style="color: var(--navy); font-weight: 600; border-bottom: 1px solid var(--gold);">explore the full system map</a> to see what each episode produces.</p>
+      </div>
+      <a href="/story-sprint" class="sprint-cta">Book a Story Sprint</a>
+    </div>
+
+    <!-- NUDGE -->
+    <div class="comparison-nudge">
+      <svg class="nudge-icon" viewBox="0 0 48 48" fill="none" stroke="#FFB64D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="24" cy="24" r="20"/>
+        <path d="M24 14v10l7 4"/>
+      </svg>
+      <div>
+        <p class="nudge-title">What does this actually save you?</p>
+        <p class="nudge-text" id="nudgeText">A single podcast episode takes 10-14 hours to produce, edit, write show notes, create clips, draft a newsletter, and distribute. At Full Production level, your time drops to about 75 minutes. The rest of those hours go back into running your business, writing, or preparing for your next conversation.</p>
+      </div>
+    </div>
+
+    <!-- MARKET BAR -->
+    <div class="market-bar">
+      <div class="market-item">
+        <p class="market-num">120%</p>
+        <p class="market-label">Average client reach growth<br>in first six months</p>
+      </div>
+      <div class="market-item">
+        <p class="market-num">100%</p>
+        <p class="market-label">Client retention</p>
+      </div>
+      <div class="market-item">
+        <p class="market-num">Millions</p>
+        <p class="market-label">Impressions per month<br>across clients</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CASE STUDY (moved up: proof immediately after pricing) -->
+<section class="case-preview">
+  <div class="container">
+    <div class="case-preview-inner">
+      <div>
+        <p class="case-preview-metric-big">+100%</p>
+        <p class="case-preview-metric-label">podcast downloads in 6 months</p>
+      </div>
+      <div class="case-preview-text">
+        <h3>Energy Capital Podcast</h3>
+        <p>We helped a Texas energy policy voice build a multi-platform media ecosystem reaching millions. Full production, distribution, newsletter, clips, and growth strategy from day one.</p>
+        <a href="/work/energy-capital" class="case-preview-link">Read the full case study</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -416,34 +973,16 @@ a { text-decoration: none; color: inherit; }
   </div>
 </section>
 
-<!-- CASE STUDY (prominent, dark band) -->
-<section class="case-preview">
-  <div class="container">
-    <div class="case-preview-inner">
-      <div>
-        <p class="case-preview-metric-big">+100%</p>
-        <p class="case-preview-metric-label">podcast downloads in 6 months</p>
-      </div>
-      <div class="case-preview-text">
-        <h3>Energy Capital Podcast</h3>
-        <p>We helped a Texas energy policy voice build a multi-platform media ecosystem reaching millions. Full production, distribution, newsletter, clips, and growth strategy from day one.</p>
-        <a href="/work/energy-capital" class="case-preview-link">Read the full case study</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- CTA -->
 <section class="closing-cta">
   <div class="container">
     <h2>Ready to turn your podcast into a platform?</h2>
     <a href="/story-sprint" class="btn-primary">Start a Story Sprint</a>
         <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a href="/contact" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Or just get in touch</a></p>
-    <p class="closing-micro">Podcast production engagements start at $1,500/month. Every client begins with a Story Sprint.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;"><a href="/content-engine" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">See the full system map</a> &middot; <a href="/resources" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Browse all tools and resources</a></p>
+    <p class="closing-micro">Engagements start at $400/month. Every client begins with a Story Sprint.</p>
   </div>
 </section>
-
-<!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -484,7 +1023,184 @@ a { text-decoration: none; color: inherit; }
   <a href="/story-sprint" class="btn-primary">Book a Story Sprint &rarr;</a>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
+(function() {
+
+  /* ── PRICING DATA ── */
+
+  var displayPrices = {
+    pilot: {
+      1: { price: '$400/mo',   per: '$400 per episode', save: '' },
+      2: { price: '$725/mo',   per: '$363 per episode', save: 'Save 9%' },
+      4: { price: '$1,300/mo', per: '$325 per episode', save: 'Save 19%' }
+    },
+    full: {
+      1: { price: '$750/mo',   per: '$750 per episode', save: '' },
+      2: { price: '$1,300/mo', per: '$650 per episode', save: 'Save 13%' },
+      4: { price: '$2,200/mo', per: '$550 per episode', save: 'Save 27%' }
+    }
+  };
+
+  var monthlyBase = {
+    pilot: { 1: 400,  2: 725,  4: 1300 },
+    full:  { 1: 750,  2: 1300, 4: 2200 }
+  };
+
+  var outputsPerEp = { pilot: 3, full: 10 };
+
+  var nudgeTexts = {
+    1: 'A single podcast episode takes 10-14 hours to produce, edit, write show notes, create clips, draft a newsletter, and distribute. At Full Production level, your time drops to about 75 minutes. The rest of those hours go back into running your business, writing, or preparing for your next conversation.',
+    2: 'Two episodes a month means 20-28 hours of production work. That is close to a part-time job you did not sign up for. At Full Production level, your total commitment stays under 3 hours per month. Consistent publishing builds audience trust, and consistency is what most solo producers lose first.',
+    4: 'Weekly publishing is the gold standard for podcast growth, but it demands 40-56 hours of production per month. That is more than a full work week, every month, on top of your actual job. At Full Production level, your time stays around 5 hours per month total. That is what makes weekly publishing sustainable.'
+  };
+
+  var nudgePilotOverride = 'At Launch Pad level, you get clean audio and a published episode with minimal risk and minimal time investment. It is the lowest-cost way to test whether podcasting fits your strategy. If it works, upgrading to Full Production and adding strategic layers takes one conversation.';
+
+  /* ── STATE ── */
+  var currentProd = 'full';
+  var currentFreq = 1;
+  var selectedLayers = {};
+  var bundleSelected = false;
+  var bundleLayers = ['narrative', 'growth', 'guests'];
+
+  /* ── HANDLERS ── */
+
+  window.selectProd = function(level) {
+    currentProd = level;
+    document.getElementById('prodPilot').classList.toggle('selected', level === 'pilot');
+    document.getElementById('prodFull').classList.toggle('selected', level === 'full');
+    updateFreqCards();
+    updateTotal();
+  };
+
+  window.selectFreq = function(freq) {
+    currentFreq = freq;
+    var cards = document.querySelectorAll('.freq-card');
+    for (var i = 0; i < cards.length; i++) { cards[i].classList.remove('selected'); }
+    document.getElementById('freq' + freq).classList.add('selected');
+    updateTotal();
+  };
+
+  window.toggleLayer = function(el, key, midPrice) {
+    if (bundleSelected && bundleLayers.indexOf(key) > -1) {
+      deselectBundle();
+    }
+    if (selectedLayers[key]) {
+      delete selectedLayers[key];
+      el.classList.remove('selected');
+    } else {
+      selectedLayers[key] = midPrice;
+      el.classList.add('selected');
+    }
+    updateTotal();
+  };
+
+  window.toggleBundle = function() {
+    if (bundleSelected) {
+      deselectBundle();
+    } else {
+      for (var i = 0; i < bundleLayers.length; i++) {
+        var key = bundleLayers[i];
+        delete selectedLayers[key];
+        var cards = document.querySelectorAll('.layer-card');
+        for (var j = 0; j < cards.length; j++) {
+          if (cards[j].getAttribute('data-layer') === key) {
+            cards[j].classList.remove('selected');
+          }
+        }
+      }
+      bundleSelected = true;
+      document.getElementById('bundleCallout').classList.add('selected');
+    }
+    updateTotal();
+  };
+
+  function deselectBundle() {
+    bundleSelected = false;
+    document.getElementById('bundleCallout').classList.remove('selected');
+  }
+
+  /* ── UPDATE ── */
+
+  function updateFreqCards() {
+    var d = displayPrices[currentProd];
+    var freqs = [1, 2, 4];
+    for (var i = 0; i < freqs.length; i++) {
+      var f = freqs[i];
+      document.getElementById('freqPrice' + f).textContent = d[f].price;
+      document.getElementById('freqPer' + f).textContent = d[f].per;
+      if (f > 1) {
+        document.getElementById('freqSave' + f).textContent = d[f].save;
+        document.getElementById('freqSave' + f).style.display = d[f].save ? 'inline-block' : 'none';
+      }
+    }
+  }
+
+  function updateTotal() {
+    var base = monthlyBase[currentProd][currentFreq];
+
+    var layerTotal = 0;
+    for (var k in selectedLayers) { layerTotal += selectedLayers[k]; }
+
+    var bundleAmount = bundleSelected ? 1625 : 0;
+    var totalMid = base + layerTotal + bundleAmount;
+    var hasLayers = layerTotal > 0 || bundleSelected;
+
+    var priceStr;
+    if (!hasLayers) {
+      priceStr = displayPrices[currentProd][currentFreq].price;
+    } else {
+      var low = Math.round((totalMid * 0.85) / 25) * 25;
+      var high = Math.round((totalMid * 1.15) / 25) * 25;
+      priceStr = '$' + low.toLocaleString() + '-$' + high.toLocaleString() + '/mo';
+    }
+
+    document.getElementById('totalAmount').textContent = priceStr;
+
+    // Breakdown
+    var parts = [];
+    parts.push(currentProd === 'pilot' ? 'Launch Pad' : 'Full Production');
+    parts.push(currentFreq + ' episode' + (currentFreq > 1 ? 's' : '') + '/month');
+    if (bundleSelected) { parts.push('Authority Engine Bundle'); }
+    else {
+      var layerNames = [];
+      if (selectedLayers.narrative) layerNames.push('Narrative Strategy');
+      if (selectedLayers.growth) layerNames.push('Growth + Performance');
+      if (selectedLayers.video) layerNames.push('YouTube Video');
+      if (selectedLayers.guests) layerNames.push('Guest Booking');
+      if (selectedLayers.ads) layerNames.push('Thought Leader Ads');
+      if (selectedLayers.sponsorship) layerNames.push('Sponsorship Support');
+      if (layerNames.length > 0) parts.push(layerNames.join(', '));
+    }
+    document.getElementById('totalBreakdown').textContent = parts.join(' + ');
+
+    // Outputs
+    var opsPerEp = outputsPerEp[currentProd];
+    var totalOps = opsPerEp * currentFreq;
+    var opsStr = totalOps + '+';
+    var opsLabel = 'distributed pieces per month';
+    if (bundleSelected || selectedLayers.narrative || selectedLayers.growth) {
+      opsLabel += ' + strategic layer';
+    }
+    document.getElementById('totalOutputs').innerHTML = '<strong>' + opsStr + '</strong> ' + opsLabel;
+
+    // Nudge
+    if (currentProd === 'pilot') {
+      document.getElementById('nudgeText').textContent = nudgePilotOverride;
+    } else {
+      document.getElementById('nudgeText').textContent = nudgeTexts[currentFreq];
+    }
+  }
+
+  // Initialize
+  updateFreqCards();
+  updateTotal();
+
+})();
+</script>
+
+<script>
 (function() {
   var cta = document.getElementById('scrollCta');
   var closeBtn = document.getElementById('scrollCtaClose');
@@ -494,4 +1210,20 @@ a { text-decoration: none; color: inherit; }
     window.addEventListener('scroll', function() {
       if (shown || dismissed) return;
       var scrollPct = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
-      if (scrollPct > 0.6) { cta.classList.add('vi
+      if (scrollPct > 0.6) {
+        cta.classList.add('visible');
+        shown = true;
+      }
+    });
+  }
+
+  closeBtn.addEventListener('click', function() {
+    cta.classList.remove('visible');
+    dismissed = true;
+    try { sessionStorage.setItem('cf_scroll_cta_dismissed', '1'); } catch(e) {}
+  });
+})();
+</script>
+
+</body>
+</html>

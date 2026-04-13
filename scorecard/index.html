@@ -245,13 +245,13 @@ a { text-decoration: none; color: inherit; }
 .bd-header { font-family: var(--font-display); font-size: 1.2rem; color: var(--near-black); margin-bottom: 0.25rem; }
 .bd-sub { font-size: 0.82rem; color: var(--medium-gray); margin-bottom: 1rem; }
 .dim-card {
-  display: flex; align-items: center; gap: 0.8rem;
   background: var(--pure-white); border: 1px solid var(--border-gray);
   border-radius: 8px; padding: 0.85rem 1.1rem; margin-bottom: 0.5rem;
 }
 .dim-card.weak { border-left: 4px solid var(--orange); }
 .dim-card.mid { border-left: 4px solid var(--gold); }
 .dim-card.strong { border-left: 4px solid var(--success); }
+.dim-top { display: flex; align-items: center; gap: 0.8rem; }
 .dim-circle {
   flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
@@ -265,6 +265,11 @@ a { text-decoration: none; color: inherit; }
 .dim-card.weak .dim-verdict { color: var(--orange); }
 .dim-card.mid .dim-verdict { color: var(--gold); }
 .dim-card.strong .dim-verdict { color: var(--success); }
+.dim-guidance { font-size: 0.82rem; line-height: 1.5; margin-top: 0.5rem; padding-left: 2.9rem; }
+.dim-guidance.action { color: var(--orange-dark); }
+.dim-guidance.building { color: var(--medium-gray); }
+.dim-guidance.affirm { color: var(--success); }
+.dim-guidance a { color: var(--gold); font-weight: 600; }
 .bd-insight {
   background: var(--section-gray); border-radius: 10px;
   padding: 1.4rem; margin: 1rem 0 1.2rem;
@@ -436,11 +441,7 @@ a { text-decoration: none; color: inherit; }
 <!-- ===== BREAKDOWN ===== -->
 <section class="breakdown" id="breakdown">
   <div id="dimCards"></div>
-  <div class="cta-block">
-    <h3>Want to walk through this together?</h3>
-    <p>Book a free 15-minute call. We'll review your scores and show you what to build next.</p>
-    <a href="/contact" class="btn-primary">Book a Call</a>
-  </div>
+  <div id="ctaBlock"></div>
 </section>
 
 <!-- ===== PROGRESS BAR ===== -->
@@ -480,24 +481,54 @@ a { text-decoration: none; color: inherit; }
 </footer>
 
 <script>
-const QS = [
-  { t: "Do you publish content at least once per week?", d: "Cadence" },
-  { t: "Can you name your specific audience in one sentence?", d: "Audience Clarity" },
-  { t: "Do you have 3-5 defined content pillars you consistently cover?", d: "Strategy" },
-  { t: "Does your content generate inbound messages or meeting requests?", d: "Conversion" },
-  { t: "Are you present on more than one platform with consistent messaging?", d: "Distribution" },
-  { t: "Do you have a system that creates content without you doing all the work?", d: "Infrastructure" },
-  { t: "Can someone understand your expertise within 30 seconds of seeing your profile?", d: "Positioning" },
-  { t: "Have you been invited to speak, guest, or contribute based on your content?", d: "Authority Signals" },
-  { t: "Do you know which of your content performs best and why?", d: "Measurement" },
-  { t: "Could your content engine run for 2 weeks without your direct involvement?", d: "Scalability" },
+var QS = [
+  { t: "Do you publish content at least once per week?", d: "Cadence", idx: 0,
+    gap: "Consistency is the foundation of visibility. Without a regular cadence, your audience has no reason to follow you. At a 5, you're publishing 3-5 times per week and your audience expects it. Start here: pick one day per week, block 45 minutes, and publish every single week for the next 8 weeks. Don't optimize. Just show up.",
+    mid: "You're publishing, but sporadically. The algorithm rewards consistency more than volume. One strong post every Tuesday outperforms three random posts whenever you find time. Block a recurring 45-minute slot on your calendar for the next month. Protect it. That one change will move this score.",
+    strong: "Strong cadence. Your audience knows when to expect you and that reliability builds trust over time. This is where compounding starts, and it's the hardest dimension to maintain. You've built the habit." },
+  { t: "Can you name your specific audience in one sentence?", d: "Audience Clarity", idx: 1,
+    gap: "If you can't name your audience in one sentence, your content is aimed at everyone and reaching no one. At a 5, you can say exactly who you serve, what they need, and why they listen to you. Try completing: \"I help [specific people] understand [specific topic] so they can [specific outcome].\" Our <a href=\"/resources\">resources page</a> has tools to help you define this.",
+    mid: "You have a general sense of your audience but it's not sharp enough to drive decisions. This week, write down the name of one real person who represents your ideal reader. Their job title, what they worry about, what they're trying to decide. Use that person as your filter for every piece of content you create for the next 30 days.",
+    strong: "Clear audience definition. This makes every other dimension easier because you know exactly who you're talking to and what they need. It's the dimension that multiplies the impact of every other score." },
+  { t: "Do you have 3-5 defined content pillars you consistently cover?", d: "Strategy", idx: 2,
+    gap: "Without content pillars, you're guessing at what to talk about every week. That leads to inconsistency and burnout. At a 5, you have 3-5 themes that your audience associates with your name. Define them this week using our <a href=\"/content-pillars\">Content Pillar Worksheet</a>. It takes 10 minutes.",
+    mid: "You have themes in your head but they're not written down or consistently used. This week: open a doc, write your 3-5 pillars in one sentence each, and tape it next to your screen. Every piece of content you create should fit under one of them. If it doesn't, cut it.",
+    strong: "Defined pillars mean your content strategy runs on rails. You never stare at a blank page because the question is never \"what should I write about\" but \"which pillar needs attention this week.\"" },
+  { t: "Does your content generate inbound messages or meeting requests?", d: "Conversion", idx: 3,
+    gap: "If your content isn't generating inbound, it's not reaching the right people or not saying the right things. At a 5, your content regularly generates DMs, meeting requests, and speaking invitations. Start by reviewing your last 10 posts: which ones got responses? What did they have in common? Do more of that.",
+    mid: "Some inbound is happening but it's not consistent. Review your last 10 posts and identify which ones generated responses. Usually it's the ones where you took a clear position or shared a specific experience rather than general commentary. Do more of that. Less curation, more conviction.",
+    strong: "Inbound conversations mean your content is doing its job. People are finding you, understanding your expertise, and reaching out. This is the signal that your visibility infrastructure is working." },
+  { t: "Are you present on more than one platform with consistent messaging?", d: "Distribution", idx: 4,
+    gap: "Single-platform presence is fragile. If the algorithm changes, your visibility disappears overnight. At a 5, you're on 2-3 platforms with the same positioning adapted to each format. Start with one primary platform (likely LinkedIn) and one secondary (newsletter or podcast). Same ideas, different format. Our <a href=\"/resources\">LinkedIn playbook</a> covers the mechanics.",
+    mid: "You're on multiple platforms but the messaging isn't consistent. This week, compare your LinkedIn headline, your email signature, and your website bio. Do they tell the same story? If someone read all three, would they describe you the same way? Align them. That single exercise changes how people perceive you across channels.",
+    strong: "Multi-platform presence with consistent messaging means your audience finds the same clear positioning wherever they encounter you. That's how credibility compounds across channels instead of fragmenting." },
+  { t: "Do you have a system that creates content without you doing all the work?", d: "Infrastructure", idx: 5,
+    gap: "If you're doing everything yourself, you'll burn out. Content creation should be a system, not a heroic individual effort. At a 5, you show up for one conversation and a team turns it into 10+ pieces of content across podcast, newsletter, LinkedIn, and social without you touching anything after the recording. See exactly how that works in our <a href=\"/content-engine\">Content Engine system map</a>. The first step is identifying what only you can do (thinking, speaking, deciding) versus what can be delegated (editing, formatting, scheduling, distribution).",
+    mid: "You have some delegation or tools in place but you're still the bottleneck for most steps. Map out your content process end-to-end this week. Circle every step that requires your brain versus your hands. The hand-work is what gets delegated first. A VA, a freelance editor, or a production partner can handle those steps starting this month.",
+    strong: "You have infrastructure. Content gets created, distributed, and repurposed without you touching every step. This is what separates sustainable visibility from unsustainable hustle. It also makes your content operation valuable beyond just your personal brand." },
+  { t: "Can someone understand your expertise within 30 seconds of seeing your profile?", d: "Positioning", idx: 6,
+    gap: "If someone visits your LinkedIn profile and can't tell what you do and who you serve in 30 seconds, you're losing every first impression. At a 5, a stranger can read your headline and immediately know your expertise, your audience, and your lens. Rewrite your headline this week to answer three questions: what do you do, for whom, and what outcome do they get?",
+    mid: "Your positioning is present but not sharp. Run this test this week: send your LinkedIn profile URL to three people who don't know you well. Ask each one: \"What do you think I do?\" If their answers don't match what you want to be known for, your positioning needs tightening. Their confusion is your diagnostic.",
+    strong: "Sharp positioning. People understand your expertise immediately. This means every piece of content you publish lands in the right context because the audience already knows your lens. You've done the hard work." },
+  { t: "Have you been invited to speak, guest, or contribute based on your content?", d: "Authority Signals", idx: 7,
+    gap: "No inbound authority signals means your content isn't establishing you as someone worth platforming. At a 5, you're regularly invited to speak, guest on podcasts, and contribute to publications without asking. Start by making yourself available: pitch yourself for one guest appearance or panel this month.",
+    mid: "Authority signals are starting to come in. Build on this momentum. Say yes to every guest appearance and speaking invitation for the next 6 months. Each one expands your network and creates new content opportunities. As your audience grows, these signals also attract sponsorship interest.",
+    strong: "Regular authority signals mean the market recognizes you as a credible voice. Speaking invitations, guest requests, and contribution opportunities compound your reach beyond your own channels. This is also the dimension that unlocks sponsorship and monetization." },
+  { t: "Do you know which of your content performs best and why?", d: "Measurement", idx: 8,
+    gap: "If you're not measuring, you're guessing. At a 5, you review performance weekly, know your top-performing formats and topics, and use that data to plan the next week's content. Start this week: look at your last 20 LinkedIn posts. Sort by engagement. Write down the top 5 and ask yourself what they have in common. Topic? Format? Length? Time of day? You'll find a pattern.",
+    mid: "You're tracking some metrics but not connecting them to decisions. Knowing that a post \"did well\" isn't enough. The question is why. Was it the topic, the format, the opening line, or the timing? Spend 15 minutes every Friday reviewing the week's content performance. Write one sentence: \"This week I learned that [X] works better than [Y].\" Do that for 4 weeks and you'll have a real content strategy.",
+    strong: "You know what works and why. Every piece of content you publish is informed by data, not instinct. Your hit rate improves over time because you're learning from every post. This is the dimension that separates consistent growth from random spikes." },
+  { t: "Could your content engine run for 2 weeks without your direct involvement?", d: "Scalability", idx: 9,
+    gap: "If the engine stops when you stop, you don't have a system. You have a habit. At a 5, your content operation runs for weeks without your direct involvement because the process is documented, roles are delegated, and you maintain a content buffer. See what a full production system looks like in our <a href=\"/content-engine\">Content Engine map</a>. The first step: batch-create 2-3 weeks of content in a single session and schedule it. That alone buys you breathing room to build the rest of the system.",
+    mid: "You could keep things going for maybe a week but two would be a stretch. This month, build a content buffer: dedicate one session to creating 3 weeks of content in advance. Then document your publishing process step-by-step so someone else could execute it. Those two actions are the difference between a practice and a system.",
+    strong: "Your system runs without you. That's real infrastructure. Your visibility doesn't depend on your daily energy level, and your content compounds even when you're focused on other things. This is the dimension most experts never reach, and it's the one that makes everything else sustainable." }
 ];
-const LBL = ["Never","Rarely","Sometimes","Usually","Always"];
-const sc = new Array(10).fill(0);
-const wrap = document.getElementById('qWrap');
+var LBL = ["Never","Rarely","Sometimes","Usually","Always"];
+var sc = new Array(10).fill(0);
+var wrap = document.getElementById('qWrap');
 
-QS.forEach((q,i) => {
-  const c = document.createElement('div');
+QS.forEach(function(q,i) {
+  var c = document.createElement('div');
   c.className = 'q-card'; c.id = 'q'+i;
   c.innerHTML = '<div class="q-top"><div class="q-num">'+(i+1)+'</div><div class="q-text">'+q.t+'</div><div class="q-dim">'+q.d+'</div></div><div class="q-btns">'+[1,2,3,4,5].map(function(v){return '<div class="q-btn" onclick="pick('+i+','+v+',this)" role="button" tabindex="0"><span class="num">'+v+'</span><span class="lbl">'+LBL[v-1]+'</span></div>';}).join('')+'</div>';
   wrap.appendChild(c);
@@ -537,32 +568,100 @@ function unlock() {
   btn.disabled = true; btn.textContent = 'Sending...';
 
   var tot = sc.reduce(function(a,b){return a+b;},0);
+  var tier = tot <= 20 ? 'Foundation Needed' : tot <= 35 ? 'Pieces Without a System' : 'Ready to Scale';
   var sorted = QS.map(function(q,i){return {d:q.d,s:sc[i]};}).sort(function(a,b){return a.s-b.s;});
   var weakest = sorted.slice(0,3).map(function(x){return x.d+' ('+x.s+'/5)';}).join(', ');
 
   fetch('https://formspree.io/f/mdaprklq', {
     method:'POST', headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({ email:email, source:'Visibility Scorecard', total_score:tot, weakest_dimensions:weakest, all_scores:sc.map(function(s,i){return QS[i].d+': '+s;}).join(', ') })
+    body: JSON.stringify({ email:email, source:'Visibility Scorecard', total_score:tot, tier:tier, weakest_dimensions:weakest, all_scores:sc.map(function(s,i){return QS[i].d+': '+s;}).join(', ') })
   }).then(function(){showBreakdown();}).catch(function(){showBreakdown();});
 }
 
 function showBreakdown() {
   document.getElementById('gate').style.display = 'none';
-  var dims = QS.map(function(q,i){return {d:q.d,s:sc[i]};}).sort(function(a,b){return a.s-b.s;});
+  var dims = QS.map(function(q,i){return {d:q.d,s:sc[i],gap:q.gap,mid:q.mid,strong:q.strong,idx:q.idx};}).sort(function(a,b){return a.s-b.s;});
   var weak = dims.filter(function(d){return d.s<=2;});
-  var h = '<h3 class="bd-header">Your Dimension Breakdown</h3><p class="bd-sub">Sorted weakest to strongest. Focus on the orange dimensions first.</p>';
+  var tot = sc.reduce(function(a,b){return a+b;},0);
+
+  var h = '<h3 class="bd-header">Your Dimension Breakdown</h3><p class="bd-sub">Each dimension includes a specific recommendation based on your score. Sorted weakest to strongest.</p>';
   dims.forEach(function(d) {
-    var cls='mid', v='Building';
-    if(d.s<=2){cls='weak';v='Gap';}else if(d.s>=4){cls='strong';v='Solid';}
-    h += '<div class="dim-card '+cls+'"><div class="dim-circle">'+d.s+'</div><div class="dim-name">'+d.d+'</div><div class="dim-verdict">'+v+'</div></div>';
+    var cls='mid', v='Building', guidance='', gClass='building';
+    if(d.s<=2){cls='weak';v='Gap';guidance=d.gap;gClass='action';}
+    else if(d.s>=4){cls='strong';v='Solid';guidance=d.strong;gClass='affirm';}
+    else{guidance=d.mid;}
+    h += '<div class="dim-card '+cls+'"><div class="dim-top"><div class="dim-circle">'+d.s+'</div><div class="dim-name">'+d.d+'</div><div class="dim-verdict">'+v+'</div></div>';
+    if(guidance){h += '<div class="dim-guidance '+gClass+'">'+guidance+'</div>';}
+    h += '</div>';
   });
-  if (weak.length > 0) {
-    var wn = weak.map(function(d){return d.d;}).join(', ');
-    h += '<div class="bd-insight"><h4>Where to focus first</h4><p>Your biggest gaps are in '+wn+'. These are the dimensions holding your visibility back the most. A Story Sprint would address '+(weak.length===1?'this dimension':'these dimensions')+' directly.</p></div>';
-  } else {
-    h += '<div class="bd-insight"><h4>You\'re in strong shape</h4><p>No major gaps. The opportunity now is building the system that compounds what you already have. That\'s where a production partner changes the trajectory.</p></div>';
+
+  // Dependency logic for summary insight
+  // Build a score lookup by dimension name
+  var scoreByDim = {};
+  QS.forEach(function(q,i){ scoreByDim[q.d] = sc[i]; });
+  var dependencies = [];
+
+  // Check if Conversion is weak but Audience Clarity or Positioning explains it
+  if (scoreByDim['Conversion'] <= 2) {
+    if (scoreByDim['Audience Clarity'] <= 3 || scoreByDim['Positioning'] <= 3) {
+      var upstream = [];
+      if (scoreByDim['Audience Clarity'] <= 3) upstream.push('Audience Clarity');
+      if (scoreByDim['Positioning'] <= 3) upstream.push('Positioning');
+      dependencies.push('Your Conversion score is low, but that\'s downstream of ' + upstream.join(' and ') + '. Fix ' + (upstream.length === 1 ? 'that' : 'those') + ' first and Conversion will improve naturally.');
+    }
   }
+  // Check if Authority Signals is weak but Cadence/Distribution explains it
+  if (scoreByDim['Authority Signals'] <= 2) {
+    if (scoreByDim['Cadence'] <= 3 || scoreByDim['Distribution'] <= 3) {
+      var upstream2 = [];
+      if (scoreByDim['Cadence'] <= 3) upstream2.push('Cadence');
+      if (scoreByDim['Distribution'] <= 3) upstream2.push('Distribution');
+      dependencies.push('Authority Signals are low, but that\'s because ' + upstream2.join(' and ') + ' ' + (upstream2.length === 1 ? 'isn\'t' : 'aren\'t') + ' strong enough yet. Build the publishing habit and multi-platform presence first.');
+    }
+  }
+  // Check if Scalability is weak and Infrastructure isn't strong
+  if (scoreByDim['Scalability'] <= 2 && scoreByDim['Infrastructure'] <= 3) {
+    dependencies.push('Scalability depends on Infrastructure. You can\'t scale a system that isn\'t fully built yet. Strengthen your content infrastructure first, then focus on making it run without you.');
+  }
+
+  if (tot > 35 && weak.length > 0) {
+    // Ready to Scale but with a few weak spots
+    var wn = weak.map(function(d){return d.d;}).join(', ');
+    h += '<div class="bd-insight"><h4>Almost there</h4><p>You\'re in strong shape overall, but '+wn+' '+(weak.length===1?'is':'are')+' holding you back from full potential. The action items above show you exactly what to address. A production partner can close '+(weak.length===1?'this gap':'these gaps')+' as part of building your system.';
+    if (dependencies.length > 0) {
+      h += '</p><p style="margin-top:0.5rem;font-style:italic;font-size:0.82rem;color:var(--orange-dark);">';
+      h += dependencies.join(' ');
+    }
+    h += '</p></div>';
+  } else if (weak.length > 0) {
+    // Foundation Needed or Pieces Without a System with gaps
+    var wn = weak.map(function(d){return d.d;}).join(', ');
+    h += '<div class="bd-insight"><h4>Where to focus first</h4><p>Your biggest gaps are in '+wn+'. The action items above tell you exactly what to do for each one.';
+    if (dependencies.length > 0) {
+      h += '</p><p style="margin-top:0.5rem;font-style:italic;font-size:0.82rem;color:var(--orange-dark);">';
+      h += dependencies.join(' ');
+    }
+    h += '</p><p style="margin-top:0.5rem;">A Story Sprint will prioritize these into a sequenced 30-day plan so you know what to tackle first.</p></div>';
+  } else if (tot <= 35) {
+    h += '<div class="bd-insight"><h4>No major gaps, but room to grow</h4><p>You don\'t have any critical weaknesses, but several dimensions are in the "building" range. The recommendations above give you specific next steps for each one, most of which you can execute this week. A Story Sprint will sequence them into a plan.</p></div>';
+  } else {
+    h += '<div class="bd-insight"><h4>You\'re in strong shape</h4><p>Your visibility infrastructure is working. The opportunity now is building the system that compounds what you already have and opens the door to sponsorship and monetization. That\'s where a production partner changes the trajectory.</p></div>';
+  }
+
+  // Share prompt
+  h += '<p style="margin-top:1rem;font-size:0.82rem;color:var(--medium-gray);text-align:center;">Know someone who should take this? Send them the link: <a href="/scorecard" style="color:var(--gold);font-weight:600;">clarityforgestudios.com/scorecard</a></p>';
+
   document.getElementById('dimCards').innerHTML = h;
+
+  // Conditional CTA
+  var ctaHtml;
+  if (tot > 35) {
+    ctaHtml = '<div class="cta-block"><h3>You don\'t need more planning.</h3><p>You need a partner to build the system that turns your visibility into a compounding engine. See how ClarityForge works with energy leaders.</p><a href="/services" class="btn-primary">Explore Services</a><p style="margin-top:0.75rem;font-size:0.85rem;"><a href="/contact" style="color:var(--medium-gray);border-bottom:1px solid rgba(176,184,193,0.3);padding-bottom:1px;">Or book a call to talk through it</a></p></div>';
+  } else {
+    ctaHtml = '<div class="cta-block"><h3>Ready to close the gaps?</h3><p>A Story Sprint gives you positioning, content pillars, audience profiles, and a 30-day publishing plan. Everything you need to start building.</p><a href="/story-sprint" class="btn-primary">Start a Story Sprint</a><p style="margin-top:0.75rem;font-size:0.85rem;"><a href="/resources" style="color:var(--medium-gray);border-bottom:1px solid rgba(176,184,193,0.3);padding-bottom:1px;">Or explore more free resources</a></p></div>';
+  }
+  document.getElementById('ctaBlock').innerHTML = ctaHtml;
+
   var bd = document.getElementById('breakdown');
   bd.classList.add('vis');
   setTimeout(function(){ bd.scrollIntoView({ behavior:'smooth' }); }, 200);

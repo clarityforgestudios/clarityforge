@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Podcast Launch Readiness Checklist | ClarityForge Studios</title>
+<meta name="description" content="12 questions to find out if you're ready to launch a podcast. If you can't answer the first three, you're not ready.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep-navy: #1A2A3A; --navy: #2A3D4F; --gold: #FFB64D; --orange: #E8713A; --orange-dark: #D4622E;
+  --near-black: #1C1E22; --dark-gray: #3D4550; --medium-gray: #6B7785; --light-gray: #B0B8C1;
+  --border-gray: #DFE2E6; --section-gray: #F2F3F5; --warm-white: #FAFAF8; --pure-white: #FFFFFF;
+  --success: #4A8C5E; --success-light: #E8F5E9; --warn-light: #FFF0E8;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --section-pad: clamp(4rem, 8vw, 7rem);
+  --container: min(1200px, 90vw);
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font-body); font-size: 18px; line-height: 1.7; color: var(--dark-gray); background: var(--warm-white); }
+a { text-decoration: none; color: inherit; }
+.container { width: var(--container); margin: 0 auto; }
+.content { width: min(700px, 90vw); margin: 0 auto; }
+
+/* ═══ NAV ═══ */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--deep-navy); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.nav-inner { width: var(--container); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; gap: 2rem; }
+.nav-logo { display: flex; align-items: center; gap: 0.65rem; font-family: var(--font-body); font-weight: 600; font-size: 1.05rem; color: var(--warm-white); letter-spacing: -0.01em; }
+.nav-logo svg { width: auto; height: 28px; }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { color: var(--light-gray); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { background: var(--gold); color: var(--navy); font-weight: 700; padding: 0.6rem 1.4rem; border-radius: 6px; font-size: 0.85rem; transition: background 0.2s, transform 0.15s; }
+.nav-cta:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-1px); }
+.nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--warm-white); margin: 5px 0; }
+
+/* ═══ HERO ═══ */
+.hero { background: var(--deep-navy); padding: calc(var(--section-pad) + 4rem) 0 var(--section-pad); text-align: center; position: relative; overflow: hidden; }
+.hero::after { content: ''; position: absolute; top: 0; right: 0; width: 40%; height: 100%; background: radial-gradient(ellipse at 80% 40%, rgba(255,182,77,0.06) 0%, transparent 70%); pointer-events: none; }
+.hero-content { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
+.hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem); color: var(--warm-white); line-height: 1.15; margin-bottom: 1.2rem; }
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero-sub { font-size: clamp(1rem, 1.8vw, 1.1rem); color: var(--light-gray); max-width: 520px; margin: 0 auto; line-height: 1.6; }
+
+/* ═══ INSTRUCTION ═══ */
+.instruction { background: var(--pure-white); border-bottom: 1px solid var(--border-gray); padding: 1.6rem 0; }
+.instruction-inner { display: flex; align-items: center; gap: 1.2rem; }
+.instruction-icon { flex-shrink: 0; width: 40px; height: 40px; background: var(--section-gray); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+.instruction-icon svg { width: 20px; height: 20px; color: var(--gold); }
+.instruction-text { font-size: 0.88rem; color: var(--dark-gray); line-height: 1.5; }
+.instruction-text strong { color: var(--near-black); }
+
+/* ═══ SECTIONS & QUESTIONS ═══ */
+.cl-wrap { padding: 2rem 0 3rem; }
+.cl-section { margin-bottom: 2.2rem; }
+.cl-section-header { margin-bottom: 0.5rem; }
+.cl-section-title { font-family: var(--font-display); font-size: 1.15rem; color: var(--near-black); display: flex; align-items: center; gap: 0.5rem; }
+.cl-section-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.cl-section-sub { font-size: 0.82rem; color: var(--medium-gray); margin-bottom: 0.7rem; }
+
+/* Foundation gate styling */
+.cl-section.foundation { position: relative; }
+.cl-section.foundation::before {
+  content: ''; position: absolute; left: -12px; top: 0; bottom: 0;
+  width: 3px; background: var(--orange); border-radius: 2px;
+}
+.foundation-warning {
+  background: var(--warn-light); border: 1px solid rgba(232,113,58,0.2);
+  border-radius: 8px; padding: 0.7rem 1rem; margin-bottom: 0.7rem;
+  font-size: 0.8rem; color: var(--orange-dark); font-weight: 500;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.foundation-warning svg { flex-shrink: 0; width: 16px; height: 16px; color: var(--orange); }
+
+/* Question cards */
+.cl-item {
+  background: var(--pure-white); border: 1px solid var(--border-gray);
+  border-radius: 10px; padding: 1.2rem 1.4rem; margin-bottom: 0.6rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.cl-item.answered-yes { border-color: var(--success); box-shadow: 0 0 0 1px var(--success); }
+.cl-item.answered-no { border-color: var(--orange); box-shadow: 0 0 0 1px var(--orange); }
+
+.cl-q-row { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 0.9rem; }
+.cl-num { flex-shrink: 0; width: 26px; height: 26px; background: var(--deep-navy); color: var(--pure-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; }
+.cl-q-text { flex: 1; font-size: 0.92rem; color: var(--near-black); font-weight: 500; line-height: 1.45; }
+
+.cl-btns { display: flex; gap: 0.5rem; }
+.cl-btn {
+  flex: 1; max-width: 120px; border: 1.5px solid var(--border-gray);
+  background: var(--warm-white); border-radius: 8px;
+  padding: 0.55rem 0; text-align: center; cursor: pointer;
+  font-family: var(--font-body); font-size: 0.85rem; font-weight: 600;
+  color: var(--dark-gray); transition: all 0.15s; user-select: none;
+}
+.cl-btn:hover { border-color: var(--light-gray); background: var(--pure-white); }
+.cl-btn.yes-sel { border-color: var(--success); background: var(--success-light); color: var(--success); }
+.cl-btn.no-sel { border-color: var(--orange); background: var(--warn-light); color: var(--orange); }
+
+/* Foundation inline warning */
+.cl-foundation-alert {
+  display: none; margin-top: 0.6rem;
+  background: var(--warn-light); border-radius: 6px;
+  padding: 0.6rem 0.9rem; font-size: 0.78rem; color: var(--orange-dark);
+  line-height: 1.45;
+}
+.cl-foundation-alert.vis { display: block; }
+
+/* ═══ PROGRESS ═══ */
+.progress-bar { position: fixed; bottom: 0; left: 0; right: 0; height: 4px; background: var(--border-gray); z-index: 20; }
+.progress-fill { height: 100%; background: var(--gold); width: 0%; transition: width 0.3s ease; }
+
+/* ═══ RESULTS ═══ */
+.results { padding-bottom: 2rem; display: none; }
+.results.vis { display: block; }
+.res-hero { text-align: center; padding: 2.5rem 1.5rem; background: var(--deep-navy); border-radius: 12px; margin-bottom: 1.2rem; }
+.res-big { font-family: var(--font-display); font-size: 3rem; color: var(--gold); line-height: 1; }
+.res-big span { font-size: 1.1rem; color: var(--light-gray); }
+.res-tier { font-family: var(--font-display); font-size: 1.3rem; color: var(--pure-white); margin-top: 0.5rem; }
+.res-card { background: var(--pure-white); border: 1px solid var(--border-gray); border-radius: 10px; padding: 1.5rem 1.6rem; border-left: 4px solid var(--gold); }
+.res-card h3 { font-family: var(--font-display); font-size: 1.1rem; color: var(--near-black); margin-bottom: 0.5rem; }
+.res-card p { font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.6rem; }
+.res-card .cta-line { font-weight: 700; color: var(--near-black); }
+
+/* ═══ GATE ═══ */
+.gate { padding-bottom: 2rem; display: none; }
+.gate-card { background: var(--deep-navy); border-radius: 12px; padding: 2.2rem 2rem; text-align: center; }
+.gate-card h2 { font-family: var(--font-display); color: var(--pure-white); font-size: 1.5rem; margin-bottom: 0.4rem; }
+.gate-card > p { color: var(--light-gray); font-size: 0.88rem; margin-bottom: 1.2rem; }
+.gate-form { display: flex; gap: 0.6rem; max-width: 400px; margin: 0 auto; }
+.gate-form input { flex: 1; padding: 0.75rem 1rem; border: 1.5px solid var(--navy); background: var(--navy); color: var(--pure-white); border-radius: 8px; font-family: var(--font-body); font-size: 0.88rem; outline: none; }
+.gate-form input::placeholder { color: var(--medium-gray); }
+.gate-form input:focus { border-color: var(--gold); }
+.gate-form button { padding: 0.75rem 1.4rem; background: var(--gold); color: var(--deep-navy); border: none; border-radius: 8px; font-family: var(--font-body); font-size: 0.88rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+.gate-form button:hover { background: var(--orange); color: var(--pure-white); }
+.gate-form button:disabled { opacity: 0.5; cursor: not-allowed; }
+.gate-note { color: var(--medium-gray); font-size: 0.68rem; margin-top: 0.6rem; }
+
+/* ═══ BREAKDOWN ═══ */
+.breakdown { padding-bottom: 3rem; display: none; }
+.breakdown.vis { display: block; }
+.bd-header { font-family: var(--font-display); font-size: 1.2rem; color: var(--near-black); margin-bottom: 0.25rem; }
+.bd-sub { font-size: 0.82rem; color: var(--medium-gray); margin-bottom: 1rem; }
+.bd-group { margin-bottom: 1.2rem; }
+.bd-group-title { font-family: var(--font-display); font-size: 0.95rem; color: var(--near-black); margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem; }
+.bd-item { display: flex; align-items: flex-start; gap: 0.7rem; padding: 0.75rem 0; border-bottom: 1px solid var(--border-gray); font-size: 0.88rem; }
+.bd-item:last-child { border-bottom: none; }
+.bd-icon { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+.bd-icon.yes { background: var(--success-light); color: var(--success); }
+.bd-icon.no { background: var(--warn-light); color: var(--orange); }
+.bd-icon svg { width: 12px; height: 12px; }
+.bd-text { flex: 1; }
+.bd-label { color: var(--dark-gray); }
+.bd-label.gap { color: var(--orange); font-weight: 600; }
+.bd-guidance { font-size: 0.82rem; color: var(--medium-gray); margin-top: 0.25rem; line-height: 1.5; }
+.bd-guidance.action { color: var(--orange-dark); font-weight: 500; }
+.bd-guidance.affirm { color: var(--success); }
+.bd-insight { background: var(--section-gray); border-radius: 10px; padding: 1.4rem; margin: 1rem 0 1.2rem; }
+.bd-insight h4 { font-family: var(--font-display); font-size: 0.95rem; color: var(--near-black); margin-bottom: 0.4rem; }
+.bd-insight p { font-size: 0.85rem; color: var(--dark-gray); line-height: 1.6; }
+.cta-block { text-align: center; padding: 2rem; background: var(--section-gray); border-radius: 10px; margin-top: 1.2rem; }
+.cta-block h3 { font-family: var(--font-display); font-size: 1.15rem; color: var(--near-black); margin-bottom: 0.4rem; }
+.cta-block p { font-size: 0.88rem; color: var(--dark-gray); margin-bottom: 1rem; }
+.btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--gold); color: var(--navy); font-weight: 700; padding: 0.9rem 2rem; border-radius: 6px; font-size: 1rem; transition: background 0.25s, transform 0.15s; box-shadow: 0 2px 12px rgba(255,182,77,0.2); }
+.btn-primary:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-2px); }
+
+/* ═══ FOOTER ═══ */
+.footer { background: var(--near-black); padding: 4rem 0 2rem; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand h3 { font-family: var(--font-body); font-weight: 600; color: var(--warm-white); font-size: 1rem; margin-bottom: 0.5rem; }
+.footer-brand p { font-size: 0.82rem; color: var(--medium-gray); line-height: 1.6; }
+.footer-links h4 { font-size: 0.78rem; color: var(--light-gray); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; font-weight: 600; }
+.footer-links a { display: block; font-size: 0.88rem; color: var(--medium-gray); padding: 0.25rem 0; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-contact a { display: block; font-size: 0.88rem; color: var(--medium-gray); padding: 0.25rem 0; transition: color 0.2s; }
+.footer-contact a:hover { color: var(--gold); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--medium-gray); }
+.footer-bottom a { color: var(--medium-gray); transition: color 0.2s; }
+.footer-bottom a:hover { color: var(--gold); }
+
+@media (max-width: 960px) { .footer-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  .nav-links { display: none; } .nav-hamburger { display: block; }
+  .nav-inner .nav-cta { display: none; }
+  .hero { padding: calc(var(--section-pad) + 3rem) 0 2.5rem; }
+  .gate-form { flex-direction: column; }
+  .instruction-inner { flex-direction: column; gap: 0.6rem; text-align: center; }
+  .cl-section.foundation::before { display: none; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg viewBox="0 0 400 565" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 109.366V336.996C0 349.904 12.155 359.369 24.6645 356.282L131.375 329.656V216.829C131.375 204.174 139.985 193.139 152.292 190.102L383.591 132.752C393.112 130.373 399.747 121.869 399.747 112.1V19.8733C399.747 6.96569 387.592-2.4999 375.082 0.587803L15.0924 90.0807C6.22943 92.2573 0 100.255 0 109.366Z" fill="#FFB64D"/>
+        <path d="M375.488 269.137L131.426 329.676V551.991C131.426 564.291 146.873 569.707 154.571 560.141L246.645 435.974C246.898 435.62 247.303 435.417 247.708 435.316L383.54 401.503C393.214 399.074 400.051 390.418 400.051 380.446V288.372C400.051 275.565 387.997 266.1 375.538 269.187L375.488 269.137Z" fill="#FF682C"/>
+      </svg>
+      ClarityForge Studios
+    </a>
+    <ul class="nav-links">
+      <li><a href="/services">Services</a></li>
+      <li><a href="/work">Work</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/resources">Resources</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+    <a href="/story-sprint" class="nav-cta">Start a Story Sprint</a>
+    <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Podcast Launch<br><em>Readiness Checklist</em></h1>
+    <p class="hero-sub">12 questions to answer before you start a podcast. If you can't answer the first three, you're not ready.</p>
+  </div>
+</section>
+
+<!-- ═══ INSTRUCTION ═══ -->
+<div class="instruction">
+  <div class="content">
+    <div class="instruction-inner">
+      <div class="instruction-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="10" r="8"/><path d="M10 6v4M10 13v.5"/></svg></div>
+      <div class="instruction-text"><strong>For each question, answer Yes or No.</strong> Be honest. A podcast built on shaky answers won't survive past episode 10. Your results appear when all 12 are answered.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CHECKLIST ═══ -->
+<section class="cl-wrap">
+  <div class="content" id="clWrap"></div>
+</section>
+
+<!-- ═══ RESULTS ═══ -->
+<section class="results content" id="results">
+  <div class="res-hero" id="resHero"></div>
+  <div id="resCard"></div>
+</section>
+
+<!-- ═══ GATE ═══ -->
+<div class="gate content" id="gate">
+  <div class="gate-card">
+    <h2>Get Your Full Breakdown</h2>
+    <p>See exactly which gaps to close and what to do about each one.</p>
+    <div class="gate-form">
+      <input type="email" id="emailIn" placeholder="your@email.com" required>
+      <button id="unlockBtn" onclick="unlock()">Send My Breakdown</button>
+    </div>
+    <p class="gate-note">We'll email your results and a link to book a free review call.</p>
+  </div>
+</div>
+
+<!-- ═══ BREAKDOWN ═══ -->
+<section class="breakdown content" id="breakdown">
+  <div id="bdCards"></div>
+  <div id="ctaBlock"></div>
+  </div>
+</section>
+
+<!-- ═══ PROGRESS ═══ -->
+<div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><h3>ClarityForge Studios</h3><p>Media systems for energy leaders.<br>Bend, Oregon.</p></div>
+      <div class="footer-links"><h4>Navigate</h4><a href="/services">Services</a><a href="/podcast-production">Podcast Production</a><a href="/executive-visibility">Executive Visibility</a><a href="/strategic-partnerships">Strategic Partnerships</a><a href="/work">Work</a><a href="/about">About</a><a href="/blog">Blog</a><a href="/resources">Resources</a></div>
+      <div class="footer-contact"><h4>Get in Touch</h4><a href="mailto:info@clarityforgestudios.com">info@clarityforgestudios.com</a><a href="tel:5125696612">(512) 569-6612</a><a href="/contact">Contact</a></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; 2026 ClarityForge Studios LLC</span><a href="/privacy-policy">Privacy Policy</a></div>
+  </div>
+</footer>
+
+<script>
+var sections = [
+  {
+    title: "The Foundation",
+    sub: "These three are non-negotiable. Without them, nothing else matters.",
+    color: "#E8713A",
+    foundation: true,
+    items: [
+      { q: "Can you name your specific audience in one sentence?",
+        alert: "Without a clear audience, every other decision about your show will be a guess. This is the single most important question.",
+        yes: "Good. A defined audience shapes every decision: topics, guests, tone, distribution. Most shows that struggle past month 6 trace it back to audience ambiguity. You've avoided that.",
+        no: "This is your first priority. Try completing the sentence: \"I help [specific people] understand [specific topic] so they can [specific outcome].\" A Story Sprint will pressure-test this in 15 minutes." },
+      { q: "Do you know what you want to be known for?",
+        alert: "A podcast without clear positioning sounds like every other interview show. Your audience needs a reason to choose yours.",
+        yes: "Clear positioning means your show has a reason to exist beyond \"interesting conversations.\" When someone describes your podcast to a colleague, they can say what it's about in one sentence. That's the test.",
+        no: "Without positioning, your show sounds like every other interview podcast. Write down the one topic you want to own in your industry. If you can't, start there before you start recording." },
+      { q: "Are you willing to show up consistently for at least 6 months?",
+        alert: "Most shows die before episode 15. If you can't commit to 6 months of consistent publishing, the investment won't pay off.",
+        yes: "Consistency is the single biggest predictor of podcast success. Six months gets you past the danger zone where most shows quit. After that, compounding takes over.",
+        no: "Most shows die before episode 15. If the commitment isn't there, the ROI won't be either. Consider starting with a LinkedIn content cadence first to build the habit. Our <a href=\"/resources\">resources page</a> has tools to help." }
+    ]
+  },
+  {
+    title: "The Content",
+    sub: "What you'll actually talk about week after week.",
+    color: "#FFB64D",
+    foundation: false,
+    items: [
+      { q: "Do you have 3-5 content pillars defined?",
+        yes: "Content pillars keep your show focused and make topic planning predictable. You'll never stare at a blank page wondering what to talk about.",
+        no: "Without pillars, you'll run out of ideas by month 3. Pick 3-5 themes that sit at the intersection of your expertise and your audience's needs. Our <a href=\"/content-pillars\">Content Pillar Worksheet</a> walks you through the exercise." },
+      { q: "Can you list 20 potential episode topics right now?",
+        yes: "Twenty topics means you have at least 5 months of material before you need to brainstorm again. That's a real content pipeline.",
+        no: "If you can't get to 20, your content pillars may be too narrow, or you haven't spent enough time mapping what your audience actually needs to hear. Sit down with your pillars and list 4-5 topics under each." },
+      { q: "Do you have a network of 10+ potential guests?",
+        yes: "A guest pipeline prevents the \"who do I interview next?\" panic that kills momentum. Guests also bring their own audience, which compounds your reach.",
+        no: "Start building a guest list now. Think about: peers in your industry, people upstream and downstream of your audience, authors of reports you've read, speakers you've seen at conferences. Aim for 20 names before launch." }
+    ]
+  },
+  {
+    title: "The Operations",
+    sub: "The logistics that kill most shows.",
+    color: "#B0B8C1",
+    foundation: false,
+    items: [
+      { q: "Can you commit 2-4 hours per week to recording?",
+        yes: "That's the right range. With a production partner handling everything else, your time goes entirely into the conversation. That's the whole point.",
+        no: "Recording is the one thing you can't delegate. If 2-4 hours per week isn't available, a podcast may not be the right format right now. Consider a monthly long-form video or quarterly special instead." },
+      { q: "Do you have a quiet, reliable recording space?",
+        yes: "Good audio quality is the minimum bar. You've cleared it.",
+        no: "Bad audio kills credibility instantly. You need a quiet room with minimal echo. A closet with soft surfaces works better than a conference room with glass walls. Budget $200-400 for a mic and basic acoustic treatment." },
+      { q: "Do you have a budget of at least $1,500/month for production?",
+        yes: "That budget covers professional production, editing, clips, distribution, and repurposing. As your audience grows, sponsorship revenue can offset and eventually exceed this investment.",
+        no: "DIY production costs $200-500/month in tools plus 15-20 hours of your time. That's unsustainable past month 3. A production partner at $1,500-4,500/month handles everything so you just show up and talk. Check our <a href=\"/resources\">cost breakdown</a> for the full comparison." }
+    ]
+  },
+  {
+    title: "The Distribution",
+    sub: "Publishing is not a growth strategy.",
+    color: "#4A8C5E",
+    foundation: false,
+    items: [
+      { q: "Do you have an existing audience on at least one platform?",
+        yes: "An existing audience gives your podcast a launch pad. Your first listeners are already following you somewhere. That's your distribution channel on day one.",
+        no: "Launching a podcast to zero audience is an uphill battle. Spend 3-6 months building a presence on LinkedIn or Substack first. Our <a href=\"/resources\">LinkedIn playbook</a> can help you get started." },
+      { q: "Are you willing to promote your show beyond just publishing it?",
+        yes: "Publishing without promotion is whispering into a void. You understand that distribution is half the work. That separates you from most first-time podcasters.",
+        no: "\"Post and pray\" doesn't work. Every episode needs clips for LinkedIn, a newsletter edition, guest amplification posts, and social sharing. If you're not willing to promote, the show won't grow." },
+      { q: "Do you have a plan for repurposing episodes into other content?",
+        yes: "One episode should become 10+ pieces of content. You're thinking about this the right way. As your catalog grows, this system also opens the door to sponsorship revenue across multiple channels.",
+        no: "This is the biggest missed opportunity in podcasting. One 45-minute conversation can become: full episode, 3-6 clips, a newsletter, 2-3 LinkedIn posts, quote cards, and an SEO blog post. That's the <a href=\"/content-engine\">1-to-10 Content Engine</a>." }
+    ]
+  }
+];
+
+// answers: null = unanswered, true = yes, false = no
+var answers = new Array(12).fill(null);
+var wrap = document.getElementById('clWrap');
+var qIdx = 0;
+
+sections.forEach(function(sec) {
+  var div = document.createElement('div');
+  div.className = 'cl-section' + (sec.foundation ? ' foundation' : '');
+
+  var html = '<div class="cl-section-header"><div class="cl-section-title"><div class="cl-section-dot" style="background:' + sec.color + '"></div>' + sec.title + '</div></div>';
+  html += '<div class="cl-section-sub">' + sec.sub + '</div>';
+
+  if (sec.foundation) {
+    html += '<div class="foundation-warning"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 2l6.5 11.5H1.5L8 2z"/><path d="M8 7v3M8 12v.5"/></svg>If you answer No to any of these, the rest of the checklist doesn\'t apply yet.</div>';
+  }
+
+  div.innerHTML = html;
+
+  sec.items.forEach(function(item) {
+    var idx = qIdx;
+    var el = document.createElement('div');
+    el.className = 'cl-item';
+    el.id = 'cl' + idx;
+
+    var itemHtml = '<div class="cl-q-row"><div class="cl-num">' + (idx + 1) + '</div><div class="cl-q-text">' + item.q + '</div></div>';
+    itemHtml += '<div class="cl-btns"><div class="cl-btn" onclick="pick(' + idx + ',true,this)" role="button" tabindex="0">Yes</div><div class="cl-btn" onclick="pick(' + idx + ',false,this)" role="button" tabindex="0">No</div></div>';
+
+    if (sec.foundation && item.alert) {
+      itemHtml += '<div class="cl-foundation-alert" id="alert' + idx + '">' + item.alert + '</div>';
+    }
+
+    el.innerHTML = itemHtml;
+    div.appendChild(el);
+    qIdx++;
+  });
+
+  wrap.appendChild(div);
+});
+
+function pick(idx, val, el) {
+  answers[idx] = val;
+  var card = document.getElementById('cl' + idx);
+
+  // Clear previous selection
+  card.classList.remove('answered-yes', 'answered-no');
+  var btns = card.querySelectorAll('.cl-btn');
+  btns[0].classList.remove('yes-sel');
+  btns[1].classList.remove('no-sel');
+
+  if (val) {
+    card.classList.add('answered-yes');
+    btns[0].classList.add('yes-sel');
+  } else {
+    card.classList.add('answered-no');
+    btns[1].classList.add('no-sel');
+  }
+
+  // Show foundation alert on "No"
+  var alertEl = document.getElementById('alert' + idx);
+  if (alertEl) {
+    if (!val) { alertEl.classList.add('vis'); }
+    else { alertEl.classList.remove('vis'); }
+  }
+
+  // Update progress
+  var answered = answers.filter(function(a) { return a !== null; }).length;
+  document.getElementById('prog').style.width = (answered / 12 * 100) + '%';
+
+  // Auto-show results when all 12 answered
+  if (answered === 12) {
+    setTimeout(function() { showResults(); }, 400);
+  }
+}
+
+function showResults() {
+  var yesCount = answers.filter(function(a) { return a === true; }).length;
+  var foundationOk = answers[0] === true && answers[1] === true && answers[2] === true;
+  var tier, clr, body, cta;
+
+  if (yesCount <= 4 || !foundationOk) {
+    tier = "Not Ready Yet";
+    clr = "#E8713A";
+    body = "You have the ambition but not the foundation. The first three questions are non-negotiable. Without a clear audience, defined positioning, and a commitment to consistency, a podcast will stall before episode 10.";
+    cta = "Focus on building your audience and defining your positioning first. A Story Sprint can help.";
+  } else if (yesCount <= 8) {
+    tier = "Getting Close";
+    clr = "#FFB64D";
+    body = "You have the foundation but there are gaps in your content strategy, operations, or distribution plan. These are the things that separate shows that last from shows that fade after a few months.";
+    cta = "A Story Sprint will fill the gaps and give you a concrete launch plan.";
+  } else {
+    tier = "Ready to Launch";
+    clr = "#4A8C5E";
+    body = "You have the audience, the content, the operations, and the distribution thinking in place. You don't need more planning. You need a production partner who can turn your ideas into a system.";
+    cta = "Let's talk about what your show looks like.";
+  }
+
+  document.getElementById('resHero').innerHTML = '<div class="res-big">' + yesCount + '<span> / 12</span></div><div class="res-tier" style="color:' + clr + '">' + tier + '</div>';
+  document.getElementById('resCard').innerHTML = '<div class="res-card" style="border-left-color:' + clr + '"><h3>' + tier + '</h3><p>' + body + '</p><p class="cta-line">' + cta + '</p></div>';
+  document.getElementById('results').classList.add('vis');
+  document.getElementById('gate').style.display = 'block';
+  setTimeout(function() { document.getElementById('results').scrollIntoView({ behavior: 'smooth' }); }, 200);
+}
+
+function unlock() {
+  var email = document.getElementById('emailIn').value;
+  if (!email || email.indexOf('@') === -1) { document.getElementById('emailIn').style.borderColor = '#E8713A'; return; }
+  var btn = document.getElementById('unlockBtn');
+  btn.disabled = true; btn.textContent = 'Sending...';
+
+  var yesCount = answers.filter(function(a) { return a === true; }).length;
+  var allItems = [];
+  var gapDetails = [];
+  sections.forEach(function(sec) { sec.items.forEach(function(item) { allItems.push(item); }); });
+  answers.forEach(function(a, i) {
+    if (a !== true) gapDetails.push(allItems[i].q);
+  });
+  var foundationOk = answers[0] === true && answers[1] === true && answers[2] === true;
+  var tier = yesCount <= 4 || !foundationOk ? 'Not Ready Yet' : yesCount <= 8 ? 'Getting Close' : 'Ready to Launch';
+
+  fetch('https://formspree.io/f/mdaprklq', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      email: email,
+      source: 'Podcast Readiness Checklist',
+      score: yesCount + '/12',
+      tier: tier,
+      foundation_passed: foundationOk ? 'Yes' : 'No',
+      gaps: gapDetails.length > 0 ? gapDetails.join('; ') : 'None - fully ready'
+    })
+  }).then(function() { showBreakdown(); }).catch(function() { showBreakdown(); });
+}
+
+function showBreakdown() {
+  document.getElementById('gate').style.display = 'none';
+
+  var h = '<h3 class="bd-header">Your Readiness Breakdown</h3><p class="bd-sub">Each question includes a specific recommendation based on your answer.</p>';
+  var idx = 0;
+
+  sections.forEach(function(sec) {
+    h += '<div class="bd-group"><div class="bd-group-title"><div class="cl-section-dot" style="background:' + sec.color + ';width:8px;height:8px"></div>' + sec.title + '</div>';
+    sec.items.forEach(function(item) {
+      var ok = answers[idx] === true;
+      var guidance = ok ? item.yes : item.no;
+      var guidanceClass = ok ? 'affirm' : 'action';
+      h += '<div class="bd-item">';
+      h += '<div class="bd-icon ' + (ok ? 'yes' : 'no') + '"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">' + (ok ? '<path d="M2 6l3 3 5-5"/>' : '<path d="M3 3l6 6M9 3l-6 6"/>') + '</svg></div>';
+      h += '<div class="bd-text"><div class="bd-label' + (ok ? '' : ' gap') + '">' + item.q + '</div>';
+      if (guidance) {
+        h += '<div class="bd-guidance ' + guidanceClass + '">' + guidance + '</div>';
+      }
+      h += '</div></div>';
+      idx++;
+    });
+    h += '</div>';
+  });
+
+  // Summary insight
+  var foundationGaps = [];
+  if (answers[0] !== true) foundationGaps.push('audience clarity');
+  if (answers[1] !== true) foundationGaps.push('positioning');
+  if (answers[2] !== true) foundationGaps.push('consistency commitment');
+  var totalGaps = answers.filter(function(a) { return a !== true; }).length;
+  var yesCount = answers.filter(function(a) { return a === true; }).length;
+  var foundationOk = answers[0] === true && answers[1] === true && answers[2] === true;
+
+  if (foundationGaps.length > 0) {
+    h += '<div class="bd-insight"><h4>Start here</h4><p>Your foundation has gaps in ' + foundationGaps.join(' and ') + '. These need to be resolved before anything else. A Story Sprint addresses all three in a single 60-minute session and gives you a concrete plan to move forward.</p></div>';
+  } else if (totalGaps > 0) {
+    h += '<div class="bd-insight"><h4>Your foundation is solid</h4><p>The core is there. You have ' + totalGaps + ' gap' + (totalGaps === 1 ? '' : 's') + ' to close before launch. The action items above tell you exactly what to do for each one. A Story Sprint will sequence these into a launch timeline so you know what to tackle first.</p></div>';
+  } else {
+    h += '<div class="bd-insight"><h4>You\'re ready</h4><p>Every box is checked. You don\'t need more planning. You need a production partner who handles editing, clips, show notes, distribution, and repurposing so you can focus on the conversation. As your audience grows, we also help clients build toward sponsorship revenue so the show pays for itself.</p></div>';
+  }
+
+  document.getElementById('bdCards').innerHTML = h;
+
+  // Conditional CTA based on tier
+  var ctaHtml;
+  if (yesCount >= 9 && foundationOk) {
+    ctaHtml = '<div class="cta-block"><h3>You don\'t need more planning.</h3><p>You need a production partner. See how ClarityForge handles podcast production from recording to distribution.</p><a href="/podcast-production" class="btn-primary">Explore Podcast Production</a><p style="margin-top:0.75rem;font-size:0.85rem;"><a href="/contact" style="color:var(--medium-gray);border-bottom:1px solid rgba(176,184,193,0.3);padding-bottom:1px;">Or book a call to talk through it</a></p></div>';
+  } else {
+    ctaHtml = '<div class="cta-block"><h3>Ready to close the gaps?</h3><p>A Story Sprint gives you positioning, content pillars, and a launch plan in 60 minutes. Everything you need to go from "getting close" to "ready."</p><a href="/story-sprint" class="btn-primary">Start a Story Sprint</a><p style="margin-top:0.75rem;font-size:0.85rem;"><a href="/resources" style="color:var(--medium-gray);border-bottom:1px solid rgba(176,184,193,0.3);padding-bottom:1px;">Or explore more free resources</a></p></div>';
+  }
+  document.getElementById('ctaBlock').innerHTML = ctaHtml;
+  document.getElementById('breakdown').classList.add('vis');
+  setTimeout(function() { document.getElementById('breakdown').scrollIntoView({ behavior: 'smooth' }); }, 200);
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.target.classList.contains('cl-btn') && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); e.target.click(); }
+});
+</script>
+</body>
+</html>

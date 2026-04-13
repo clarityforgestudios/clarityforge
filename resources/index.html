@@ -5,7 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <title>Resources for Energy Leaders | ClarityForge Studios</title>
-<meta name="description" content="Free frameworks, guides, and tools for energy leaders building their platform. Podcast strategy, LinkedIn visibility, content systems, and more.">
+<meta name="description" content="Free tools for energy leaders building their platform. Scorecard, content pillars, post ideas, podcast checklist, and the Content Engine system map.">
+<meta property="og:title" content="Resources for Energy Leaders | ClarityForge Studios">
+<meta property="og:description" content="Free tools for energy leaders. Score your visibility, define your pillars, grab post ideas, and see the system that turns one recording into a month of content.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://clarityforgestudios.com/resources">
+<meta property="og:site_name" content="ClarityForge Studios">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
@@ -14,6 +19,7 @@
   --deep-navy: #1A2A3A; --navy: #2A3D4F; --gold: #FFB64D; --orange: #E8713A; --orange-dark: #D4622E;
   --near-black: #1C1E22; --dark-gray: #3D4550; --medium-gray: #6B7785; --light-gray: #B0B8C1;
   --border-gray: #DFE2E6; --section-gray: #F2F3F5; --warm-white: #FAFAF8; --pure-white: #FFFFFF;
+  --success: #4A8C5E;
   --font-display: 'DM Serif Display', Georgia, serif; --font-body: 'DM Sans', system-ui, sans-serif;
   --section-pad: clamp(4rem, 8vw, 7rem); --container: min(1200px, 90vw);
   --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -27,6 +33,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 .anim-entry { opacity: 0; animation: fadeUp 0.7s var(--ease) forwards; }
 .anim-d1 { animation-delay: 0ms; } .anim-d2 { animation-delay: 150ms; } .anim-d3 { animation-delay: 300ms; }
 
+/* NAV */
 .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--deep-navy); border-bottom: 1px solid rgba(255,255,255,0.06); }
 .nav-inner { width: var(--container); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; gap: 2rem; }
 .nav-logo { display: flex; align-items: center; gap: 0.65rem; font-family: var(--font-body); font-weight: 600; font-size: 1.05rem; color: var(--warm-white); }
@@ -39,6 +46,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
 .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--warm-white); margin: 5px 0; }
 
+/* HERO */
 .hero { background: var(--deep-navy); padding: calc(var(--section-pad) + 4rem) 0 var(--section-pad); position: relative; overflow: hidden; }
 .hero::after { content: ''; position: absolute; top: 0; right: 0; width: 40%; height: 100%; background: radial-gradient(ellipse at 80% 40%, rgba(255,182,77,0.06) 0%, transparent 70%); pointer-events: none; }
 .hero-content { position: relative; z-index: 2; max-width: 720px; }
@@ -46,36 +54,52 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 .hero h1 em { font-style: normal; color: var(--gold); }
 .hero-sub { font-size: clamp(1.05rem, 2vw, 1.15rem); color: var(--light-gray); max-width: 560px; line-height: 1.65; }
 
-/* RESOURCE SECTIONS */
+/* LANE FILTER */
+.lane-filter { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 2rem; }
+.lane-filter-btn { padding: 0.5rem 1.1rem; border-radius: 20px; border: 1.5px solid rgba(255,255,255,0.15); background: transparent; color: var(--light-gray); font-family: var(--font-body); font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.lane-filter-btn:hover { border-color: var(--gold); color: var(--warm-white); }
+.lane-filter-btn:focus-visible { border-color: var(--gold); color: var(--warm-white); outline: 2px solid var(--gold); outline-offset: 2px; }
+.lane-filter-btn.active { border-color: var(--gold); background: rgba(255,182,77,0.15); color: var(--gold); }
+
+/* SECTIONS */
 .res-section { padding: var(--section-pad) 0; }
 .res-light { background: var(--warm-white); }
 .res-gray { background: var(--section-gray); }
-.res-section h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--near-black); margin-bottom: 0.5rem; }
-.res-section-sub { font-size: 0.92rem; color: var(--medium-gray); margin-bottom: 2.5rem; max-width: 560px; }
+.res-section-head { margin-bottom: 2.5rem; }
+.res-section-head h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--near-black); margin-bottom: 0.4rem; }
+.res-section-head p { font-size: 0.88rem; color: var(--medium-gray); max-width: 520px; }
+.res-section-head .step-badge { display: inline-block; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.25rem 0.7rem; border-radius: 4px; margin-bottom: 0.8rem; }
+.step-1 { background: rgba(74,140,94,0.1); color: var(--success); }
+.step-2 { background: rgba(255,182,77,0.12); color: var(--orange); }
+.step-3 { background: rgba(26,42,58,0.08); color: var(--deep-navy); }
+
+/* CARDS */
 .res-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-.res-card { background: var(--pure-white); border-radius: 10px; padding: 2rem; border: 1px solid var(--border-gray); box-shadow: 0 2px 8px rgba(0,0,0,0.04); display: flex; flex-direction: column; transition: transform 0.2s var(--ease), box-shadow 0.2s; }
+.res-card { background: var(--pure-white); border-radius: 10px; padding: 1.8rem; border: 1px solid var(--border-gray); box-shadow: 0 2px 8px rgba(0,0,0,0.04); display: flex; flex-direction: column; transition: transform 0.2s var(--ease), box-shadow 0.2s, opacity 0.3s; }
 .res-card:hover { transform: translateY(-3px); box-shadow: 0 6px 24px rgba(0,0,0,0.08); }
-.res-card-tag { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem; display: inline-block; }
-.tag-framework { color: var(--gold); }
-.tag-guide { color: var(--orange); }
-.tag-tool { color: #4A8C5E; }
-.tag-coming { color: var(--medium-gray); }
-.res-card h3 { font-family: var(--font-display); font-size: 1.1rem; color: var(--near-black); margin-bottom: 0.5rem; line-height: 1.3; }
-.res-card p { font-size: 0.85rem; color: var(--dark-gray); line-height: 1.5; flex-grow: 1; }
-.res-card-cta { margin-top: 1.5rem; font-size: 0.85rem; font-weight: 700; color: var(--navy); display: inline-flex; align-items: center; gap: 0.4rem; transition: color 0.2s, gap 0.2s; }
+.res-card.muted { opacity: 0.35; transform: none; }
+.res-light .res-card { background: var(--section-gray); border-color: var(--border-gray); }
+.res-gray .res-card { background: var(--pure-white); }
+.res-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; }
+.res-card-time { font-size: 0.65rem; font-weight: 600; color: var(--medium-gray); }
+.res-card-lanes { display: flex; gap: 0.3rem; }
+.lane-tag { font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.2rem 0.45rem; border-radius: 3px; }
+.lane-tag-all { background: var(--section-gray); color: var(--medium-gray); }
+.lane-tag-podcast { background: rgba(255,182,77,0.12); color: #C48A2A; }
+.lane-tag-exec { background: rgba(91,106,191,0.1); color: #5B6ABF; }
+.lane-tag-inst { background: rgba(74,140,94,0.1); color: var(--success); }
+.res-card h3 { font-family: var(--font-display); font-size: 1.05rem; color: var(--near-black); margin-bottom: 0.4rem; line-height: 1.3; }
+.res-card p { font-size: 0.82rem; color: var(--dark-gray); line-height: 1.5; flex-grow: 1; }
+.res-card-cta { margin-top: 1.2rem; font-size: 0.82rem; font-weight: 700; color: var(--navy); display: inline-flex; align-items: center; gap: 0.4rem; transition: color 0.2s, gap 0.2s; }
 .res-card-cta:hover { color: var(--gold); gap: 0.6rem; }
 .res-card-cta::after { content: '\2192'; }
-.res-light .res-card { background: var(--section-gray); }
-.res-gray .res-card { background: var(--pure-white); }
-.res-card-coming { margin-top: 1.5rem; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--light-gray); background: var(--section-gray); display: inline-block; padding: 0.3rem 0.8rem; border-radius: 4px; }
 
-/* FEATURED RESOURCE */
+/* FEATURED */
 .featured { padding: var(--section-pad) 0; background: var(--deep-navy); }
 .featured-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 960px; margin: 0 auto; }
-.featured-text { }
 .featured-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 1rem; }
 .featured-text h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--warm-white); margin-bottom: 1rem; line-height: 1.3; }
-.featured-text p { font-size: 0.95rem; color: var(--light-gray); margin-bottom: 1.5rem; line-height: 1.55; }
+.featured-text p { font-size: 0.92rem; color: var(--light-gray); margin-bottom: 1.5rem; line-height: 1.55; }
 .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--gold); color: var(--navy); font-weight: 700; padding: 0.9rem 2rem; border-radius: 6px; font-size: 1rem; transition: background 0.25s, transform 0.15s, box-shadow 0.25s; box-shadow: 0 2px 12px rgba(255,182,77,0.2); }
 .btn-primary:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(232,113,58,0.3); }
 .featured-preview { background: var(--navy); border-radius: 10px; padding: 2.5rem; border: 1px solid rgba(255,255,255,0.08); }
@@ -84,13 +108,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 .featured-preview-check { width: 18px; height: 18px; flex-shrink: 0; color: var(--gold); }
 .featured-preview-item span { font-size: 0.88rem; color: var(--light-gray); }
 
-/* CTA */
-.closing-cta { padding: var(--section-pad) 0; background: var(--warm-white); text-align: center; }
-.closing-cta h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--near-black); margin-bottom: 0.75rem; }
-.closing-cta .cta-body { font-size: 0.95rem; color: var(--dark-gray); max-width: 520px; margin: 0 auto 2rem; }
-.closing-cta .btn-primary { font-size: 1.05rem; padding: 1rem 2.5rem; }
-.closing-micro { margin-top: 1.25rem; font-size: 0.82rem; color: var(--medium-gray); }
-
+/* FOOTER */
 .footer { background: var(--near-black); padding: 4rem 0 2rem; border-top: 1px solid rgba(255,255,255,0.06); }
 .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
 .footer-brand h3 { font-family: var(--font-body); font-weight: 600; color: var(--warm-white); font-size: 1rem; margin-bottom: 0.5rem; }
@@ -101,6 +119,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--medium-gray); }
 .footer-bottom a { color: var(--medium-gray); transition: color 0.2s; }
 .footer-bottom a:hover { color: var(--gold); }
+
 .mobile-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--deep-navy); padding: 0.75rem 1rem; border-top: 2px solid var(--gold); z-index: 99; text-align: center; }
 .mobile-cta .btn-primary { width: 100%; justify-content: center; font-size: 0.95rem; padding: 0.8rem; }
 
@@ -118,6 +137,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
   body { padding-bottom: 60px; }
   .res-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  .lane-filter { justify-content: center; }
 }
 </style>
 </head>
@@ -149,49 +169,116 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 <section class="hero">
   <div class="container">
     <div class="hero-content">
-      <h1 class="anim-entry anim-d1">The thinking behind <em>the systems we build.</em></h1>
-      <p class="hero-sub anim-entry anim-d2">Frameworks, guides, and tools for energy leaders who want to build their platform. Use them on your own. Come back when you want a partner.</p>
+      <h1 class="anim-entry anim-d1">Use these. <em>See what happens.</em></h1>
+      <p class="hero-sub anim-entry anim-d2">Six free tools for energy leaders building their platform. Start with whatever feels useful. Come back when you want a partner.</p>
+      <div class="lane-filter anim-entry anim-d3">
+        <button class="lane-filter-btn active" onclick="filterLane('all')">Show all</button>
+        <button class="lane-filter-btn" onclick="filterLane('podcast')">Podcast</button>
+        <button class="lane-filter-btn" onclick="filterLane('exec')">Executive visibility</button>
+        <button class="lane-filter-btn" onclick="filterLane('inst')">Institutional media</button>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FRAMEWORKS -->
+<!-- SECTION 1: START HERE -->
 <section class="res-section res-light">
   <div class="container">
-    <h2>Frameworks</h2>
-    <p class="res-section-sub">Thinking tools you can use right now. Try them on your own and see what happens.</p>
+    <div class="res-section-head">
+      <span class="step-badge step-1">Start here</span>
+      <h2>Pick one and try it in 10 minutes</h2>
+      <p>No commitment. Immediate value. These are the tools that show you where you stand.</p>
+    </div>
     <div class="res-grid">
-      <div class="res-card">
-        <span class="res-card-tag tag-framework">Framework</span>
-        <h3>The 1-to-10 Content Engine</h3>
-        <p>How one podcast episode or video conversation becomes 10+ pieces of content across podcast, newsletter, LinkedIn, YouTube, and social. The system behind every ClarityForge engagement.</p>
-        <a href="/blog" class="res-card-cta">Read the breakdown</a>
+
+      <div class="res-card" data-lanes="all">
+        <div class="res-card-top">
+          <div class="res-card-lanes"><span class="lane-tag lane-tag-all">All paths</span></div>
+          <span class="res-card-time">5 min</span>
+        </div>
+        <h3>50 LinkedIn Post Ideas</h3>
+        <p>50 ideas across 5 pillars. Each one includes a worked example, coaching note, and hook technique. Save your favorites and start publishing today.</p>
+        <a href="/post-ideas" class="res-card-cta">Browse post ideas</a>
       </div>
-      <div class="res-card">
-        <span class="res-card-tag tag-framework">Framework</span>
-        <h3>The Energy Leader Visibility Scorecard</h3>
-        <p>Rate yourself on 10 dimensions: publishing cadence, audience clarity, inbound conversations, platform presence, and more. See where you fall and what to fix first. Every score maps to a specific action.</p>
+
+      <div class="res-card" data-lanes="all">
+        <div class="res-card-top">
+          <div class="res-card-lanes"><span class="lane-tag lane-tag-all">All paths</span></div>
+          <span class="res-card-time">5 min</span>
+        </div>
+        <h3>Energy Leader Visibility Scorecard</h3>
+        <p>Rate yourself on 10 dimensions: cadence, audience clarity, inbound conversations, platform presence, and more. Every score maps to a specific action.</p>
         <a href="/scorecard" class="res-card-cta">Take the scorecard</a>
       </div>
-      <div class="res-card">
-        <span class="res-card-tag tag-framework">Framework</span>
-        <h3>50 LinkedIn Post Ideas for Energy Leaders</h3>
-        <p>Organized by content pillar: policy analysis, industry insight, contrarian takes, behind-the-scenes, and personal credibility. Pick one, write it, post it. Repeat until you need a system.</p>
-        <p class="res-card-coming">Coming soon</p>
+
+      <div class="res-card" data-lanes="all">
+        <div class="res-card-top">
+          <div class="res-card-lanes"><span class="lane-tag lane-tag-all">All paths</span></div>
+          <span class="res-card-time">10 min</span>
+        </div>
+        <h3>Content Pillar Worksheet</h3>
+        <p>Define 3-5 content pillars, assign topics, and generate post ideas. Includes a pillar quality test that catches overlap, gaps, and imbalance before you start publishing.</p>
+        <a href="/content-pillars" class="res-card-cta">Build your pillars</a>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- FEATURED: STORY SPRINT -->
+<!-- SECTION 2: GO DEEPER -->
+<section class="res-section res-gray">
+  <div class="container">
+    <div class="res-section-head">
+      <span class="step-badge step-2">Go deeper</span>
+      <h2>Evaluate whether you need a system</h2>
+      <p>These tools help you understand what a production partner actually does and whether you're ready for one.</p>
+    </div>
+    <div class="res-grid">
+
+      <div class="res-card" data-lanes="all">
+        <div class="res-card-top">
+          <div class="res-card-lanes"><span class="lane-tag lane-tag-all">All paths</span></div>
+          <span class="res-card-time">Interactive</span>
+        </div>
+        <h3>The Content Engine</h3>
+        <p>See how one recording session becomes 10+ distributed pieces. Pick your path inside the tool and explore every output, who creates it, and what it would cost you to DIY.</p>
+        <a href="/content-engine" class="res-card-cta">See the system map</a>
+      </div>
+
+      <div class="res-card" data-lanes="podcast">
+        <div class="res-card-top">
+          <div class="res-card-lanes"><span class="lane-tag lane-tag-podcast">Podcast</span></div>
+          <span class="res-card-time">5 min</span>
+        </div>
+        <h3>Podcast Launch Readiness Checklist</h3>
+        <p>12 questions to answer before you start a podcast. If you can't answer the first three, you're not ready. If you can answer all twelve, you're further along than most.</p>
+        <a href="/podcast-checklist" class="res-card-cta">Take the checklist</a>
+      </div>
+
+      <div class="res-card" data-lanes="all">
+        <div class="res-card-top">
+          <div class="res-card-lanes"><span class="lane-tag lane-tag-all">All paths</span></div>
+          <span class="res-card-time">PDF download</span>
+        </div>
+        <h3>Voice Profile Questionnaire</h3>
+        <p>19 questions that define how your brand sounds. Fill it out, send it back, and we will review your answers on a quick call. The starting point for any content partnership.</p>
+        <a href="/ClarityForge_Voice_Profile_Questionnaire.pdf" class="res-card-cta" download>Download the questionnaire</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: READY TO MOVE — STORY SPRINT -->
 <section class="featured">
   <div class="container">
     <div class="featured-inner">
       <div class="featured-text">
-        <p class="featured-label">Start Here</p>
+        <p class="featured-label">Ready to move?</p>
         <h2>The Story Sprint</h2>
-        <p>The fastest way to go from "I should be doing something" to a concrete plan you can execute. 60 minutes. You leave with a positioning statement, audience profiles, content pillars, and a 30-day publishing plan.</p>
+        <p>The fastest way to go from "I should be doing something" to a concrete plan you can execute. 60 minutes. You leave with everything you need to start building.</p>
         <a href="/story-sprint" class="btn-primary">Learn More</a>
+        <p style="margin-top: 0.75rem; font-size: 0.82rem; color: var(--medium-gray);">$500-750. 100% applies to your first month.</p>
       </div>
       <div class="featured-preview">
         <div class="featured-preview-item">
@@ -219,82 +306,42 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
   </div>
 </section>
 
-<!-- GUIDES -->
-<section class="res-section res-gray">
-  <div class="container">
-    <h2>Guides</h2>
-    <p class="res-section-sub">Deeper dives into specific topics. Written for energy leaders, not marketing generalists.</p>
-    <div class="res-grid">
-      <div class="res-card">
-        <span class="res-card-tag tag-guide">Guide</span>
-        <h3>Why Energy Leaders Need a Podcast (And How to Do It Right)</h3>
-        <p>The case for building a podcast as an authority engine, not a marketing channel. Who it works for, what it actually takes, and the mistakes that kill most shows in 6 months.</p>
-        <a href="/blog" class="res-card-cta">Read the guide</a>
-      </div>
-      <div class="res-card">
-        <span class="res-card-tag tag-guide">Guide</span>
-        <h3>LinkedIn for Energy Executives: A No-BS Playbook</h3>
-        <p>The 2026 algorithm rewards dwell time, comment depth, and engagement velocity. Here's how energy leaders can use those signals to build real authority, not vanity metrics.</p>
-        <a href="/blog" class="res-card-cta">Read the playbook</a>
-      </div>
-      <div class="res-card">
-        <span class="res-card-tag tag-guide">Guide</span>
-        <h3>What Does a Podcast Actually Cost?</h3>
-        <p>A transparent breakdown of podcast production costs: DIY, big agency, and boutique partner. Real numbers, not ranges. What you're paying for, what you're not, and where most people overspend.</p>
-        <a href="/blog" class="res-card-cta">Read the breakdown</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TOOLS -->
-<section class="res-section res-light">
-  <div class="container">
-    <h2>Tools</h2>
-    <p class="res-section-sub">Actionable templates and checklists you can use today.</p>
-    <div class="res-grid">
-      <div class="res-card">
-        <span class="res-card-tag tag-tool">Tool</span>
-        <h3>Content Pillar Worksheet</h3>
-        <p>A simple exercise to identify your 3-5 content pillars. The same process we use in every Story Sprint to define what you talk about and why it matters to your audience.</p>
-        <p class="res-card-coming">Coming soon</p>
-      </div>
-      <div class="res-card">
-        <span class="res-card-tag tag-tool">Tool</span>
-        <h3>Podcast Launch Readiness Checklist</h3>
-        <p>12 questions to answer before you start a podcast. If you can't answer the first three, you're not ready. If you can answer all twelve, you're further along than most.</p>
-        <p class="res-card-coming">Coming soon</p>
-      </div>
-      <div class="res-card">
-        <span class="res-card-tag tag-tool">Tool</span>
-        <h3>Voice Profile Questionnaire</h3>
-        <p>19 questions that define how your brand sounds. Fill it out and send it back. We'll review your answers on a quick call. No charge, no commitment. You'll walk away knowing exactly what your voice is.</p>
-        <a href="/ClarityForge_Voice_Profile_Questionnaire.pdf" class="res-card-cta" download>Download the questionnaire</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section style="padding: 3.5rem 0; background: var(--warm-white); text-align: center;">
-  <div class="container">
-    <h2 style="font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 1.8rem); color: var(--near-black); margin-bottom: 1.5rem;">Resources get you thinking. A Story Sprint gets you moving.</h2>
-    <a href="/story-sprint" class="btn-primary">Start a Story Sprint</a>
-    <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a href="/contact" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px;">Or just get in touch</a></p>
-    <p style="margin-top: 0.5rem; font-size: 0.78rem; color: var(--light-gray);">$500-$750. 100% applies to your first month. &nbsp;·&nbsp; <a href="/work" style="color: var(--gold); font-weight: 600;">View case studies</a></p>
-  </div>
-</section>
-
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand"><h3>ClarityForge Studios</h3><p>Media systems for energy leaders.<br>Bend, Oregon.</p></div>
-      <div class="footer-links"><h4>Navigate</h4><a href="/services">Services</a><a href="/podcast-production">Podcast Production</a><a href="/executive-visibility">Executive Visibility</a><a href="/strategic-partnerships">Strategic Partnerships</a><a href="/work">Work</a><a href="/about">About</a><a href="/blog">Blog</a></div>
-      <div class="footer-contact"><h4>Get in Touch</h4><a href="mailto:info@clarityforgestudios.com">info@clarityforgestudios.com</a><a href="tel:5125696612">(512) 569-6612</a><a href="/contact">Contact</a></div>
+      <div class="footer-links"><h4>Navigate</h4><a href="/services">Services</a><a href="/podcast-production">Podcast Production</a><a href="/executive-visibility">Executive Visibility</a><a href="/strategic-partnerships">Strategic Partnerships</a><a href="/work">Work</a><a href="/about">About</a><a href="/blog">Blog</a><a href="/resources">Resources</a></div>
+      <div class="footer-contact"><h4>Get in Touch</h4><a href="mailto:info&#64;clarityforgestudios.com">info&#64;clarityforgestudios.com</a><a href="tel:5125696612">(512) 569-6612</a><a href="/contact">Contact</a></div>
     </div>
     <div class="footer-bottom"><span>&copy; 2026 ClarityForge Studios LLC</span><a href="/privacy-policy">Privacy Policy</a></div>
   </div>
 </footer>
 <div class="mobile-cta"><a href="/story-sprint" class="btn-primary">Start a Story Sprint</a></div>
+
+<script>
+function filterLane(lane) {
+  var btns = document.querySelectorAll('.lane-filter-btn');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].classList.remove('active');
+  }
+  /* activate the clicked button */
+  var laneNames = ['all','podcast','exec','inst'];
+  for (var j = 0; j < btns.length; j++) {
+    if (laneNames[j] === lane) btns[j].classList.add('active');
+  }
+
+  var cards = document.querySelectorAll('.res-card');
+  for (var k = 0; k < cards.length; k++) {
+    var cardLanes = cards[k].getAttribute('data-lanes');
+    if (lane === 'all') {
+      cards[k].classList.remove('muted');
+    } else if (cardLanes === 'all' || cardLanes.indexOf(lane) > -1) {
+      cards[k].classList.remove('muted');
+    } else {
+      cards[k].classList.add('muted');
+    }
+  }
+}
+</script>
 </body>
 </html>
