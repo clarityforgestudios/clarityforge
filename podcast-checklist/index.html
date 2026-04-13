@@ -568,7 +568,7 @@ function unlock() {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       email: email,
-      source: 'Podcast Readiness Checklist',
+      source: 'Podcast Readiness Checklist', _gotcha: '',
       score: yesCount + '/12',
       tier: tier,
       foundation_passed: foundationOk ? 'Yes' : 'No',

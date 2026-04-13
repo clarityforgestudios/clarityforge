@@ -527,7 +527,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
       fetch('https://formspree.io/f/mdaprklq', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ email: email, source: 'Blog Subscribe', _subject: 'New blog subscriber: ' + email })
+        body: JSON.stringify({ email: email, source: 'Blog Subscribe', _gotcha: '', _subject: 'New blog subscriber: ' + email })
       })
       .then(function(res) {
         if (res.ok) {

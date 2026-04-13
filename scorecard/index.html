@@ -659,7 +659,7 @@ function unlock() {
 
   fetch('https://formspree.io/f/mdaprklq', {
     method:'POST', headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({ email:email, source:'Visibility Scorecard', total_score:tot, tier:tier, weakest_dimensions:weakest, all_scores:sc.map(function(s,i){return QS[i].d+': '+s;}).join(', ') })
+    body: JSON.stringify({ email:email, source:'Visibility Scorecard',_gotcha:'', total_score:tot, tier:tier, weakest_dimensions:weakest, all_scores:sc.map(function(s,i){return QS[i].d+': '+s;}).join(', ') })
   }).then(function(){showBreakdown();}).catch(function(){showBreakdown();});
 }
 
