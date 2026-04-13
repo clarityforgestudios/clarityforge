@@ -153,6 +153,55 @@ a{text-decoration:none;color:inherit}.container{width:var(--container);margin:0 
 
 @media(max-width:960px){.footer-grid{grid-template-columns:1fr}}
 @media(max-width:768px){body{font-size:16px}.nav-links{display:none}.nav-hamburger{display:block}.nav-inner .nav-cta{display:none}.hero{padding:calc(var(--section-pad)+3rem) 0 2.5rem}.pillar-btns{gap:.3rem}.pillar-btn{padding:.4rem .7rem;font-size:.72rem}.idea-card-top{padding:1rem 1.2rem .8rem}.idea-section{padding:.8rem 1.2rem}.idea-text{font-size:.95rem}.gate-form{flex-direction:column}.footer-bottom{flex-direction:column;gap:.5rem;text-align:center}}
+
+/* SERVICES DROPDOWN */
+.nav-dropdown-wrap { position: relative; }
+.nav-dropdown-trigger { cursor: pointer; }
+.nav-dropdown {
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  background: var(--deep-navy); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 0.5rem 0; min-width: 220px;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  transform: translateX(-50%) translateY(8px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  margin-top: 0.5rem;
+}
+.nav-dropdown-wrap:hover .nav-dropdown {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown a {
+  display: block; padding: 0.5rem 1.25rem; font-size: 0.85rem;
+  color: var(--light-gray); transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.nav-dropdown a:hover { background: rgba(255,182,77,0.1); color: var(--gold); }
+.nav-dropdown-all {
+  border-top: 1px solid rgba(255,255,255,0.08); margin-top: 0.25rem;
+  padding-top: 0.6rem; font-weight: 600; font-size: 0.82rem;
+}
+
+/* MOBILE MENU OPEN STATE */
+.nav-links.nav-open {
+  display: flex; flex-direction: column;
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: var(--deep-navy); padding: 1rem 5vw 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  gap: 0; z-index: 100;
+}
+.nav-links.nav-open li { padding: 0.5rem 0; }
+.nav-links.nav-open a { font-size: 1rem; }
+.nav-links.nav-open .nav-dropdown {
+  position: static; transform: none; opacity: 1; visibility: visible;
+  pointer-events: auto; box-shadow: none; border: none;
+  padding: 0 0 0 1rem; margin-top: 0.25rem; min-width: 0;
+  background: transparent;
+}
+.nav-hamburger-open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-hamburger-open span:nth-child(2) { opacity: 0; }
+.nav-hamburger-open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 </style>
 <link rel="canonical" href="https://clarityforgestudios.com/post-ideas">
 <meta property="og:title" content="LinkedIn Post Ideas for Energy Leaders | ClarityForge Studios">
@@ -180,7 +229,21 @@ a{text-decoration:none;color:inherit}.container{width:var(--container);margin:0 
 
 <nav class="nav"><div class="nav-inner">
 <a href="/" class="nav-logo"><svg viewBox="0 0 400 565" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 109.366V336.996C0 349.904 12.155 359.369 24.6645 356.282L131.375 329.656V216.829C131.375 204.174 139.985 193.139 152.292 190.102L383.591 132.752C393.112 130.373 399.747 121.869 399.747 112.1V19.8733C399.747 6.96569 387.592-2.4999 375.082 0.587803L15.0924 90.0807C6.22943 92.2573 0 100.255 0 109.366Z" fill="#FFB64D"/><path d="M375.488 269.137L131.426 329.676V551.991C131.426 564.291 146.873 569.707 154.571 560.141L246.645 435.974C246.898 435.62 247.303 435.417 247.708 435.316L383.54 401.503C393.214 399.074 400.051 390.418 400.051 380.446V288.372C400.051 275.565 387.997 266.1 375.538 269.187L375.488 269.137Z" fill="#FF682C"/></svg>ClarityForge Studios</a>
-<ul class="nav-links"><li><a href="/services">Services</a></li><li><a href="/work">Work</a></li><li><a href="/about">About</a></li><li><a href="/resources">Resources</a></li><li><a href="/contact">Contact</a></li><li><a href="/blog">Blog</a></li></ul>
+    <ul class="nav-links">
+      <li class="nav-dropdown-wrap"><a href="/services" class="nav-dropdown-trigger">Services</a>
+        <div class="nav-dropdown">
+          <a href="/podcast-production">Podcast Production</a>
+          <a href="/executive-visibility">Executive Visibility</a>
+          <a href="/strategic-partnerships">Strategic Partnerships</a>
+          <a href="/services" class="nav-dropdown-all">All Services</a>
+        </div>
+      </li>
+      <li><a href="/work">Work</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/resources">Resources</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
 <a href="/story-sprint" class="nav-cta">Start a Story Sprint</a>
 <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </div></nav>

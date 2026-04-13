@@ -196,6 +196,55 @@ a { text-decoration: none; color: inherit; }
   .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
   .hero-ctas { flex-direction: column; align-items: flex-start; }
 }
+
+/* SERVICES DROPDOWN */
+.nav-dropdown-wrap { position: relative; }
+.nav-dropdown-trigger { cursor: pointer; }
+.nav-dropdown {
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  background: var(--deep-navy); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 0.5rem 0; min-width: 220px;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  transform: translateX(-50%) translateY(8px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  margin-top: 0.5rem;
+}
+.nav-dropdown-wrap:hover .nav-dropdown {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown a {
+  display: block; padding: 0.5rem 1.25rem; font-size: 0.85rem;
+  color: var(--light-gray); transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.nav-dropdown a:hover { background: rgba(255,182,77,0.1); color: var(--gold); }
+.nav-dropdown-all {
+  border-top: 1px solid rgba(255,255,255,0.08); margin-top: 0.25rem;
+  padding-top: 0.6rem; font-weight: 600; font-size: 0.82rem;
+}
+
+/* MOBILE MENU OPEN STATE */
+.nav-links.nav-open {
+  display: flex; flex-direction: column;
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: var(--deep-navy); padding: 1rem 5vw 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  gap: 0; z-index: 100;
+}
+.nav-links.nav-open li { padding: 0.5rem 0; }
+.nav-links.nav-open a { font-size: 1rem; }
+.nav-links.nav-open .nav-dropdown {
+  position: static; transform: none; opacity: 1; visibility: visible;
+  pointer-events: auto; box-shadow: none; border: none;
+  padding: 0 0 0 1rem; margin-top: 0.25rem; min-width: 0;
+  background: transparent;
+}
+.nav-hamburger-open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-hamburger-open span:nth-child(2) { opacity: 0; }
+.nav-hamburger-open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 </style>
 <link rel="canonical" href="https://clarityforgestudios.com/executive-visibility">
 <meta property="og:title" content="Executive Visibility for Energy Leaders | ClarityForge Studios">
@@ -245,8 +294,15 @@ a { text-decoration: none; color: inherit; }
       </svg>
       ClarityForge Studios
     </a>
-    <ul class="nav-links">
-      <li><a href="/services">Services</a></li>
+        <ul class="nav-links">
+      <li class="nav-dropdown-wrap"><a href="/services" class="nav-dropdown-trigger">Services</a>
+        <div class="nav-dropdown">
+          <a href="/podcast-production">Podcast Production</a>
+          <a href="/executive-visibility">Executive Visibility</a>
+          <a href="/strategic-partnerships">Strategic Partnerships</a>
+          <a href="/services" class="nav-dropdown-all">All Services</a>
+        </div>
+      </li>
       <li><a href="/work">Work</a></li>
       <li><a href="/about">About</a></li>
       <li><a href="/resources">Resources</a></li>
@@ -334,6 +390,19 @@ a { text-decoration: none; color: inherit; }
     </div>
   </div>
 </section>
+
+<!-- MARKET CONTEXT ANCHOR BAR -->
+<div class="anchor-bar" style="background: var(--warm-white); padding: 1.5rem 0; border-bottom: 1px solid var(--border-gray);">
+  <div class="container">
+    <div style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; flex-wrap: wrap; font-size: 0.82rem; color: var(--medium-gray);">
+      <span style="padding: 0.4rem 1rem; background: var(--section-gray); border-radius: 100px; border: 1px solid var(--border-gray);">Freelance video editors: <strong style="color: var(--dark-gray);">$200-500/video</strong></span>
+      <span style="color: var(--border-gray);">|</span>
+      <span style="padding: 0.4rem 1rem; background: var(--section-gray); border-radius: 100px; border: 1px solid var(--border-gray);">In-house content hire: <strong style="color: var(--dark-gray);">$6,000-8,000+/mo</strong></span>
+      <span style="color: var(--border-gray);">|</span>
+      <span style="padding: 0.4rem 1rem; background: rgba(255,182,77,0.08); border-radius: 100px; border: 1px solid rgba(255,182,77,0.25); color: var(--navy); font-weight: 600;">ClarityForge: <strong style="color: var(--gold);">starts at $750/mo</strong></span>
+    </div>
+  </div>
+</div>
 
 <!-- PRICING TIERS -->
 <section class="tiers" id="pricing">
@@ -458,9 +527,12 @@ a { text-decoration: none; color: inherit; }
 </section>
 
 <!-- CTA -->
+<section class="closing-cta">
+  <div class="container">
+    <h2>Ready to match your visibility to your expertise?</h2>
     <a href="/story-sprint" class="btn-primary">Start a Story Sprint</a>
-        <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a href="/contact" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Or just get in touch</a></p>
-        <p style="margin-top: 0.5rem; font-size: 0.85rem;"><a href="/content-engine" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">See the full system map</a></p>
+    <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a href="/contact" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Or just get in touch</a></p>
+    <p style="margin-top: 0.5rem; font-size: 0.85rem;"><a href="/content-engine" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">See the full system map</a></p>
     <p class="closing-micro">Every engagement starts with a Story Sprint. You leave with a 90-day authority roadmap.</p>
   </div>
 </section>
@@ -506,9 +578,24 @@ a { text-decoration: none; color: inherit; }
   <a href="/story-sprint" class="btn-primary">Book a Story Sprint &rarr;</a>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-(function() {
-  var cta = document.getElementById('scrollCta'), closeBtn = document.getElementById('scrollCtaClose');
-  var shown = false, dismissed = false;
-  try { dismissed = sessionStorage.getItem('cf_scroll_cta_dismissed') === '1'; } catch(e) {}
-  if (!dismissed) { window.addEventListener('scroll', function() { if (shown || dismissed) return; if ((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight > 0.6) { cta.c
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<!-- LinkedIn Insight Tag -->
+<script type="text/javascript">
+_linkedin_partner_id = "9160108";
+window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+</script><script type="text/javascript">
+(function(l) {
+if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
+window.lintrk.q=[]}
+var s = document.getElementsByTagName("script")[0];
+var b = document.createElement("script");
+b.type = "text/javascript";b.async = true;
+b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+s.parentNode.insertBefore(b, s);})(window.lintrk);
+</script>
+<noscript>
+<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=9160108&fmt=gif" />
+</noscript>
+</body>
+</html>

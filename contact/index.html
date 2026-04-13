@@ -125,6 +125,55 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
   .form-card { padding: 2rem 1.5rem; }
   .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
 }
+
+/* SERVICES DROPDOWN */
+.nav-dropdown-wrap { position: relative; }
+.nav-dropdown-trigger { cursor: pointer; }
+.nav-dropdown {
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  background: var(--deep-navy); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 0.5rem 0; min-width: 220px;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  transform: translateX(-50%) translateY(8px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  margin-top: 0.5rem;
+}
+.nav-dropdown-wrap:hover .nav-dropdown {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown a {
+  display: block; padding: 0.5rem 1.25rem; font-size: 0.85rem;
+  color: var(--light-gray); transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.nav-dropdown a:hover { background: rgba(255,182,77,0.1); color: var(--gold); }
+.nav-dropdown-all {
+  border-top: 1px solid rgba(255,255,255,0.08); margin-top: 0.25rem;
+  padding-top: 0.6rem; font-weight: 600; font-size: 0.82rem;
+}
+
+/* MOBILE MENU OPEN STATE */
+.nav-links.nav-open {
+  display: flex; flex-direction: column;
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: var(--deep-navy); padding: 1rem 5vw 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  gap: 0; z-index: 100;
+}
+.nav-links.nav-open li { padding: 0.5rem 0; }
+.nav-links.nav-open a { font-size: 1rem; }
+.nav-links.nav-open .nav-dropdown {
+  position: static; transform: none; opacity: 1; visibility: visible;
+  pointer-events: auto; box-shadow: none; border: none;
+  padding: 0 0 0 1rem; margin-top: 0.25rem; min-width: 0;
+  background: transparent;
+}
+.nav-hamburger-open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-hamburger-open span:nth-child(2) { opacity: 0; }
+.nav-hamburger-open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 </style>
 <link rel="canonical" href="https://clarityforgestudios.com/contact">
 <meta property="og:title" content="Contact ClarityForge Studios">
@@ -159,11 +208,20 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
       </svg>
       ClarityForge Studios
     </a>
-    <ul class="nav-links">
-      <li><a href="/services">Services</a></li>
+        <ul class="nav-links">
+      <li class="nav-dropdown-wrap"><a href="/services" class="nav-dropdown-trigger">Services</a>
+        <div class="nav-dropdown">
+          <a href="/podcast-production">Podcast Production</a>
+          <a href="/executive-visibility">Executive Visibility</a>
+          <a href="/strategic-partnerships">Strategic Partnerships</a>
+          <a href="/services" class="nav-dropdown-all">All Services</a>
+        </div>
+      </li>
       <li><a href="/work">Work</a></li>
       <li><a href="/about">About</a></li>
-      <li><a href="/story-sprint">Story Sprint</a></li>
+      <li><a href="/resources">Resources</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/blog">Blog</a></li>
     </ul>
     <a href="/story-sprint" class="nav-cta">Start a Story Sprint</a>
     <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -270,11 +328,18 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
   </div>
 </section>
 
+<!-- NOT READY ESCAPE -->
+<section style="padding: 2rem 0; background: var(--section-gray); text-align: center; border-top: 1px solid var(--border-gray);">
+  <div class="container">
+    <p style="font-size: 0.92rem; color: var(--dark-gray);">Not ready to reach out? <a href="/resources" style="color: var(--navy); font-weight: 600; border-bottom: 1px solid var(--gold); padding-bottom: 1px; transition: color 0.2s;">Try one of our free tools</a> or <a href="/work" style="color: var(--navy); font-weight: 600; border-bottom: 1px solid var(--gold); padding-bottom: 1px; transition: color 0.2s;">see our case studies</a></p>
+  </div>
+</section>
+
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand"><h3>ClarityForge Studios</h3><p>Media systems for energy leaders.<br>Bend, Oregon.</p></div>
-      <div class="footer-links"><h4>Navigate</h4><a href="/services">Services</a><a href="/podcast-production">Podcast Production</a><a href="/executive-visibility">Executive Visibility</a><a href="/strategic-partnerships">Strategic Partnerships</a><a href="/work">Work</a><a href="/about">About</a><a href="/blog">Blog</a></div>
+      <div class="footer-links"><h4>Navigate</h4><a href="/services">Services</a><a href="/podcast-production">Podcast Production</a><a href="/executive-visibility">Executive Visibility</a><a href="/strategic-partnerships">Strategic Partnerships</a><a href="/work">Work</a><a href="/about">About</a><a href="/blog">Blog</a><a href="/resources">Resources</a></div>
       <div class="footer-contact"><h4>Get in Touch</h4><a href="mailto:info@clarityforgestudios.com">info@clarityforgestudios.com</a><a href="tel:5125696612">(512) 569-6612</a></div>
     </div>
     <div class="footer-bottom"><span>&copy; 2026 ClarityForge Studios LLC</span><a href="/privacy-policy">Privacy Policy</a></div>

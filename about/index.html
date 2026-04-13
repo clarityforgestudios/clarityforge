@@ -74,6 +74,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 .clients-list { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 .client-tag { padding: 0.5rem 1.2rem; border-radius: 8px; background: var(--pure-white); border: 1px solid var(--border-gray); font-size: 0.85rem; font-weight: 600; color: var(--navy); transition: border-color 0.2s, color 0.2s; }
 .client-tag:hover { border-color: var(--gold); color: var(--gold); }
+.client-tag-logo { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.35rem 1.2rem 0.35rem 0.35rem; }
 
 /* HOW WE WORK */
 .approach { padding: var(--section-pad) 0; background: var(--warm-white); }
@@ -147,6 +148,13 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 .mobile-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--deep-navy); padding: 0.75rem 1rem; border-top: 2px solid var(--gold); z-index: 99; text-align: center; }
 .mobile-cta .btn-primary { width: 100%; justify-content: center; font-size: 0.95rem; padding: 0.8rem; }
 
+.scroll-cta { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--deep-navy); border: 1px solid rgba(255,182,77,0.3); border-radius: 10px; padding: 1.25rem 1.5rem; box-shadow: 0 8px 30px rgba(0,0,0,0.2); z-index: 98; max-width: 320px; transform: translateY(120%); opacity: 0; transition: transform 0.4s var(--ease), opacity 0.4s; }
+.scroll-cta.visible { transform: translateY(0); opacity: 1; }
+.scroll-cta p { font-size: 0.88rem; color: var(--light-gray); margin-bottom: 0.75rem; line-height: 1.4; }
+.scroll-cta .btn-primary { font-size: 0.82rem; padding: 0.6rem 1.2rem; }
+.scroll-cta-close { position: absolute; top: 0.5rem; right: 0.75rem; background: none; border: none; color: var(--light-gray); font-size: 1.1rem; cursor: pointer; padding: 0.25rem; line-height: 1; }
+.scroll-cta-close:hover { color: var(--gold); }
+
 @media (max-width: 960px) {
   .approach-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
   .principles-grid { grid-template-columns: 1fr; }
@@ -163,12 +171,62 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
   .nav-inner .nav-cta { display: none; }
   .mobile-cta { display: block; }
   body { padding-bottom: 60px; }
+  .scroll-cta { display: none; }
   .founder-photo { width: 200px; height: 240px; }
   .facts-grid { grid-template-columns: 1fr 1fr; }
   .clients-inner { flex-direction: column; align-items: flex-start; }
   .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
   .hero-ctas { flex-direction: column; align-items: flex-start; }
 }
+
+/* SERVICES DROPDOWN */
+.nav-dropdown-wrap { position: relative; }
+.nav-dropdown-trigger { cursor: pointer; }
+.nav-dropdown {
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  background: var(--deep-navy); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 0.5rem 0; min-width: 220px;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  transform: translateX(-50%) translateY(8px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  margin-top: 0.5rem;
+}
+.nav-dropdown-wrap:hover .nav-dropdown {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown a {
+  display: block; padding: 0.5rem 1.25rem; font-size: 0.85rem;
+  color: var(--light-gray); transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.nav-dropdown a:hover { background: rgba(255,182,77,0.1); color: var(--gold); }
+.nav-dropdown-all {
+  border-top: 1px solid rgba(255,255,255,0.08); margin-top: 0.25rem;
+  padding-top: 0.6rem; font-weight: 600; font-size: 0.82rem;
+}
+
+/* MOBILE MENU OPEN STATE */
+.nav-links.nav-open {
+  display: flex; flex-direction: column;
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: var(--deep-navy); padding: 1rem 5vw 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  gap: 0; z-index: 100;
+}
+.nav-links.nav-open li { padding: 0.5rem 0; }
+.nav-links.nav-open a { font-size: 1rem; }
+.nav-links.nav-open .nav-dropdown {
+  position: static; transform: none; opacity: 1; visibility: visible;
+  pointer-events: auto; box-shadow: none; border: none;
+  padding: 0 0 0 1rem; margin-top: 0.25rem; min-width: 0;
+  background: transparent;
+}
+.nav-hamburger-open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-hamburger-open span:nth-child(2) { opacity: 0; }
+.nav-hamburger-open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 </style>
 <link rel="canonical" href="https://clarityforgestudios.com/about">
 <meta property="og:title" content="About ClarityForge Studios | Nate Peavey">
@@ -203,8 +261,15 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
       </svg>
       ClarityForge Studios
     </a>
-    <ul class="nav-links">
-      <li><a href="/services">Services</a></li>
+        <ul class="nav-links">
+      <li class="nav-dropdown-wrap"><a href="/services" class="nav-dropdown-trigger">Services</a>
+        <div class="nav-dropdown">
+          <a href="/podcast-production">Podcast Production</a>
+          <a href="/executive-visibility">Executive Visibility</a>
+          <a href="/strategic-partnerships">Strategic Partnerships</a>
+          <a href="/services" class="nav-dropdown-all">All Services</a>
+        </div>
+      </li>
       <li><a href="/work">Work</a></li>
       <li><a href="/about">About</a></li>
       <li><a href="/resources">Resources</a></li>
@@ -242,6 +307,20 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
       <p>The energy sector has an infrastructure problem. The people who understand the grid, who've spent their careers in procurement and policy, who can actually explain what's happening with transmission, renewables, natural gas, and the markets that connect them. Those people are almost entirely absent from the public conversation.</p>
       <p>Not because they don't have something to say. Because nobody built them the system to say it consistently, in the places where attention lives, with the production quality and distribution reach their expertise deserves.</p>
       <p>ClarityForge was built to solve that problem. We work with a small number of energy leaders and organizations at a time because the work requires depth, not volume. Every engagement is built around a system that compounds: podcast production, executive visibility, content distribution, and institutional amplification.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS BAND -->
+<section class="clients-band">
+  <div class="container">
+    <div class="clients-inner">
+      <span class="clients-label">Current &amp; Recent Clients:</span>
+      <div class="clients-list">
+        <a href="/work/energy-capital" class="client-tag client-tag-logo"><img src="/energy-capital-logo.jpg" alt="The Energy Capital Podcast" style="height: 42px; width: 42px; border-radius: 6px; object-fit: cover;"><span>Energy Capital Podcast</span></a>
+        <a href="/work/project-vanguard" class="client-tag">Project Vanguard</a>
+        <span class="client-tag">Texas Energy and Power</span>
+      </div>
     </div>
   </div>
 </section>
@@ -379,6 +458,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
     <a href="/story-sprint" class="btn-primary">Start a Story Sprint</a>
         <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a href="/contact" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Or just get in touch</a></p>
     <p class="closing-micro">Every engagement starts here. 60 minutes. You leave with a plan.</p>
+    <p style="margin-top: 1rem; font-size: 0.85rem;"><a href="/services" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">See our services</a> &nbsp;&middot;&nbsp; <a href="/resources" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Explore free tools</a></p>
   </div>
 </section>
 
@@ -386,14 +466,42 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand"><h3>ClarityForge Studios</h3><p>Media systems for energy leaders.<br>Bend, Oregon.</p></div>
-      <div class="footer-links"><h4>Navigate</h4><a href="/services">Services</a><a href="/podcast-production">Podcast Production</a><a href="/executive-visibility">Executive Visibility</a><a href="/strategic-partnerships">Strategic Partnerships</a><a href="/work">Work</a><a href="/about">About</a><a href="/blog">Blog</a></div>
+      <div class="footer-links"><h4>Navigate</h4><a href="/services">Services</a><a href="/podcast-production">Podcast Production</a><a href="/executive-visibility">Executive Visibility</a><a href="/strategic-partnerships">Strategic Partnerships</a><a href="/work">Work</a><a href="/about">About</a><a href="/blog">Blog</a><a href="/resources">Resources</a></div>
       <div class="footer-contact"><h4>Get in Touch</h4><a href="mailto:info@clarityforgestudios.com">info@clarityforgestudios.com</a><a href="tel:5125696612">(512) 569-6612</a><a href="/contact">Contact</a></div>
     </div>
     <div class="footer-bottom"><span>&copy; 2026 ClarityForge Studios LLC</span><a href="/privacy-policy">Privacy Policy</a></div>
   </div>
 </footer>
 <div class="mobile-cta"><a href="/story-sprint" class="btn-primary">Start a Story Sprint</a></div>
+
+<div class="scroll-cta" id="scrollCta">
+  <button class="scroll-cta-close" id="scrollCtaClose" aria-label="Dismiss">&times;</button>
+  <p>Ready to explore this? Start with a Story Sprint.</p>
+  <a href="/story-sprint" class="btn-primary">Book a Story Sprint &rarr;</a>
+</div>
 <!-- LinkedIn Insight Tag -->
+<script>
+(function() {
+  var cta = document.getElementById('scrollCta');
+  var closeBtn = document.getElementById('scrollCtaClose');
+  var shown = false;
+  var dismissed = false;
+  try { dismissed = sessionStorage.getItem('cf_scroll_cta_dismissed') === '1'; } catch(e) {}
+  if (!dismissed) {
+    window.addEventListener('scroll', function() {
+      if (shown || dismissed) return;
+      var scrollPct = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+      if (scrollPct > 0.6) { cta.classList.add('visible'); shown = true; }
+    });
+  }
+  closeBtn.addEventListener('click', function() {
+    cta.classList.remove('visible');
+    dismissed = true;
+    try { sessionStorage.setItem('cf_scroll_cta_dismissed', '1'); } catch(e) {}
+  });
+})();
+</script>
+
 <script type="text/javascript">
 _linkedin_partner_id = "9160108";
 window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];

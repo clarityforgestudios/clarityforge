@@ -242,6 +242,13 @@ a { text-decoration: none; color: inherit; }
   transition: color 0.2s;
 }
 .lane-proof a:hover { color: var(--gold); }
+.lane-price-signal {
+  font-size: 0.92rem; color: var(--navy); margin-top: 0.75rem;
+  padding: 0.5rem 1rem; background: rgba(255,182,77,0.08);
+  border-left: 3px solid var(--gold); border-radius: 0 6px 6px 0;
+  display: inline-block;
+}
+.lane-price-signal strong { font-size: 1.05rem; color: var(--gold); }
 .lane-cta-link {
   display: inline-flex; align-items: center; gap: 0.5rem;
   margin-top: 1.25rem; font-weight: 700; font-size: 0.95rem;
@@ -479,6 +486,55 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 480px) {
   .hero-ctas { flex-direction: column; align-items: flex-start; }
 }
+
+/* SERVICES DROPDOWN */
+.nav-dropdown-wrap { position: relative; }
+.nav-dropdown-trigger { cursor: pointer; }
+.nav-dropdown {
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  background: var(--deep-navy); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 0.5rem 0; min-width: 220px;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  transform: translateX(-50%) translateY(8px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  margin-top: 0.5rem;
+}
+.nav-dropdown-wrap:hover .nav-dropdown {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown a {
+  display: block; padding: 0.5rem 1.25rem; font-size: 0.85rem;
+  color: var(--light-gray); transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.nav-dropdown a:hover { background: rgba(255,182,77,0.1); color: var(--gold); }
+.nav-dropdown-all {
+  border-top: 1px solid rgba(255,255,255,0.08); margin-top: 0.25rem;
+  padding-top: 0.6rem; font-weight: 600; font-size: 0.82rem;
+}
+
+/* MOBILE MENU OPEN STATE */
+.nav-links.nav-open {
+  display: flex; flex-direction: column;
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: var(--deep-navy); padding: 1rem 5vw 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  gap: 0; z-index: 100;
+}
+.nav-links.nav-open li { padding: 0.5rem 0; }
+.nav-links.nav-open a { font-size: 1rem; }
+.nav-links.nav-open .nav-dropdown {
+  position: static; transform: none; opacity: 1; visibility: visible;
+  pointer-events: auto; box-shadow: none; border: none;
+  padding: 0 0 0 1rem; margin-top: 0.25rem; min-width: 0;
+  background: transparent;
+}
+.nav-hamburger-open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-hamburger-open span:nth-child(2) { opacity: 0; }
+.nav-hamburger-open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 </style>
 <link rel="canonical" href="https://clarityforgestudios.com/services">
 <meta property="og:title" content="Podcast Production & Brand Strategy for Energy Leaders | ClarityForge">
@@ -514,8 +570,15 @@ a { text-decoration: none; color: inherit; }
       </svg>
       ClarityForge Studios
     </a>
-    <ul class="nav-links">
-      <li><a href="/services">Services</a></li>
+        <ul class="nav-links">
+      <li class="nav-dropdown-wrap"><a href="/services" class="nav-dropdown-trigger">Services</a>
+        <div class="nav-dropdown">
+          <a href="/podcast-production">Podcast Production</a>
+          <a href="/executive-visibility">Executive Visibility</a>
+          <a href="/strategic-partnerships">Strategic Partnerships</a>
+          <a href="/services" class="nav-dropdown-all">All Services</a>
+        </div>
+      </li>
       <li><a href="/work">Work</a></li>
       <li><a href="/about">About</a></li>
       <li><a href="/resources">Resources</a></li>
@@ -585,6 +648,7 @@ a { text-decoration: none; color: inherit; }
           <li>Sponsorship strategy and packaging (when your audience is ready)</li>
         </ul>
         <p class="lane-outcome">Outcome: A podcast-to-platform engine that runs every week without you thinking about production.</p>
+        <p class="lane-price-signal">Starting at <strong>$400/month</strong></p>
         <p class="lane-proof">We doubled podcast downloads for the Energy Capital Podcast in six months. <a href="/work/energy-capital">Read the case study</a></p>
         <a href="/podcast-production" class="lane-cta-link">Explore Podcast Authority</a>
       </div>
@@ -614,6 +678,7 @@ a { text-decoration: none; color: inherit; }
           <li>KPI tracking tied to real outcomes (inbound DMs, calls booked, profile views from target titles)</li>
         </ul>
         <p class="lane-outcome">Outcome: A visible, credible executive presence that drives real business conversations.</p>
+        <p class="lane-price-signal">Starting at <strong>$750/month</strong></p>
         <p class="lane-proof">Our executive authority roadmaps have generated inbound advisory conversations within the first 60 days.</p>
         <a href="/executive-visibility" class="lane-cta-link">Explore Executive Visibility</a>
       </div>
@@ -645,6 +710,7 @@ a { text-decoration: none; color: inherit; }
           <li>Performance dashboard tracking institutional engagement quality</li>
         </ul>
         <p class="lane-outcome">Outcome: Firm-wide authority that compounds across your entire leadership team.</p>
+        <p class="lane-price-signal">Starting at <strong>$1,750/month</strong></p>
         <p class="lane-proof">We designed institutional video series and authority infrastructure for energy and national security firms.</p>
         <a href="/strategic-partnerships" class="lane-cta-link">Explore Strategic Partnerships</a>
       </div>
@@ -758,7 +824,7 @@ a { text-decoration: none; color: inherit; }
 
       <details class="faq-item">
         <summary>We're a small team. Is this realistic?</summary>
-        <p class="faq-answer">Our smallest engagement is $750/month. Our largest is $7,500+. We work with solo experts and firms with 20+ leaders. The Story Sprint exists specifically to figure out what makes sense before you commit to anything.</p>
+        <p class="faq-answer">Our smallest engagement is a $400/month podcast pilot. Executive visibility starts at $750/month. Our largest institutional partnerships run $7,500+. We work with solo experts and firms with 20+ leaders. The Story Sprint exists specifically to figure out what makes sense before you commit to anything.</p>
       </details>
 
       <details class="faq-item">
@@ -783,7 +849,7 @@ a { text-decoration: none; color: inherit; }
     <a href="/story-sprint" class="btn-primary">Start Your Story Sprint</a>
         <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a href="/contact" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Or just get in touch</a></p>
     <p class="closing-micro">100% of clients start here. 100% retention rate.</p>
-    <a href="#lead-magnet" class="closing-secondary">Not ready yet? Download: 5 Signs Your Expertise Is Bigger Than Your Platform</a>
+    <a href="/resources" class="closing-secondary">Not ready yet? Explore our free tools and resources</a>
   </div>
 </section>
 
