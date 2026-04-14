@@ -168,6 +168,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 
 /* SERVICES DROPDOWN */
 .nav-dropdown-wrap { position: relative; }
+.nav-dropdown-wrap::before { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 1rem; }
 .nav-dropdown-trigger { cursor: pointer; }
 .nav-dropdown {
   position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
@@ -177,7 +178,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
   transition: opacity 0.2s, transform 0.2s;
   transform: translateX(-50%) translateY(8px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  margin-top: 0.5rem;
+  margin-top: 0; padding-top: 0.5rem;
 }
 .nav-dropdown-wrap:hover .nav-dropdown {
   opacity: 1; visibility: visible; pointer-events: auto;
@@ -479,7 +480,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
     <p class="cta-body">Every engagement starts with a Story Sprint to define your message, your audience, and the system that fits. 60 minutes. You leave with a plan.</p>
     <a href="/story-sprint" class="btn-primary">Start a Story Sprint</a>
         <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a href="/contact" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Or just get in touch</a></p>
-    <p style="margin-top: 0.5rem; font-size: 0.85rem;"><a href="/resources" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Not ready yet? Try a free tool</a></p>
+    <p style="margin-top: 0; padding-top: 0.5rem; font-size: 0.85rem;"><a href="/resources" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Not ready yet? Try a free tool</a></p>
     <p class="closing-micro">100% of clients start here. 100% retention rate.</p>
   </div>
 </section>

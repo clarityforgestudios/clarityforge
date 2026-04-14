@@ -77,14 +77,14 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 }
 .form-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%236B7785' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
 .form-textarea { min-height: 120px; resize: vertical; }
-.form-context { font-size: 0.82rem; color: var(--navy); background: rgba(255,182,77,0.08); border-left: 3px solid var(--gold); padding: 0.75rem 1rem; border-radius: 0 6px 6px 0; margin-top: 0.5rem; display: none; line-height: 1.45; }
+.form-context { font-size: 0.82rem; color: var(--navy); background: rgba(255,182,77,0.08); border-left: 3px solid var(--gold); padding: 0.75rem 1rem; border-radius: 0 6px 6px 0; margin-top: 0; padding-top: 0.5rem; display: none; line-height: 1.45; }
 .form-context.visible { display: block; }
 .form-submit {
   display: inline-flex; align-items: center; gap: 0.5rem;
   background: var(--gold); color: var(--navy); font-family: var(--font-body);
   font-weight: 700; padding: 0.9rem 2.5rem; border-radius: 6px; font-size: 1rem;
   border: none; cursor: pointer; transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
-  box-shadow: 0 2px 12px rgba(255,182,77,0.2); margin-top: 0.5rem;
+  box-shadow: 0 2px 12px rgba(255,182,77,0.2); margin-top: 0; padding-top: 0.5rem;
 }
 .form-submit:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(232,113,58,0.3); }
 
@@ -128,6 +128,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 
 /* SERVICES DROPDOWN */
 .nav-dropdown-wrap { position: relative; }
+.nav-dropdown-wrap::before { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 1rem; }
 .nav-dropdown-trigger { cursor: pointer; }
 .nav-dropdown {
   position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
@@ -137,7 +138,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
   transition: opacity 0.2s, transform 0.2s;
   transform: translateX(-50%) translateY(8px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  margin-top: 0.5rem;
+  margin-top: 0; padding-top: 0.5rem;
 }
 .nav-dropdown-wrap:hover .nav-dropdown {
   opacity: 1; visibility: visible; pointer-events: auto;
@@ -317,7 +318,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
           <p class="sidebar-label">Contact directly</p>
           <a href="mailto:nathan@clarityforgestudios.com" class="sidebar-link">nathan@clarityforgestudios.com</a>
           <a href="tel:5125696612" class="sidebar-link">(512) 569-6612</a>
-          <p style="font-size: 0.78rem; color: var(--medium-gray); margin-top: 0.5rem;">Same 24-hour response time.</p>
+          <p style="font-size: 0.78rem; color: var(--medium-gray); margin-top: 0; padding-top: 0.5rem;">Same 24-hour response time.</p>
         </div>
         <div class="sidebar-block">
           <p class="sidebar-label">Location</p>

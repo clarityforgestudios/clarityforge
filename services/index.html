@@ -196,60 +196,40 @@ a { text-decoration: none; color: inherit; }
   background: var(--warm-white);
 }
 .lane {
-  display: grid; grid-template-columns: 48px 1fr; gap: 1.5rem;
-  padding: 2.5rem 0; align-items: start;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+  padding: 3rem 0; align-items: center;
 }
 .lane + .lane { border-top: 1px solid var(--border-gray); }
-.lane-visual {
-  display: flex; align-items: flex-start; justify-content: center;
-  padding-top: 0.25rem;
-}
-.lane-icon-large {
-  width: 40px; height: 40px; color: var(--gold); opacity: 0.7;
-}
+.lane:nth-child(even) { direction: rtl; }
+.lane:nth-child(even) > * { direction: ltr; }
 .lane-label {
-  font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
   letter-spacing: 0.12em; color: var(--gold); margin-bottom: 0.5rem;
 }
-.lane-text {
-  max-width: 780px;
-}
+.lane-text { max-width: 540px; }
 .lane h3 {
-  font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2rem);
+  font-family: var(--font-display); font-size: clamp(1.5rem, 2.8vw, 1.85rem);
   color: var(--near-black); margin-bottom: 0.4rem; line-height: 1.25;
 }
 .lane .lane-for {
-  font-size: 0.88rem; color: var(--medium-gray); margin-bottom: 1.25rem;
+  font-size: 0.85rem; color: var(--medium-gray); margin-bottom: 1rem;
   font-style: italic;
 }
-.lane p { margin-bottom: 1rem; }
-.lane-includes {
-  list-style: none; margin: 1.25rem 0; padding: 0;
+.lane > .lane-text > p { margin-bottom: 1rem; font-size: 0.95rem; }
+.lane-highlights {
+  margin: 1.25rem 0; display: flex; flex-direction: column; gap: 0.6rem;
 }
-.lane-includes li {
-  padding: 0.35rem 0 0.35rem 1.6rem; position: relative;
-  font-size: 0.92rem; color: var(--dark-gray);
+.lane-highlight {
+  display: flex; align-items: center; gap: 0.7rem;
+  font-size: 0.88rem; color: var(--dark-gray); font-weight: 500;
+  padding-left: 1.4rem; position: relative;
 }
-.lane-includes li::before {
-  content: ''; position: absolute; left: 0; top: 0.75rem;
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--gold);
+.lane-highlight::before {
+  content: ''; position: absolute; left: 0; top: 0.55rem;
+  width: 7px; height: 7px; border-radius: 50%; background: var(--gold);
 }
-.lane-outcome {
-  font-weight: 600; color: var(--near-black); margin-top: 1rem;
-}
-.lane-proof {
-  font-size: 0.88rem; color: var(--medium-gray); margin-top: 0.75rem;
-  font-style: italic;
-}
-.lane-proof a {
-  color: var(--navy); font-weight: 600;
-  border-bottom: 1px solid var(--gold);
-  transition: color 0.2s;
-}
-.lane-proof a:hover { color: var(--gold); }
 .lane-price-signal {
-  font-size: 0.92rem; color: var(--navy); margin-top: 0.75rem;
+  font-size: 0.92rem; color: var(--navy); margin-top: 1rem;
   padding: 0.5rem 1rem; background: rgba(255,182,77,0.08);
   border-left: 3px solid var(--gold); border-radius: 0 6px 6px 0;
   display: inline-block;
@@ -258,16 +238,36 @@ a { text-decoration: none; color: inherit; }
 .lane-cta-link {
   display: inline-flex; align-items: center; gap: 0.5rem;
   margin-top: 1.25rem; font-weight: 700; font-size: 0.95rem;
-  color: var(--navy); transition: color 0.2s, gap 0.2s;
+  color: var(--navy); background: var(--gold); padding: 0.75rem 1.6rem;
+  border-radius: 6px; transition: background 0.2s, transform 0.15s, color 0.2s;
+  box-shadow: 0 2px 8px rgba(255,182,77,0.2);
 }
-.lane-cta-link:hover { color: var(--gold); gap: 0.7rem; }
+.lane-cta-link:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-2px); gap: 0.7rem; box-shadow: 0 4px 16px rgba(232,113,58,0.3); }
 .lane-cta-link::after { content: '\2192'; }
 .lane-visual {
-  display: flex; align-items: center; justify-content: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: var(--section-gray); border-radius: 12px;
+  padding: 2.5rem 2rem; min-height: 240px; text-align: center; gap: 1.5rem;
 }
-.lane-icon-large {
-  width: 200px; height: 200px; color: var(--gold); opacity: 0.2;
+.lane-stat { display: flex; flex-direction: column; align-items: center; }
+.lane-stat-number {
+  font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem);
+  color: var(--gold); line-height: 1.1;
 }
+.lane-stat-label {
+  font-size: 0.82rem; color: var(--medium-gray); margin-top: 0.3rem;
+  max-width: 220px;
+}
+.lane-proof {
+  font-size: 0.82rem; color: var(--medium-gray); font-style: italic;
+  max-width: 280px; line-height: 1.45;
+}
+.lane-proof a {
+  color: var(--navy); font-weight: 600;
+  border-bottom: 1px solid var(--gold); transition: color 0.2s;
+}
+.lane-proof a:hover { color: var(--gold); }
+
 
 /* ========================================
    DIFFERENTIATION
@@ -473,6 +473,9 @@ a { text-decoration: none; color: inherit; }
    RESPONSIVE
    ======================================== */
 @media (max-width: 960px) {
+  .lane { grid-template-columns: 1fr; gap: 2rem; }
+  .lane:nth-child(even) { direction: ltr; }
+  .lane-visual { min-height: auto; padding: 2rem; }
   .diff-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .journey-steps { flex-direction: column; align-items: center; gap: 2rem; }
@@ -488,6 +491,13 @@ a { text-decoration: none; color: inherit; }
   .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
   .audience-tags { gap: 0.6rem; }
   .audience-tag { font-size: 0.82rem; padding: 0.5rem 1.1rem; }
+  .lane > .lane-text > p { font-size: 0.88rem; }
+  .lane-for { font-size: 0.82rem !important; }
+  .lane-stat-number { font-size: 2rem; }
+  .lane-proof { font-size: 0.78rem; }
+  .lane-visual { padding: 1.5rem; min-height: auto; }
+  .diff-item { font-size: 0.85rem; }
+  .faq-answer { font-size: 0.88rem; }
 }
 @media (max-width: 480px) {
   .hero-ctas { flex-direction: column; align-items: flex-start; }
@@ -495,6 +505,7 @@ a { text-decoration: none; color: inherit; }
 
 /* SERVICES DROPDOWN */
 .nav-dropdown-wrap { position: relative; }
+.nav-dropdown-wrap::before { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 1rem; }
 .nav-dropdown-trigger { cursor: pointer; }
 .nav-dropdown {
   position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
@@ -504,7 +515,7 @@ a { text-decoration: none; color: inherit; }
   transition: opacity 0.2s, transform 0.2s;
   transform: translateX(-50%) translateY(8px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  margin-top: 0.5rem;
+  margin-top: 0; padding-top: 0.5rem;
 }
 .nav-dropdown-wrap:hover .nav-dropdown {
   opacity: 1; visibility: visible; pointer-events: auto;
@@ -633,105 +644,79 @@ a { text-decoration: none; color: inherit; }
   </div>
 </section>
 
-<!-- ===== SECTION 3: THREE SERVICE LANES (EXPANDED) ===== -->
+<!-- ===== SECTION 3: THREE SERVICE LANES ===== -->
 <section class="lanes">
   <div class="container">
 
     <!-- LANE 1: PODCAST AUTHORITY -->
     <div class="lane">
-      <div class="lane-visual">
-        <svg class="lane-icon-large" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="65" y="20" width="70" height="110" rx="35"/>
-          <path d="M55 100a45 45 0 0090 0"/>
-          <line x1="100" y1="145" x2="100" y2="175"/>
-          <line x1="70" y1="175" x2="130" y2="175"/>
-        </svg>
-      </div>
       <div class="lane-text">
-        <p class="lane-label">Lane 1</p>
-        <h3>Podcast Authority</h3>
-        <p class="lane-for">For energy policy experts, analysts, and conference speakers ready to scale.</p>
-        <p>You have deep expertise and an audience that wants to hear from you more often. What's missing is the operational backbone to make that happen consistently. Production, distribution, clips, newsletters, growth strategy. That's what we build.</p>
-        <p>You show up and record. We turn each conversation into a media ecosystem that compounds every week.</p>
-        <ul class="lane-includes">
-          <li>Full podcast production (editing, mastering, distribution)</li>
-          <li>Short-form clips optimized for LinkedIn, YouTube, and social</li>
-          <li>Newsletter/Substack production aligned with your voice</li>
-          <li>Show notes, timestamps, and SEO-optimized episode content</li>
-          <li>Growth strategy and distribution sequencing</li>
-          <li>Sponsorship strategy and packaging (when your audience is ready)</li>
-        </ul>
-        <p class="lane-outcome">Outcome: A podcast-to-platform engine that runs every week without you thinking about production.</p>
+        <p class="lane-label">Podcast Authority</p>
+        <h3>You record. We build the engine.</h3>
+        <p class="lane-for">For energy experts, analysts, and conference speakers ready to own their conversation.</p>
+        <p>One recording becomes a full week of distributed content: edited episodes, clips, newsletters, show notes, and guest amplification. You show up once. The system does the rest.</p>
+        <div class="lane-highlights">
+          <div class="lane-highlight">Full production, editing, and distribution</div>
+          <div class="lane-highlight">3-4 short-form clips per episode, platform-optimized</div>
+          <div class="lane-highlight">Growth strategy and distribution sequencing</div>
+        </div>
         <p class="lane-price-signal">Starting at <strong>$400/month</strong></p>
-        <p class="lane-proof">We doubled podcast downloads for the Energy Capital Podcast in six months. <a href="/work/energy-capital">Read the case study</a></p>
-        <a href="/podcast-production" class="lane-cta-link">Explore Podcast Authority</a>
+        <a href="/podcast-production" class="lane-cta-link">Explore Podcast Production</a>
+      </div>
+      <div class="lane-visual">
+        <div class="lane-stat">
+          <span class="lane-stat-number">10+</span>
+          <span class="lane-stat-label">distributed pieces from one recording</span>
+        </div>
+        <p class="lane-proof">We doubled downloads for the Energy Capital Podcast in six months. <a href="/work/energy-capital">Read the case study</a></p>
       </div>
     </div>
 
     <!-- LANE 2: EXECUTIVE VISIBILITY -->
     <div class="lane">
-      <div class="lane-visual">
-        <svg class="lane-icon-large" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="100" cy="60" r="30"/>
-          <path d="M40 180v-16a48 48 0 0196 0"/>
-          <polyline points="140,115 155,100 170,115"/>
-          <line x1="155" y1="100" x2="155" y2="150"/>
-        </svg>
-      </div>
       <div class="lane-text">
-        <p class="lane-label">Lane 2</p>
-        <h3>Executive Visibility</h3>
+        <p class="lane-label">Executive Visibility</p>
+        <h3>Your credibility is real. Your visibility should match it.</h3>
         <p class="lane-for">For COOs, CEOs, and senior advisors in energy with deep expertise and room to grow their presence.</p>
-        <p>You've spent decades building expertise in energy procurement, policy, or infrastructure. You can explain the grid, model a PPA, or navigate a regulatory process. Your credibility is real. Your visibility should match it.</p>
-        <p>We build executive authority systems that connect your expertise to the people who need to see it. Video, LinkedIn positioning, content systems, and audience targeting tied to real business outcomes.</p>
-        <ul class="lane-includes">
-          <li>90-day authority roadmap targeting your specific buyer</li>
-          <li>Video content (batch filming sessions, short-form breakdowns)</li>
-          <li>LinkedIn post copywriting and positioning strategy</li>
-          <li>Connection and engagement strategy tied to your ICP</li>
-          <li>KPI tracking tied to real outcomes (inbound DMs, calls booked, profile views from target titles)</li>
-        </ul>
-        <p class="lane-outcome">Outcome: A visible, credible executive presence that drives real business conversations.</p>
+        <p>We build authority systems that connect your expertise to the people who need to see it. Video, LinkedIn positioning, and audience targeting tied to real business outcomes.</p>
+        <div class="lane-highlights">
+          <div class="lane-highlight">Batch filming sessions: 6-8 videos from one sitting</div>
+          <div class="lane-highlight">LinkedIn copywriting and positioning strategy</div>
+          <div class="lane-highlight">KPI tracking tied to inbound conversations and calls booked</div>
+        </div>
         <p class="lane-price-signal">Starting at <strong>$750/month</strong></p>
-        <p class="lane-proof">Our executive authority roadmaps have generated inbound advisory conversations within the first 60 days.</p>
         <a href="/executive-visibility" class="lane-cta-link">Explore Executive Visibility</a>
+      </div>
+      <div class="lane-visual">
+        <div class="lane-stat">
+          <span class="lane-stat-number">60 days</span>
+          <span class="lane-stat-label">to first inbound advisory conversations</span>
+        </div>
+        <p class="lane-proof">Our authority roadmaps have generated inbound advisory conversations within the first 60 days.</p>
       </div>
     </div>
 
     <!-- LANE 3: STRATEGIC MEDIA PARTNER -->
     <div class="lane">
-      <div class="lane-visual">
-        <svg class="lane-icon-large" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="100" cy="100" r="24"/>
-          <circle cx="40" cy="40" r="16"/>
-          <circle cx="160" cy="40" r="16"/>
-          <circle cx="40" cy="160" r="16"/>
-          <circle cx="160" cy="160" r="16"/>
-          <line x1="80" y1="84" x2="52" y2="52"/>
-          <line x1="120" y1="84" x2="148" y2="52"/>
-          <line x1="80" y1="116" x2="52" y2="148"/>
-          <line x1="120" y1="116" x2="148" y2="148"/>
-        </svg>
-      </div>
       <div class="lane-text">
-        <p class="lane-label">Lane 3</p>
-        <h3>Strategic Media Partner</h3>
-        <p class="lane-for">For infrastructure firms, consulting firms, trade associations, and organizations with leadership depth.</p>
-        <p>Your organization has leaders who could be shaping the industry conversation. Right now, that potential is untapped. We build authority infrastructure across your leadership bench so the market sees the full depth of your team.</p>
-        <p>Topic ownership mapping, multi-leader amplification, and performance dashboards that track signal quality, not vanity metrics. When your leaders are visible, your organization attracts better talent, stronger partners, and more influence.</p>
-        <ul class="lane-includes">
-          <li>Everything in Lane 1 or 2, plus:</li>
-          <li>Messaging architecture across your leadership bench</li>
-          <li>Topic ownership mapping (who speaks to what)</li>
-          <li>Monthly Signal Brief: priority narratives, opportunities, emerging issues</li>
-          <li>Cross-post coordination so multiple leaders amplify without overlap</li>
-          <li>Quarterly strategy workshop</li>
-          <li>Performance dashboard tracking institutional engagement quality</li>
-        </ul>
-        <p class="lane-outcome">Outcome: Firm-wide authority that compounds across your entire leadership team.</p>
+        <p class="lane-label">Strategic Media Partner</p>
+        <h3>Make your leadership bench impossible to ignore.</h3>
+        <p class="lane-for">For firms, trade associations, and organizations with leadership depth.</p>
+        <p>We build authority infrastructure across your leadership team. Topic ownership, multi-leader amplification, and performance dashboards that track signal quality, not vanity metrics.</p>
+        <div class="lane-highlights">
+          <div class="lane-highlight">Everything in Podcast or Executive Visibility, plus:</div>
+          <div class="lane-highlight">Cross-leader coordination and messaging architecture</div>
+          <div class="lane-highlight">Monthly Signal Brief and quarterly strategy workshop</div>
+        </div>
         <p class="lane-price-signal">Starting at <strong>$1,750/month</strong></p>
-        <p class="lane-proof">We designed institutional video series and authority infrastructure for energy and national security firms.</p>
         <a href="/strategic-partnerships" class="lane-cta-link">Explore Strategic Partnerships</a>
+      </div>
+      <div class="lane-visual">
+        <div class="lane-stat">
+          <span class="lane-stat-number">+120%</span>
+          <span class="lane-stat-label">average client reach growth in 6 months</span>
+        </div>
+        <p class="lane-proof">We designed institutional video series and authority infrastructure for energy and national security firms.</p>
       </div>
     </div>
 
@@ -815,32 +800,32 @@ a { text-decoration: none; color: inherit; }
 
       <details class="faq-item">
         <summary>How much of my time does this require?</summary>
-        <p class="faq-answer">For podcast clients, you show up and record. We handle everything else. Most clients spend 1-2 hours per week on their media presence. For executive visibility, we batch film 4-6 videos in one session, then produce and distribute them over the following weeks. Your time commitment is one session per month plus reviewing drafts.</p>
+        <p class="faq-answer">For podcast clients, you show up and record. We handle everything else. Most clients spend 1-2 hours per week. For executive visibility, one filming session per month plus reviewing drafts. Your time commitment stays under 5 hours per month.</p>
       </details>
 
       <details class="faq-item">
         <summary>How is this different from hiring a marketing agency?</summary>
-        <p class="faq-answer">Marketing agencies build campaigns. We build infrastructure. A campaign runs for 90 days and stops. Our systems compound over time. We also specialize exclusively in energy, which means we understand the policy dynamics, the regulatory landscape, and the audience you're trying to reach.</p>
+        <p class="faq-answer">Agencies build campaigns that run for 90 days and stop. We build systems that compound over time. We also specialize exclusively in energy, which means we understand the landscape and the audience from day one.</p>
       </details>
 
       <details class="faq-item">
         <summary>I've tried content before and it didn't work.</summary>
-        <p class="faq-answer">Most experts who've tried content either did it all themselves and burned out, or hired a generalist agency that didn't understand their audience. We solve both problems. You focus on your expertise. We build the system. And because we know the energy sector, the content resonates with the right people from day one.</p>
+        <p class="faq-answer">Usually that means you did it all yourself and burned out, or you hired a generalist who didn't understand your audience. We solve both. You focus on expertise. We build the system. Energy sector focus means the content resonates immediately.</p>
       </details>
 
       <details class="faq-item">
         <summary>We're a small team. Is this realistic?</summary>
-        <p class="faq-answer">Our smallest engagement is a $400/month podcast pilot. Executive visibility starts at $750/month. Our largest institutional partnerships run $7,500+. We work with solo experts and firms with 20+ leaders. The Story Sprint exists specifically to figure out what makes sense before you commit to anything.</p>
+        <p class="faq-answer">Our smallest engagement is $400/month. We work with solo experts and firms with 20+ leaders. The Story Sprint exists to figure out what makes sense before you commit to anything.</p>
       </details>
 
       <details class="faq-item">
         <summary>What does the first month look like?</summary>
-        <p class="faq-answer">Every engagement starts with a Story Sprint. From there, we define your system, set up your production pipeline, and begin publishing within 2-3 weeks. By the end of month one, you have a working rhythm and your first batch of content live.</p>
+        <p class="faq-answer">Every engagement starts with a Story Sprint. We define your system, set up production, and begin publishing within 2-3 weeks. By the end of month one, you have a working rhythm and your first content live.</p>
       </details>
 
       <details class="faq-item">
-        <summary>Why can't I just hire a freelancer or give this to my marketing person?</summary>
-        <p class="faq-answer">You can, and many people try. The freelancer edits your audio and hands it back. Your marketing person adds it to the queue between the website update and the trade show booth. Neither of them understands energy policy, neither builds a system that compounds, and neither is thinking about how this episode connects to your LinkedIn strategy, your newsletter, your guest coordination, and your authority positioning six months from now. If all you need is editing, hire a freelancer. If you need a media system that builds credibility over time, that's a different thing.</p>
+        <summary>Why can't I just hire a freelancer?</summary>
+        <p class="faq-answer">A freelancer edits your audio and hands it back. They don't build a system that connects your podcast to your LinkedIn strategy, newsletter, guest coordination, and authority positioning. If all you need is editing, hire a freelancer. If you need a media system, that's what we do.</p>
       </details>
 
     </div>

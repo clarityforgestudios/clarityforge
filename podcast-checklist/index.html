@@ -129,7 +129,7 @@ a { text-decoration: none; color: inherit; }
 .res-hero { text-align: center; padding: 2.5rem 1.5rem; background: var(--deep-navy); border-radius: 12px; margin-bottom: 1.2rem; }
 .res-big { font-family: var(--font-display); font-size: 3rem; color: var(--gold); line-height: 1; }
 .res-big span { font-size: 1.1rem; color: var(--light-gray); }
-.res-tier { font-family: var(--font-display); font-size: 1.3rem; color: var(--pure-white); margin-top: 0.5rem; }
+.res-tier { font-family: var(--font-display); font-size: 1.3rem; color: var(--pure-white); margin-top: 0; padding-top: 0.5rem; }
 .res-card { background: var(--pure-white); border: 1px solid var(--border-gray); border-radius: 10px; padding: 1.5rem 1.6rem; border-left: 4px solid var(--gold); }
 .res-card h3 { font-family: var(--font-display); font-size: 1.1rem; color: var(--near-black); margin-bottom: 0.5rem; }
 .res-card p { font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.6rem; }
@@ -205,6 +205,7 @@ a { text-decoration: none; color: inherit; }
 
 /* SERVICES DROPDOWN */
 .nav-dropdown-wrap { position: relative; }
+.nav-dropdown-wrap::before { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 1rem; }
 .nav-dropdown-trigger { cursor: pointer; }
 .nav-dropdown {
   position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
@@ -214,7 +215,7 @@ a { text-decoration: none; color: inherit; }
   transition: opacity 0.2s, transform 0.2s;
   transform: translateX(-50%) translateY(8px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  margin-top: 0.5rem;
+  margin-top: 0; padding-top: 0.5rem;
 }
 .nav-dropdown-wrap:hover .nav-dropdown {
   opacity: 1; visibility: visible; pointer-events: auto;

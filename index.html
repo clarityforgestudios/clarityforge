@@ -447,7 +447,7 @@ a { text-decoration: none; color: inherit; }
 .founder-text p { margin-bottom: 1rem; color: var(--dark-gray); }
 .founder-location {
   font-size: 0.88rem; color: var(--medium-gray);
-  margin-top: 0.5rem; font-weight: 500;
+  margin-top: 0; padding-top: 0.5rem; font-weight: 500;
 }
 .founder-link {
   display: inline-flex; align-items: center; gap: 0.4rem;
@@ -594,6 +594,7 @@ a { text-decoration: none; color: inherit; }
 
 /* SERVICES DROPDOWN */
 .nav-dropdown-wrap { position: relative; }
+.nav-dropdown-wrap::before { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 1rem; }
 .nav-dropdown-trigger { cursor: pointer; }
 .nav-dropdown {
   position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
@@ -603,7 +604,7 @@ a { text-decoration: none; color: inherit; }
   transition: opacity 0.2s, transform 0.2s;
   transform: translateX(-50%) translateY(8px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  margin-top: 0.5rem;
+  margin-top: 0; padding-top: 0.5rem;
 }
 .nav-dropdown-wrap:hover .nav-dropdown {
   opacity: 1; visibility: visible; pointer-events: auto;

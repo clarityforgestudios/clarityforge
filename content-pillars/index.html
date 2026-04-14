@@ -99,13 +99,13 @@ textarea.ws-input{resize:vertical;min-height:60px}
 .pillar-desc-input{width:100%;padding:.55rem .8rem;border:1.5px solid var(--border-gray);border-radius:6px;font-family:var(--font-body);font-size:.82rem;color:var(--dark-gray);background:var(--pure-white);outline:none;transition:border-color .2s;margin-top:.4rem}
 .pillar-desc-input:focus{border-color:var(--gold)}
 .pillar-desc-input::placeholder{color:var(--light-gray)}
-.pillar-topics-assign{margin-top:.5rem;font-size:.72rem;color:var(--medium-gray)}
+.pillar-topics-assign{margin-top:0;padding-top:.5rem;font-size:.72rem;color:var(--medium-gray)}
 .pillar-topics-list{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.3rem}
 .pillar-topic-chip{display:inline-block;background:var(--pure-white);border:1px solid var(--border-gray);border-radius:14px;padding:.25rem .7rem;font-size:.72rem;color:var(--dark-gray);cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent}
 .pillar-topic-chip:hover{border-color:var(--gold);background:#FFF8ED}
 .pillar-topic-chip.assigned{background:#FFF8ED;border-color:var(--gold);color:var(--near-black);font-weight:500}
 .pillar-topic-chip.elsewhere{opacity:.35}
-.pillar-actions{display:flex;gap:.6rem;margin-top:.5rem}
+.pillar-actions{display:flex;gap:.6rem;margin-top:0;padding-top:.5rem}
 .pillar-action-btn{font-size:.78rem;font-weight:600;color:var(--gold);background:none;border:none;cursor:pointer;font-family:var(--font-body);transition:color .15s}
 .pillar-action-btn:hover{color:var(--orange)}
 .pillar-action-btn.rp{color:var(--medium-gray)}
@@ -147,7 +147,7 @@ textarea.ws-input{resize:vertical;min-height:60px}
 .results.vis{display:block}
 .res-hero{text-align:center;padding:2.5rem 1.5rem;background:var(--deep-navy);border-radius:12px;margin-bottom:1.2rem}
 .res-big{font-family:var(--font-display);font-size:2.4rem;color:var(--gold);line-height:1.2}
-.res-sub{font-size:.95rem;color:var(--light-gray);margin-top:.5rem}
+.res-sub{font-size:.95rem;color:var(--light-gray);margin-top:0;padding-top:.5rem}
 .res-card{background:var(--pure-white);border:1px solid var(--border-gray);border-radius:10px;padding:1.5rem 1.6rem;border-left:4px solid var(--gold);margin-bottom:.6rem}
 .res-card h3{font-family:var(--font-display);font-size:1.1rem;color:var(--near-black);margin-bottom:.5rem}
 .res-card p{font-size:.9rem;line-height:1.6;margin-bottom:.6rem}
@@ -192,7 +192,7 @@ textarea.ws-input{resize:vertical;min-height:60px}
 .ctbl th:first-child{border-radius:6px 0 0 0}.ctbl th:last-child{border-radius:0 6px 0 0}
 .ctbl td{padding:.45rem .6rem;border-bottom:1px solid var(--border-gray)}
 .ctbl tr:nth-child(even) td{background:var(--section-gray)}
-.copy-btn{display:inline-flex;align-items:center;gap:.4rem;background:var(--deep-navy);color:var(--warm-white);border:none;border-radius:6px;padding:.6rem 1.2rem;font-family:var(--font-body);font-size:.82rem;font-weight:600;cursor:pointer;transition:background .15s;margin-top:.5rem}
+.copy-btn{display:inline-flex;align-items:center;gap:.4rem;background:var(--deep-navy);color:var(--warm-white);border:none;border-radius:6px;padding:.6rem 1.2rem;font-family:var(--font-body);font-size:.82rem;font-weight:600;cursor:pointer;transition:background .15s;margin-top:0;padding-top:.5rem}
 .copy-btn:hover{background:var(--navy)}.copy-btn.copied{background:var(--success)}
 .cta-block{text-align:center;padding:2rem;background:var(--section-gray);border-radius:10px;margin-top:1.2rem}
 .cta-block h3{font-family:var(--font-display);font-size:1.15rem;color:var(--near-black);margin-bottom:.4rem}
@@ -221,6 +221,7 @@ textarea.ws-input{resize:vertical;min-height:60px}
 
 /* SERVICES DROPDOWN */
 .nav-dropdown-wrap { position: relative; }
+.nav-dropdown-wrap::before { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 1rem; }
 .nav-dropdown-trigger { cursor: pointer; }
 .nav-dropdown {
   position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
@@ -230,7 +231,7 @@ textarea.ws-input{resize:vertical;min-height:60px}
   transition: opacity 0.2s, transform 0.2s;
   transform: translateX(-50%) translateY(8px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  margin-top: 0.5rem;
+  margin-top: 0; padding-top: 0.5rem;
 }
 .nav-dropdown-wrap:hover .nav-dropdown {
   opacity: 1; visibility: visible; pointer-events: auto;
@@ -472,7 +473,7 @@ if(unas.length>0){h+='<div style="background:var(--warn-light);border-radius:8px
 // Cadence as rotation principle
 h+='<div class="bd-insight"><h4>Your Publishing Rotation</h4><p>Whatever your cadence (1x/week, 3x/week, daily), rotate through your pillars in order. This keeps your feed varied and your audience engaged across all your themes.</p><table class="ctbl"><thead><tr><th>#</th><th>Pillar</th><th>Format to try</th></tr></thead><tbody>';
 for(var d=0;d<named.length;d++){var ri2=pillars.indexOf(named[d]);h+='<tr><td>Post '+(d+1)+'</td><td><span class="pdot" style="background:'+PC[ri2%5]+'"></span>'+esc(named[d].name)+'</td><td>'+TIPS[d%5]+'</td></tr>'}
-h+='</tbody></table><p style="margin-top:.5rem;font-size:.78rem;color:var(--medium-gray)">After Post '+named.length+', start the rotation over. The format suggestions are starting points. Written posts, short video, podcast clips, and carousels all work. Match the format to your strengths and where your audience pays attention.</p></div>';
+h+='</tbody></table><p style="margin-top:0;padding-top:.5rem;font-size:.78rem;color:var(--medium-gray)">After Post '+named.length+', start the rotation over. The format suggestions are starting points. Written posts, short video, podcast clips, and carousels all work. Match the format to your strengths and where your audience pays attention.</p></div>';
 // Story Sprint bridge
 h+='<div class="bd-insight" style="background:var(--deep-navy);color:var(--light-gray)"><h4 style="color:var(--gold)">What you built vs. what a Story Sprint adds</h4><table class="ctbl" style="margin:.6rem 0"><thead><tr><th style="background:var(--navy)">You defined</th><th style="background:var(--navy)">A Story Sprint adds</th></tr></thead><tbody>';
 h+='<tr><td>Audience (one sentence)</td><td>2-3 detailed audience profiles with titles, pain points, and where they consume content</td></tr>';

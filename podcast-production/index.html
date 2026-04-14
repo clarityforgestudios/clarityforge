@@ -545,6 +545,7 @@ a { text-decoration: none; color: inherit; }
 
 /* SERVICES DROPDOWN */
 .nav-dropdown-wrap { position: relative; }
+.nav-dropdown-wrap::before { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 1rem; }
 .nav-dropdown-trigger { cursor: pointer; }
 .nav-dropdown {
   position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
@@ -554,7 +555,7 @@ a { text-decoration: none; color: inherit; }
   transition: opacity 0.2s, transform 0.2s;
   transform: translateX(-50%) translateY(8px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  margin-top: 0.5rem;
+  margin-top: 0; padding-top: 0.5rem;
 }
 .nav-dropdown-wrap:hover .nav-dropdown {
   opacity: 1; visibility: visible; pointer-events: auto;
@@ -902,7 +903,7 @@ a { text-decoration: none; color: inherit; }
       <div class="sprint-left">
         <h4>Not sure which combination is right?</h4>
         <p>Every engagement starts with a Story Sprint ($500-$750). You leave with a positioning statement, content pillars, and a 30-day publishing plan. <strong>100% applies to your first month.</strong></p>
-        <p style="margin-top: 0.5rem; font-size: 0.78rem; color: var(--medium-gray);">Or <a href="/podcast-checklist" style="color: var(--navy); font-weight: 600; border-bottom: 1px solid var(--gold);">take the Podcast Readiness Checklist</a> to see where you stand, or <a href="/content-engine" style="color: var(--navy); font-weight: 600; border-bottom: 1px solid var(--gold);">explore the full system map</a> to see what each episode produces.</p>
+        <p style="margin-top: 0; padding-top: 0.5rem; font-size: 0.78rem; color: var(--medium-gray);">Or <a href="/podcast-checklist" style="color: var(--navy); font-weight: 600; border-bottom: 1px solid var(--gold);">take the Podcast Readiness Checklist</a> to see where you stand, or <a href="/content-engine" style="color: var(--navy); font-weight: 600; border-bottom: 1px solid var(--gold);">explore the full system map</a> to see what each episode produces.</p>
       </div>
       <a href="/story-sprint" class="sprint-cta">Book a Story Sprint</a>
     </div>
@@ -1079,7 +1080,7 @@ a { text-decoration: none; color: inherit; }
     <h2>Ready to turn your podcast into a platform?</h2>
     <a href="/story-sprint" class="btn-primary">Start a Story Sprint</a>
         <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a href="/contact" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Or just get in touch</a></p>
-        <p style="margin-top: 0.5rem; font-size: 0.85rem;"><a href="/content-engine" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">See the full system map</a> &middot; <a href="/resources" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Browse all tools and resources</a></p>
+        <p style="margin-top: 0; padding-top: 0.5rem; font-size: 0.85rem;"><a href="/content-engine" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">See the full system map</a> &middot; <a href="/resources" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Browse all tools and resources</a></p>
     <p class="closing-micro">Engagements start at $400/month. Every client begins with a Story Sprint.</p>
   </div>
 </section>

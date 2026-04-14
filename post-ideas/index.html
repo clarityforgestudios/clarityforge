@@ -124,7 +124,7 @@ a{text-decoration:none;color:inherit}.container{width:var(--container);margin:0 
 .gate-form button{padding:.7rem 1.2rem;background:var(--gold);color:var(--deep-navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:.85rem;font-weight:700;cursor:pointer;transition:background .15s}
 .gate-form button:hover{background:var(--orange);color:var(--pure-white)}
 .gate-form button:disabled{opacity:.5;cursor:not-allowed}
-.gate-note{color:var(--medium-gray);font-size:.65rem;margin-top:.5rem}
+.gate-note{color:var(--medium-gray);font-size:.65rem;margin-top:0;padding-top:.5rem}
 
 /* SUCCESS */
 .success-msg{width:min(700px,90vw);margin:0 auto;padding:1.5rem 0 2rem;display:none}
@@ -156,6 +156,7 @@ a{text-decoration:none;color:inherit}.container{width:var(--container);margin:0 
 
 /* SERVICES DROPDOWN */
 .nav-dropdown-wrap { position: relative; }
+.nav-dropdown-wrap::before { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 1rem; }
 .nav-dropdown-trigger { cursor: pointer; }
 .nav-dropdown {
   position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
@@ -165,7 +166,7 @@ a{text-decoration:none;color:inherit}.container{width:var(--container);margin:0 
   transition: opacity 0.2s, transform 0.2s;
   transform: translateX(-50%) translateY(8px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  margin-top: 0.5rem;
+  margin-top: 0; padding-top: 0.5rem;
 }
 .nav-dropdown-wrap:hover .nav-dropdown {
   opacity: 1; visibility: visible; pointer-events: auto;

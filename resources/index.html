@@ -13,9 +13,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <title>Resources for Energy Leaders | ClarityForge Studios</title>
-<meta name="description" content="Free tools for energy leaders building their platform. Scorecard, content pillars, post ideas, podcast checklist, and the Content Engine system map.">
+<meta name="description" content="Free tools for energy leaders building their platform. Cost calculator, scorecard, content pillars, post ideas, podcast checklist, and the Content Engine system map.">
 <meta property="og:title" content="Resources for Energy Leaders | ClarityForge Studios">
-<meta property="og:description" content="Free tools for energy leaders. Score your visibility, define your pillars, grab post ideas, and see the system that turns one recording into a month of content.">
+<meta property="og:description" content="Free tools for energy leaders. Calculate your content costs, score your visibility, define your pillars, grab post ideas, and see the system that turns one recording into a month of content.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://clarityforgestudios.com/resources">
 <meta property="og:site_name" content="ClarityForge Studios">
@@ -150,6 +150,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 
 /* SERVICES DROPDOWN */
 .nav-dropdown-wrap { position: relative; }
+.nav-dropdown-wrap::before { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 1rem; }
 .nav-dropdown-trigger { cursor: pointer; }
 .nav-dropdown {
   position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
@@ -159,7 +160,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
   transition: opacity 0.2s, transform 0.2s;
   transform: translateX(-50%) translateY(8px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  margin-top: 0.5rem;
+  margin-top: 0; padding-top: 0.5rem;
 }
 .nav-dropdown-wrap:hover .nav-dropdown {
   opacity: 1; visibility: visible; pointer-events: auto;
@@ -250,7 +251,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
   <div class="container">
     <div class="hero-content">
       <h1 class="anim-entry anim-d1">Use these. <em>See what happens.</em></h1>
-      <p class="hero-sub anim-entry anim-d2">Six free tools for energy leaders building their platform. Start with whatever feels useful. Come back when you want a partner.</p>
+      <p class="hero-sub anim-entry anim-d2">Seven free tools for energy leaders building their platform. Start with whatever feels useful. Come back when you want a partner.</p>
       <div class="lane-filter anim-entry anim-d3">
         <button class="lane-filter-btn active" onclick="filterLane('all')">Show all</button>
         <button class="lane-filter-btn" onclick="filterLane('podcast')">Podcast</button>
@@ -314,6 +315,16 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
       <p>These tools help you understand what a production partner actually does and whether you're ready for one.</p>
     </div>
     <div class="res-grid">
+
+      <div class="res-card" data-lanes="all">
+        <div class="res-card-top">
+          <div class="res-card-lanes"><span class="lane-tag lane-tag-all">All paths</span></div>
+          <span class="res-card-time">2 min</span>
+        </div>
+        <h3>Content Cost Calculator</h3>
+        <p>Find out what your content is actually costing you in hidden labor and opportunity cost. Answer 5 questions, get a dollar figure that will change how you think about DIY content.</p>
+        <a href="/content-cost-calculator" class="res-card-cta">Calculate your cost</a>
+      </div>
 
       <div class="res-card" data-lanes="all">
         <div class="res-card-top">

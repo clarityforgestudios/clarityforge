@@ -163,7 +163,7 @@ a{text-decoration:none;color:inherit}.container{width:var(--container);margin:0 
 .gate-form button{padding:.7rem 1.2rem;background:var(--gold);color:var(--deep-navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:.85rem;font-weight:700;cursor:pointer;transition:background .15s}
 .gate-form button:hover{background:var(--orange);color:var(--pure-white)}
 .gate-form button:disabled{opacity:.5;cursor:not-allowed}
-.gate-note{color:var(--medium-gray);font-size:.65rem;margin-top:.5rem}
+.gate-note{color:var(--medium-gray);font-size:.65rem;margin-top:0;padding-top:.5rem}
 .gate-success{display:none;color:var(--success);font-size:.88rem;font-weight:600;margin-top:.8rem}
 .cta-section{padding:var(--section-pad) 0 2rem;text-align:center;display:none}
 .cta-box{max-width:600px;margin:0 auto;padding:2rem;background:var(--pure-white);border:1.5px solid var(--border-gray);border-radius:14px}
@@ -186,6 +186,7 @@ a{text-decoration:none;color:inherit}.container{width:var(--container);margin:0 
 
 /* SERVICES DROPDOWN */
 .nav-dropdown-wrap { position: relative; }
+.nav-dropdown-wrap::before { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 1rem; }
 .nav-dropdown-trigger { cursor: pointer; }
 .nav-dropdown {
   position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
@@ -195,7 +196,7 @@ a{text-decoration:none;color:inherit}.container{width:var(--container);margin:0 
   transition: opacity 0.2s, transform 0.2s;
   transform: translateX(-50%) translateY(8px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  margin-top: 0.5rem;
+  margin-top: 0; padding-top: 0.5rem;
 }
 .nav-dropdown-wrap:hover .nav-dropdown {
   opacity: 1; visibility: visible; pointer-events: auto;
@@ -327,7 +328,8 @@ a{text-decoration:none;color:inherit}.container{width:var(--container);margin:0 
 </div></section>
 <section id="altTools" style="padding:0 0 var(--section-pad);text-align:center;display:none"><div class="container">
 <p style="font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--medium-gray);margin-bottom:1.2rem">Not ready for a conversation yet? Start here instead.</p>
-<div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;max-width:700px;margin:0 auto">
+<div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;max-width:920px;margin:0 auto">
+<a href="/content-cost-calculator" style="flex:1;min-width:180px;max-width:220px;padding:1rem;background:var(--pure-white);border:1.5px solid var(--border-gray);border-radius:10px;transition:border-color .2s;text-align:center"><span style="display:block;font-family:var(--font-display);font-size:.95rem;color:var(--near-black);margin-bottom:.3rem">Content Cost Calculator</span><span style="font-size:.72rem;color:var(--medium-gray)">See what DIY is really costing you</span></a>
 <a href="/scorecard" style="flex:1;min-width:180px;max-width:220px;padding:1rem;background:var(--pure-white);border:1.5px solid var(--border-gray);border-radius:10px;transition:border-color .2s;text-align:center"><span style="display:block;font-family:var(--font-display);font-size:.95rem;color:var(--near-black);margin-bottom:.3rem">Visibility Scorecard</span><span style="font-size:.72rem;color:var(--medium-gray)">Rate yourself on 10 dimensions</span></a>
 <a href="/content-pillars" style="flex:1;min-width:180px;max-width:220px;padding:1rem;background:var(--pure-white);border:1.5px solid var(--border-gray);border-radius:10px;transition:border-color .2s;text-align:center"><span style="display:block;font-family:var(--font-display);font-size:.95rem;color:var(--near-black);margin-bottom:.3rem">Content Pillars</span><span style="font-size:.72rem;color:var(--medium-gray)">Define what you talk about</span></a>
 <a href="/post-ideas" style="flex:1;min-width:180px;max-width:220px;padding:1rem;background:var(--pure-white);border:1.5px solid var(--border-gray);border-radius:10px;transition:border-color .2s;text-align:center"><span style="display:block;font-family:var(--font-display);font-size:.95rem;color:var(--near-black);margin-bottom:.3rem">50 Post Ideas</span><span style="font-size:.72rem;color:var(--medium-gray)">Grab one and publish today</span></a>
