@@ -12,11 +12,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<title>The Forge | Science, Energy, and the Future Being Built</title>
-<meta name="description" content="The Forge is Nate Peavey's editorial on science, energy breakthroughs, and the future being built. Hopeful, substantive, and grounded in evidence. Published by ClarityForge Studios.">
+<title>ClarityForge | The gap between expertise and public influence</title>
+<meta name="description" content="ClarityForge writes about the gap between expertise and public influence, and what it takes to close it. Point-of-view writing on media infrastructure, the attention economy, and building authority.">
 <link rel="canonical" href="https://clarityforgestudios.com/blog">
-<meta property="og:title" content="The Forge | Science, Energy, and the Future Being Built">
-<meta property="og:description" content="The Forge is Nate Peavey's editorial on science, energy breakthroughs, and the future being built. Hopeful, substantive, and grounded in evidence.">
+<meta property="og:title" content="ClarityForge | The gap between expertise and public influence">
+<meta property="og:description" content="ClarityForge writes about the gap between expertise and public influence, and what it takes to close it.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://clarityforgestudios.com/blog">
 <meta property="og:image" content="https://clarityforgestudios.com/og-image.jpg">
@@ -87,8 +87,6 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 .post-card-inner.no-image { grid-template-columns: 1fr; }
 .post-meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.6rem; font-size: 0.8rem; color: var(--medium-gray); font-weight: 500; }
 .post-meta-dot { width: 3px; height: 3px; background: var(--light-gray); border-radius: 50%; flex-shrink: 0; }
-.post-source-badge { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--orange); background: rgba(232,113,58,0.08); padding: 0.15rem 0.5rem; border-radius: 4px; line-height: 1.4; }
-.post-source-badge svg { width: 11px; height: 11px; flex-shrink: 0; }
 .post-card h3 { font-family: var(--font-display); font-size: clamp(1.2rem, 2.5vw, 1.5rem); color: var(--near-black); line-height: 1.3; margin-bottom: 0.6rem; transition: color 0.2s; }
 .post-card a:hover h3 { color: var(--orange); }
 .post-excerpt { font-size: 0.95rem; color: var(--medium-gray); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
@@ -259,8 +257,8 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 <section class="hero">
   <div class="container">
     <div class="hero-content anim-entry anim-d1">
-      <h1><em>The Forge</em></h1>
-      <p class="hero-sub">Science, energy, and the future being built. By Nate Peavey.</p>
+      <h1><em>ClarityForge</em></h1>
+      <p class="hero-sub">The gap between expertise and public influence, and what it takes to close it.</p>
     </div>
   </div>
 </section>
@@ -269,8 +267,8 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
   <div class="container">
     <div class="subscribe-inner">
       <div class="subscribe-text">
-        <h2>Get The Forge delivered to your inbox.</h2>
-        <p>Science, energy, and the future being built. Every two weeks. No spam.</p>
+        <h2>Get new posts delivered to your inbox.</h2>
+        <p>No spam. Unsubscribe anytime. We write when we have something worth saying.</p>
       </div>
       <div class="subscribe-form" id="subscribeForm">
         <input type="email" class="subscribe-input" id="subEmail" placeholder="you&#64;example.com" required>
@@ -304,8 +302,8 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
           <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
         </svg>
       </div>
-      <h3>The first issue is on its way.</h3>
-      <p>The Forge covers science, energy breakthroughs, and the future being built. Subscribe above to get it when it drops.</p>
+      <h3>First posts are on the way.</h3>
+      <p>ClarityForge writes about the gap between expertise and public influence, and what it takes to close it. Subscribe above to be the first to know when we publish.</p>
       <div class="empty-state-links">
         <a href="/resources" class="empty-state-link">Explore our tools</a>
         <a href="/content-engine" class="empty-state-link">See the content engine</a>
@@ -447,13 +445,6 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
     var timeSpan = document.createElement('span');
     timeSpan.textContent = readTime;
     meta.appendChild(timeSpan);
-    var dot2 = document.createElement('span');
-    dot2.className = 'post-meta-dot';
-    meta.appendChild(dot2);
-    var badge = document.createElement('span');
-    badge.className = 'post-source-badge';
-    badge.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>Substack';
-    meta.appendChild(badge);
     textCol.appendChild(meta);
 
     var h3 = document.createElement('h3');
