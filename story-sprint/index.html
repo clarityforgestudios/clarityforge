@@ -13,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <title>Story Sprint — Define Your Message in 60 Minutes | ClarityForge</title>
-<meta name="description" content="The Story Sprint is a focused strategy session for energy leaders. Define your positioning, audience, content pillars, and 30-day plan.">
+<meta name="description" content="The Story Sprint is a focused strategy session for energy leaders. $500 individuals / $750 organizations. Upgrade to Sprint+ for a Voice Profile you can use in any AI tool.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
@@ -90,9 +90,39 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 .investment { padding: var(--section-pad) 0; background: var(--deep-navy); text-align: center; }
 .invest-price { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 3.5rem); color: var(--gold); margin-bottom: 0.5rem; }
 .invest-label { font-size: 0.92rem; color: var(--light-gray); margin-bottom: 2rem; max-width: 520px; margin-left: auto; margin-right: auto; }
-.invest-credit { display: inline-block; background: rgba(255,182,77,0.1); border: 1px solid rgba(255,182,77,0.25); border-radius: 8px; padding: 1rem 2rem; margin-bottom: 2.5rem; }
+.invest-credit { display: inline-block; background: rgba(255,182,77,0.1); border: 1px solid rgba(255,182,77,0.25); border-radius: 8px; padding: 1rem 2rem; margin-bottom: 2.5rem; max-width: 680px; }
 .invest-credit p { font-size: 0.92rem; color: var(--warm-white); }
 .invest-credit strong { color: var(--gold); }
+
+.invest-kicker { font-size: 0.78rem; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 0.75rem; font-weight: 600; }
+.invest-h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--warm-white); margin-bottom: 3rem; }
+.invest-options { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 900px; margin: 0 auto 2.5rem; text-align: left; }
+.invest-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; position: relative; transition: border-color 0.25s; }
+.invest-card-featured { background: rgba(255,182,77,0.08); border: 2px solid var(--gold); box-shadow: 0 8px 32px rgba(255,182,77,0.15); }
+.invest-card-badge { position: absolute; top: -0.75rem; left: 1.5rem; background: var(--gold); color: var(--navy); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; padding: 0.3rem 0.75rem; border-radius: 4px; }
+.invest-card-label { font-size: 0.72rem; letter-spacing: 0.14em; color: var(--light-gray); font-weight: 600; margin-bottom: 1rem; }
+.invest-card-featured .invest-card-label { color: var(--gold); }
+.invest-card-price { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); color: var(--warm-white); line-height: 1.1; margin-bottom: 0.5rem; }
+.invest-card-featured .invest-card-price { color: var(--gold); }
+.invest-card-or { color: var(--medium-gray); font-size: 0.6em; margin: 0 0.15em; }
+.invest-card-scope { font-size: 0.85rem; color: var(--light-gray); line-height: 1.5; margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.invest-card-scope strong { color: var(--warm-white); }
+.invest-card-featured .invest-card-scope strong { color: var(--gold); }
+.invest-card-list { list-style: none; padding: 0; margin: 0; }
+.invest-card-list li { position: relative; padding: 0.4rem 0 0.4rem 1.4rem; font-size: 0.88rem; color: var(--light-gray); line-height: 1.5; }
+.invest-card-list li::before { content: ''; position: absolute; left: 0; top: 0.85rem; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.invest-card-list li strong { color: var(--warm-white); font-weight: 600; }
+.invest-card-featured .invest-card-list li strong { color: var(--gold); }
+@media (max-width: 720px) {
+  .invest-options { grid-template-columns: 1fr; }
+  .invest-card-featured { margin-top: 1rem; }
+}
+
+.invest-multivoice { max-width: 720px; margin: 0 auto 2rem; padding: 1rem 1.5rem; background: rgba(255,255,255,0.04); border-left: 3px solid var(--gold); border-radius: 4px; text-align: left; }
+.invest-multivoice p { font-size: 0.9rem; color: var(--light-gray); line-height: 1.55; }
+.invest-multivoice strong { color: var(--warm-white); }
+.invest-multivoice a { color: var(--gold); font-weight: 600; border-bottom: 1px solid rgba(255,182,77,0.4); padding-bottom: 1px; transition: border-color 0.2s; }
+.invest-multivoice a:hover { border-bottom-color: var(--gold); }
 
 /* FAQ */
 .faq { padding: var(--section-pad) 0; background: var(--section-gray); }
@@ -191,7 +221,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 </style>
 <link rel="canonical" href="https://clarityforgestudios.com/story-sprint">
 <meta property="og:title" content="Story Sprint — Define Your Message in 60 Minutes | ClarityForge">
-<meta property="og:description" content="The Story Sprint is a focused strategy session for energy leaders. Define your positioning, audience, content pillars, and 30-day plan.">
+<meta property="og:description" content="The Story Sprint is a focused strategy session for energy leaders. $500 individuals / $750 organizations. Upgrade to Sprint+ for a Voice Profile you can use in any AI tool.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://clarityforgestudios.com/story-sprint">
 <meta property="og:site_name" content="ClarityForge Studios">
@@ -200,7 +230,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Story Sprint — Define Your Message in 60 Minutes | ClarityForge">
-<meta name="twitter:description" content="The Story Sprint is a focused strategy session for energy leaders. Define your positioning, audience, content pillars, and 30-day plan.">
+<meta name="twitter:description" content="The Story Sprint is a focused strategy session for energy leaders. $500 individuals / $750 organizations. Upgrade to Sprint+ for a Voice Profile you can use in any AI tool.">
 <meta name="twitter:image" content="https://clarityforgestudios.com/og-image.jpg">
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -248,7 +278,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
       <h1 class="anim-entry anim-d1">Get clarity <em>in 60 minutes.</em></h1>
       <p class="hero-sub anim-entry anim-d2">The Story Sprint is a focused strategy session that turns everything swirling in your head into a plan you can act on.</p>
       <a href="/contact" class="btn-primary btn-lg anim-entry anim-d3">Book Your Story Sprint</a>
-      <p class="hero-micro anim-entry anim-d3">$500-$750. Every ClarityForge engagement starts here.</p>
+      <p class="hero-micro anim-entry anim-d3">$500 for individuals. $750 for organizations. Every ClarityForge engagement starts here.</p>
     </div>
   </div>
 </section>
@@ -337,11 +367,49 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 <!-- INVESTMENT -->
 <section class="investment">
   <div class="container">
-    <p class="invest-price">$500-$750</p>
-    <p class="invest-label">A single focused session. You leave with a positioning statement, audience profiles, content pillars, and a 30-day plan.</p>
-    <div class="invest-credit">
-      <p>If we decide to work together on ongoing production or strategy, <strong>100% of your Story Sprint investment applies to the first month.</strong></p>
+    <p class="invest-kicker">INVESTMENT</p>
+    <h2 class="invest-h2">Two ways to start. Your choice.</h2>
+
+    <div class="invest-options">
+      <!-- STORY SPRINT -->
+      <div class="invest-card">
+        <p class="invest-card-label">STORY SPRINT</p>
+        <p class="invest-card-price">$500 <span class="invest-card-or">/</span> $750</p>
+        <p class="invest-card-scope">$500 for individuals. $750 for organizations with multiple stakeholders.</p>
+        <ul class="invest-card-list">
+          <li>Positioning statement</li>
+          <li>Audience profiles</li>
+          <li>3&ndash;5 content pillars</li>
+          <li>30-day publishing plan</li>
+          <li>Next steps recommendation</li>
+        </ul>
+      </div>
+
+      <!-- STORY SPRINT+ -->
+      <div class="invest-card invest-card-featured">
+        <p class="invest-card-badge">RECOMMENDED</p>
+        <p class="invest-card-label">STORY SPRINT +</p>
+        <p class="invest-card-price">$750 <span class="invest-card-or">/</span> $950</p>
+        <p class="invest-card-scope">Everything in Story Sprint <strong>plus a Voice Profile</strong> ($450 value) at a $200 bundle discount. Covers one primary voice.</p>
+        <ul class="invest-card-list">
+          <li>Everything in Story Sprint</li>
+          <li><strong>AI Voice Profile document</strong> — a structured .md file that captures how you actually communicate</li>
+          <li>Load it into Claude, ChatGPT, or any AI tool so every draft starts in your voice</li>
+          <li>Usage guide included</li>
+          <li>Organizational Sprint+ captures the voice of the primary public-facing leader (founder, CEO, or executive face of the brand)</li>
+        </ul>
+      </div>
     </div>
+
+    <!-- MULTI-VOICE CALLOUT -->
+    <div class="invest-multivoice">
+      <p><strong>Multiple leaders publishing publicly?</strong> If your organization has three or more executives who need individual voice profiles, Sprint+ is not the right fit. <a href="/strategic-partnerships">Explore Strategic Partnerships</a> — our Foundation Build includes multi-voice profiling plus an organizational voice layer.</p>
+    </div>
+
+    <div class="invest-credit">
+      <p><strong>100% applies to your first month of retainer.</strong> If you move into ongoing work with us, your Story Sprint or Sprint+ fee is credited against Month 1, up to your first-month retainer price. If your retainer is below the Sprint+ fee, your first month is complimentary.</p>
+    </div>
+
     <a href="/contact" class="btn-primary btn-lg">Book Your Story Sprint</a>
     <p style="margin-top: 1rem; font-size: 0.78rem; color: var(--medium-gray);">Limited availability. We take a small number of Story Sprints per month.</p>
   </div>
@@ -356,6 +424,30 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
         <button class="faq-q">What happens during the 60 minutes?</button>
         <div class="faq-a">
           <p>It's a structured conversation, not a presentation. We ask questions about your expertise, your audience, your goals, and what you've tried before. By the end of the session, we've shaped your positioning and identified the content system that fits.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Why is the price a range? What decides $500 vs $750?</button>
+        <div class="faq-a">
+          <p>Individual experts and solo operators pay $500. Organizations with multiple stakeholders pay $750 because the intake covers more people, more content sources, and the deliverables need to work for a team rather than a person. If you're not sure which fits, ask us on the call.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What is the Story Sprint+ upgrade?</button>
+        <div class="faq-a">
+          <p>Story Sprint+ adds a Voice Profile document to your Sprint deliverables. It's a structured .md file that captures how you actually communicate: your sentence patterns, vocabulary, tone, banned phrases, and signature moves. You load it into any AI tool (Claude, ChatGPT, or whatever you use) and everything you write, or everything we write for you, starts in your voice from the first draft instead of drifting toward generic AI output. Sprint+ covers one primary voice — typically you, or the founder / CEO / executive face of your organization. If your firm has multiple leaders who need individual voice profiles, see the next question.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What if our organization has multiple leaders who need voice profiles?</button>
+        <div class="faq-a">
+          <p>Sprint+ is the right fit if one person is the public face of your organization. If you have a CEO, CFO, and a VP of Sales all publishing content under their own names, you need multi-voice profiling plus an organizational voice layer that keeps everyone coherent. That's scoped into our <a href="/strategic-partnerships" style="color: var(--navy); font-weight: 600; border-bottom: 1px solid var(--gold);">Strategic Partnerships</a> Foundation Build. Most organizations don't need this until they're further along — one voice is plenty until two or three leaders are actively publishing.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How does the first-month retainer credit work?</button>
+        <div class="faq-a">
+          <p>If you move into a retainer with us, 100% of your Sprint or Sprint+ fee applies to your first month, up to your retainer's Month 1 price. If your first-month retainer is less than what you paid for Sprint+, your first month is complimentary and unused credit expires after 30 days. This means the Sprint is effectively free if you continue, and a standalone deliverable if you don't.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -405,7 +497,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
   <div class="container">
     <h2>60 minutes. You leave with a plan.</h2>
     <a href="/contact" class="btn-primary btn-lg">Book Your Story Sprint</a>
-    <p class="closing-micro">$500-$750. 100% applies to your first month if we continue working together.</p>
+    <p class="closing-micro">$500 individuals. $750 organizations. Upgrade to Sprint+ for a Voice Profile. 100% applies to your first month if we continue.</p>
     <p style="margin-top: 1.25rem; font-size: 0.85rem;"><a href="/work" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">See our case studies first</a> &nbsp;&middot;&nbsp; <a href="/resources" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Try a free tool</a></p>
   </div>
 </section>

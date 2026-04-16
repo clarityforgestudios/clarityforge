@@ -108,6 +108,33 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 .hiw-time { text-align: center; margin-top: 2.5rem; font-size: 0.95rem; color: var(--dark-gray); max-width: 700px; margin-left: auto; margin-right: auto; }
 .hiw-time strong { color: var(--near-black); }
 
+/* FOUNDATION BUILD */
+.foundation { padding: var(--section-pad) 0; background: var(--warm-white); border-top: 1px solid var(--border-gray); }
+.foundation-kicker { text-align: center; font-size: 0.78rem; letter-spacing: 0.14em; color: var(--gold); font-weight: 600; margin-bottom: 0.75rem; text-transform: uppercase; }
+.foundation h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem); color: var(--near-black); text-align: center; margin-bottom: 1rem; }
+.foundation-sub { text-align: center; color: var(--medium-gray); font-size: 0.95rem; margin-bottom: 3rem; max-width: 640px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+.foundation-card { max-width: 960px; margin: 0 auto; background: var(--pure-white); border: 1px solid var(--border-gray); border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.05); overflow: hidden; }
+.foundation-header { background: var(--deep-navy); color: var(--warm-white); padding: 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.foundation-header-left h3 { font-family: var(--font-display); font-size: 1.4rem; color: var(--warm-white); margin-bottom: 0.35rem; }
+.foundation-header-left p { font-size: 0.88rem; color: var(--light-gray); line-height: 1.45; }
+.foundation-price { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2rem); color: var(--gold); white-space: nowrap; }
+.foundation-price span { font-size: 0.75rem; color: var(--light-gray); font-family: var(--font-body); font-weight: 400; display: block; margin-top: 0.15rem; }
+.foundation-body { padding: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+.foundation-col h4 { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; font-weight: 700; }
+.foundation-col ul { list-style: none; padding: 0; margin: 0; }
+.foundation-col ul li { position: relative; padding: 0.5rem 0 0.5rem 1.4rem; font-size: 0.88rem; color: var(--dark-gray); line-height: 1.5; }
+.foundation-col ul li::before { content: ''; position: absolute; left: 0; top: 1rem; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.foundation-col ul li strong { color: var(--near-black); }
+.foundation-footer { padding: 1.5rem 2.5rem 2rem; border-top: 1px solid var(--border-gray); background: var(--section-gray); text-align: center; }
+.foundation-footer p { font-size: 0.85rem; color: var(--dark-gray); margin-bottom: 1rem; }
+.foundation-footer a { display: inline-block; background: var(--gold); color: var(--navy); font-weight: 700; padding: 0.75rem 2rem; border-radius: 6px; font-size: 0.9rem; transition: background 0.2s, transform 0.15s; }
+.foundation-footer a:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-1px); }
+@media (max-width: 720px) {
+  .foundation-header { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
+  .foundation-body { padding: 1.5rem; grid-template-columns: 1fr; gap: 2rem; }
+  .foundation-footer { padding: 1.25rem 1.5rem 1.75rem; }
+}
+
 /* TIERS */
 .tiers { padding: var(--section-pad) 0; background: var(--section-gray); }
 .tiers h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem); color: var(--near-black); text-align: center; margin-bottom: 1rem; }
@@ -340,6 +367,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
       <p class="hero-sub anim-entry anim-d2">We build institutional media infrastructure that makes your leadership bench visible, credible, and impossible to ignore.</p>
       <div class="hero-ctas anim-entry anim-d3">
         <a href="/contact" class="btn-primary">Schedule a Working Session</a>
+        <a href="#foundation-build" class="hero-secondary">How engagements start</a>
         <a href="#pricing" class="hero-secondary">See partnership tiers</a>
       </div>
     </div>
@@ -457,11 +485,65 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
   </div>
 </div>
 
+<!-- FOUNDATION BUILD -->
+<section class="foundation" id="foundation-build">
+  <div class="container">
+    <p class="foundation-kicker">Step 1: Foundation Build</p>
+    <h2>Before we produce. We build the foundation.</h2>
+    <p class="foundation-sub">Every institutional engagement starts with a one-time Foundation Build. This is the strategic and visual infrastructure that makes everything downstream work. Without it, production is just content. With it, production compounds into authority.</p>
+
+    <div class="foundation-card">
+      <div class="foundation-header">
+        <div class="foundation-header-left">
+          <h3>Foundation Build</h3>
+          <p>One-time kickoff. 2&ndash;4 weeks from start to delivery. Required before any monthly retainer begins.</p>
+        </div>
+        <div class="foundation-price">
+          $3,500&ndash;$6,000
+          <span>one-time</span>
+        </div>
+      </div>
+
+      <div class="foundation-body">
+        <div class="foundation-col">
+          <h4>Strategic Infrastructure</h4>
+          <ul>
+            <li><strong>Audience Definition Brief</strong> &mdash; primary audiences, titles, sectors, influence tiers</li>
+            <li><strong>Content Territory Map</strong> &mdash; 4&ndash;6 recurring themes your organization owns</li>
+            <li><strong>Episode or Series Architecture</strong> &mdash; standardized structure for consistent production</li>
+            <li><strong>Messaging Positioning Memo</strong> &mdash; how your voice shows up in energy, infrastructure, or security</li>
+            <li><strong>Multi-Voice Profiles</strong> &mdash; individual AI voice profiles for each public-facing leader, plus an organizational voice layer that keeps everyone coherent</li>
+            <li><strong>Distribution Playbook</strong> &mdash; posting cadence, tagging structure, cross-leader amplification</li>
+            <li><strong>90-Day Launch Plan</strong> &mdash; calendar aligned to tentpole moments and announcements</li>
+          </ul>
+        </div>
+        <div class="foundation-col">
+          <h4>Visual Infrastructure</h4>
+          <ul>
+            <li><strong>Series cover art</strong> &mdash; YouTube and LinkedIn compatible</li>
+            <li><strong>Custom thumbnail system</strong> &mdash; 3&ndash;5 reusable templates</li>
+            <li><strong>Branded intro and outro motion graphics</strong></li>
+            <li><strong>Lower thirds template</strong> &mdash; consistent on-screen identification</li>
+            <li><strong>Caption styling system</strong> &mdash; brand-aligned subtitles</li>
+            <li><strong>LinkedIn clip visual formatting</strong> &mdash; consistent clip presentation</li>
+            <li><strong>YouTube channel banner refinement</strong> (if needed)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="foundation-footer">
+        <p>Pricing depends on scope of motion graphics and documentation depth, and on whether you have one or multiple public-facing leaders. We'll scope it together during a working session.</p>
+        <a href="/contact">Schedule a Working Session</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRICING TIERS -->
 <section class="tiers" id="pricing">
   <div class="container">
-    <h2>Three Levels of Partnership</h2>
-    <p class="tiers-sub">Every institutional engagement starts with a working session. Then we build the system that fits your team.</p>
+    <h2>Step 2: Choose Your Monthly Partnership</h2>
+    <p class="tiers-sub">Once the Foundation Build is in place, choose the ongoing partnership level that fits your team. Every tier builds on the same infrastructure.</p>
     <div class="tiers-grid">
 
       <div class="tier-card">
@@ -498,7 +580,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
         <p class="tier-price">$5,000-$7,500<span>/mo</span></p>
         <ul class="tier-list">
           <li>Everything in Strategy + Production</li>
-          <li>Multi-leader visibility across 2-4 executives</li>
+          <li>Multi-leader visibility across 2-4 executives (voice profiles built in Foundation)</li>
           <li>Topic ownership mapping (who speaks to what)</li>
           <li>Monthly Signal Brief: priority narratives, opportunities, emerging issues</li>
           <li>Cross-post coordination across team accounts</li>
