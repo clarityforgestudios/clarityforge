@@ -269,15 +269,15 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
   /* FAQ items: larger tap target */
   .faq-q, .faq-item summary { padding: 1rem 2rem 1rem 0 !important; }
 
-  /* Buttons: full-width primary CTAs for easier thumb access */
-  .hero-ctas .btn-primary,
-  .hero-ctas .btn-secondary,
-  .closing-cta .btn-primary {
+  /* Buttons: full-width primary CTA for easier thumb access.
+     Only target actual button classes, not secondary text links. */
+  .hero-ctas > .btn-primary,
+  .closing-cta > .btn-primary {
     width: 100%;
     justify-content: center;
     text-align: center;
   }
-  .hero-ctas { flex-direction: column; align-items: stretch !important; gap: 0.75rem; }
+  .hero-ctas { flex-direction: column; align-items: flex-start; gap: 1rem; }
 }
 
 /* Small phones: iPhone SE, older Androids (~375px and below) */
@@ -347,7 +347,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
       <li><a href="/blog">Blog</a></li>
     </ul>
     <a href="/story-sprint" class="nav-cta">Start a Story Sprint</a>
-    <button class="nav-hamburger" aria-label="Menu">
+    <button class="nav-hamburger" aria-label="Menu" onclick="this.classList.toggle('nav-hamburger-open');document.querySelector('.nav-links').classList.toggle('nav-open')">
       <span></span><span></span><span></span>
     </button>
   </div>

@@ -1,147 +1,87 @@
-# Mobile Optimization Pass — Full Site
+# Mobile Optimization Pass v2 — Full Site
 
 **Date:** April 16, 2026
-**Scope:** CSS-only mobile experience improvements applied to all 21 HTML pages.
-**Risk level:** Low. No HTML, JS, copy, or desktop changes.
+**Scope:** Real-world bug fixes based on phone screenshots, plus site-wide mobile CSS improvements.
 
 ---
 
-## What changed
+## Bugs fixed in this pass
 
-### 1. Story Sprint FAQ max-height bug fix
+### 1. Hero CTA secondary link stretched full-width (caused by v1 mobile block)
 
-`story-sprint/index.html`: `.faq-a.open` max-height increased from 300px to 1500px. Several new FAQ answers (Sprint+ explanation, multi-leader question, retainer credit policy) exceed 300px and were being silently truncated on expand.
+The v1 mobile block used `align-items: stretch !important` on `.hero-ctas`, which stretched every child including secondary text links. On the homepage this caused the "Explore our free tools and resources" underlined link to span the full viewport width, which looked wrong.
 
-### 2. Universal mobile optimization block
+**Fix:** Changed selector to only target direct `.btn-primary` children. Secondary links stay inline at their natural width. Also changed `align-items` back to `flex-start` and tightened `gap` to `1rem`.
 
-A consolidated CSS block was injected right before `</style>` on every page. Additive only: does not replace existing styles. Marked with a visible comment so it can be easily found and rolled back.
+### 2. Horizontal overflow on homepage (pre-existing site bug)
 
-**At max-width 768px (phones and small tablets):**
-- Section padding tightened: `clamp(4rem, 8vw, 7rem)` becomes `clamp(2.5rem, 6vw, 4rem)` - cuts roughly 1.5 screens of empty vertical space per page
-- Body font reduced from 18px to 16px - 2026 mobile standard
-- Card padding reduced from ~2.5rem to 1.5rem across all card types
-- Gap between stacked cards reduced to 1rem
-- FAQ tap targets enlarged to 1rem vertical padding
-- Primary CTAs go full-width with stacked layout
-- Line-heights tightened on h1/h2/h3
+The `.gap-states` flex container (holding the "Without a system" / "With ClarityForge" before/after cards) had no mobile breakpoint. It stayed as `display: flex` horizontal at all widths, causing the second card to extend off-screen. This pushed the entire page wider than the viewport, which compressed every section above into a narrow column — making the hero, problem section, and headings all look broken.
 
-**At max-width 480px (small phones - iPhone SE, older Androids):**
-- Container widened to 92vw
-- Section padding tightened further
-- Hero h1 capped at 2.6rem
-- Card padding tightened to 1.25rem
-- Nav logo shrinks to prevent wrapping
-- Closing CTA headings wrap better
+**Fix:** Added `.gap-states { flex-direction: column; gap: 1rem; }` inside the existing 960px media query on the homepage.
 
-### 3. Selector coverage
+### 3. Hamburger menu broken on 18 of 21 pages (pre-existing site bug)
 
-The mobile block targets ~80 card and grid class names across the site. Including but not limited to: prod-card, freq-card, layer-card, tier-card, hiw-card, outcome-card, del-card, invest-card, example-card, foundation-body/header, approach-card, ba-card, big-number-card, case-card, cycle-step, detail-card, diff-card, dim-card, q-card, res-card, step-card, success-card, testimonial-card, wt-card, alt-tool-card, fact-card, format-card, evo-card, gate-card, insight-card, lane-card, pn-card, pq-card, result-card, form-card, founder-grid, posts-grid, client-grid, footer-grid.
+The `<button class="nav-hamburger">` element had styling but no click handler on 18 pages. Only `content-cost-calculator` and `privacy-policy` had the working implementation. Tapping the menu button did nothing.
+
+**Fix:** Added the working `onclick` attribute from content-cost-calculator to all 18 broken pages. The CSS for the open state (`.nav-links.nav-open`) already existed on every page, so no CSS changes needed.
 
 ---
 
-## Pages updated (21)
+## All changes in this deploy
 
-All HTML files in the site:
-- `/404.html`
-- `/index.html` (homepage)
-- `/about/index.html`
-- `/blog/index.html`
-- `/contact/index.html`
-- `/content-cost-calculator/index.html`
-- `/content-engine/index.html`
-- `/content-pillars/index.html`
-- `/executive-visibility/index.html`
-- `/podcast-checklist/index.html`
-- `/podcast-production/index.html`
-- `/post-ideas/index.html`
-- `/privacy-policy/index.html`
-- `/resources/index.html`
-- `/scorecard/index.html`
-- `/services/index.html`
-- `/story-sprint/index.html`
-- `/strategic-partnerships/index.html`
-- `/work/index.html`
-- `/work/energy-capital/index.html`
-- `/work/project-vanguard/index.html`
+### From v1 (mobile optimization pass)
+- Story-sprint FAQ max-height bug fix (300px → 1500px)
+- Universal mobile optimization block on all 21 pages
+  - Tighter section padding at 768px and 480px
+  - 16px body font on mobile (2026 standard)
+  - Reduced card padding (~1.5rem from ~2.5rem at 768px)
+  - Reduced gap between stacked cards (1rem from 2rem)
+  - FAQ tap targets enlarged
+  - Line-heights tightened on headings
+
+### New in v2
+- Hero CTA selector fixed (only targets `.btn-primary`, not secondary links)
+- Homepage `.gap-states` stacks on mobile
+- Hamburger onclick handler added to 18 pages
 
 ---
 
-## What did NOT change
+## Pages with changes
 
-- No HTML structure changes
-- No copy changes
-- No JavaScript changes
-- No color, brand, or identity changes
-- Desktop experience unchanged (all new CSS is inside @media queries)
-- Existing page-specific breakpoints (860px, 960px) preserved
-- `_headers`, `sitemap.xml`, `robots.txt`, tracking tags, forms, PDFs all unchanged
+All 21 HTML files touched. Full list: `404.html`, `index.html`, `about/index.html`, `blog/index.html`, `contact/index.html`, `content-cost-calculator/index.html`, `content-engine/index.html`, `content-pillars/index.html`, `executive-visibility/index.html`, `podcast-checklist/index.html`, `podcast-production/index.html`, `post-ideas/index.html`, `privacy-policy/index.html`, `resources/index.html`, `scorecard/index.html`, `services/index.html`, `story-sprint/index.html`, `strategic-partnerships/index.html`, `work/index.html`, `work/energy-capital/index.html`, `work/project-vanguard/index.html`.
 
 ---
 
-## Bug check results
+## Known remaining issues not fixed in this pass
 
-**Passed:**
-- HTML validity: all 21 pages parse cleanly with lxml
-- CSS syntax: balanced braces on every style block
-- Cascade ordering: mobile block is always last in cascade, so overrides work as expected
-- Injection count: exactly one mobile block per page
-- Viewport tags: present on all 21 pages
-- Story-sprint FAQ fix applied correctly
-
-**Not verified by automated tests (verify manually after deploy):**
-- FAQ accordion toggle behavior on story-sprint
-- Calculator wizard flow on content-cost-calculator
-- Scorecard multi-step flow
-- Mobile hamburger nav menu
-- Contact form Formspree submission
-- These are all untouched by CSS-only changes but should be confirmed on an actual device
-
----
-
-## Deployment
-
-Same flow as the last update:
-1. Upload zip to Cloudflare Workers and Pages via "New deployment"
-2. Ensure `_headers` is included at root
-3. Changes propagate within seconds
+1. **35 other flex containers across the site have no mobile stacking rule.** Automated scan flagged them, but they're mostly small inline elements (icon-text rows, button rows, labels) that are naturally narrow. Not likely to cause overflow. If specific pages show similar bugs after deploy, we fix surgically.
+2. **404 page h1 stays at 5rem on mobile** — might feel too big on small screens. Original designer choice, not introduced by this pass.
+3. **Mobile block still contains redundant `body { font-size: 16px }`** — every page already had this rule in their existing 768px media query. Duplicate is harmless but wasted bytes.
 
 ---
 
 ## Testing checklist after deployment
 
-Test on an actual phone, not Chrome DevTools responsive mode.
+Test on an actual phone:
 
-- [ ] Homepage: scroll through, confirm sections feel tighter
-- [ ] Story Sprint: expand each FAQ, confirm long answers fully display
-- [ ] Story Sprint: confirm Sprint vs Sprint+ cards stack cleanly
-- [ ] Services: FAQ native details elements still expand
-- [ ] Podcast Production: production option cards stack with reduced padding
-- [ ] Strategic Partnerships: tier cards stack cleanly, featured tier stays prominent
-- [ ] Contact: form submits correctly on mobile
-- [ ] Content Cost Calculator: wizard flow completes
-- [ ] Scorecard: multi-step flow works
-- [ ] Blog / Post Ideas: idea cards render correctly
-- [ ] Work pages: case studies, metrics display correctly
-- [ ] 404: displays properly
-- [ ] On iPhone SE: hero headlines don't overflow
+- [ ] Homepage: tap hamburger menu in top right — menu should open
+- [ ] Homepage: scroll past hero, confirm page doesn't scroll horizontally
+- [ ] Homepage: "Without a system" and "With ClarityForge" cards should stack vertically, not side-by-side
+- [ ] Homepage hero: "Explore our free tools and resources" link should be inline text, not full-width underline
+- [ ] Every other page: tap hamburger, menu opens
+- [ ] Story Sprint: expand each FAQ, confirm long answers display fully
+- [ ] Services, Contact, Content Cost Calculator, Scorecard: spot-check flows
+- [ ] On iPhone SE (smallest supported): hero headlines don't overflow
 
 ---
 
 ## Rollback
 
-Each page can be rolled back by finding the comment `MOBILE OPTIMIZATION BLOCK (added 2026-04-16)` in the style block and deleting from that comment down to just before `</style>`. On story-sprint, also revert `max-height: 1500px` to `max-height: 300px` if needed.
+Each page can be rolled back individually:
+1. Mobile CSS block: find the comment `MOBILE OPTIMIZATION BLOCK (added 2026-04-16)` and delete from there to just before `</style>`
+2. Hamburger onclick: delete the `onclick="..."` attribute from `<button class="nav-hamburger">`
+3. Homepage `.gap-states`: remove the single line from the 960px media query
 
 ---
 
-## Follow-up recommendations (not applied)
-
-These are bigger changes that deserve their own review and testing cycle:
-
-1. Convert card grids to swipe carousels on mobile for podcast-production (prod-cards, freq-cards, layers-grid) and strategic-partnerships (tiers-grid). Requires HTML + JS changes.
-2. Progressive disclosure on feature cards: show card title + summary + "See what's included" expand. Requires HTML changes.
-3. Sticky mobile CTA bar on every page. Podcast-production has the foundation (body padding-bottom + mobile-cta class); extend site-wide.
-4. Consolidate the mobile block into a shared CSS file instead of duplicating it across 21 inline style blocks.
-
----
-
-*ClarityForge Studios — Mobile Optimization Pass — Full Site*
+*ClarityForge Studios — Mobile Optimization v2*
