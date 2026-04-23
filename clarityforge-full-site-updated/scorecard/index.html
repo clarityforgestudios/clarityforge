@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QVX5YQ0TYH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QVX5YQ0TYH');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Energy Leader Visibility Scorecard | ClarityForge Studios</title>
+<meta name="description" content="Rate your visibility across 10 dimensions in 2 minutes. See where you stand and what to build next.">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet"></noscript>
+<style>
+/* ========================================
+   CSS CUSTOM PROPERTIES — BRAND SYSTEM
+   ======================================== */
+:root {
+  --deep-navy: #1A2A3A;
+  --navy: #2A3D4F;
+  --gold: #FFB64D;
+  --orange: #E8713A;
+  --orange-dark: #D4622E;
+  --near-black: #1C1E22;
+  --dark-gray: #3D4550;
+  --medium-gray: #6B7785;
+  --light-gray: #B0B8C1;
+  --border-gray: #DFE2E6;
+  --section-gray: #F2F3F5;
+  --warm-white: #FAFAF8;
+  --pure-white: #FFFFFF;
+  --success: #4A8C5E;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --section-pad: clamp(4rem, 8vw, 7rem);
+  --container: min(1200px, 90vw);
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ========================================
+   RESET & BASE
+   ======================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--dark-gray);
+  background: var(--warm-white);
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+.container { width: var(--container); margin: 0 auto; }
+
+/* ========================================
+   NAVIGATION
+   ======================================== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--deep-navy);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-inner {
+  width: var(--container); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 0; gap: 2rem;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 0.65rem;
+  font-family: var(--font-body); font-weight: 600; font-size: 1.05rem;
+  color: var(--warm-white); letter-spacing: -0.01em;
+}
+.nav-logo svg { width: auto; height: 28px; }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: var(--light-gray); font-size: 0.9rem; font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  background: var(--gold); color: var(--navy); font-weight: 700;
+  padding: 0.6rem 1.4rem; border-radius: 6px; font-size: 0.85rem;
+  transition: background 0.2s, transform 0.15s; border: none; cursor: pointer;
+  letter-spacing: 0.01em;
+}
+.nav-cta:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-1px); }
+.nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--warm-white); margin: 5px 0; transition: 0.3s; }
+
+/* ========================================
+   HERO
+   ======================================== */
+.hero {
+  background: var(--deep-navy);
+  padding: calc(var(--section-pad) + 4rem) 0 var(--section-pad);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: ''; position: absolute; top: 0; right: 0;
+  width: 40%; height: 100%;
+  background: radial-gradient(ellipse at 80% 40%, rgba(255,182,77,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
+.hero h1 {
+  font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem);
+  color: var(--warm-white); line-height: 1.15; margin-bottom: 1.2rem;
+  letter-spacing: -0.02em;
+}
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero-sub {
+  font-size: clamp(1rem, 1.8vw, 1.1rem); color: var(--light-gray);
+  max-width: 520px; margin: 0 auto 2rem; line-height: 1.6;
+}
+.hero-meta {
+  display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+}
+.hero-meta-item { text-align: center; }
+.hero-meta-item strong {
+  display: block; color: var(--gold);
+  font-size: 1.6rem; font-family: var(--font-display);
+}
+.hero-meta-item span { color: var(--light-gray); font-size: 0.8rem; }
+
+/* ========================================
+   STICKY LEGEND
+   ======================================== */
+.legend-bar {
+  background: var(--pure-white);
+  border-bottom: 1px solid var(--border-gray);
+  padding: 0.8rem 0;
+  position: sticky; top: 62px; z-index: 10;
+}
+.legend-inner {
+  width: var(--container); margin: 0 auto;
+  display: flex; align-items: center; justify-content: center; gap: 2rem;
+}
+.legend-scale { display: flex; gap: 1.2rem; }
+.legend-item { text-align: center; font-size: 0.65rem; color: var(--medium-gray); }
+.legend-item strong { display: block; font-size: 0.75rem; color: var(--dark-gray); }
+.legend-score {
+  font-size: 0.85rem; font-weight: 600; color: var(--dark-gray);
+  background: var(--section-gray); padding: 0.4rem 1rem; border-radius: 20px;
+}
+.legend-score .val { color: var(--gold); font-size: 1rem; font-family: var(--font-display); }
+
+/* ========================================
+   QUESTIONS
+   ======================================== */
+.questions-wrap {
+  width: min(700px, 90vw); margin: 0 auto;
+  padding: 2rem 0 3rem;
+}
+.q-card {
+  background: var(--pure-white);
+  border: 1px solid var(--border-gray);
+  border-radius: 10px; padding: 1.4rem;
+  margin-bottom: 0.9rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.q-card:hover { border-color: var(--light-gray); }
+.q-card.answered { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold); }
+.q-top { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; }
+.q-num {
+  flex-shrink: 0; width: 28px; height: 28px;
+  background: var(--deep-navy); color: var(--pure-white);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem; font-weight: 700;
+}
+.q-text { flex: 1; font-size: 0.92rem; color: var(--near-black); font-weight: 500; line-height: 1.45; }
+.q-dim { flex-shrink: 0; font-size: 0.7rem; color: var(--medium-gray); font-style: italic; padding-top: 0.25rem; }
+.q-btns { display: flex; gap: 0.5rem; }
+.q-btn {
+  flex: 1; border: 1.5px solid var(--border-gray); background: var(--warm-white);
+  border-radius: 8px; padding: 0.6rem 0.25rem; text-align: center;
+  cursor: pointer; transition: all 0.15s;
+}
+.q-btn:hover { border-color: var(--gold); background: #FFF8ED; }
+.q-btn.sel { border-color: var(--gold); background: var(--gold); }
+.q-btn .num { display: block; font-size: 1rem; font-weight: 700; color: var(--dark-gray); line-height: 1; }
+.q-btn.sel .num { color: var(--deep-navy); }
+.q-btn .lbl { display: block; font-size: 0.55rem; color: var(--medium-gray); margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.3px; }
+.q-btn.sel .lbl { color: var(--deep-navy); opacity: 0.7; }
+
+/* ========================================
+   RESULTS (ungated)
+   ======================================== */
+.results {
+  width: min(700px, 90vw); margin: 0 auto; padding-bottom: 2rem; display: none;
+}
+.results.vis { display: block; }
+.res-hero {
+  text-align: center; padding: 2.5rem 1.5rem;
+  background: var(--deep-navy); border-radius: 12px; margin-bottom: 1.2rem;
+}
+.res-big { font-family: var(--font-display); font-size: 3.5rem; color: var(--gold); line-height: 1; }
+.res-big span { font-size: 1.2rem; color: var(--light-gray); }
+.res-tier { font-family: var(--font-display); font-size: 1.4rem; color: var(--pure-white); margin-top: 0; padding-top: 0.5rem; }
+.res-card {
+  background: var(--pure-white); border: 1px solid var(--border-gray);
+  border-radius: 10px; padding: 1.5rem 1.6rem; border-left: 4px solid var(--gold);
+}
+.res-card h3 { font-family: var(--font-display); font-size: 1.1rem; color: var(--near-black); margin-bottom: 0.5rem; }
+.res-card p { font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.6rem; }
+.res-card .cta-line { font-weight: 700; color: var(--near-black); }
+
+/* ========================================
+   BREAKDOWN GATE
+   ======================================== */
+.gate {
+  width: min(700px, 90vw); margin: 0 auto; padding-bottom: 2rem; display: none;
+}
+.gate-card {
+  background: var(--deep-navy); border-radius: 12px;
+  padding: 2.2rem 2rem; text-align: center;
+}
+.gate-card h2 { font-family: var(--font-display); color: var(--pure-white); font-size: 1.5rem; margin-bottom: 0.4rem; }
+.gate-card > p { color: var(--light-gray); font-size: 0.88rem; margin-bottom: 1.2rem; }
+.gate-form { display: flex; gap: 0.6rem; max-width: 400px; margin: 0 auto; }
+.gate-form input {
+  flex: 1; padding: 0.75rem 1rem;
+  border: 1.5px solid var(--navy); background: var(--navy);
+  color: var(--pure-white); border-radius: 8px;
+  font-family: var(--font-body); font-size: 0.88rem;
+  outline: none; transition: border-color 0.2s;
+}
+.gate-form input::placeholder { color: var(--medium-gray); }
+.gate-form input:focus { border-color: var(--gold); }
+.gate-form button {
+  padding: 0.75rem 1.4rem; background: var(--gold); color: var(--deep-navy);
+  border: none; border-radius: 8px; font-family: var(--font-body);
+  font-size: 0.88rem; font-weight: 700; cursor: pointer;
+  white-space: nowrap; transition: background 0.15s;
+}
+.gate-form button:hover { background: var(--orange); color: var(--pure-white); }
+.gate-form button:disabled { opacity: 0.5; cursor: not-allowed; }
+.gate-note { color: var(--medium-gray); font-size: 0.68rem; margin-top: 0.6rem; }
+
+/* ========================================
+   BREAKDOWN
+   ======================================== */
+.breakdown {
+  width: min(700px, 90vw); margin: 0 auto; padding-bottom: 3rem; display: none;
+}
+.breakdown.vis { display: block; }
+.bd-header { font-family: var(--font-display); font-size: 1.2rem; color: var(--near-black); margin-bottom: 0.25rem; }
+.bd-sub { font-size: 0.82rem; color: var(--medium-gray); margin-bottom: 1rem; }
+.dim-card {
+  background: var(--pure-white); border: 1px solid var(--border-gray);
+  border-radius: 8px; padding: 0.85rem 1.1rem; margin-bottom: 0.5rem;
+}
+.dim-card.weak { border-left: 4px solid var(--orange); }
+.dim-card.mid { border-left: 4px solid var(--gold); }
+.dim-card.strong { border-left: 4px solid var(--success); }
+.dim-top { display: flex; align-items: center; gap: 0.8rem; }
+.dim-circle {
+  flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.95rem;
+}
+.dim-card.weak .dim-circle { background: #FFF0E8; color: var(--orange); }
+.dim-card.mid .dim-circle { background: #FFF8ED; color: var(--orange-dark); }
+.dim-card.strong .dim-circle { background: #E8F5E9; color: #388E3C; }
+.dim-name { flex: 1; font-weight: 500; font-size: 0.9rem; color: var(--near-black); }
+.dim-verdict { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.dim-card.weak .dim-verdict { color: var(--orange); }
+.dim-card.mid .dim-verdict { color: var(--gold); }
+.dim-card.strong .dim-verdict { color: var(--success); }
+.dim-guidance { font-size: 0.82rem; line-height: 1.5; margin-top: 0; padding-top: 0.5rem; padding-left: 2.9rem; }
+.dim-guidance.action { color: var(--orange-dark); }
+.dim-guidance.building { color: var(--medium-gray); }
+.dim-guidance.affirm { color: var(--success); }
+.dim-guidance a { color: var(--gold); font-weight: 600; }
+.bd-insight {
+  background: var(--section-gray); border-radius: 10px;
+  padding: 1.4rem; margin: 1rem 0 1.2rem;
+}
+.bd-insight h4 { font-family: var(--font-display); font-size: 0.95rem; color: var(--near-black); margin-bottom: 0.4rem; }
+.bd-insight p { font-size: 0.85rem; color: var(--dark-gray); line-height: 1.6; }
+.cta-block {
+  text-align: center; padding: 2rem;
+  background: var(--section-gray); border-radius: 10px; margin-top: 1.2rem;
+}
+.cta-block h3 { font-family: var(--font-display); font-size: 1.15rem; color: var(--near-black); margin-bottom: 0.4rem; }
+.cta-block p { font-size: 0.88rem; color: var(--dark-gray); margin-bottom: 1rem; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--gold); color: var(--navy); font-weight: 700;
+  padding: 0.9rem 2rem; border-radius: 6px; font-size: 1rem;
+  transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
+  box-shadow: 0 2px 12px rgba(255,182,77,0.2);
+}
+.btn-primary:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(232,113,58,0.3); }
+
+/* ========================================
+   PROGRESS
+   ======================================== */
+.progress-bar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  height: 4px; background: var(--border-gray); z-index: 20;
+}
+.progress-fill { height: 100%; background: var(--gold); width: 0%; transition: width 0.3s ease; }
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer {
+  background: var(--near-black);
+  padding: 4rem 0 2rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-grid {
+  display: grid; grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 3rem; margin-bottom: 3rem;
+}
+.footer-brand h3 {
+  font-family: var(--font-body); font-weight: 600;
+  color: var(--warm-white); font-size: 1rem; margin-bottom: 0.5rem;
+}
+.footer-brand p { font-size: 0.82rem; color: var(--medium-gray); line-height: 1.6; }
+.footer-links h4 {
+  font-size: 0.78rem; color: var(--light-gray);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 1rem; font-weight: 600;
+}
+.footer-links a {
+  display: block; font-size: 0.88rem; color: var(--medium-gray);
+  padding: 0.25rem 0; transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-contact a {
+  display: block; font-size: 0.88rem; color: var(--medium-gray);
+  padding: 0.25rem 0; transition: color 0.2s;
+}
+.footer-contact a:hover { color: var(--gold); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 1.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.78rem; color: var(--medium-gray);
+}
+.footer-bottom a { color: var(--medium-gray); transition: color 0.2s; }
+.footer-bottom a:hover { color: var(--gold); }
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 960px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: block; }
+  .nav-inner .nav-cta { display: none; }
+  .hero { padding: calc(var(--section-pad) + 3rem) 0 2.5rem; }
+  .q-card { padding: 1rem; }
+  .q-btn .lbl { display: none; }
+  .gate-form { flex-direction: column; }
+  .legend-scale { gap: 0.8rem; }
+  .q-dim { display: none; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+
+/* SERVICES DROPDOWN */
+.nav-dropdown-wrap { position: relative; }
+.nav-dropdown-wrap::before { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 1rem; }
+.nav-dropdown-trigger { cursor: pointer; }
+.nav-dropdown {
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  background: var(--deep-navy); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 0.5rem 0; min-width: 220px;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  transform: translateX(-50%) translateY(8px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  margin-top: 0; padding-top: 0.5rem;
+}
+.nav-dropdown-wrap:hover .nav-dropdown {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown a {
+  display: block; padding: 0.5rem 1.25rem; font-size: 0.85rem;
+  color: var(--light-gray); transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.nav-dropdown a:hover { background: rgba(255,182,77,0.1); color: var(--gold); }
+.nav-dropdown-all {
+  border-top: 1px solid rgba(255,255,255,0.08); margin-top: 0.25rem;
+  padding-top: 0.6rem; font-weight: 600; font-size: 0.82rem;
+}
+
+/* MOBILE MENU OPEN STATE */
+.nav-links.nav-open {
+  display: flex; flex-direction: column;
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: var(--deep-navy); padding: 1rem 5vw 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  gap: 0; z-index: 100;
+}
+.nav-links.nav-open li { padding: 0.5rem 0; }
+.nav-links.nav-open a { font-size: 1rem; }
+.nav-links.nav-open .nav-dropdown {
+  position: static; transform: none; opacity: 1; visibility: visible;
+  pointer-events: auto; box-shadow: none; border: none;
+  padding: 0 0 0 1rem; margin-top: 0.25rem; min-width: 0;
+  background: transparent;
+}
+.nav-hamburger-open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-hamburger-open span:nth-child(2) { opacity: 0; }
+.nav-hamburger-open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ============================================
+   MOBILE OPTIMIZATION BLOCK (added 2026-04-16)
+   Surgical fixes for phone experience applied site-wide.
+   Additive only: does not replace any existing styles.
+   ============================================ */
+
+/* Tablet and below: tighten section padding and typography */
+@media (max-width: 768px) {
+  :root {
+    --section-pad: clamp(2.5rem, 6vw, 4rem);
+  }
+  body {
+    font-size: 16px;
+  }
+  h1 { line-height: 1.2; }
+  h2 { line-height: 1.25; }
+  h3 { line-height: 1.3; }
+
+  /* Cards with padding: tighten so stacked cards don't eat the screen */
+  .prod-card, .freq-card, .layer-card,
+  .tier-card, .hiw-card, .outcome-card,
+  .del-card, .how-step, .invest-card, .invest-card-featured,
+  .example-card, .example-card-before, .example-card-after,
+  .foundation-body, .foundation-header,
+  .approach-card, .ba-card, .big-number-card, .case-card,
+  .cycle-step, .detail-card, .diff-card, .dim-card,
+  .q-card, .quiz-step, .res-card, .step-card,
+  .success-card, .testimonial-card, .wt-card,
+  .alt-tool-card,
+  .fact-card, .format-card, .evo-card,
+  .gate-card, .insight-card, .lane-card,
+  .pn-card, .pq-card, .result-card, .form-card {
+    padding: 1.5rem 1.25rem !important;
+  }
+  /* Reduce gap between stacked cards */
+  .prod-cards, .freq-cards, .layers-grid,
+  .tiers-grid, .hiw-grid, .outcomes-grid,
+  .del-grid, .how-grid, .example-cards,
+  .approach-grid, .ba-cards, .big-number-grid,
+  .cases-grid, .diff-grid, .engine-grid,
+  .principles-grid, .problem-grid, .res-grid,
+  .testimonial-grid, .who-grid, .wt-grid,
+  .alt-tools-grid, .contact-grid,
+  .facts-grid, .formats-grid, .founder-grid,
+  .insight-grid, .lanes-grid, .output-grid,
+  .pn-grid, .posts-grid, .results-grid,
+  .client-grid, .footer-grid {
+    gap: 1rem !important;
+  }
+  /* Reduce padding inside sections with extra inner padding */
+  .diff-callout, .coinvest-section { padding: 2rem 0 !important; }
+
+  /* FAQ items: larger tap target */
+  .faq-q, .faq-item summary { padding: 1rem 2rem 1rem 0 !important; }
+
+  /* Buttons: full-width primary CTA for easier thumb access.
+     Only target actual button classes, not secondary text links. */
+  .hero-ctas > .btn-primary,
+  .closing-cta > .btn-primary {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+  .hero-ctas { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  /* Mobile nav menu: higher contrast, clear hierarchy, left-aligned */
+  .nav-links.nav-open {
+    padding: 0.5rem 0 1rem !important;
+    align-items: stretch !important;
+  }
+  .nav-links.nav-open li {
+    padding: 0 !important;
+    width: 100%;
+  }
+  .nav-links.nav-open > li > a,
+  .nav-links.nav-open > li > .nav-dropdown-trigger {
+    display: block;
+    padding: 0.9rem 5vw !important;
+    color: var(--warm-white) !important;
+    font-size: 1rem !important;
+    font-weight: 500;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .nav-links.nav-open > li:last-child > a {
+    border-bottom: none;
+  }
+  .nav-links.nav-open .nav-dropdown {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: rgba(0,0,0,0.15) !important;
+  }
+  .nav-links.nav-open .nav-dropdown a {
+    display: block;
+    padding: 0.75rem 5vw 0.75rem calc(5vw + 1.25rem) !important;
+    color: var(--light-gray) !important;
+    font-size: 0.95rem !important;
+    text-align: left;
+    white-space: normal !important;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .nav-links.nav-open .nav-dropdown a:last-child {
+    border-bottom: none;
+  }
+  .nav-links.nav-open .nav-dropdown-all {
+    border-top: 1px solid rgba(255,255,255,0.08) !important;
+    padding-top: 0.75rem !important;
+    margin-top: 0 !important;
+    color: var(--warm-white) !important;
+    font-weight: 600;
+  }
+
+}
+
+/* Small phones: iPhone SE, older Androids (~375px and below) */
+@media (max-width: 480px) {
+  :root {
+    --container: min(1200px, 92vw);
+    --section-pad: clamp(2rem, 5vw, 3rem);
+  }
+
+  .hero h1 { font-size: clamp(2rem, 8vw, 2.6rem) !important; }
+
+  /* Tighter card padding on small screens */
+  .prod-card, .freq-card, .layer-card,
+  .tier-card, .hiw-card, .outcome-card,
+  .del-card, .invest-card, .invest-card-featured,
+  .approach-card, .ba-card, .big-number-card,
+  .case-card, .cycle-step, .detail-card, .diff-card,
+  .dim-card, .q-card, .res-card, .step-card,
+  .success-card, .testimonial-card, .wt-card,
+  .alt-tool-card,
+  .fact-card, .format-card, .evo-card,
+  .gate-card, .insight-card, .lane-card,
+  .pn-card, .pq-card, .result-card, .form-card {
+    padding: 1.25rem 1rem !important;
+    border-radius: 10px !important;
+  }
+
+  .nav-logo { font-size: 0.95rem !important; }
+  .closing-cta h2 { font-size: clamp(1.5rem, 6vw, 2rem) !important; }
+  .who-list li, .foundation-col ul li { padding: 0.4rem 0 0.4rem 1.4rem !important; }
+}
+
+</style>
+<link rel="canonical" href="https://clarityforgestudios.com/scorecard">
+<meta property="og:title" content="Energy Leader Visibility Scorecard | ClarityForge Studios">
+<meta property="og:description" content="Rate your visibility across 10 dimensions in 2 minutes. See where you stand and what to build next.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://clarityforgestudios.com/scorecard">
+<meta property="og:site_name" content="ClarityForge Studios">
+<meta property="og:image" content="https://clarityforgestudios.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Energy Leader Visibility Scorecard | ClarityForge Studios">
+<meta name="twitter:description" content="Rate your visibility across 10 dimensions in 2 minutes. See where you stand and what to build next.">
+<meta name="twitter:image" content="https://clarityforgestudios.com/og-image.jpg">
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "wavaxo0exd");
+</script>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg viewBox="0 0 400 565" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 109.366V336.996C0 349.904 12.155 359.369 24.6645 356.282L131.375 329.656V216.829C131.375 204.174 139.985 193.139 152.292 190.102L383.591 132.752C393.112 130.373 399.747 121.869 399.747 112.1V19.8733C399.747 6.96569 387.592-2.4999 375.082 0.587803L15.0924 90.0807C6.22943 92.2573 0 100.255 0 109.366Z" fill="#FFB64D"/>
+        <path d="M375.488 269.137L131.426 329.676V551.991C131.426 564.291 146.873 569.707 154.571 560.141L246.645 435.974C246.898 435.62 247.303 435.417 247.708 435.316L383.54 401.503C393.214 399.074 400.051 390.418 400.051 380.446V288.372C400.051 275.565 387.997 266.1 375.538 269.187L375.488 269.137Z" fill="#FF682C"/>
+      </svg>
+      ClarityForge Studios
+    </a>
+        <ul class="nav-links">
+      <li class="nav-dropdown-wrap"><a href="/services" class="nav-dropdown-trigger">Services</a>
+        <div class="nav-dropdown">
+          <a href="/podcast-production">Podcast Production</a>
+          <a href="/executive-visibility">Executive Visibility</a>
+          <a href="/strategic-partnerships">Strategic Partnerships</a>
+          <a href="/services" class="nav-dropdown-all">All Services</a>
+        </div>
+      </li>
+      <li><a href="/work">Work</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/resources">Resources</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+    <a href="/story-sprint" class="nav-cta">Start a Story Sprint</a>
+    <button class="nav-hamburger" aria-label="Menu" onclick="this.classList.toggle('nav-hamburger-open');document.querySelector('.nav-links').classList.toggle('nav-open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Energy Leader<br><em>Visibility Scorecard</em></h1>
+    <p class="hero-sub">10 questions. 2 minutes. A clear picture of where you stand.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>10</strong><span>Questions</span></div>
+      <div class="hero-meta-item"><strong>50</strong><span>Points possible</span></div>
+      <div class="hero-meta-item"><strong>3</strong><span>Score tiers</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STICKY LEGEND ===== -->
+<div class="legend-bar">
+  <div class="legend-inner">
+    <div class="legend-scale">
+      <div class="legend-item"><strong>1</strong>Never</div>
+      <div class="legend-item"><strong>2</strong>Rarely</div>
+      <div class="legend-item"><strong>3</strong>Sometimes</div>
+      <div class="legend-item"><strong>4</strong>Usually</div>
+      <div class="legend-item"><strong>5</strong>Always</div>
+    </div>
+    <div class="legend-score">Score: <span class="val" id="runScore">0</span>/50</div>
+  </div>
+</div>
+
+<!-- ===== QUESTIONS ===== -->
+<section class="questions-wrap" id="qWrap"></section>
+
+<!-- ===== RESULTS (ungated) ===== -->
+<section class="results" id="results">
+  <div class="res-hero" id="resHero"></div>
+  <div id="resCard"></div>
+</section>
+
+<!-- ===== BREAKDOWN GATE ===== -->
+<div class="gate" id="gate">
+  <div class="gate-card">
+    <h2>Get Your Full Breakdown</h2>
+    <p>See which dimensions are holding you back and what to fix first.</p>
+    <div class="gate-form">
+      <input type="email" id="emailIn" placeholder="your@email.com" required>
+      <button id="unlockBtn" onclick="unlock()">Send My Breakdown</button>
+    </div>
+    <p class="gate-note">We'll email your detailed results and a link to book a free review call.</p>
+  </div>
+</div>
+
+<!-- ===== BREAKDOWN ===== -->
+<section class="breakdown" id="breakdown">
+  <div id="dimCards"></div>
+  <div id="ctaBlock"></div>
+</section>
+
+<!-- ===== PROGRESS BAR ===== -->
+<div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>ClarityForge Studios</h3>
+        <p>Media systems for energy leaders.<br>Bend, Oregon.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigate</h4>
+        <a href="/services">Services</a>
+        <a href="/podcast-production">Podcast Production</a>
+        <a href="/executive-visibility">Executive Visibility</a>
+        <a href="/strategic-partnerships">Strategic Partnerships</a>
+        <a href="/work">Work</a>
+        <a href="/about">About</a>
+        <a href="/blog">Blog</a>
+        <a href="/resources">Resources</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Get in Touch</h4>
+        <div class="footer-social" style="display:flex;gap:.85rem;margin-bottom:1rem"><a href="https://www.linkedin.com/company/clarityforge-studios/" aria-label="ClarityForge Studios on LinkedIn" target="_blank" rel="noopener" style="padding:0;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid rgba(255,255,255,.12);border-radius:6px;color:var(--medium-gray);transition:color .2s,border-color .2s"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.268 2.37 4.268 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://www.youtube.com/@TheForgeYouTube" aria-label="The Forge on YouTube" target="_blank" rel="noopener" style="padding:0;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid rgba(255,255,255,.12);border-radius:6px;color:var(--medium-gray);transition:color .2s,border-color .2s"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a><a href="https://clarityforgestudios.substack.com/" aria-label="The Forge on Substack" target="_blank" rel="noopener" style="padding:0;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid rgba(255,255,255,.12);border-radius:6px;color:var(--medium-gray);transition:color .2s,border-color .2s"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg></a></div><a href="/contact">Email</a>
+        <a href="tel:5125696612">(512) 569-6612</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ClarityForge Studios LLC</span>
+      <a href="/privacy-policy">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+var QS = [
+  { t: "Do you publish content at least once per week?", d: "Cadence", idx: 0,
+    gap: "Consistency is the foundation of visibility. Without a regular cadence, your audience has no reason to follow you. At a 5, you're publishing 3-5 times per week and your audience expects it. Start here: pick one day per week, block 45 minutes, and publish every single week for the next 8 weeks. Don't optimize. Just show up.",
+    mid: "You're publishing, but sporadically. The algorithm rewards consistency more than volume. One strong post every Tuesday outperforms three random posts whenever you find time. Block a recurring 45-minute slot on your calendar for the next month. Protect it. That one change will move this score.",
+    strong: "Strong cadence. Your audience knows when to expect you and that reliability builds trust over time. This is where compounding starts, and it's the hardest dimension to maintain. You've built the habit." },
+  { t: "Can you name your specific audience in one sentence?", d: "Audience Clarity", idx: 1,
+    gap: "If you can't name your audience in one sentence, your content is aimed at everyone and reaching no one. At a 5, you can say exactly who you serve, what they need, and why they listen to you. Try completing: \"I help [specific people] understand [specific topic] so they can [specific outcome].\" Our <a href=\"/resources\">resources page</a> has tools to help you define this.",
+    mid: "You have a general sense of your audience but it's not sharp enough to drive decisions. This week, write down the name of one real person who represents your ideal reader. Their job title, what they worry about, what they're trying to decide. Use that person as your filter for every piece of content you create for the next 30 days.",
+    strong: "Clear audience definition. This makes every other dimension easier because you know exactly who you're talking to and what they need. It's the dimension that multiplies the impact of every other score." },
+  { t: "Do you have 3-5 defined content pillars you consistently cover?", d: "Strategy", idx: 2,
+    gap: "Without content pillars, you're guessing at what to talk about every week. That leads to inconsistency and burnout. At a 5, you have 3-5 themes that your audience associates with your name. Define them this week using our <a href=\"/content-pillars\">Content Pillar Worksheet</a>. It takes 10 minutes.",
+    mid: "You have themes in your head but they're not written down or consistently used. This week: open a doc, write your 3-5 pillars in one sentence each, and tape it next to your screen. Every piece of content you create should fit under one of them. If it doesn't, cut it.",
+    strong: "Defined pillars mean your content strategy runs on rails. You never stare at a blank page because the question is never \"what should I write about\" but \"which pillar needs attention this week.\"" },
+  { t: "Does your content generate inbound messages or meeting requests?", d: "Conversion", idx: 3,
+    gap: "If your content isn't generating inbound, it's not reaching the right people or not saying the right things. At a 5, your content regularly generates DMs, meeting requests, and speaking invitations. Start by reviewing your last 10 posts: which ones got responses? What did they have in common? Do more of that.",
+    mid: "Some inbound is happening but it's not consistent. Review your last 10 posts and identify which ones generated responses. Usually it's the ones where you took a clear position or shared a specific experience rather than general commentary. Do more of that. Less curation, more conviction.",
+    strong: "Inbound conversations mean your content is doing its job. People are finding you, understanding your expertise, and reaching out. This is the signal that your visibility infrastructure is working." },
+  { t: "Are you present on more than one platform with consistent messaging?", d: "Distribution", idx: 4,
+    gap: "Single-platform presence is fragile. If the algorithm changes, your visibility disappears overnight. At a 5, you're on 2-3 platforms with the same positioning adapted to each format. Start with one primary platform (likely LinkedIn) and one secondary (newsletter or podcast). Same ideas, different format. Our <a href=\"/resources\">LinkedIn playbook</a> covers the mechanics.",
+    mid: "You're on multiple platforms but the messaging isn't consistent. This week, compare your LinkedIn headline, your email signature, and your website bio. Do they tell the same story? If someone read all three, would they describe you the same way? Align them. That single exercise changes how people perceive you across channels.",
+    strong: "Multi-platform presence with consistent messaging means your audience finds the same clear positioning wherever they encounter you. That's how credibility compounds across channels instead of fragmenting." },
+  { t: "Do you have a system that creates content without you doing all the work?", d: "Infrastructure", idx: 5,
+    gap: "If you're doing everything yourself, you'll burn out. Content creation should be a system, not a heroic individual effort. At a 5, you show up for one conversation and a team turns it into 10+ pieces of content across podcast, newsletter, LinkedIn, and social without you touching anything after the recording. See exactly how that works in our <a href=\"/content-engine\">Content Engine system map</a>. The first step is identifying what only you can do (thinking, speaking, deciding) versus what can be delegated (editing, formatting, scheduling, distribution).",
+    mid: "You have some delegation or tools in place but you're still the bottleneck for most steps. Map out your content process end-to-end this week. Circle every step that requires your brain versus your hands. The hand-work is what gets delegated first. A VA, a freelance editor, or a production partner can handle those steps starting this month.",
+    strong: "You have infrastructure. Content gets created, distributed, and repurposed without you touching every step. This is what separates sustainable visibility from unsustainable hustle. It also makes your content operation valuable beyond just your personal brand." },
+  { t: "Can someone understand your expertise within 30 seconds of seeing your profile?", d: "Positioning", idx: 6,
+    gap: "If someone visits your LinkedIn profile and can't tell what you do and who you serve in 30 seconds, you're losing every first impression. At a 5, a stranger can read your headline and immediately know your expertise, your audience, and your lens. Rewrite your headline this week to answer three questions: what do you do, for whom, and what outcome do they get?",
+    mid: "Your positioning is present but not sharp. Run this test this week: send your LinkedIn profile URL to three people who don't know you well. Ask each one: \"What do you think I do?\" If their answers don't match what you want to be known for, your positioning needs tightening. Their confusion is your diagnostic.",
+    strong: "Sharp positioning. People understand your expertise immediately. This means every piece of content you publish lands in the right context because the audience already knows your lens. You've done the hard work." },
+  { t: "Have you been invited to speak, guest, or contribute based on your content?", d: "Authority Signals", idx: 7,
+    gap: "No inbound authority signals means your content isn't establishing you as someone worth platforming. At a 5, you're regularly invited to speak, guest on podcasts, and contribute to publications without asking. Start by making yourself available: pitch yourself for one guest appearance or panel this month.",
+    mid: "Authority signals are starting to come in. Build on this momentum. Say yes to every guest appearance and speaking invitation for the next 6 months. Each one expands your network and creates new content opportunities. As your audience grows, these signals also attract sponsorship interest.",
+    strong: "Regular authority signals mean the market recognizes you as a credible voice. Speaking invitations, guest requests, and contribution opportunities compound your reach beyond your own channels. This is also the dimension that unlocks sponsorship and monetization." },
+  { t: "Do you know which of your content performs best and why?", d: "Measurement", idx: 8,
+    gap: "If you're not measuring, you're guessing. At a 5, you review performance weekly, know your top-performing formats and topics, and use that data to plan the next week's content. Start this week: look at your last 20 LinkedIn posts. Sort by engagement. Write down the top 5 and ask yourself what they have in common. Topic? Format? Length? Time of day? You'll find a pattern.",
+    mid: "You're tracking some metrics but not connecting them to decisions. Knowing that a post \"did well\" isn't enough. The question is why. Was it the topic, the format, the opening line, or the timing? Spend 15 minutes every Friday reviewing the week's content performance. Write one sentence: \"This week I learned that [X] works better than [Y].\" Do that for 4 weeks and you'll have a real content strategy.",
+    strong: "You know what works and why. Every piece of content you publish is informed by data, not instinct. Your hit rate improves over time because you're learning from every post. This is the dimension that separates consistent growth from random spikes." },
+  { t: "Could your content engine run for 2 weeks without your direct involvement?", d: "Scalability", idx: 9,
+    gap: "If the engine stops when you stop, you don't have a system. You have a habit. At a 5, your content operation runs for weeks without your direct involvement because the process is documented, roles are delegated, and you maintain a content buffer. See what a full production system looks like in our <a href=\"/content-engine\">Content Engine map</a>. The first step: batch-create 2-3 weeks of content in a single session and schedule it. That alone buys you breathing room to build the rest of the system.",
+    mid: "You could keep things going for maybe a week but two would be a stretch. This month, build a content buffer: dedicate one session to creating 3 weeks of content in advance. Then document your publishing process step-by-step so someone else could execute it. Those two actions are the difference between a practice and a system.",
+    strong: "Your system runs without you. That's real infrastructure. Your visibility doesn't depend on your daily energy level, and your content compounds even when you're focused on other things. This is the dimension most experts never reach, and it's the one that makes everything else sustainable." }
+];
+var LBL = ["Never","Rarely","Sometimes","Usually","Always"];
+var sc = new Array(10).fill(0);
+var wrap = document.getElementById('qWrap');
+
+QS.forEach(function(q,i) {
+  var c = document.createElement('div');
+  c.className = 'q-card'; c.id = 'q'+i;
+  c.innerHTML = '<div class="q-top"><div class="q-num">'+(i+1)+'</div><div class="q-text">'+q.t+'</div><div class="q-dim">'+q.d+'</div></div><div class="q-btns">'+[1,2,3,4,5].map(function(v){return '<div class="q-btn" onclick="pick('+i+','+v+',this)" role="button" tabindex="0"><span class="num">'+v+'</span><span class="lbl">'+LBL[v-1]+'</span></div>';}).join('')+'</div>';
+  wrap.appendChild(c);
+});
+
+function pick(qi, val, el) {
+  sc[qi] = val;
+  var card = document.getElementById('q'+qi);
+  card.querySelectorAll('.q-btn').forEach(function(b){b.classList.remove('sel');});
+  el.classList.add('sel');
+  card.classList.add('answered');
+  var tot = sc.reduce(function(a,b){return a+b;},0);
+  document.getElementById('runScore').textContent = tot;
+  var ans = sc.filter(function(s){return s>0;}).length;
+  document.getElementById('prog').style.width = (ans/10*100)+'%';
+  if (ans === 10) showResults();
+}
+
+function showResults() {
+  var tot = sc.reduce(function(a,b){return a+b;},0);
+  var tier, clr, body, cta;
+  if (tot <= 20) { tier="Foundation Needed"; clr="#E8713A"; body="You have expertise but no public infrastructure. Your knowledge is trapped in meetings, emails, and conference hallways. The gap isn't what you know. It's that nobody outside your direct network can find it."; cta="Start with a Story Sprint to define your positioning and build a plan."; }
+  else if (tot <= 35) { tier="Pieces Without a System"; clr="#FFB64D"; body="You're doing some things right but it's not compounding. You publish when you have time. Your content doesn't connect across platforms. Good weeks happen, but they don't build on each other."; cta="A Story Sprint will identify what's working, what's not, and what to build next."; }
+  else { tier="Ready to Scale"; clr="#4CAF50"; body="You have the foundation. Audience, positioning, and some content systems are in place. Now you need a partner to build the engine that turns this into a compounding machine."; cta="You don't need more planning. You need a production partner. Let's talk."; }
+
+  document.getElementById('resHero').innerHTML = '<div class="res-big">'+tot+'<span> / 50</span></div><div class="res-tier" style="color:'+clr+'">'+tier+'</div>';
+  document.getElementById('resCard').innerHTML = '<div class="res-card" style="border-left-color:'+clr+'"><h3>'+tier+'</h3><p>'+body+'</p><p class="cta-line">'+cta+'</p></div>';
+  document.getElementById('results').classList.add('vis');
+  document.getElementById('gate').style.display = 'block';
+  setTimeout(function(){ document.getElementById('results').scrollIntoView({ behavior:'smooth' }); }, 200);
+}
+
+function unlock() {
+  var email = document.getElementById('emailIn').value;
+  if (!email || email.indexOf('@') === -1) { document.getElementById('emailIn').style.borderColor='#E8713A'; return; }
+  var btn = document.getElementById('unlockBtn');
+  btn.disabled = true; btn.textContent = 'Sending...';
+
+  var tot = sc.reduce(function(a,b){return a+b;},0);
+  var tier = tot <= 20 ? 'Foundation Needed' : tot <= 35 ? 'Pieces Without a System' : 'Ready to Scale';
+  var sorted = QS.map(function(q,i){return {d:q.d,s:sc[i]};}).sort(function(a,b){return a.s-b.s;});
+  var weakest = sorted.slice(0,3).map(function(x){return x.d+' ('+x.s+'/5)';}).join(', ');
+
+  fetch('https://formspree.io/f/mdaprklq', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ email:email, source:'Visibility Scorecard',_gotcha:'', total_score:tot, tier:tier, weakest_dimensions:weakest, all_scores:sc.map(function(s,i){return QS[i].d+': '+s;}).join(', ') })
+  }).then(function(){showBreakdown();}).catch(function(){showBreakdown();});
+}
+
+function showBreakdown() {
+  document.getElementById('gate').style.display = 'none';
+  var dims = QS.map(function(q,i){return {d:q.d,s:sc[i],gap:q.gap,mid:q.mid,strong:q.strong,idx:q.idx};}).sort(function(a,b){return a.s-b.s;});
+  var weak = dims.filter(function(d){return d.s<=2;});
+  var tot = sc.reduce(function(a,b){return a+b;},0);
+
+  var h = '<h3 class="bd-header">Your Dimension Breakdown</h3><p class="bd-sub">Each dimension includes a specific recommendation based on your score. Sorted weakest to strongest.</p>';
+  dims.forEach(function(d) {
+    var cls='mid', v='Building', guidance='', gClass='building';
+    if(d.s<=2){cls='weak';v='Gap';guidance=d.gap;gClass='action';}
+    else if(d.s>=4){cls='strong';v='Solid';guidance=d.strong;gClass='affirm';}
+    else{guidance=d.mid;}
+    h += '<div class="dim-card '+cls+'"><div class="dim-top"><div class="dim-circle">'+d.s+'</div><div class="dim-name">'+d.d+'</div><div class="dim-verdict">'+v+'</div></div>';
+    if(guidance){h += '<div class="dim-guidance '+gClass+'">'+guidance+'</div>';}
+    h += '</div>';
+  });
+
+  // Dependency logic for summary insight
+  // Build a score lookup by dimension name
+  var scoreByDim = {};
+  QS.forEach(function(q,i){ scoreByDim[q.d] = sc[i]; });
+  var dependencies = [];
+
+  // Check if Conversion is weak but Audience Clarity or Positioning explains it
+  if (scoreByDim['Conversion'] <= 2) {
+    if (scoreByDim['Audience Clarity'] <= 3 || scoreByDim['Positioning'] <= 3) {
+      var upstream = [];
+      if (scoreByDim['Audience Clarity'] <= 3) upstream.push('Audience Clarity');
+      if (scoreByDim['Positioning'] <= 3) upstream.push('Positioning');
+      dependencies.push('Your Conversion score is low, but that\'s downstream of ' + upstream.join(' and ') + '. Fix ' + (upstream.length === 1 ? 'that' : 'those') + ' first and Conversion will improve naturally.');
+    }
+  }
+  // Check if Authority Signals is weak but Cadence/Distribution explains it
+  if (scoreByDim['Authority Signals'] <= 2) {
+    if (scoreByDim['Cadence'] <= 3 || scoreByDim['Distribution'] <= 3) {
+      var upstream2 = [];
+      if (scoreByDim['Cadence'] <= 3) upstream2.push('Cadence');
+      if (scoreByDim['Distribution'] <= 3) upstream2.push('Distribution');
+      dependencies.push('Authority Signals are low, but that\'s because ' + upstream2.join(' and ') + ' ' + (upstream2.length === 1 ? 'isn\'t' : 'aren\'t') + ' strong enough yet. Build the publishing habit and multi-platform presence first.');
+    }
+  }
+  // Check if Scalability is weak and Infrastructure isn't strong
+  if (scoreByDim['Scalability'] <= 2 && scoreByDim['Infrastructure'] <= 3) {
+    dependencies.push('Scalability depends on Infrastructure. You can\'t scale a system that isn\'t fully built yet. Strengthen your content infrastructure first, then focus on making it run without you.');
+  }
+
+  if (tot > 35 && weak.length > 0) {
+    // Ready to Scale but with a few weak spots
+    var wn = weak.map(function(d){return d.d;}).join(', ');
+    h += '<div class="bd-insight"><h4>Almost there</h4><p>You\'re in strong shape overall, but '+wn+' '+(weak.length===1?'is':'are')+' holding you back from full potential. The action items above show you exactly what to address. A production partner can close '+(weak.length===1?'this gap':'these gaps')+' as part of building your system.';
+    if (dependencies.length > 0) {
+      h += '</p><p style="margin-top:0.5rem;font-style:italic;font-size:0.82rem;color:var(--orange-dark);">';
+      h += dependencies.join(' ');
+    }
+    h += '</p></div>';
+  } else if (weak.length > 0) {
+    // Foundation Needed or Pieces Without a System with gaps
+    var wn = weak.map(function(d){return d.d;}).join(', ');
+    h += '<div class="bd-insight"><h4>Where to focus first</h4><p>Your biggest gaps are in '+wn+'. The action items above tell you exactly what to do for each one.';
+    if (dependencies.length > 0) {
+      h += '</p><p style="margin-top:0.5rem;font-style:italic;font-size:0.82rem;color:var(--orange-dark);">';
+      h += dependencies.join(' ');
+    }
+    h += '</p><p style="margin-top:0.5rem;">A Story Sprint will prioritize these into a sequenced 30-day plan so you know what to tackle first.</p></div>';
+  } else if (tot <= 35) {
+    h += '<div class="bd-insight"><h4>No major gaps, but room to grow</h4><p>You don\'t have any critical weaknesses, but several dimensions are in the "building" range. The recommendations above give you specific next steps for each one, most of which you can execute this week. A Story Sprint will sequence them into a plan.</p></div>';
+  } else {
+    h += '<div class="bd-insight"><h4>You\'re in strong shape</h4><p>Your visibility infrastructure is working. The opportunity now is building the system that compounds what you already have and opens the door to sponsorship and monetization. That\'s where a production partner changes the trajectory.</p></div>';
+  }
+
+  // Share prompt
+  h += '<p style="margin-top:1rem;font-size:0.82rem;color:var(--medium-gray);text-align:center;">Know someone who should take this? Send them the link: <a href="/scorecard" style="color:var(--gold);font-weight:600;">clarityforgestudios.com/scorecard</a></p>';
+
+  document.getElementById('dimCards').innerHTML = h;
+
+  // Conditional CTA
+  var ctaHtml;
+  if (tot > 35) {
+    ctaHtml = '<div class="cta-block"><h3>You don\'t need more planning.</h3><p>You need a partner to build the system that turns your visibility into a compounding engine. See how ClarityForge works with energy leaders.</p><a href="/services" class="btn-primary">Explore Services</a><p style="margin-top:0.75rem;font-size:0.85rem;"><a href="/contact" style="color:var(--medium-gray);border-bottom:1px solid rgba(176,184,193,0.3);padding-bottom:1px;">Or book a call to talk through it</a></p></div>';
+  } else {
+    ctaHtml = '<div class="cta-block"><h3>Ready to close the gaps?</h3><p>A Story Sprint gives you positioning, content pillars, audience profiles, and a 30-day publishing plan. Everything you need to start building.</p><a href="/story-sprint" class="btn-primary">Start a Story Sprint</a><p style="margin-top:0.75rem;font-size:0.85rem;"><a href="/resources" style="color:var(--medium-gray);border-bottom:1px solid rgba(176,184,193,0.3);padding-bottom:1px;">Or explore more free resources</a></p></div>';
+  }
+  document.getElementById('ctaBlock').innerHTML = ctaHtml;
+
+  var bd = document.getElementById('breakdown');
+  bd.classList.add('vis');
+  setTimeout(function(){ bd.scrollIntoView({ behavior:'smooth' }); }, 200);
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.target.classList.contains('q-btn') && (e.key==='Enter'||e.key===' ')) { e.preventDefault(); e.target.click(); }
+});
+</script>
+<!-- LinkedIn Insight Tag -->
+<script type="text/javascript">
+_linkedin_partner_id = "9160108";
+window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+</script><script type="text/javascript">
+(function(l) {
+if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
+window.lintrk.q=[]}
+var s = document.getElementsByTagName("script")[0];
+var b = document.createElement("script");
+b.type = "text/javascript";b.async = true;
+b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+s.parentNode.insertBefore(b, s);})(window.lintrk);
+</script>
+<noscript>
+<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=9160108&fmt=gif" />
+</noscript>
+</body>
+</html>

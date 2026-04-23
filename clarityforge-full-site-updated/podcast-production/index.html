@@ -1,0 +1,2238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QVX5YQ0TYH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QVX5YQ0TYH');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Podcast Production for Energy Leaders | ClarityForge Studios</title>
+<meta name="description" content="End-to-end podcast production for energy experts. Editing, clips, distribution, newsletters, and growth strategy. Built for thought leaders, not influencers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet"></noscript>
+<style>
+:root {
+  --deep-navy: #1A2A3A;
+  --navy: #2A3D4F;
+  --gold: #FFB64D;
+  --orange: #E8713A;
+  --orange-dark: #D4622E;
+  --near-black: #1C1E22;
+  --dark-gray: #3D4550;
+  --medium-gray: #6B7785;
+  --light-gray: #B0B8C1;
+  --border-gray: #DFE2E6;
+  --section-gray: #F2F3F5;
+  --warm-white: #FAFAF8;
+  --pure-white: #FFFFFF;
+  --gold-soft: rgba(255,182,77,0.08);
+  --gold-border: rgba(255,182,77,0.25);
+  --success: #4A8C5E;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --section-pad: clamp(4rem, 8vw, 7rem);
+  --container: min(1200px, 90vw);
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font-body); font-size: 18px; line-height: 1.7; color: var(--dark-gray); background: var(--warm-white); }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+.container { width: var(--container); margin: 0 auto; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.anim-entry { opacity: 0; animation: fadeUp 0.7s var(--ease) forwards; }
+.anim-d1 { animation-delay: 0ms; }
+.anim-d2 { animation-delay: 150ms; }
+.anim-d3 { animation-delay: 300ms; }
+
+/* NAV */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--deep-navy); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.nav-inner { width: var(--container); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; gap: 2rem; }
+.nav-logo { display: flex; align-items: center; gap: 0.65rem; font-family: var(--font-body); font-weight: 600; font-size: 1.05rem; color: var(--warm-white); letter-spacing: -0.01em; }
+.nav-logo svg { width: auto; height: 28px; }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { color: var(--light-gray); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { background: var(--gold); color: var(--navy); font-weight: 700; padding: 0.6rem 1.4rem; border-radius: 6px; font-size: 0.85rem; transition: background 0.2s, transform 0.15s; border: none; cursor: pointer; }
+.nav-cta:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-1px); }
+.nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--warm-white); margin: 5px 0; transition: 0.3s; }
+
+/* HERO */
+.hero { background: var(--deep-navy); padding: calc(var(--section-pad) + 4rem) 0 var(--section-pad); min-height: 60vh; display: flex; align-items: center; position: relative; overflow: hidden; }
+.hero::after { content: ''; position: absolute; top: 0; right: 0; width: 40%; height: 100%; background: radial-gradient(ellipse at 80% 40%, rgba(255,182,77,0.06) 0%, transparent 70%); pointer-events: none; }
+.hero-content { position: relative; z-index: 2; max-width: 720px; }
+.hero h1 { font-family: var(--font-display); font-size: clamp(2.8rem, 6vw, 4.2rem); color: var(--warm-white); line-height: 1.2; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+.hero h1 em { font-style: normal; color: var(--gold); display: inline-block; }
+.hero-sub { font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--light-gray); max-width: 560px; margin-bottom: 2.5rem; line-height: 1.65; }
+.hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; }
+.btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--gold); color: var(--navy); font-weight: 700; padding: 0.9rem 2rem; border-radius: 6px; font-size: 1rem; transition: background 0.25s, transform 0.15s, box-shadow 0.25s; box-shadow: 0 2px 12px rgba(255,182,77,0.2); }
+.btn-primary:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(232,113,58,0.3); }
+.btn-primary:active { background: var(--orange-dark); transform: translateY(0); }
+.hero-secondary { color: var(--light-gray); font-size: 0.9rem; border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+.hero-secondary:hover { color: var(--gold); border-color: var(--gold); }
+
+/* WHO THIS IS FOR */
+.who-for { padding: 2.5rem 0; background: var(--warm-white); border-bottom: 1px solid var(--border-gray); }
+.who-for-inner { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.who-for-label { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--medium-gray); white-space: nowrap; }
+.who-for-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.who-for-tag { padding: 0.4rem 1.1rem; border-radius: 100px; background: var(--section-gray); border: 1px solid var(--border-gray); font-size: 0.82rem; font-weight: 500; color: var(--navy); }
+
+
+/* ── PRICING EXPLORER ── */
+.pricing-explorer { padding: var(--section-pad) 0; background: var(--section-gray); scroll-margin-top: 80px; }
+/* HEADER */
+.pricing-header { text-align: center; margin-bottom: 1.5rem; }
+.pricing-header h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem); color: var(--near-black); margin-bottom: 0.75rem; line-height: 1.25; }
+.pricing-header p { font-size: 1rem; color: var(--dark-gray); max-width: 640px; margin: 0 auto; line-height: 1.6; }
+
+/* ── STEP 0: PATH SELECTOR ── */
+.path-gate { max-width: 1100px; margin: 0 auto 2rem; }
+.path-gate-header { text-align: center; margin-bottom: 1.5rem; }
+.path-gate-header .step-label { display: inline-flex; align-items: center; gap: 0.75rem; justify-content: center; margin-bottom: 0.5rem; }
+.path-gate-sub { font-size: 0.95rem; color: var(--medium-gray); max-width: 620px; margin: 0 auto; line-height: 1.55; }
+.path-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+.path-card {
+  background: var(--pure-white);
+  border: 2px solid var(--border-gray);
+  border-radius: 12px;
+  padding: 1.75rem 1.5rem;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.path-card:hover { border-color: var(--gold); box-shadow: 0 8px 24px rgba(26,42,58,0.08); transform: translateY(-2px); }
+.path-card-label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+.path-card h3 { font-family: var(--font-display); font-size: 1.2rem; color: var(--near-black); line-height: 1.25; }
+.path-card-for { font-size: 0.82rem; color: var(--medium-gray); line-height: 1.5; font-style: italic; }
+.path-card-outcome { font-size: 0.9rem; color: var(--dark-gray); line-height: 1.55; }
+.path-card-examples { font-size: 0.78rem; color: var(--medium-gray); line-height: 1.5; padding-top: 0.75rem; border-top: 1px solid var(--border-gray); }
+.path-card-examples strong { color: var(--near-black); font-weight: 600; }
+.path-card-cta { margin-top: auto; display: inline-flex; align-items: center; gap: 0.4rem; color: var(--navy); font-weight: 700; font-size: 0.85rem; padding-top: 0.5rem; }
+.path-card-cta::after { content: '\2192'; transition: transform 0.2s; }
+.path-card:hover .path-card-cta::after { transform: translateX(3px); }
+
+/* Active path indicator / switcher */
+.path-active-bar {
+  display: none;
+  max-width: 1100px;
+  margin: 0 auto 1.5rem;
+  background: var(--pure-white);
+  border: 1px solid var(--border-gray);
+  border-radius: 8px;
+  padding: 0.85rem 1.25rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.path-active-bar.visible { display: flex; }
+.path-active-label { font-size: 0.82rem; color: var(--medium-gray); }
+.path-active-name { font-weight: 700; color: var(--near-black); font-size: 0.92rem; }
+.path-expand-all, .path-switch-btn {
+  background: none;
+  border: 1px solid var(--border-gray);
+  color: var(--dark-gray);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.45rem 0.95rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.path-expand-all:hover, .path-switch-btn:hover { border-color: var(--gold); color: var(--navy); }
+.path-active-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
+/* Pricing body hidden until path is chosen */
+.pricing-body { display: none; }
+.pricing-body.visible { display: block; }
+
+/* ── PROGRESSIVE DISCLOSURE ── */
+/* Each disclosure step is collapsible. Current step is open, prior steps show summary, later steps are hidden. */
+.disclosure-step {
+  background: var(--pure-white);
+  border: 1px solid var(--border-gray);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+  scroll-margin-top: 90px;
+}
+.disclosure-step[data-state="current"] { border-color: var(--gold); box-shadow: 0 4px 16px rgba(255,182,77,0.12); }
+.disclosure-step[data-state="collapsed"] { background: var(--section-gray); }
+.disclosure-step[data-state="upcoming"] { opacity: 0.55; pointer-events: none; background: var(--section-gray); }
+body.pricing-expanded .disclosure-step { background: var(--pure-white); opacity: 1; pointer-events: auto; }
+
+.disclosure-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  flex-wrap: wrap;
+}
+.disclosure-step[data-state="upcoming"] .disclosure-header { cursor: default; }
+.disclosure-title { display: flex; align-items: center; gap: 0.75rem; }
+.disclosure-title .step-number { flex-shrink: 0; width: 28px; height: 28px; background: var(--navy); color: var(--warm-white); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.82rem; font-family: var(--font-body); }
+.disclosure-step[data-state="current"] .disclosure-title .step-number { background: var(--gold); color: var(--navy); }
+.disclosure-step[data-state="done"] .disclosure-title .step-number,
+.disclosure-step[data-state="collapsed"] .disclosure-title .step-number { background: var(--success); color: var(--warm-white); }
+.disclosure-heading { font-family: var(--font-body); font-weight: 700; font-size: 0.95rem; color: var(--near-black); }
+.disclosure-summary { font-size: 0.85rem; color: var(--dark-gray); display: none; }
+.disclosure-step[data-state="collapsed"] .disclosure-summary,
+.disclosure-step[data-state="done"] .disclosure-summary { display: inline; }
+.disclosure-edit { font-size: 0.78rem; color: var(--navy); font-weight: 600; text-decoration: none; display: none; }
+.disclosure-step[data-state="collapsed"] .disclosure-edit,
+.disclosure-step[data-state="done"] .disclosure-edit { display: inline; }
+.disclosure-edit:hover { color: var(--orange); }
+
+.disclosure-body {
+  padding: 0 1.5rem 1.5rem;
+  display: none;
+  animation: fadeUp 0.35s var(--ease);
+}
+.disclosure-step[data-state="current"] .disclosure-body { display: block; }
+body.pricing-expanded .disclosure-body { display: block; }
+
+/* Foundation Build one-time card (Path B + C) */
+.foundation-build-card {
+  background: linear-gradient(135deg, rgba(255,182,77,0.08), rgba(232,113,58,0.04));
+  border: 2px solid var(--gold-border);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1.25rem;
+  display: none;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  align-items: center;
+  gap: 1.25rem;
+}
+body.path-b .foundation-build-card,
+body.path-c .foundation-build-card { display: flex; }
+.foundation-build-card:hover { border-color: var(--gold); }
+.foundation-build-card.selected { border-color: var(--gold); box-shadow: 0 4px 16px rgba(255,182,77,0.25); background: linear-gradient(135deg, rgba(255,182,77,0.14), rgba(232,113,58,0.08)); }
+.foundation-build-check { width: 26px; height: 26px; border: 2px solid var(--border-gray); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--pure-white); }
+.foundation-build-card.selected .foundation-build-check { background: var(--gold); border-color: var(--gold); }
+.foundation-build-checkmark { color: var(--navy); font-weight: 900; opacity: 0; }
+.foundation-build-card.selected .foundation-build-checkmark { opacity: 1; }
+.foundation-build-info { flex: 1; }
+.foundation-build-info h4 { font-family: var(--font-display); font-size: 1.1rem; color: var(--near-black); margin-bottom: 0.35rem; }
+.foundation-build-tag { display: inline-block; background: var(--navy); color: var(--gold); font-family: var(--font-body); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 3px; margin-left: 0.5rem; vertical-align: middle; }
+.foundation-build-recommended { display: none; font-size: 0.75rem; color: var(--success); font-weight: 700; margin-left: 0.5rem; }
+body.path-c .foundation-build-recommended { display: inline; }
+.foundation-build-info p { font-size: 0.88rem; color: var(--dark-gray); line-height: 1.5; }
+.foundation-build-price { font-family: var(--font-display); font-size: 1.15rem; color: var(--navy); font-weight: 700; white-space: nowrap; text-align: right; }
+.foundation-build-price span { display: block; font-family: var(--font-body); font-size: 0.72rem; color: var(--medium-gray); font-weight: 400; margin-top: 0.15rem; }
+
+/* Path-scoped layer visibility */
+.layer-card[data-paths] { display: none; }
+body.path-a .layer-card[data-paths~="a"],
+body.path-b .layer-card[data-paths~="b"],
+body.path-c .layer-card[data-paths~="c"] { display: flex; }
+
+/* Path-scoped bundle visibility */
+.bundle-callout[data-paths] { display: none; }
+body.path-a .bundle-callout[data-paths~="a"],
+body.path-b .bundle-callout[data-paths~="b"],
+body.path-c .bundle-callout[data-paths~="c"] { display: flex; }
+
+/* Path-specific case study / anchor content */
+.path-content { display: none; }
+body.path-a .path-content[data-paths~="a"],
+body.path-b .path-content[data-paths~="b"],
+body.path-c .path-content[data-paths~="c"] { display: block; }
+
+@media (max-width: 860px) {
+  .path-cards { grid-template-columns: 1fr; }
+  .foundation-build-card { flex-wrap: wrap; }
+  .foundation-build-price { text-align: left; }
+  .disclosure-header { padding: 0.85rem 1rem; }
+  .disclosure-body { padding: 0 1rem 1.25rem; }
+}
+
+/* ── ANCHOR BAR ── */
+.anchor-bar {
+  max-width: 860px;
+  margin: 0 auto 2.5rem;
+  background: var(--deep-navy);
+  border-radius: 10px;
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.anchor-item { text-align: center; }
+.anchor-num { font-family: var(--font-display); font-size: 1.3rem; color: var(--gold); line-height: 1.1; }
+.anchor-label { font-size: 0.72rem; color: var(--light-gray); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; margin-top: 0.2rem; }
+
+/* STEP LABELS */
+.step-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.step-number {
+  width: 32px; height: 32px;
+  background: var(--deep-navy);
+  color: var(--pure-white);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.82rem; font-weight: 700;
+  flex-shrink: 0;
+}
+.step-text { font-family: var(--font-display); font-size: 1.25rem; color: var(--near-black); }
+.step-sub { font-size: 0.85rem; color: var(--medium-gray); font-family: var(--font-body); font-weight: 400; margin-left: 0.5rem; }
+
+/* ── STEP 1: PRODUCTION LEVEL ── */
+.prod-section { margin-bottom: 3rem; }
+
+.prod-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; max-width: 960px; margin: 0 auto; }
+
+.prod-card {
+  background: var(--pure-white);
+  border: 2px solid var(--border-gray);
+  border-radius: 12px;
+  padding: 1.75rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  position: relative;
+}
+.prod-card:hover { border-color: var(--gold-border); box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
+.prod-card.selected { border-color: var(--gold); box-shadow: 0 4px 20px rgba(255,182,77,0.15); }
+
+.prod-card-radio {
+  position: absolute;
+  top: 1.25rem; right: 1.25rem;
+  width: 20px; height: 20px;
+  border: 2px solid var(--border-gray);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s var(--ease);
+}
+.prod-card.selected .prod-card-radio { border-color: var(--gold); }
+.prod-card-radio-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  transform: scale(0);
+  transition: transform 0.2s var(--ease);
+}
+.prod-card.selected .prod-card-radio-dot { transform: scale(1); }
+
+.prod-pilot-tag {
+  display: inline-block;
+  background: rgba(74,140,94,0.1);
+  color: var(--success);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+  margin-bottom: 0.5rem;
+}
+.prod-pop-tag {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+  margin-bottom: 0.5rem;
+}
+
+.prod-card-name { font-family: var(--font-display); font-size: 1.2rem; color: var(--near-black); margin-bottom: 0.25rem; }
+.prod-card-desc { font-size: 0.82rem; color: var(--medium-gray); line-height: 1.5; margin-bottom: 1rem; }
+
+.prod-card-includes { list-style: none; margin-bottom: 1rem; }
+.prod-card-includes li {
+  padding: 0.25rem 0 0.25rem 1.35rem;
+  position: relative;
+  font-size: 0.82rem;
+  color: var(--dark-gray);
+  line-height: 1.45;
+}
+.prod-card-includes li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0.55rem;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.prod-card-includes li.excluded {
+  color: var(--light-gray);
+  text-decoration: line-through;
+  text-decoration-color: var(--border-gray);
+}
+.prod-card-includes li.excluded::before { background: var(--border-gray); }
+
+.prod-card-time { font-size: 0.78rem; color: var(--medium-gray); padding-top: 0.5rem; border-top: 1px solid var(--section-gray); }
+.prod-card-time strong { color: var(--near-black); font-weight: 600; }
+
+/* ── STEP 2: FREQUENCY ── */
+.freq-section { margin-bottom: 3rem; }
+
+.freq-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; max-width: 860px; margin: 0 auto; }
+
+.freq-card {
+  background: var(--pure-white);
+  border: 2px solid var(--border-gray);
+  border-radius: 10px;
+  padding: 1.25rem 1rem;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  text-align: center;
+}
+.freq-card:hover { border-color: var(--gold-border); }
+.freq-card.selected { border-color: var(--gold); background: var(--gold-soft); }
+
+.freq-card-num { font-family: var(--font-display); font-size: 1.75rem; color: var(--near-black); line-height: 1; margin-bottom: 0.25rem; }
+.freq-card-label { font-size: 0.82rem; color: var(--dark-gray); font-weight: 500; margin-bottom: 0.65rem; }
+.freq-card-price { font-family: var(--font-display); font-size: 1.15rem; color: var(--near-black); margin-bottom: 0.15rem; }
+.freq-card-per { font-size: 0.75rem; color: var(--gold); font-weight: 600; }
+.freq-card-save { display: inline-block; font-size: 0.68rem; font-weight: 700; color: var(--success); background: rgba(74,140,94,0.08); padding: 0.15rem 0.5rem; border-radius: 100px; margin-top: 0.35rem; }
+
+/* ── STEP 3: LAYERS ── */
+.layers-section { margin-bottom: 2rem; }
+
+.layers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 860px; margin: 0 auto; }
+
+.layer-card {
+  background: var(--pure-white);
+  border: 1px solid var(--border-gray);
+  border-radius: 10px;
+  padding: 1.15rem 1.35rem;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.85rem;
+  align-items: center;
+  user-select: none;
+}
+.layer-card:hover { border-color: var(--gold-border); box-shadow: 0 2px 12px rgba(255,182,77,0.08); }
+.layer-card.selected { border-color: var(--gold); background: var(--gold-soft); }
+
+.layer-check {
+  width: 20px; height: 20px;
+  border: 2px solid var(--border-gray);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s var(--ease);
+  flex-shrink: 0;
+}
+.layer-card.selected .layer-check { border-color: var(--gold); background: var(--gold); }
+.layer-checkmark { display: none; color: var(--navy); font-weight: 700; font-size: 0.7rem; }
+.layer-card.selected .layer-checkmark { display: block; }
+
+.layer-info h4 { font-size: 0.85rem; font-weight: 600; color: var(--near-black); margin-bottom: 0.1rem; }
+.layer-info p { font-size: 0.75rem; color: var(--medium-gray); line-height: 1.4; }
+
+.layer-price { font-size: 0.82rem; font-weight: 700; color: var(--navy); white-space: nowrap; }
+
+/* BUNDLE */
+.bundle-callout {
+  max-width: 860px;
+  margin: 1rem auto 0;
+  background: rgba(42,61,79,0.04);
+  border: 1px dashed var(--navy);
+  border-radius: 8px;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+  user-select: none;
+}
+.bundle-callout:hover { background: rgba(42,61,79,0.06); }
+.bundle-callout.selected { background: rgba(255,182,77,0.06); border-color: var(--gold); border-style: solid; }
+.bundle-check {
+  width: 20px; height: 20px;
+  border: 2px solid var(--navy);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s var(--ease);
+  flex-shrink: 0;
+}
+.bundle-callout.selected .bundle-check { border-color: var(--gold); background: var(--gold); }
+.bundle-checkmark { display: none; color: var(--navy); font-weight: 700; font-size: 0.7rem; }
+.bundle-callout.selected .bundle-checkmark { display: block; }
+.bundle-info { flex: 1; }
+.bundle-info h4 { font-size: 0.88rem; font-weight: 700; color: var(--near-black); margin-bottom: 0.1rem; }
+.bundle-info p { font-size: 0.78rem; color: var(--medium-gray); line-height: 1.4; }
+.bundle-price { font-size: 0.88rem; font-weight: 700; color: var(--navy); white-space: nowrap; }
+.bundle-save { display: inline-block; font-size: 0.65rem; font-weight: 700; color: var(--success); background: rgba(74,140,94,0.08); padding: 0.1rem 0.4rem; border-radius: 100px; margin-left: 0.5rem; }
+
+/* ── UNIFIED QUOTE CARD (price + form in one card) ── */
+.quote-card {
+  max-width: 860px;
+  margin: 2.5rem auto 0;
+  background: var(--deep-navy);
+  border-radius: 12px;
+  scroll-margin-top: 90px;
+  overflow: hidden;
+  transition: box-shadow 0.3s var(--ease);
+}
+.quote-card.expanded { box-shadow: 0 12px 32px rgba(26,42,58,0.15); }
+
+/* Top section: price + CTA (always visible) */
+.quote-card-top {
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.quote-top-left {}
+.quote-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: var(--gold); margin-bottom: 0.25rem; }
+.quote-amount { font-family: var(--font-display); font-size: 2rem; color: var(--pure-white); line-height: 1.1; }
+.quote-breakdown { font-size: 0.78rem; color: var(--light-gray); margin-top: 0.25rem; }
+
+.quote-top-right { display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; }
+.quote-open-btn { background: var(--gold); color: var(--navy); font-weight: 700; padding: 0.75rem 1.75rem; border-radius: 6px; font-size: 0.9rem; transition: all 0.25s var(--ease); font-family: var(--font-body); border: none; cursor: pointer; white-space: nowrap; }
+.quote-open-btn:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-1px); }
+.quote-card.expanded .quote-open-btn { display: none; }
+.quote-outputs { font-size: 0.78rem; color: var(--light-gray); text-align: right; }
+.quote-outputs strong { color: var(--gold); font-weight: 700; }
+.quote-card.expanded .quote-outputs { display: none; }
+
+/* Form wrap (expands inline) */
+.quote-card-form-wrap {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 2rem;
+  transition: max-height 0.5s var(--ease), opacity 0.3s var(--ease), padding 0.3s var(--ease);
+}
+.quote-card.expanded .quote-card-form-wrap {
+  max-height: 1200px;
+  opacity: 1;
+  padding: 0 2rem 1.75rem;
+}
+.quote-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.12);
+  margin-bottom: 1.5rem;
+}
+
+/* Config summary box (dark variant) */
+.quote-summary-box {
+  background: rgba(255,255,255,0.04);
+  border-left: 3px solid var(--gold);
+  border-radius: 6px;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.82rem;
+  color: var(--light-gray);
+  line-height: 1.55;
+}
+.quote-summary-box strong { color: var(--gold); font-weight: 700; display: block; margin-bottom: 0.35rem; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; }
+.quote-summary-box ul { margin-top: 0.5rem; padding-left: 1.1rem; list-style: none; }
+.quote-summary-box li { margin-bottom: 0.35rem; color: var(--warm-white); }
+.quote-summary-box li strong { display: inline; margin: 0; font-size: 0.78rem; letter-spacing: 0; text-transform: none; color: var(--light-gray); font-weight: 600; }
+
+/* Form grid + inputs */
+.quote-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-bottom: 1rem; }
+.quote-form-grid label { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.78rem; font-weight: 600; color: var(--light-gray); }
+.quote-form-grid label.full { grid-column: 1 / -1; }
+.quote-form-grid input, .quote-form-grid textarea {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  background: var(--pure-white);
+  color: var(--near-black);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.quote-form-grid input:focus, .quote-form-grid textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(255,182,77,0.2); }
+.quote-form-grid textarea { resize: vertical; min-height: 72px; }
+.quote-label-optional { font-weight: 400; color: var(--medium-gray); }
+.scoping-form-honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+
+/* Submit row */
+.quote-submit-row { display: flex; gap: 0.85rem; align-items: center; flex-wrap: wrap; }
+.quote-submit-btn {
+  background: var(--gold);
+  color: var(--navy);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.75rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.quote-submit-btn:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-1px); }
+.quote-submit-btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+.quote-cancel-btn { background: none; border: none; color: var(--light-gray); font-family: var(--font-body); font-weight: 600; font-size: 0.85rem; cursor: pointer; padding: 0.5rem 0.75rem; }
+.quote-cancel-btn:hover { color: var(--pure-white); }
+.quote-footnote { font-size: 0.75rem; color: var(--medium-gray); margin-top: 0.85rem; line-height: 1.5; }
+
+/* Success state */
+.quote-card-success { display: none; padding: 2rem; text-align: center; }
+.quote-card.submitted .quote-card-top { display: none; }
+.quote-card.submitted .quote-card-form-wrap { display: none; }
+.quote-card.submitted .quote-card-success { display: block; }
+.quote-card.submitted { border: 2px solid var(--success); }
+.quote-card-success h5 { font-family: var(--font-display); font-size: 1.5rem; color: var(--gold); margin-bottom: 0.75rem; }
+.quote-card-success p { font-size: 0.92rem; color: var(--light-gray); line-height: 1.55; margin-bottom: 1.5rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+.quote-booking-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--gold);
+  color: var(--navy);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.15s;
+  text-decoration: none;
+}
+.quote-booking-btn:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-1px); }
+
+/* Escape links below the card */
+.quote-escape-links {
+  max-width: 860px;
+  margin: 1rem auto 0;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--medium-gray);
+  line-height: 1.5;
+}
+.quote-escape-links a { color: var(--navy); font-weight: 600; border-bottom: 1px solid var(--gold); transition: color 0.2s; }
+.quote-escape-links a:hover { color: var(--orange); }
+
+/* ── UNIFIED PROOF BLOCK (aggregate stats + case study in one navy section) ── */
+.proof-block { padding: var(--section-pad) 0; background: var(--deep-navy); }
+.proof-eyebrow { text-align: center; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold); margin-bottom: 2.5rem; }
+
+.proof-stats {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+}
+.proof-stat { text-align: center; padding: 0 0.5rem; }
+.proof-stat-num { font-family: var(--font-display); font-size: clamp(2.2rem, 4.5vw, 2.8rem); color: var(--gold); line-height: 1.1; margin-bottom: 0.5rem; }
+.proof-stat-label { font-size: 0.78rem; color: var(--light-gray); line-height: 1.4; font-weight: 500; }
+
+.proof-divider {
+  max-width: 860px;
+  margin: 3rem auto;
+  height: 1px;
+  background: rgba(255,255,255,0.12);
+}
+
+.proof-case {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+.proof-case-eyebrow { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold); margin-bottom: 0.85rem; }
+.proof-case-desc { font-size: 1rem; color: var(--warm-white); line-height: 1.5; margin-bottom: 1.75rem; font-weight: 400; max-width: 520px; margin-left: auto; margin-right: auto; }
+
+.proof-case-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 1.75rem;
+  background: rgba(255,182,77,0.06);
+  border: 1px solid rgba(255,182,77,0.35);
+  border-radius: 12px;
+  padding: 1.5rem 2.25rem;
+}
+.proof-case-metric { text-align: center; }
+.proof-case-num { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.2rem); color: var(--gold); line-height: 1; margin-bottom: 0.5rem; }
+.proof-case-label { font-size: 0.78rem; color: var(--light-gray); line-height: 1.4; font-weight: 500; }
+.proof-case-metric-divider {
+  width: 1px;
+  align-self: stretch;
+  background: rgba(255,182,77,0.25);
+}
+
+.proof-case-link { font-size: 0.9rem; font-weight: 600; color: var(--gold); display: inline-flex; align-items: center; gap: 0.4rem; transition: gap 0.2s, color 0.2s; }
+.proof-case-link::after { content: '\2192'; }
+.proof-case-link:hover { gap: 0.6rem; color: var(--orange); }
+
+@media (max-width: 720px) {
+  .quote-form-grid { grid-template-columns: 1fr; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  .prod-cards { grid-template-columns: 1fr; max-width: 480px; }
+  .freq-cards { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; }
+  .layers-grid { grid-template-columns: 1fr; max-width: 480px; }
+  .quote-card-top { flex-direction: column; text-align: center; align-items: stretch; }
+  .quote-top-right { align-items: center; }
+  .bundle-callout { flex-direction: column; text-align: center; }
+  .anchor-bar { gap: 1.5rem; }
+
+  /* Proof block: stats stay horizontal but tighten; case goes vertical */
+  .proof-stats { gap: 0.75rem; }
+  .proof-stat { padding: 0; }
+  .proof-stat-num { font-size: clamp(1.5rem, 5vw, 2rem); margin-bottom: 0.35rem; }
+  .proof-stat-label { font-size: 0.68rem; }
+  .proof-divider { margin: 2rem auto; }
+  .proof-case-desc { font-size: 0.95rem; padding: 0 0.5rem; margin-bottom: 1.5rem; }
+  .proof-case-card { gap: 1rem; padding: 1.1rem 1.25rem; margin-bottom: 1.25rem; }
+  .proof-case-num { font-size: clamp(1.6rem, 7vw, 2rem); }
+  .proof-case-label { font-size: 0.7rem; }
+}
+/* REAL EXAMPLE */
+.real-example { padding: var(--section-pad) 0; background: var(--warm-white); }
+.real-example h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2rem); color: var(--near-black); margin-bottom: 2.5rem; text-align: center; text-wrap: balance; line-height: 1.2; }
+.example-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; max-width: 900px; margin: 0 auto; }
+.example-card { border-radius: 10px; padding: 2.5rem 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.example-card-before { background: rgba(42,61,79,0.06); border: 1px solid var(--border-gray); text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.example-card-after { background: rgba(255,182,77,0.06); border: 1px solid rgba(255,182,77,0.2); }
+.example-card-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1.25rem; }
+.example-card-before .example-card-label { color: var(--medium-gray); }
+.example-card-after .example-card-label { color: var(--gold); }
+.example-card-before .ep-big { font-family: var(--font-display); font-size: 2.4rem; color: var(--navy); margin-bottom: 0.25rem; }
+.example-card-before .ep-desc { font-size: 0.88rem; color: var(--medium-gray); font-weight: 500; line-height: 1.4; }
+.example-output-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.45rem 0; font-size: 0.88rem; color: var(--dark-gray); }
+.example-output-item .ep-check { flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; color: var(--gold); }
+
+/* CLOSING CTA */
+.closing-cta { padding: var(--section-pad) 0; background: var(--section-gray); text-align: center; }
+.closing-cta h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--near-black); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.25; }
+.closing-cta .btn-primary { font-size: 1.05rem; padding: 1rem 2.5rem; }
+.closing-micro { margin-top: 1.25rem; font-size: 0.82rem; color: var(--medium-gray); }
+
+/* FOOTER */
+.footer { background: var(--near-black); padding: 4rem 0 2rem; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand h3 { font-family: var(--font-body); font-weight: 600; color: var(--warm-white); font-size: 1rem; margin-bottom: 0.5rem; }
+.footer-brand p { font-size: 0.82rem; color: var(--medium-gray); line-height: 1.6; }
+.footer-links h4, .footer-contact h4 { font-size: 0.78rem; color: var(--light-gray); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; font-weight: 600; }
+.footer-links a, .footer-contact a { display: block; font-size: 0.88rem; color: var(--medium-gray); padding: 0.25rem 0; transition: color 0.2s; }
+.footer-links a:hover, .footer-contact a:hover { color: var(--gold); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--medium-gray); }
+.footer-bottom a { color: var(--medium-gray); transition: color 0.2s; }
+.footer-bottom a:hover { color: var(--gold); }
+
+.mobile-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--deep-navy); padding: 0.75rem 1rem; border-top: 2px solid var(--gold); z-index: 99; text-align: center; transition: transform 0.3s var(--ease), opacity 0.3s; }
+.mobile-cta.hidden-in-pricing { transform: translateY(100%); opacity: 0; pointer-events: none; }
+.mobile-cta .btn-primary { width: 100%; justify-content: center; font-size: 0.95rem; padding: 0.8rem; }
+
+.scroll-cta { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--deep-navy); border: 1px solid rgba(255,182,77,0.3); border-radius: 10px; padding: 1.25rem 1.5rem; box-shadow: 0 8px 30px rgba(0,0,0,0.2); z-index: 98; max-width: 320px; transform: translateY(120%); opacity: 0; transition: transform 0.4s var(--ease), opacity 0.4s; }
+.scroll-cta.visible { transform: translateY(0); opacity: 1; }
+.scroll-cta p { font-size: 0.88rem; color: var(--light-gray); margin-bottom: 0.75rem; line-height: 1.4; }
+.scroll-cta .btn-primary { font-size: 0.82rem; padding: 0.6rem 1.2rem; }
+.scroll-cta-close { position: absolute; top: 0.5rem; right: 0.75rem; background: none; border: none; color: var(--light-gray); font-size: 1.1rem; cursor: pointer; padding: 0.25rem; line-height: 1; }
+.scroll-cta-close:hover { color: var(--gold); }
+
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  .example-cards { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 860px) {
+  .prod-cards { grid-template-columns: 1fr; max-width: 480px; }
+  .freq-cards { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; }
+  .layers-grid { grid-template-columns: 1fr; max-width: 480px; }
+  .quote-card-top { flex-direction: column; text-align: center; align-items: stretch; }
+  .quote-top-right { align-items: center; }
+  .bundle-callout { flex-direction: column; text-align: center; }
+  .anchor-bar { gap: 1.5rem; }
+}
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: block; }
+  .nav-inner .nav-cta { display: none; }
+  .mobile-cta { display: block; }
+  body { padding-bottom: 60px; }
+  .scroll-cta { display: none; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  .hero-ctas { flex-direction: column; align-items: flex-start; }
+
+  /* ── MOBILE: Hero tightening ── */
+  .hero { min-height: auto; padding-top: calc(var(--section-pad) + 3rem); }
+  .hero-sub { margin-bottom: 2rem; }
+
+  /* ── MOBILE: Who For centering (including tags for balanced layout) ── */
+  .who-for { display: none; }
+
+  /* ── MOBILE: Real Example — collapse Before into caption, add arrow transition ── */
+  .real-example h2 { margin-bottom: 1.5rem; }
+  .example-card-before {
+    /* Remove all card chrome - pure caption treatment */
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    border-radius: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: none;
+    margin-bottom: 0.25rem;
+  }
+  .example-card-before .example-card-label {
+    font-size: 0.7rem;
+    margin-bottom: 0;
+    letter-spacing: 0.1em;
+    color: var(--medium-gray);
+  }
+  .example-card-before .ep-big {
+    font-size: 1rem !important;
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--dark-gray);
+    margin-bottom: 0;
+  }
+  .example-card-before .ep-big::before {
+    content: '·';
+    color: var(--light-gray);
+    font-weight: 400;
+    margin-right: 0.5rem;
+  }
+  .example-card-before .ep-desc { display: none; }
+
+  /* Arrow transition sits between caption and After card - bolder, more present */
+  .example-card-after::before {
+    content: '↓';
+    display: block;
+    text-align: center;
+    color: var(--gold);
+    font-size: 1.8rem;
+    line-height: 1;
+    margin: 0.5rem 0 1.25rem;
+    font-weight: 400;
+  }
+
+  .example-cards {
+    gap: 0.5rem;
+  }
+
+  /* ── MOBILE: Path cards - hide outcome, tighten spacing ── */
+  .path-card-outcome { display: none; }
+  .path-card { padding: 1.25rem 1rem; gap: 0.6rem; }
+  .path-card h3 { font-size: 1.05rem; }
+
+  /* ── MOBILE: Anchor bar tightening ── */
+  .anchor-bar { padding: 1rem 1.25rem; gap: 0.75rem; flex-direction: column; }
+  .anchor-num { font-size: 1.1rem; }
+
+  /* ── MOBILE: Production cards tightening ── */
+  .prod-card-desc { font-size: 0.78rem; line-height: 1.4; }
+  .prod-card-includes { font-size: 0.78rem; }
+  .prod-card-includes li { padding: 0.2rem 0 0.2rem 1.1rem; }
+  .prod-card-time { font-size: 0.75rem; }
+
+  /* ── MOBILE: Layer cards tightening ── */
+  .layer-card .layer-info p { font-size: 0.75rem; line-height: 1.4; }
+  .layer-price { font-size: 0.8rem; }
+
+  /* ── MOBILE: Quote card form tightening ── */
+  .quote-card.expanded .quote-card-form-wrap { padding: 0 1rem 1.25rem; }
+  .quote-submit-btn { width: 100%; text-align: center; font-size: 0.88rem; }
+  .quote-form-grid label { font-size: 0.75rem; }
+
+  /* ── MOBILE: Frequency cards stay horizontal ── */
+  .freq-cards { grid-template-columns: 1fr 1fr 1fr !important; max-width: 100% !important; gap: 0.5rem; }
+  .freq-card-num { font-size: 1.4rem; }
+  .freq-card-label { font-size: 0.72rem; margin-bottom: 0.4rem; }
+  .freq-card-price { font-size: 0.95rem; }
+  .freq-card-per { font-size: 0.65rem; }
+
+  /* ── MOBILE: Quote card top tightening ── */
+  .quote-card-top { padding: 1.25rem 1rem; }
+  .quote-amount { font-size: 1.6rem; }
+  .quote-open-btn { width: 100%; text-align: center; }
+
+  /* ── MOBILE: Continue buttons full width ── */
+  .prod-section > div:last-child .path-switch-btn,
+  .freq-section > div:last-child .path-switch-btn { width: 100%; }
+
+  /* ── MOBILE: Disclosure header summary wraps below heading ── */
+  .disclosure-title { flex-wrap: wrap; }
+  .disclosure-summary { width: 100%; margin-left: calc(28px + 0.75rem); font-size: 0.78rem; }
+
+  /* ── MOBILE: Bundle callout tighter ── */
+  .bundle-callout { padding: 0.75rem 1rem; }
+  .bundle-info h4 { font-size: 0.82rem; }
+  .bundle-price { font-size: 0.82rem; }
+
+  /* ── MOBILE: Also available note left-align ── */
+  .layers-section > p { text-align: left !important; }
+}
+
+/* SERVICES DROPDOWN */
+.nav-dropdown-wrap { position: relative; }
+.nav-dropdown-wrap::before { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 1rem; }
+.nav-dropdown-trigger { cursor: pointer; }
+.nav-dropdown {
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  background: var(--deep-navy); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 0.5rem 0; min-width: 220px;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  transform: translateX(-50%) translateY(8px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  margin-top: 0; padding-top: 0.5rem;
+}
+.nav-dropdown-wrap:hover .nav-dropdown {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown a {
+  display: block; padding: 0.5rem 1.25rem; font-size: 0.85rem;
+  color: var(--light-gray); transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.nav-dropdown a:hover { background: rgba(255,182,77,0.1); color: var(--gold); }
+.nav-dropdown-all {
+  border-top: 1px solid rgba(255,255,255,0.08); margin-top: 0.25rem;
+  padding-top: 0.6rem; font-weight: 600; font-size: 0.82rem;
+}
+
+/* MOBILE MENU OPEN STATE */
+.nav-links.nav-open {
+  display: flex; flex-direction: column;
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: var(--deep-navy); padding: 1rem 5vw 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  gap: 0; z-index: 100;
+}
+.nav-links.nav-open li { padding: 0.5rem 0; }
+.nav-links.nav-open a { font-size: 1rem; }
+.nav-links.nav-open .nav-dropdown {
+  position: static; transform: none; opacity: 1; visibility: visible;
+  pointer-events: auto; box-shadow: none; border: none;
+  padding: 0 0 0 1rem; margin-top: 0.25rem; min-width: 0;
+  background: transparent;
+}
+.nav-hamburger-open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-hamburger-open span:nth-child(2) { opacity: 0; }
+.nav-hamburger-open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ============================================
+   MOBILE OPTIMIZATION BLOCK (added 2026-04-16)
+   Surgical fixes for phone experience applied site-wide.
+   Additive only: does not replace any existing styles.
+   ============================================ */
+
+/* Tablet and below: tighten section padding and typography */
+@media (max-width: 768px) {
+  :root {
+    --section-pad: clamp(2.5rem, 6vw, 4rem);
+  }
+  body {
+    font-size: 16px;
+  }
+  h1 { line-height: 1.2; }
+  h2 { line-height: 1.25; }
+  h3 { line-height: 1.3; }
+
+  /* Cards with padding: tighten so stacked cards don't eat the screen */
+  .prod-card, .freq-card, .layer-card,
+  .tier-card, .hiw-card, .outcome-card,
+  .del-card, .how-step, .invest-card, .invest-card-featured,
+  .example-card, .example-card-before, .example-card-after,
+  .foundation-body, .foundation-header,
+  .approach-card, .ba-card, .big-number-card, .case-card,
+  .cycle-step, .detail-card, .diff-card, .dim-card,
+  .q-card, .quiz-step, .res-card, .step-card,
+  .success-card, .testimonial-card, .wt-card,
+  .alt-tool-card,
+  .fact-card, .format-card, .evo-card,
+  .gate-card, .insight-card, .lane-card,
+  .pn-card, .pq-card, .result-card, .form-card {
+    padding: 1.5rem 1.25rem !important;
+  }
+  /* Reduce gap between stacked cards */
+  .prod-cards, .freq-cards, .layers-grid,
+  .tiers-grid, .hiw-grid, .outcomes-grid,
+  .del-grid, .how-grid, .example-cards,
+  .approach-grid, .ba-cards, .big-number-grid,
+  .cases-grid, .diff-grid, .engine-grid,
+  .principles-grid, .problem-grid, .res-grid,
+  .testimonial-grid, .who-grid, .wt-grid,
+  .alt-tools-grid, .contact-grid,
+  .facts-grid, .formats-grid, .founder-grid,
+  .insight-grid, .lanes-grid, .output-grid,
+  .pn-grid, .posts-grid, .results-grid,
+  .client-grid, .footer-grid {
+    gap: 1rem !important;
+  }
+  /* Reduce padding inside sections with extra inner padding */
+  .diff-callout, .coinvest-section { padding: 2rem 0 !important; }
+
+  /* FAQ items: larger tap target */
+  .faq-q, .faq-item summary { padding: 1rem 2rem 1rem 0 !important; }
+
+  /* Buttons: full-width primary CTA for easier thumb access.
+     Only target actual button classes, not secondary text links. */
+  .hero-ctas > .btn-primary,
+  .closing-cta > .btn-primary {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+  .hero-ctas { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  /* Mobile nav menu: higher contrast, clear hierarchy, left-aligned */
+  .nav-links.nav-open {
+    padding: 0.5rem 0 1rem !important;
+    align-items: stretch !important;
+  }
+  .nav-links.nav-open li {
+    padding: 0 !important;
+    width: 100%;
+  }
+  .nav-links.nav-open > li > a,
+  .nav-links.nav-open > li > .nav-dropdown-trigger {
+    display: block;
+    padding: 0.9rem 5vw !important;
+    color: var(--warm-white) !important;
+    font-size: 1rem !important;
+    font-weight: 500;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .nav-links.nav-open > li:last-child > a {
+    border-bottom: none;
+  }
+  .nav-links.nav-open .nav-dropdown {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: rgba(0,0,0,0.15) !important;
+  }
+  .nav-links.nav-open .nav-dropdown a {
+    display: block;
+    padding: 0.75rem 5vw 0.75rem calc(5vw + 1.25rem) !important;
+    color: var(--light-gray) !important;
+    font-size: 0.95rem !important;
+    text-align: left;
+    white-space: normal !important;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .nav-links.nav-open .nav-dropdown a:last-child {
+    border-bottom: none;
+  }
+  .nav-links.nav-open .nav-dropdown-all {
+    border-top: 1px solid rgba(255,255,255,0.08) !important;
+    padding-top: 0.75rem !important;
+    margin-top: 0 !important;
+    color: var(--warm-white) !important;
+    font-weight: 600;
+  }
+
+}
+
+/* Small phones: iPhone SE, older Androids (~375px and below) */
+@media (max-width: 480px) {
+  :root {
+    --container: min(1200px, 92vw);
+    --section-pad: clamp(2rem, 5vw, 3rem);
+  }
+
+  .hero h1 { font-size: clamp(2rem, 8vw, 2.6rem) !important; line-height: 1.25 !important; }
+
+  /* Tighter card padding on small screens */
+  .prod-card, .freq-card, .layer-card,
+  .tier-card, .hiw-card, .outcome-card,
+  .del-card, .invest-card, .invest-card-featured,
+  .approach-card, .ba-card, .big-number-card,
+  .case-card, .cycle-step, .detail-card, .diff-card,
+  .dim-card, .q-card, .res-card, .step-card,
+  .success-card, .testimonial-card, .wt-card,
+  .alt-tool-card,
+  .fact-card, .format-card, .evo-card,
+  .gate-card, .insight-card, .lane-card,
+  .pn-card, .pq-card, .result-card, .form-card {
+    padding: 1.25rem 1rem !important;
+    border-radius: 10px !important;
+  }
+
+  .nav-logo { font-size: 0.95rem !important; }
+  .closing-cta h2 { font-size: clamp(1.5rem, 6vw, 2rem) !important; }
+  .who-list li, .foundation-col ul li { padding: 0.4rem 0 0.4rem 1.4rem !important; }
+}
+
+</style>
+<link rel="canonical" href="https://clarityforgestudios.com/podcast-production">
+<meta property="og:title" content="Podcast Production for Energy Leaders | ClarityForge Studios">
+<meta property="og:description" content="End-to-end podcast production for energy experts. Editing, clips, distribution, newsletters, and growth strategy. Built for thought leaders, not influencers.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://clarityforgestudios.com/podcast-production">
+<meta property="og:site_name" content="ClarityForge Studios">
+<meta property="og:image" content="https://clarityforgestudios.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Podcast Production for Energy Leaders | ClarityForge Studios">
+<meta name="twitter:description" content="End-to-end podcast production for energy experts. Editing, clips, distribution, newsletters, and growth strategy. Built for thought leaders, not influencers.">
+<meta name="twitter:image" content="https://clarityforgestudios.com/og-image.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Podcast Production for Energy Leaders",
+  "description": "End-to-end podcast production for energy experts. Editing, clips, distribution, and growth systems.",
+  "provider": {
+    "@type": "Organization",
+    "name": "ClarityForge Studios",
+    "url": "https://clarityforgestudios.com"
+  },
+  "areaServed": "US",
+  "url": "https://clarityforgestudios.com/podcast-production"
+}
+</script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "wavaxo0exd");
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg viewBox="0 0 400 565" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 109.366V336.996C0 349.904 12.155 359.369 24.6645 356.282L131.375 329.656V216.829C131.375 204.174 139.985 193.139 152.292 190.102L383.591 132.752C393.112 130.373 399.747 121.869 399.747 112.1V19.8733C399.747 6.96569 387.592-2.4999 375.082 0.587803L15.0924 90.0807C6.22943 92.2573 0 100.255 0 109.366Z" fill="#FFB64D"/>
+        <path d="M375.488 269.137L131.426 329.676V551.991C131.426 564.291 146.873 569.707 154.571 560.141L246.645 435.974C246.898 435.62 247.303 435.417 247.708 435.316L383.54 401.503C393.214 399.074 400.051 390.418 400.051 380.446V288.372C400.051 275.565 387.997 266.1 375.538 269.187L375.488 269.137Z" fill="#FF682C"/>
+      </svg>
+      ClarityForge Studios
+    </a>
+        <ul class="nav-links">
+      <li class="nav-dropdown-wrap"><a href="/services" class="nav-dropdown-trigger">Services</a>
+        <div class="nav-dropdown">
+          <a href="/podcast-production">Podcast Production</a>
+          <a href="/executive-visibility">Executive Visibility</a>
+          <a href="/strategic-partnerships">Strategic Partnerships</a>
+          <a href="/services" class="nav-dropdown-all">All Services</a>
+        </div>
+      </li>
+      <li><a href="/work">Work</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/resources">Resources</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+    <a href="/story-sprint" class="nav-cta">Start a Story Sprint</a>
+    <button class="nav-hamburger" aria-label="Menu" onclick="this.classList.toggle('nav-hamburger-open');document.querySelector('.nav-links').classList.toggle('nav-open')"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="anim-entry anim-d1">Your podcast shouldn't be a side project.<br><em>It should be your most powerful asset.</em></h1>
+      <p class="hero-sub anim-entry anim-d2">We produce podcasts for energy leaders who want their ideas to travel further than a conference room. Full production, no friction.</p>
+      <div class="hero-ctas anim-entry anim-d3">
+        <a href="#pricing" class="btn-primary">See pricing</a>
+        <a href="/story-sprint" class="hero-secondary">Start a Story Sprint</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO THIS IS FOR -->
+<section class="who-for">
+  <div class="container">
+    <div class="who-for-inner">
+      <span class="who-for-label">Built for:</span>
+      <div class="who-for-tags">
+        <span class="who-for-tag">Energy policy experts</span>
+        <span class="who-for-tag">Substack writers &amp; analysts</span>
+        <span class="who-for-tag">Founders &amp; executives</span>
+        <span class="who-for-tag">Research organizations</span>
+        <span class="who-for-tag">Mission-funded media</span>
+        <span class="who-for-tag">Non-profits &amp; advocacy</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REAL EXAMPLE: What one episode produces -->
+<section class="real-example">
+  <div class="container">
+    <h2>What One Episode Actually Produces</h2>
+    <div class="example-cards">
+      <div class="example-card example-card-before">
+        <p class="example-card-label">One Conversation</p>
+        <p class="ep-big">30-60 min</p>
+        <p class="ep-desc">The host records a conversation with a guest. That's their only job.</p>
+      </div>
+      <div class="example-card example-card-after">
+        <p class="example-card-label">What Our System Produces</p>
+        <div class="example-output-item">
+          <svg class="ep-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4,10 8,14 16,6"/></svg>
+          <span>1 full-length episode across Apple, Spotify, YouTube, and all major platforms</span>
+        </div>
+        <div class="example-output-item">
+          <svg class="ep-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4,10 8,14 16,6"/></svg>
+          <span>1 newsletter edition to 12,000+ subscribers</span>
+        </div>
+        <div class="example-output-item">
+          <svg class="ep-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4,10 8,14 16,6"/></svg>
+          <span>3-5 short-form clips optimized for LinkedIn and YouTube</span>
+        </div>
+        <div class="example-output-item">
+          <svg class="ep-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4,10 8,14 16,6"/></svg>
+          <span>Social copy package for all platforms</span>
+        </div>
+        <div class="example-output-item">
+          <svg class="ep-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4,10 8,14 16,6"/></svg>
+          <span>SEO-optimized show notes and blog post</span>
+        </div>
+        <div class="example-output-item">
+          <svg class="ep-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4,10 8,14 16,6"/></svg>
+          <span>Guest sharing package (clips + copy for their channels)</span>
+        </div>
+        <div class="example-output-item">
+          <svg class="ep-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4,10 8,14 16,6"/></svg>
+          <span>Timestamp-indexed transcript</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING EXPLORER -->
+<section class="pricing-explorer" id="pricing">
+  <div class="container">
+
+    <div class="pricing-header">
+      <h2>Build Your Podcast Partnership</h2>
+    </div>
+
+    <!-- ════ STEP 0: PATH SELECTOR ════ -->
+    <div class="path-gate" id="pathGate">
+      <div class="path-gate-header">
+        <div class="step-label" style="margin-bottom: 0.75rem;">
+          <div class="step-number">0</div>
+          <span class="step-text">Pick your path</span>
+        </div>
+      </div>
+
+      <div class="path-cards">
+        <div class="path-card" onclick="selectPath('a')">
+          <p class="path-card-label">Path A &middot; Individual Expert</p>
+          <h3>You're the voice and the show is yours</h3>
+          <p class="path-card-for">Solo researchers, analysts, consultants, and independent experts publishing under your own name.</p>
+          <p class="path-card-outcome">The podcast builds your personal authority, opens doors to ideal clients, and makes you the go-to voice in your corner of the energy conversation.</p>
+          <p class="path-card-examples"><strong>If this is you:</strong> solo by the mic, decisions are yours, success is your reputation.</p>
+          <span class="path-card-cta">Build this path</span>
+        </div>
+
+        <div class="path-card" onclick="selectPath('b')">
+          <p class="path-card-label">Path B &middot; Single-Voice Organization</p>
+          <h3>One public face, backed by a company or institution</h3>
+          <p class="path-card-for">Founders, CEOs, partners, or EDs whose podcast is the public voice of their organization. Company-funded branded shows, firm-led thought leadership.</p>
+          <p class="path-card-outcome">The podcast positions your organization through a single trusted voice. Success shows up as brand authority, inbound opportunities, and strategic credibility.</p>
+          <p class="path-card-examples"><strong>If this is you:</strong> one host, company-funded, success is the brand.</p>
+          <span class="path-card-cta">Build this path</span>
+        </div>
+
+        <div class="path-card" onclick="selectPath('c')">
+          <p class="path-card-label">Path C &middot; Multi-Voice Organization</p>
+          <h3>Multiple leaders, mission-funded or sponsor-backed</h3>
+          <p class="path-card-for">Non-profits, research orgs, advocacy groups, mission-driven media, and firms where three or more leaders publish under their own names.</p>
+          <p class="path-card-outcome">The podcast builds the public audience that makes your funding case, policy influence, and institutional credibility possible. Success is reach, sponsor fit, and policy impact.</p>
+          <p class="path-card-examples"><strong>If this is you:</strong> several voices, foundation or sponsor-backed, success is institutional.</p>
+          <span class="path-card-cta">Build this path</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ ACTIVE PATH INDICATOR ════ -->
+    <div class="path-active-bar" id="pathActiveBar">
+      <div>
+        <span class="path-active-label">Currently building: </span>
+        <span class="path-active-name" id="pathActiveName"></span>
+      </div>
+      <div class="path-active-actions">
+        <button class="path-expand-all" id="pathExpandBtn" onclick="toggleExpandAll()">Show all steps</button>
+        <button class="path-switch-btn" onclick="resetPath()">&larr; Switch path</button>
+      </div>
+    </div>
+
+    <!-- ════ PRICING BODY (gated) ════ -->
+    <div class="pricing-body" id="pricingBody">
+
+    <!-- ════ ANCHOR BAR ════ -->
+    <div class="anchor-bar">
+      <div class="anchor-item">
+        <p class="anchor-num">10-14 hours</p>
+        <p class="anchor-label">DIY production time per episode</p>
+      </div>
+      <div class="anchor-item path-content" data-paths="a b">
+        <p class="anchor-num">$1,000-$1,400</p>
+        <p class="anchor-label">Opportunity cost per episode<br>for a senior expert</p>
+      </div>
+      <div class="anchor-item path-content" data-paths="c">
+        <p class="anchor-num">1 conversation</p>
+        <p class="anchor-label">Becomes your sponsor<br>and foundation case</p>
+      </div>
+      <div class="anchor-item">
+        <p class="anchor-num">$3,000-$20,000+</p>
+        <p class="anchor-label">Typical agency retainer<br>per month</p>
+      </div>
+    </div>
+
+    <!-- ════ STEP 1: PRODUCTION LEVEL ════ -->
+    <div class="disclosure-step" id="step1" data-state="current" data-step="1">
+      <div class="disclosure-header" onclick="openStep(1)">
+        <div class="disclosure-title">
+          <div class="step-number">1</div>
+          <span class="disclosure-heading">Choose your production level</span>
+          <span class="disclosure-summary" id="step1Summary"></span>
+        </div>
+        <a class="disclosure-edit">Edit</a>
+      </div>
+      <div class="disclosure-body">
+      <div class="prod-section">
+        <div class="prod-cards">
+          <!-- LAUNCH PAD -->
+          <div class="prod-card" id="prodPilot" onclick="selectProd('pilot')">
+            <div class="prod-card-radio"><div class="prod-card-radio-dot"></div></div>
+            <h3 class="prod-card-name">Launch Pad</h3>
+            <p class="prod-card-desc">Test whether podcasting fits your strategy with minimal risk.</p>
+            <ul class="prod-card-includes">
+              <li>Audio cleanup and mastering</li>
+              <li>Basic show notes</li>
+              <li>1 short-form clip per episode</li>
+              <li>Hosting and publishing</li>
+            </ul>
+            <p class="prod-card-time"><strong>Your time:</strong> 60 min recording + 10 min review. We handle 3-4 hours.</p>
+          </div>
+
+          <!-- FULL PRODUCTION -->
+          <div class="prod-card selected" id="prodFull" onclick="selectProd('full')">
+            <div class="prod-card-radio"><div class="prod-card-radio-dot"></div></div>
+            <span class="prod-pop-tag">Most Popular</span>
+            <h3 class="prod-card-name">Full Production</h3>
+            <p class="prod-card-desc">Every episode becomes 10+ pieces of distributed content.</p>
+            <ul class="prod-card-includes">
+              <li>Professional editing and mastering</li>
+              <li>Show notes + SEO blog post</li>
+              <li>3-4 short-form clips per episode</li>
+              <li>Newsletter or Substack draft</li>
+              <li>Guest amplification package</li>
+              <li>Multi-platform distribution</li>
+            </ul>
+            <p class="prod-card-time"><strong>Your time:</strong> 60 min recording + 15 min review. We handle 10-14 hours.</p>
+          </div>
+
+          <!-- EXECUTIVE PRODUCTION -->
+          <div class="prod-card" id="prodExec" onclick="selectProd('exec')">
+            <div class="prod-card-radio"><div class="prod-card-radio-dot"></div></div>
+            <span class="prod-pop-tag" style="background: var(--navy); color: var(--gold);">High Touch</span>
+            <h3 class="prod-card-name">Executive Production</h3>
+            <p class="prod-card-desc">Narrative-quality production with a dedicated pre-episode call. The white-glove tier.</p>
+            <ul class="prod-card-includes">
+              <li>Everything in Full Production</li>
+              <li>Narrative-quality audio editing</li>
+              <li>Full video episode editing in Descript</li>
+              <li>Custom thumbnails and chapters</li>
+              <li>Pre-episode production call</li>
+              <li>Priority turnaround</li>
+            </ul>
+            <p class="prod-card-time"><strong>Your time:</strong> 60 min recording + 20 min review. We handle 18-24 hours.</p>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 1.25rem;">
+          <button class="path-switch-btn" onclick="advanceStep(1)" style="border-color: var(--gold); color: var(--navy); padding: 0.65rem 1.5rem; font-size: 0.9rem;">Continue &rarr;</button>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- ════ STEP 2: FREQUENCY ════ -->
+    <div class="disclosure-step" id="step2" data-state="upcoming" data-step="2">
+      <div class="disclosure-header" onclick="openStep(2)">
+        <div class="disclosure-title">
+          <div class="step-number">2</div>
+          <span class="disclosure-heading">Pick your publishing pace</span>
+          <span class="disclosure-summary" id="step2Summary"></span>
+        </div>
+        <a class="disclosure-edit">Edit</a>
+      </div>
+      <div class="disclosure-body">
+      <div class="freq-section">
+        <div class="freq-cards">
+          <div class="freq-card selected" id="freq1" onclick="selectFreq(1)">
+            <p class="freq-card-num">1</p>
+            <p class="freq-card-label">episode per month</p>
+            <p class="freq-card-price" id="freqPrice1">$1,000/mo</p>
+            <p class="freq-card-per" id="freqPer1">$1,000 per episode</p>
+          </div>
+          <div class="freq-card" id="freq2" onclick="selectFreq(2)">
+            <p class="freq-card-num">2</p>
+            <p class="freq-card-label">episodes per month</p>
+            <p class="freq-card-price" id="freqPrice2">$1,800/mo</p>
+            <p class="freq-card-per" id="freqPer2">$900 per episode</p>
+            <span class="freq-card-save" id="freqSave2">Save 10%</span>
+          </div>
+          <div class="freq-card" id="freq4" onclick="selectFreq(4)">
+            <p class="freq-card-num">4</p>
+            <p class="freq-card-label">episodes per month</p>
+            <p class="freq-card-price" id="freqPrice4">$3,200/mo</p>
+            <p class="freq-card-per" id="freqPer4">$800 per episode</p>
+            <span class="freq-card-save" id="freqSave4">Save 20%</span>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 1.25rem;">
+          <button class="path-switch-btn" onclick="advanceStep(2)" style="border-color: var(--gold); color: var(--navy); padding: 0.65rem 1.5rem; font-size: 0.9rem;">Continue &rarr;</button>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- ════ STEP 3: STRATEGIC LAYERS ════ -->
+    <div class="disclosure-step" id="step3" data-state="upcoming" data-step="3">
+      <div class="disclosure-header" onclick="openStep(3)">
+        <div class="disclosure-title">
+          <div class="step-number">3</div>
+          <span class="disclosure-heading">Add strategic layers <span style="color: var(--medium-gray); font-weight: 400; font-size: 0.82rem;">(optional)</span></span>
+          <span class="disclosure-summary" id="step3Summary"></span>
+        </div>
+        <a class="disclosure-edit">Edit</a>
+      </div>
+      <div class="disclosure-body">
+      <div class="layers-section">
+
+        <div class="layers-grid">
+
+          <div class="layer-card" data-paths="a b c" onclick="toggleLayer(this, 'narrative', 825)" data-layer="narrative">
+            <div class="layer-check"><span class="layer-checkmark">&#10003;</span></div>
+            <div class="layer-info">
+              <h4>Narrative Strategy</h4>
+              <p>Your show stops being reactive and starts shaping the conversation in your industry. Topic ownership, issue framing, and editorial territory.</p>
+            </div>
+            <span class="layer-price">+$650-$1,000/mo</span>
+          </div>
+
+          <div class="layer-card" data-paths="a b c" onclick="toggleLayer(this, 'growth', 825)" data-layer="growth">
+            <div class="layer-check"><span class="layer-checkmark">&#10003;</span></div>
+            <div class="layer-info">
+              <h4>Growth + Analytics</h4>
+              <p>Performance analytics, audience insights, monthly Signal Brief with citation tracking and audience quality metrics. You see exactly what's working and where to double down.</p>
+            </div>
+            <span class="layer-price">+$650-$1,000/mo</span>
+          </div>
+
+          <div class="layer-card" data-paths="a b c" onclick="toggleLayer(this, 'guests', 925)" data-layer="guests">
+            <div class="layer-check"><span class="layer-checkmark">&#10003;</span></div>
+            <div class="layer-info">
+              <h4>Guest Booking</h4>
+              <p>You stop settling for who's available and start booking the voices that move your industry.</p>
+            </div>
+            <span class="layer-price">+$650-$1,200/mo</span>
+          </div>
+
+          <div class="layer-card" data-paths="a b c" onclick="toggleLayer(this, 'sponsorship', 975)" data-layer="sponsorship">
+            <div class="layer-check"><span class="layer-checkmark">&#10003;</span></div>
+            <div class="layer-info">
+              <h4>Sponsorship + Revenue</h4>
+              <p>Sponsor decks, impact reports, audience data, and active sponsorship sales. Your show packaged for funding conversations and paying for itself through aligned partnerships.</p>
+            </div>
+            <span class="layer-price">+$750-$1,200/mo</span>
+          </div>
+
+          <div class="layer-card" data-paths="a b" onclick="toggleLayer(this, 'ads', 0)" data-layer="ads">
+            <div class="layer-check"><span class="layer-checkmark">&#10003;</span></div>
+            <div class="layer-info">
+              <h4>Advertising</h4>
+              <p>Your best clips reach decision-makers who haven't found you yet, in the titles and companies you choose.</p>
+            </div>
+            <span class="layer-price">Priced on call</span>
+          </div>
+
+          <div class="layer-card" data-paths="c" onclick="toggleLayer(this, 'multi-voice', 1125)" data-layer="multi-voice">
+            <div class="layer-check"><span class="layer-checkmark">&#10003;</span></div>
+            <div class="layer-info">
+              <h4>Multi-Voice Ecosystem</h4>
+              <p>Cross-leader coordination, topic ownership across voices, policy distribution, and amplification sequencing so the institution grows, not just the individual.</p>
+            </div>
+            <span class="layer-price">+$750-$1,500/mo</span>
+          </div>
+
+        </div>
+
+        <p style="margin-top: 1.25rem; font-size: 0.82rem; color: var(--medium-gray); text-align: center; max-width: 680px; margin-left: auto; margin-right: auto;"><strong style="color: var(--dark-gray);">Also available:</strong> Foundation Build (one-time infrastructure setup for new shows), scoped on your intro call.</p>
+
+        <!-- AUTHORITY ENGINE BUNDLE (Path A + B) -->
+        <div class="bundle-callout" data-paths="a b" id="bundleCallout" onclick="toggleBundle('authority')">
+          <div class="bundle-check"><span class="bundle-checkmark">&#10003;</span></div>
+          <div class="bundle-info">
+            <h4>Authority Engine Bundle <span class="bundle-save">Save ~18%</span></h4>
+            <p>Narrative Strategy + Growth &amp; Analytics + Guest Booking together. The full strategic layer for shows ready to scale influence.</p>
+          </div>
+          <span class="bundle-price">+$1,800-$2,400/mo</span>
+        </div>
+
+        <!-- INSTITUTIONAL ENGINE BUNDLE (Path C) -->
+        <div class="bundle-callout" data-paths="c" id="instBundleCallout" onclick="toggleBundle('institutional')">
+          <div class="bundle-check"><span class="bundle-checkmark">&#10003;</span></div>
+          <div class="bundle-info">
+            <h4>Institutional Engine Bundle <span class="bundle-save">Save ~20%</span></h4>
+            <p>Narrative Strategy + Growth &amp; Analytics + Sponsorship &amp; Revenue together. The full strategic layer for mission-funded shows converting audience into institutional outcomes.</p>
+          </div>
+          <span class="bundle-price">+$1,800-$2,400/mo</span>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- ════ UNIFIED QUOTE CARD ════ -->
+    <div class="quote-card" id="quoteCard">
+
+      <!-- Top: price + CTA (always visible) -->
+      <div class="quote-card-top">
+        <div class="quote-top-left">
+          <p class="quote-label" id="totalLabel">Your monthly investment</p>
+          <p class="quote-amount" id="totalAmount">$1,000/mo</p>
+          <p class="quote-breakdown" id="totalBreakdown">Full Production, 1 episode/month</p>
+        </div>
+        <div class="quote-top-right">
+          <button type="button" class="quote-open-btn" onclick="openScopingForm()">Send me this quote &rarr;</button>
+          <p class="quote-outputs" id="totalOutputs"><strong>10+</strong> distributed pieces per month</p>
+        </div>
+      </div>
+
+      <!-- Bottom: form (expands in place) -->
+      <div class="quote-card-form-wrap">
+        <div class="quote-divider"></div>
+
+        <div class="quote-summary-box" id="scopingSummaryBox">
+          <strong>Your configuration</strong>
+          <div id="scopingSummaryContent"></div>
+        </div>
+
+        <form id="scopingForm" action="https://formspree.io/f/mdaprklq" method="POST" onsubmit="return submitScopingForm(event)">
+          <!-- Honeypot field for spam protection -->
+          <div class="scoping-form-honeypot">
+            <label>Leave this empty: <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+          </div>
+
+          <input type="hidden" name="_subject" value="Pricing explorer inquiry (configuration attached)">
+          <input type="hidden" name="source" value="podcast-production pricing explorer">
+          <input type="hidden" name="path" id="formPath" value="">
+          <input type="hidden" name="production_level" id="formProd" value="">
+          <input type="hidden" name="frequency" id="formFreq" value="">
+          <input type="hidden" name="layers" id="formLayers" value="">
+          <input type="hidden" name="foundation_build" id="formFoundation" value="">
+          <input type="hidden" name="estimated_monthly" id="formPrice" value="">
+          <input type="hidden" name="configuration_summary" id="formSummary" value="">
+
+          <div class="quote-form-grid">
+            <label>Name
+              <input type="text" name="name" required autocomplete="name">
+            </label>
+            <label>Email
+              <input type="email" name="email" required autocomplete="email">
+            </label>
+            <label class="full">Company or organization <span class="quote-label-optional">(optional)</span>
+              <input type="text" name="company" autocomplete="organization">
+            </label>
+            <label class="full">Anything specific you want to discuss? <span class="quote-label-optional">(optional)</span>
+              <textarea name="notes" placeholder="Current show status, timeline, specific questions..."></textarea>
+            </label>
+          </div>
+
+          <div class="quote-submit-row">
+            <button type="submit" class="quote-submit-btn" id="scopingSubmitBtn">Send configuration &amp; get booking link</button>
+            <button type="button" class="quote-cancel-btn" onclick="closeScopingForm()">Cancel</button>
+          </div>
+
+          <p class="quote-footnote">We'll send this to Nate and reply with a Cal.com link to book a 30-min intro call. No spam, no list.</p>
+        </form>
+      </div>
+
+      <!-- Success state (shown after submit) -->
+      <div class="quote-card-success">
+        <h5>Configuration sent.</h5>
+        <p>Nate has your details and the full configuration you built. Book a 30-min intro call now to walk through it together.</p>
+        <a href="https://cal.com/natepeavey/intro-call" target="_blank" rel="noopener" class="quote-booking-btn">
+          Book a 30-min intro call &rarr;
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Escape links below the card -->
+    <p class="quote-escape-links">Not sure yet? <a href="/story-sprint">Start with a Story Sprint</a> &middot; <a href="/podcast-checklist">Take the Readiness Checklist</a></p>
+
+    </div> <!-- /pricing-body -->
+
+  </div>
+</section>
+
+<!-- PROOF BLOCK: aggregate stats + case study in one unified section -->
+<section class="proof-block">
+  <div class="container">
+    <p class="proof-eyebrow">What this looks like in practice</p>
+
+    <div class="proof-stats">
+      <div class="proof-stat">
+        <p class="proof-stat-num">120%</p>
+        <p class="proof-stat-label">Average client<br>reach growth</p>
+      </div>
+      <div class="proof-stat">
+        <p class="proof-stat-num">100%</p>
+        <p class="proof-stat-label">Client<br>retention</p>
+      </div>
+      <div class="proof-stat">
+        <p class="proof-stat-num">Millions</p>
+        <p class="proof-stat-label">Monthly<br>impressions</p>
+      </div>
+    </div>
+
+    <div class="proof-divider"></div>
+
+    <div class="proof-case">
+      <p class="proof-case-eyebrow">Energy Capital Podcast</p>
+      <p class="proof-case-desc">A Texas energy policy show built into a multi-platform media system.</p>
+
+      <div class="proof-case-card">
+        <div class="proof-case-metric">
+          <p class="proof-case-num">+100%</p>
+          <p class="proof-case-label">podcast downloads<br>in 6 months</p>
+        </div>
+        <div class="proof-case-metric-divider"></div>
+        <div class="proof-case-metric">
+          <p class="proof-case-num">12K+</p>
+          <p class="proof-case-label">newsletter<br>subscribers</p>
+        </div>
+      </div>
+
+      <a href="/work/energy-capital" class="proof-case-link">Read the full case study</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="closing-cta">
+  <div class="container">
+    <h2>Ready to turn your podcast into a platform?</h2>
+    <a href="#pricing" class="btn-primary">Build your configuration</a>
+        <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a href="/story-sprint" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Or start with a Story Sprint</a> &middot; <a href="/contact" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Get in touch</a></p>
+    <p class="closing-micro">Every engagement begins with a Story Sprint ($500-$750, 100% credited to your first month). Production starts at $500/month.</p>
+  </div>
+</section>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>ClarityForge Studios</h3>
+        <p>Media systems for energy leaders.<br>Bend, Oregon.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigate</h4>
+        <a href="/services">Services</a>
+        <a href="/podcast-production">Podcast Production</a>
+        <a href="/executive-visibility">Executive Visibility</a>
+        <a href="/strategic-partnerships">Strategic Partnerships</a>
+        <a href="/work">Work</a>
+        <a href="/about">About</a>
+        <a href="/blog">Blog</a>
+        <a href="/resources">Resources</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Get in Touch</h4>
+        <div class="footer-social" style="display:flex;gap:.85rem;margin-bottom:1rem"><a href="https://www.linkedin.com/company/clarityforge-studios/" aria-label="ClarityForge Studios on LinkedIn" target="_blank" rel="noopener" style="padding:0;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid rgba(255,255,255,.12);border-radius:6px;color:var(--medium-gray);transition:color .2s,border-color .2s"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.268 2.37 4.268 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://www.youtube.com/@TheForgeYouTube" aria-label="The Forge on YouTube" target="_blank" rel="noopener" style="padding:0;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid rgba(255,255,255,.12);border-radius:6px;color:var(--medium-gray);transition:color .2s,border-color .2s"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a><a href="https://clarityforgestudios.substack.com/" aria-label="The Forge on Substack" target="_blank" rel="noopener" style="padding:0;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid rgba(255,255,255,.12);border-radius:6px;color:var(--medium-gray);transition:color .2s,border-color .2s"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg></a></div><a href="/contact">Email</a>
+        <a href="tel:5125696612">(512) 569-6612</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 ClarityForge Studios LLC</span>
+      <a href="/privacy-policy">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-cta" id="mobileCta"><a href="#pricing" class="btn-primary">See pricing</a></div>
+
+<div class="scroll-cta" id="scrollCta">
+  <button class="scroll-cta-close" id="scrollCtaClose" aria-label="Dismiss">&times;</button>
+  <p>Build your podcast configuration and get a quote.</p>
+  <a href="#pricing" class="btn-primary">See pricing &rarr;</a>
+</div>
+
+
+<script>
+(function() {
+
+  /* ── PRICING DATA ── */
+
+  var displayPrices = {
+    pilot: {
+      1: { price: '$500/mo',   per: '$500 per episode', save: '' },
+      2: { price: '$900/mo',   per: '$450 per episode', save: 'Save 10%' },
+      4: { price: '$1,500/mo', per: '$375 per episode', save: 'Save 25%' }
+    },
+    full: {
+      1: { price: '$1,000/mo',   per: '$1,000 per episode', save: '' },
+      2: { price: '$1,800/mo', per: '$900 per episode', save: 'Save 10%' },
+      4: { price: '$3,200/mo', per: '$800 per episode', save: 'Save 20%' }
+    },
+    exec: {
+      1: { price: '$1,800/mo', per: '$1,800 per episode', save: '' },
+      2: { price: '$3,200/mo', per: '$1,600 per episode', save: 'Save 11%' },
+      4: { price: '$5,500/mo', per: '$1,375 per episode', save: 'Save 24%' }
+    }
+  };
+
+  var monthlyBase = {
+    pilot: { 1: 500,  2: 900,  4: 1500 },
+    full:  { 1: 1000, 2: 1800, 4: 3200 },
+    exec:  { 1: 1800, 2: 3200, 4: 5500 }
+  };
+
+  var outputsPerEp = { pilot: 3, full: 10, exec: 15 };
+
+  /* ── PATH CONFIG ── */
+  var pathConfig = {
+    a: {
+      name: 'Individual Expert',
+      totalLabel: 'Your monthly investment',
+      layerNames: {
+        'narrative': 'Narrative Strategy',
+        'growth': 'Growth + Analytics',
+        'guests': 'Guest Booking',
+        'sponsorship': 'Sponsorship + Revenue',
+        'ads': 'Advertising'
+      },
+      bundles: {
+        'authority': { layers: ['narrative', 'growth', 'guests'], price: 2100, name: 'Authority Engine Bundle' }
+      }
+    },
+    b: {
+      name: 'Single-Voice Organization',
+      totalLabel: 'Your monthly investment',
+      layerNames: {
+        'narrative': 'Narrative Strategy',
+        'growth': 'Growth + Analytics',
+        'guests': 'Guest Booking',
+        'sponsorship': 'Sponsorship + Revenue',
+        'ads': 'Advertising'
+      },
+      bundles: {
+        'authority': { layers: ['narrative', 'growth', 'guests'], price: 2100, name: 'Authority Engine Bundle' }
+      }
+    },
+    c: {
+      name: 'Multi-Voice Organization',
+      totalLabel: 'Your institutional media investment',
+      layerNames: {
+        'narrative': 'Narrative Strategy',
+        'growth': 'Growth + Analytics',
+        'guests': 'Guest Booking',
+        'sponsorship': 'Sponsorship + Revenue',
+        'multi-voice': 'Multi-Voice Ecosystem'
+      },
+      bundles: {
+        'institutional': { layers: ['narrative', 'growth', 'sponsorship'], price: 2100, name: 'Institutional Engine Bundle' }
+      }
+    }
+  };
+
+  /* ── STATE ── */
+  var currentPath = null;
+  var currentProd = 'full';
+  var currentFreq = 1;
+  var selectedLayers = {};
+  var bundleSelected = null; // null or bundle key string
+  var expandedView = false;
+
+  /* ── PATH HANDLERS ── */
+
+  window.selectPath = function(path) {
+    currentPath = path;
+    // Reset all selections
+    selectedLayers = {};
+    bundleSelected = null;
+    var allLayers = document.querySelectorAll('.layer-card');
+    for (var i = 0; i < allLayers.length; i++) { allLayers[i].classList.remove('selected'); }
+    var bundles = document.querySelectorAll('.bundle-callout');
+    for (var j = 0; j < bundles.length; j++) { bundles[j].classList.remove('selected'); }
+
+    // Set body class for CSS-driven show/hide
+    document.body.classList.remove('path-a', 'path-b', 'path-c');
+    document.body.classList.add('path-' + path);
+
+    var cfg = pathConfig[path];
+    document.getElementById('totalLabel').textContent = cfg.totalLabel;
+
+    // Show pricing, hide gate
+    document.getElementById('pathGate').style.display = 'none';
+    document.getElementById('pathActiveBar').classList.add('visible');
+    document.getElementById('pathActiveName').textContent = cfg.name;
+    document.getElementById('pricingBody').classList.add('visible');
+
+    // Reset progressive disclosure to Step 1
+    setStepState(1, 'current');
+    setStepState(2, 'upcoming');
+    setStepState(3, 'upcoming');
+    updateStepSummary(1);
+    updateStepSummary(2);
+    updateStepSummary(3);
+
+    // Scroll to active bar
+    setTimeout(function() {
+      document.getElementById('pathActiveBar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+
+    updateTotal();
+  };
+
+  window.resetPath = function() {
+    currentPath = null;
+    selectedLayers = {};
+    bundleSelected = null;
+    expandedView = false;
+    document.body.classList.remove('path-a', 'path-b', 'path-c', 'pricing-expanded');
+    document.getElementById('pathGate').style.display = 'block';
+    document.getElementById('pathActiveBar').classList.remove('visible');
+    document.getElementById('pricingBody').classList.remove('visible');
+    document.getElementById('pathExpandBtn').textContent = 'Show all steps';
+    // Reset scoping CTA state
+    var sc = document.getElementById('quoteCard');
+    if (sc) { sc.classList.remove('expanded', 'submitted'); }
+    document.getElementById('pathGate').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  window.toggleExpandAll = function() {
+    expandedView = !expandedView;
+    document.body.classList.toggle('pricing-expanded', expandedView);
+    document.getElementById('pathExpandBtn').textContent = expandedView ? 'Collapse to one step' : 'Show all steps';
+    if (expandedView) {
+      // Expanded view — no additional actions needed
+    }
+  };
+
+  /* ── PROGRESSIVE DISCLOSURE ── */
+
+  function setStepState(stepNum, state) {
+    var el = document.getElementById('step' + stepNum);
+    if (el) el.setAttribute('data-state', state);
+  }
+
+  function getStepState(stepNum) {
+    var el = document.getElementById('step' + stepNum);
+    return el ? el.getAttribute('data-state') : null;
+  }
+
+  window.openStep = function(stepNum) {
+    if (expandedView) return;
+    var state = getStepState(stepNum);
+    if (state === 'upcoming') return; // cannot jump ahead
+    // Close every other step that isn't upcoming; mark this one current
+    for (var i = 1; i <= 3; i++) {
+      if (i === stepNum) {
+        setStepState(i, 'current');
+      } else {
+        var s = getStepState(i);
+        if (s === 'current') {
+          setStepState(i, 'done');
+        }
+      }
+    }
+  };
+
+  window.advanceStep = function(stepNum) {
+    if (stepNum < 3) {
+      setStepState(stepNum, 'done');
+      setStepState(stepNum + 1, 'current');
+      updateStepSummary(stepNum);
+      // Scroll to newly opened step
+      setTimeout(function() {
+        var next = document.getElementById('step' + (stepNum + 1));
+        if (next) next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    } else {
+      setStepState(3, 'done');
+      updateStepSummary(3);
+      // Scroll to total bar
+      setTimeout(function() {
+        var tb = document.getElementById('quoteCard');
+        if (tb) tb.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    }
+  };
+
+  function updateStepSummary(stepNum) {
+    if (stepNum === 1) {
+      var name = currentProd === 'pilot' ? 'Launch Pad' : (currentProd === 'exec' ? 'Executive Production' : 'Full Production');
+      document.getElementById('step1Summary').textContent = '— ' + name;
+    } else if (stepNum === 2) {
+      document.getElementById('step2Summary').textContent = '— ' + currentFreq + ' episode' + (currentFreq > 1 ? 's' : '') + '/month';
+    } else if (stepNum === 3) {
+      var count = Object.keys(selectedLayers).length + (bundleSelected ? 1 : 0);
+      if (count === 0) {
+        document.getElementById('step3Summary').textContent = '— No layers added';
+      } else {
+        document.getElementById('step3Summary').textContent = '— ' + count + ' layer' + (count > 1 ? 's' : '') + ' added';
+      }
+    }
+  }
+
+  /* ── PRODUCTION / FREQUENCY ── */
+
+  window.selectProd = function(level) {
+    currentProd = level;
+    document.getElementById('prodPilot').classList.toggle('selected', level === 'pilot');
+    document.getElementById('prodFull').classList.toggle('selected', level === 'full');
+    document.getElementById('prodExec').classList.toggle('selected', level === 'exec');
+    updateFreqCards();
+    updateTotal();
+    updateStepSummary(1);
+  };
+
+  window.selectFreq = function(freq) {
+    currentFreq = freq;
+    var cards = document.querySelectorAll('.freq-card');
+    for (var i = 0; i < cards.length; i++) { cards[i].classList.remove('selected'); }
+    document.getElementById('freq' + freq).classList.add('selected');
+    updateTotal();
+    updateStepSummary(2);
+  };
+
+  /* ── LAYERS / BUNDLES / FOUNDATION BUILD ── */
+
+  window.toggleLayer = function(el, key, midPrice) {
+    if (!currentPath) return;
+    var cfg = pathConfig[currentPath];
+    // If any active bundle includes this layer, deselect that bundle first
+    if (bundleSelected && cfg.bundles[bundleSelected] && cfg.bundles[bundleSelected].layers.indexOf(key) > -1) {
+      deselectBundle();
+    }
+    if (selectedLayers.hasOwnProperty(key)) {
+      delete selectedLayers[key];
+      el.classList.remove('selected');
+    } else {
+      selectedLayers[key] = midPrice;
+      el.classList.add('selected');
+    }
+    updateTotal();
+    updateStepSummary(3);
+  };
+
+  window.toggleBundle = function(bundleKey) {
+    if (!currentPath) return;
+    var cfg = pathConfig[currentPath];
+    if (!cfg.bundles[bundleKey]) return;
+    var calloutId = bundleKey === 'authority' ? 'bundleCallout' : 'instBundleCallout';
+    if (bundleSelected === bundleKey) {
+      deselectBundle();
+    } else {
+      // Clear any layers that would double-count
+      var includedLayers = cfg.bundles[bundleKey].layers;
+      for (var i = 0; i < includedLayers.length; i++) {
+        var key = includedLayers[i];
+        delete selectedLayers[key];
+        var cards = document.querySelectorAll('.layer-card');
+        for (var j = 0; j < cards.length; j++) {
+          if (cards[j].getAttribute('data-layer') === key) {
+            cards[j].classList.remove('selected');
+          }
+        }
+      }
+      // Clear other bundles
+      deselectBundle();
+      bundleSelected = bundleKey;
+      document.getElementById(calloutId).classList.add('selected');
+    }
+    updateTotal();
+    updateStepSummary(3);
+  };
+
+  function deselectBundle() {
+    bundleSelected = null;
+    var bundles = document.querySelectorAll('.bundle-callout');
+    for (var i = 0; i < bundles.length; i++) { bundles[i].classList.remove('selected'); }
+  }
+
+  /* ── UPDATE ── */
+
+  function updateFreqCards() {
+    var d = displayPrices[currentProd];
+    var freqs = [1, 2, 4];
+    for (var i = 0; i < freqs.length; i++) {
+      var f = freqs[i];
+      document.getElementById('freqPrice' + f).textContent = d[f].price;
+      document.getElementById('freqPer' + f).textContent = d[f].per;
+      if (f > 1) {
+        document.getElementById('freqSave' + f).textContent = d[f].save;
+        document.getElementById('freqSave' + f).style.display = d[f].save ? 'inline-block' : 'none';
+      }
+    }
+  }
+
+  function updateTotal() {
+    if (!currentPath) return;
+    var cfg = pathConfig[currentPath];
+    var base = monthlyBase[currentProd][currentFreq];
+
+    var layerTotal = 0;
+    for (var k in selectedLayers) { layerTotal += selectedLayers[k]; }
+
+    var bundleAmount = 0;
+    if (bundleSelected && cfg.bundles[bundleSelected]) {
+      bundleAmount = cfg.bundles[bundleSelected].price;
+    }
+    var totalMid = base + layerTotal + bundleAmount;
+    var hasLayers = layerTotal > 0 || bundleSelected;
+
+    var priceStr;
+    if (!hasLayers) {
+      priceStr = displayPrices[currentProd][currentFreq].price;
+    } else {
+      var low = Math.round((totalMid * 0.85) / 25) * 25;
+      var high = Math.round((totalMid * 1.15) / 25) * 25;
+      priceStr = '$' + low.toLocaleString() + '-$' + high.toLocaleString() + '/mo';
+    }
+
+    document.getElementById('totalAmount').textContent = priceStr;
+
+    // Breakdown
+    var parts = [];
+    parts.push(currentProd === 'pilot' ? 'Launch Pad' : (currentProd === 'exec' ? 'Executive Production' : 'Full Production'));
+    parts.push(currentFreq + ' episode' + (currentFreq > 1 ? 's' : '') + '/month');
+    if (bundleSelected && cfg.bundles[bundleSelected]) {
+      parts.push(cfg.bundles[bundleSelected].name);
+    } else {
+      var layerNames = [];
+      for (var layerKey in selectedLayers) {
+        if (cfg.layerNames[layerKey]) layerNames.push(cfg.layerNames[layerKey]);
+      }
+      if (layerNames.length > 0) parts.push(layerNames.join(', '));
+    }
+    document.getElementById('totalBreakdown').textContent = parts.join(' + ');
+
+    // Outputs
+    var opsPerEp = outputsPerEp[currentProd];
+    var totalOps = opsPerEp * currentFreq;
+    var opsLabel = 'distributed pieces per month';
+    if (bundleSelected || selectedLayers.narrative || selectedLayers.growth || selectedLayers.sponsorship) {
+      opsLabel += ' + strategic layer';
+    }
+    document.getElementById('totalOutputs').innerHTML = '<strong>' + totalOps + '+</strong> ' + opsLabel;
+  }
+
+  // Initialize
+  updateFreqCards();
+
+  /* ── SCOPING CTA (lead capture + booking) ── */
+
+  window.openScopingForm = function() {
+    var sc = document.getElementById('quoteCard');
+    if (!sc) return;
+    // Build the summary + populate hidden fields
+    populateScopingSummary();
+    sc.classList.add('expanded');
+    setTimeout(function() {
+      sc.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  };
+
+  window.closeScopingForm = function() {
+    var sc = document.getElementById('quoteCard');
+    if (!sc) return;
+    sc.classList.remove('expanded');
+  };
+
+  function populateScopingSummary() {
+    if (!currentPath) return;
+    var cfg = pathConfig[currentPath];
+    var prodLabel = currentProd === 'pilot' ? 'Launch Pad' : (currentProd === 'exec' ? 'Executive Production' : 'Full Production');
+
+    // Build human-readable summary
+    var lines = [];
+    lines.push('<ul>');
+    lines.push('<li><strong>Path:</strong> ' + cfg.name + '</li>');
+    lines.push('<li><strong>Production:</strong> ' + prodLabel + '</li>');
+    lines.push('<li><strong>Publishing pace:</strong> ' + currentFreq + ' episode' + (currentFreq > 1 ? 's' : '') + ' per month</li>');
+
+    var priceText = document.getElementById('totalAmount').textContent;
+    lines.push('<li><strong>Estimated monthly:</strong> ' + priceText + '</li>');
+
+    if (bundleSelected && cfg.bundles[bundleSelected]) {
+      lines.push('<li><strong>Bundle:</strong> ' + cfg.bundles[bundleSelected].name + '</li>');
+    } else {
+      var layerNames = [];
+      for (var layerKey in selectedLayers) {
+        if (cfg.layerNames[layerKey]) layerNames.push(cfg.layerNames[layerKey]);
+      }
+      if (layerNames.length > 0) {
+        lines.push('<li><strong>Strategic layers:</strong> ' + layerNames.join(', ') + '</li>');
+      } else {
+        lines.push('<li><strong>Strategic layers:</strong> None selected</li>');
+      }
+    }
+    lines.push('</ul>');
+
+    document.getElementById('scopingSummaryContent').innerHTML = lines.join('');
+
+    // Populate hidden form fields (plain text for Formspree)
+    document.getElementById('formPath').value = cfg.name + ' (Path ' + currentPath.toUpperCase() + ')';
+    document.getElementById('formProd').value = prodLabel;
+    document.getElementById('formFreq').value = currentFreq + ' episodes/month';
+    document.getElementById('formPrice').value = priceText;
+    document.getElementById('formFoundation').value = 'Discuss on call';
+
+    var layerSummary = '';
+    if (bundleSelected && cfg.bundles[bundleSelected]) {
+      layerSummary = 'Bundle: ' + cfg.bundles[bundleSelected].name;
+    } else {
+      var names = [];
+      for (var lk in selectedLayers) {
+        if (cfg.layerNames[lk]) names.push(cfg.layerNames[lk]);
+      }
+      layerSummary = names.length > 0 ? names.join(', ') : 'None';
+    }
+    document.getElementById('formLayers').value = layerSummary;
+
+    // Plain text summary for email body
+    var plainSummary = 'Path: ' + cfg.name + '\n' +
+      'Production: ' + prodLabel + '\n' +
+      'Frequency: ' + currentFreq + ' episodes/month\n' +
+      'Estimated monthly: ' + priceText + '\n' +
+      'Layers: ' + layerSummary;
+    document.getElementById('formSummary').value = plainSummary;
+  }
+
+  window.submitScopingForm = function(event) {
+    event.preventDefault();
+    var form = document.getElementById('scopingForm');
+    var btn = document.getElementById('scopingSubmitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    var formData = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function(response) {
+      if (response.ok) {
+        document.getElementById('quoteCard').classList.add('submitted');
+      } else {
+        response.json().then(function(data) {
+          btn.disabled = false;
+          btn.textContent = 'Send configuration & get booking link';
+          alert('Something went wrong. Please try again or email nathan@clarityforgestudios.com directly.');
+        });
+      }
+    })
+    .catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Send configuration & get booking link';
+      alert('Something went wrong. Please try again or email nathan@clarityforgestudios.com directly.');
+    });
+
+    return false;
+  };
+
+})();
+</script>
+
+<script>
+(function() {
+  var cta = document.getElementById('scrollCta');
+  var closeBtn = document.getElementById('scrollCtaClose');
+  var shown = false, dismissed = false;
+  try { dismissed = sessionStorage.getItem('cf_scroll_cta_dismissed') === '1'; } catch(e) {}
+  if (!dismissed) {
+    window.addEventListener('scroll', function() {
+      if (shown || dismissed) return;
+      var scrollPct = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+      if (scrollPct > 0.6) {
+        cta.classList.add('visible');
+        shown = true;
+      }
+    });
+  }
+
+  closeBtn.addEventListener('click', function() {
+    cta.classList.remove('visible');
+    dismissed = true;
+    try { sessionStorage.setItem('cf_scroll_cta_dismissed', '1'); } catch(e) {}
+  });
+
+  // Hide mobile sticky CTA when user is inside the pricing section
+  var mobileCta = document.getElementById('mobileCta');
+  var pricingSection = document.getElementById('pricing');
+  if (mobileCta && pricingSection && 'IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        // When any part of pricing is in view, hide the sticky CTA
+        mobileCta.classList.toggle('hidden-in-pricing', entry.isIntersecting);
+      });
+    }, { threshold: 0, rootMargin: '-80px 0px -40% 0px' });
+    observer.observe(pricingSection);
+  }
+})();
+</script>
+
+<!-- LinkedIn Insight Tag -->
+<script type="text/javascript">
+_linkedin_partner_id = "9160108";
+window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+</script><script type="text/javascript">
+(function(l) {
+if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
+window.lintrk.q=[]}
+var s = document.getElementsByTagName("script")[0];
+var b = document.createElement("script");
+b.type = "text/javascript";b.async = true;
+b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+s.parentNode.insertBefore(b, s);})(window.lintrk);
+</script>
+<noscript>
+<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=9160108&fmt=gif" />
+</noscript>
+</body>
+</html>
