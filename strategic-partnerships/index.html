@@ -12,8 +12,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<title>Strategic Media Partnerships for Energy Organizations | ClarityForge</title>
-<meta name="description" content="Institutional authority building for energy firms. Executive video series, multi-leader amplification, and performance-driven media infrastructure.">
+<title>Strategic Media Partnerships | ClarityForge</title>
+<meta name="description" content="Coordinated video series for organizations with three or more public-facing contributors. Foundation Build aligns the architecture; the monthly retainer runs the system. Built for research orgs, trade associations, advocacy groups, and mission-funded media.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -70,9 +70,9 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 
 /* PROBLEM */
 .problem { padding: var(--section-pad) 0; background: var(--warm-white); }
-.problem-text { max-width: 720px; margin-bottom: 3rem; }
+.problem-text { max-width: 700px; margin: 0 auto 3rem; text-align: center; }
 .problem-text h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem); color: var(--near-black); margin-bottom: 1.5rem; line-height: 1.25; }
-.problem-text p { margin-bottom: 1.2rem; }
+.problem-text p { margin-bottom: 1.2rem; text-align: left; }
 .problem-text strong { color: var(--near-black); }
 
 /* BENCH VISUAL (full-width below text) */
@@ -80,9 +80,9 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 .bench-center { width: 100px; height: 100px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; margin: 0 auto; position: relative; z-index: 2; }
 .bench-center span { font-size: 0.72rem; font-weight: 700; color: var(--warm-white); text-transform: uppercase; letter-spacing: 0.08em; text-align: center; line-height: 1.2; }
 .bench-connector { width: 2px; height: 2rem; background: var(--gold); margin: 0 auto; }
-.bench-nodes { display: flex; justify-content: center; gap: 3rem; position: relative; }
-.bench-nodes::before { content: ''; position: absolute; top: 0; left: calc(16.66% + 24px); right: calc(16.66% + 24px); height: 2px; background: var(--gold); }
-.bench-node { text-align: center; position: relative; }
+.bench-nodes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; padding-top: 1.5rem; }
+.bench-nodes::before { content: ''; position: absolute; top: 0; left: 12.5%; right: 12.5%; height: 2px; background: var(--gold); }
+.bench-node { text-align: center; position: relative; padding: 0 0.5rem; }
 .bench-node::before { content: ''; position: absolute; top: 0; left: 50%; width: 2px; height: 1.5rem; background: var(--gold); transform: translateX(-50%); }
 .bench-dot { width: 56px; height: 56px; border-radius: 50%; background: rgba(255,182,77,0.12); border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; margin: 1.5rem auto 0.5rem; }
 .bench-dot svg { width: 22px; height: 22px; color: var(--gold); }
@@ -90,107 +90,249 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 .bench-node-topic { font-size: 0.7rem; color: var(--medium-gray); margin-top: 0.15rem; }
 .bench-caption { text-align: center; margin-top: 2rem; font-size: 0.88rem; color: var(--navy); font-weight: 600; }
 
-/* DIFFERENTIATOR */
-.diff-callout { padding: 3rem 0; background: var(--section-gray); border-bottom: 1px solid var(--border-gray); }
-.diff-callout-inner { max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: center; }
-.diff-callout-icon { font-family: var(--font-display); font-size: clamp(2.5rem, 4vw, 3.5rem); color: var(--gold); line-height: 1; white-space: nowrap; }
-.diff-callout-text p:first-child { font-size: 1.05rem; color: var(--near-black); font-weight: 600; margin-bottom: 0.5rem; }
-.diff-callout-text p:last-child { font-size: 0.92rem; color: var(--dark-gray); }
-
-/* HOW IT WORKS */
-.how-it-works { padding: var(--section-pad) 0; background: var(--warm-white); }
-.how-it-works h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem); color: var(--near-black); text-align: center; margin-bottom: 1rem; }
-.how-it-works-sub { text-align: center; color: var(--medium-gray); font-size: 0.92rem; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-.hiw-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 960px; margin: 0 auto; }
-.hiw-card { background: var(--pure-white); border-radius: 10px; padding: 2rem 1.5rem; border: 1px solid var(--border-gray); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-.hiw-number { font-family: var(--font-display); font-size: 1.8rem; color: var(--gold); margin-bottom: 0.5rem; }
-.hiw-card h3 { font-family: var(--font-body); font-size: 0.95rem; font-weight: 700; color: var(--near-black); margin-bottom: 0.4rem; }
-.hiw-card p { font-size: 0.82rem; color: var(--dark-gray); line-height: 1.5; }
-.hiw-time { text-align: center; margin-top: 2.5rem; font-size: 0.95rem; color: var(--dark-gray); max-width: 700px; margin-left: auto; margin-right: auto; }
-.hiw-time strong { color: var(--near-black); }
-
-/* FOUNDATION BUILD */
-.foundation { padding: var(--section-pad) 0; background: var(--warm-white); border-top: 1px solid var(--border-gray); }
-.foundation-kicker { text-align: center; font-size: 0.78rem; letter-spacing: 0.14em; color: var(--gold); font-weight: 600; margin-bottom: 0.75rem; text-transform: uppercase; }
-.foundation h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem); color: var(--near-black); text-align: center; margin-bottom: 1rem; }
-.foundation-sub { text-align: center; color: var(--medium-gray); font-size: 0.95rem; margin-bottom: 3rem; max-width: 640px; margin-left: auto; margin-right: auto; line-height: 1.6; }
-.foundation-card { max-width: 960px; margin: 0 auto; background: var(--pure-white); border: 1px solid var(--border-gray); border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.05); overflow: hidden; }
-.foundation-header { background: var(--deep-navy); color: var(--warm-white); padding: 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
-.foundation-header-left h3 { font-family: var(--font-display); font-size: 1.4rem; color: var(--warm-white); margin-bottom: 0.35rem; }
-.foundation-header-left p { font-size: 0.88rem; color: var(--light-gray); line-height: 1.45; }
-.foundation-price { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2rem); color: var(--gold); white-space: nowrap; }
-.foundation-price span { font-size: 0.75rem; color: var(--light-gray); font-family: var(--font-body); font-weight: 400; display: block; margin-top: 0.15rem; }
-.foundation-body { padding: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-.foundation-col h4 { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; font-weight: 700; }
-.foundation-col ul { list-style: none; padding: 0; margin: 0; }
-.foundation-col ul li { position: relative; padding: 0.5rem 0 0.5rem 1.4rem; font-size: 0.88rem; color: var(--dark-gray); line-height: 1.5; }
-.foundation-col ul li::before { content: ''; position: absolute; left: 0; top: 1rem; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
-.foundation-col ul li strong { color: var(--near-black); }
-.foundation-footer { padding: 1.5rem 2.5rem 2rem; border-top: 1px solid var(--border-gray); background: var(--section-gray); text-align: center; }
-.foundation-footer p { font-size: 0.85rem; color: var(--dark-gray); margin-bottom: 1rem; }
-.foundation-footer a { display: inline-block; background: var(--gold); color: var(--navy); font-weight: 700; padding: 0.75rem 2rem; border-radius: 6px; font-size: 0.9rem; transition: background 0.2s, transform 0.15s; }
-.foundation-footer a:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-1px); }
-@media (max-width: 720px) {
-  .foundation-header { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
-  .foundation-body { padding: 1.5rem; grid-template-columns: 1fr; gap: 2rem; }
-  .foundation-footer { padding: 1.25rem 1.5rem 1.75rem; }
-}
-
-/* TIERS */
-.tiers { padding: var(--section-pad) 0; background: var(--section-gray); }
-.tiers h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem); color: var(--near-black); text-align: center; margin-bottom: 1rem; }
-.tiers-sub { text-align: center; color: var(--medium-gray); font-size: 0.92rem; margin-bottom: 3rem; max-width: 560px; margin-left: auto; margin-right: auto; }
-.tiers-grid { display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 1.5rem; align-items: start; max-width: 1050px; margin: 0 auto; }
-.tier-card { background: var(--pure-white); border-radius: 10px; padding: 2.5rem 2rem; border: 1px solid var(--border-gray); box-shadow: 0 2px 8px rgba(0,0,0,0.04); position: relative; }
-.tier-card-featured { border-color: var(--gold); box-shadow: 0 4px 24px rgba(255,182,77,0.15); }
-.tier-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--navy); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.3rem 1rem; border-radius: 100px; white-space: nowrap; }
-.tier-card h3 { font-family: var(--font-display); font-size: 1.15rem; color: var(--near-black); margin-bottom: 0.25rem; }
-.tier-price { font-family: var(--font-display); font-size: 1.4rem; color: var(--gold); margin-bottom: 1.5rem; }
-.tier-price span { font-size: 0.85rem; color: var(--medium-gray); font-family: var(--font-body); }
-.tier-list { list-style: none; }
-.tier-list li { padding: 0.4rem 0 0.4rem 1.4rem; position: relative; font-size: 0.82rem; color: var(--dark-gray); line-height: 1.45; }
-.tier-list li::before { content: ''; position: absolute; left: 0; top: 0.65rem; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
-.tier-cta { display: block; text-align: center; margin-top: 2rem; padding: 0.75rem; border-radius: 6px; font-weight: 700; font-size: 0.88rem; transition: background 0.2s, transform 0.15s; }
-.tier-cta-default { background: var(--section-gray); color: var(--navy); border: 1px solid var(--border-gray); }
-.tier-cta-default:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); transform: translateY(-1px); }
-.tier-cta-primary { background: var(--gold); color: var(--navy); border: 1px solid var(--gold); }
-.tier-cta-primary:hover { background: var(--orange); color: var(--pure-white); border-color: var(--orange); transform: translateY(-1px); }
-
-/* CO-INVEST (own section) */
-.coinvest-section { padding: 3rem 0; background: var(--warm-white); border-top: 1px solid var(--border-gray); border-bottom: 1px solid var(--border-gray); }
-.coinvest-inner { max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: center; }
-.coinvest-icon { width: 48px; height: 48px; color: var(--gold); flex-shrink: 0; }
-.coinvest-inner h3 { font-family: var(--font-display); font-size: 1.2rem; color: var(--near-black); margin-bottom: 0.4rem; }
-.coinvest-inner p { font-size: 0.92rem; color: var(--dark-gray); line-height: 1.55; }
-
-/* OUTCOMES */
-.outcomes { padding: var(--section-pad) 0; background: var(--section-gray); }
-.outcomes h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem); color: var(--near-black); text-align: center; margin-bottom: 2.5rem; }
-.outcomes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 1000px; margin: 0 auto; }
-.outcome-card { text-align: center; padding: 1.5rem 1rem; background: var(--pure-white); border-radius: 10px; border: 1px solid var(--border-gray); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-.outcome-icon { width: 40px; height: 40px; color: var(--gold); margin: 0 auto 0.75rem; }
-.outcome-card h3 { font-family: var(--font-body); font-size: 0.9rem; font-weight: 700; color: var(--near-black); margin-bottom: 0.3rem; }
-.outcome-card p { font-size: 0.82rem; color: var(--dark-gray); line-height: 1.45; }
-
-/* CASE STUDY + PROOF */
-.case-proof { padding: var(--section-pad) 0; background: var(--deep-navy); }
-.case-proof-inner { max-width: 900px; margin: 0 auto; }
-.case-proof-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 1rem; }
-.case-proof h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2rem); color: var(--warm-white); margin-bottom: 1rem; }
-.case-proof p { font-size: 0.95rem; color: var(--light-gray); line-height: 1.6; margin-bottom: 1.5rem; max-width: 640px; }
-.case-proof-stats { display: flex; gap: 3rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
-.case-proof-stat { }
-.case-proof-stat-number { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); color: var(--gold); }
-.case-proof-stat-label { font-size: 0.78rem; color: var(--light-gray); }
-.case-proof-link { font-size: 0.9rem; font-weight: 600; color: var(--gold); display: inline-flex; align-items: center; gap: 0.4rem; transition: gap 0.2s; }
-.case-proof-link:hover { gap: 0.6rem; }
-.case-proof-link::after { content: '\2192'; }
-
 /* CTA */
 .closing-cta { padding: var(--section-pad) 0; background: var(--section-gray); text-align: center; }
 .closing-cta h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--near-black); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.25; }
 .closing-cta .btn-primary { font-size: 1.05rem; padding: 1rem 2.5rem; }
 .closing-micro { margin-top: 1.25rem; font-size: 0.82rem; color: var(--medium-gray); }
+
+/* ═══ EXPLORER (progressive disclosure) ═══ */
+.explorer { padding: var(--section-pad) 0; background: var(--section-gray); scroll-margin-top: 80px; }
+.explorer-intro { text-align: center; max-width: 720px; margin: 0 auto 3rem; }
+.explorer-intro h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem); color: var(--near-black); line-height: 1.25; margin-bottom: 0.75rem; }
+.explorer-intro p { font-size: 1rem; color: var(--medium-gray); line-height: 1.6; }
+
+/* Fit gate */
+.fit-gate { max-width: 1100px; margin: 0 auto; }
+.fit-gate-header { text-align: center; margin-bottom: 2rem; }
+.fit-gate-kicker { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 0.5rem; }
+.fit-gate-header h3 { font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 1.8rem); color: var(--near-black); line-height: 1.3; }
+.fit-gate-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+.fit-gate-card { background: var(--pure-white); border: 2px solid var(--border-gray); border-radius: 12px; padding: 1.75rem 1.5rem; cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s; display: flex; flex-direction: column; gap: 0.75rem; }
+.fit-gate-card:hover { border-color: var(--gold); box-shadow: 0 8px 24px rgba(26,42,58,0.08); transform: translateY(-2px); }
+.fit-gate-card-label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+.fit-gate-card h4 { font-family: var(--font-display); font-size: 1.1rem; color: var(--near-black); line-height: 1.3; }
+.fit-gate-card-note { font-size: 0.85rem; color: var(--medium-gray); line-height: 1.55; flex-grow: 1; }
+.fit-gate-card-cta { margin-top: auto; display: inline-flex; color: var(--navy); font-weight: 700; font-size: 0.85rem; padding-top: 0.5rem; }
+
+/* Informational variant: no click, inline links inside */
+.fit-gate-card-info { cursor: default; background: var(--section-gray); }
+.fit-gate-card-info:hover { border-color: var(--border-gray); box-shadow: none; transform: none; }
+.fit-gate-card-links { margin-top: auto; display: flex; flex-direction: column; gap: 0.2rem; padding-top: 0.5rem; }
+.fit-gate-card-links a { color: var(--navy); font-weight: 700; font-size: 0.85rem; border-bottom: 1px solid rgba(42,61,79,0.25); padding-bottom: 2px; align-self: flex-start; transition: color 0.2s, border-color 0.2s; }
+.fit-gate-card-links a:hover { color: var(--gold); border-color: var(--gold); }
+.fit-gate-card-links a + .fit-gate-card-links-note { margin-top: -0.1rem; margin-bottom: 0.6rem; }
+.fit-gate-card-links-note { font-size: 0.75rem; color: var(--medium-gray); line-height: 1.45; }
+
+/* Fit active bar */
+.fit-active-bar { display: none; max-width: 1100px; margin: 0 auto 1.5rem; background: var(--pure-white); border: 1px solid var(--border-gray); border-radius: 8px; padding: 0.85rem 1.25rem; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.fit-active-bar.visible { display: flex; }
+.fit-active-label { font-size: 0.82rem; color: var(--medium-gray); }
+.fit-active-name { font-weight: 700; color: var(--near-black); font-size: 0.92rem; }
+.fit-active-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.fit-expand-all, .fit-switch-btn { background: none; border: 1px solid var(--border-gray); color: var(--dark-gray); font-family: var(--font-body); font-size: 0.8rem; font-weight: 600; padding: 0.45rem 0.95rem; border-radius: 6px; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+.fit-expand-all:hover, .fit-switch-btn:hover { border-color: var(--gold); color: var(--navy); }
+
+/* Explorer body */
+.explorer-body { display: none; max-width: 1100px; margin: 0 auto; }
+.explorer-body.visible { display: block; }
+
+/* Disclosure step (ported from podcast-production pattern) */
+.disclosure-step { background: var(--pure-white); border: 1px solid var(--border-gray); border-radius: 10px; margin-bottom: 1rem; transition: border-color 0.2s, box-shadow 0.2s; overflow: hidden; scroll-margin-top: 90px; }
+.disclosure-step[data-state="current"] { border-color: var(--gold); box-shadow: 0 4px 16px rgba(255,182,77,0.12); }
+.disclosure-step[data-state="collapsed"] { background: var(--section-gray); }
+.disclosure-step[data-state="upcoming"] { opacity: 0.55; pointer-events: none; background: var(--section-gray); }
+.disclosure-step[data-state="done"] { background: var(--section-gray); }
+body.explorer-expanded .disclosure-step { background: var(--pure-white); opacity: 1; pointer-events: auto; }
+
+.disclosure-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.5rem; cursor: pointer; flex-wrap: wrap; }
+.disclosure-step[data-state="upcoming"] .disclosure-header { cursor: default; }
+.disclosure-title { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+.disclosure-title .step-number { flex-shrink: 0; width: 28px; height: 28px; background: var(--navy); color: var(--warm-white); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.82rem; font-family: var(--font-body); }
+.disclosure-step[data-state="current"] .disclosure-title .step-number { background: var(--gold); color: var(--navy); }
+.disclosure-step[data-state="done"] .disclosure-title .step-number,
+.disclosure-step[data-state="collapsed"] .disclosure-title .step-number { background: var(--success); color: var(--warm-white); }
+.disclosure-heading { font-family: var(--font-body); font-weight: 700; font-size: 0.95rem; color: var(--near-black); }
+.disclosure-summary { font-size: 0.85rem; color: var(--dark-gray); display: none; }
+.disclosure-step[data-state="collapsed"] .disclosure-summary,
+.disclosure-step[data-state="done"] .disclosure-summary { display: inline; }
+.disclosure-edit { font-size: 0.78rem; color: var(--navy); font-weight: 600; text-decoration: none; display: none; cursor: pointer; }
+.disclosure-step[data-state="collapsed"] .disclosure-edit,
+.disclosure-step[data-state="done"] .disclosure-edit { display: inline; }
+.disclosure-edit:hover { color: var(--orange); }
+
+.disclosure-body { padding: 0 1.5rem 1.5rem; display: none; animation: fadeUp 0.35s var(--ease); }
+.disclosure-step[data-state="current"] .disclosure-body { display: block; }
+body.explorer-expanded .disclosure-body { display: block; }
+
+.step-lede { font-size: 0.95rem; color: var(--dark-gray); line-height: 1.65; margin-bottom: 1.5rem; }
+
+/* Foundation options (Step 1 radio cards) */
+.foundation-options { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+.foundation-option { background: var(--pure-white); border: 2px solid var(--border-gray); border-radius: 10px; padding: 1.5rem 1.35rem; cursor: pointer; transition: border-color 0.2s, background 0.2s; position: relative; }
+.foundation-option:hover { border-color: var(--gold); }
+.foundation-option.selected { border-color: var(--gold); background: rgba(255,182,77,0.05); }
+.foundation-option-radio { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border-gray); position: absolute; top: 1.35rem; right: 1.35rem; display: flex; align-items: center; justify-content: center; transition: border-color 0.2s; }
+.foundation-option.selected .foundation-option-radio { border-color: var(--gold); }
+.foundation-option-radio-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); opacity: 0; transition: opacity 0.2s; }
+.foundation-option.selected .foundation-option-radio-dot { opacity: 1; }
+.foundation-option h4 { font-family: var(--font-display); font-size: 1.1rem; color: var(--near-black); margin-bottom: 0.5rem; padding-right: 2rem; }
+.foundation-option p { font-size: 0.88rem; color: var(--dark-gray); line-height: 1.55; margin-bottom: 0.75rem; }
+.foundation-option-next { font-size: 0.82rem; color: var(--medium-gray); padding-top: 0.75rem; border-top: 1px solid var(--border-gray); margin-bottom: 0; }
+.foundation-option-next strong { color: var(--navy); font-weight: 700; }
+
+/* Foundation details dropdown */
+.foundation-details { background: var(--section-gray); border: 1px solid var(--border-gray); border-radius: 8px; margin-bottom: 1.5rem; overflow: hidden; }
+.foundation-details summary { padding: 0.9rem 1.25rem; cursor: pointer; font-weight: 600; font-size: 0.9rem; color: var(--navy); display: flex; justify-content: space-between; align-items: center; list-style: none; }
+.foundation-details summary::-webkit-details-marker { display: none; }
+.foundation-details summary::after { content: '+'; font-size: 1.3rem; color: var(--gold); font-weight: 400; line-height: 1; }
+.foundation-details[open] summary::after { content: '\2212'; }
+.foundation-details-body { padding: 0 1.25rem 1.25rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.foundation-details-col h5 { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 0.75rem; }
+.foundation-details-col ul { list-style: none; padding: 0; margin: 0; }
+.foundation-details-col li { position: relative; padding: 0.3rem 0 0.3rem 1.1rem; font-size: 0.85rem; color: var(--dark-gray); line-height: 1.5; }
+.foundation-details-col li::before { content: '\2192'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+
+/* Step continue row */
+.step-continue-row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; padding-top: 1.25rem; border-top: 1px solid var(--border-gray); }
+.step-secondary-cta { font-size: 0.88rem; color: var(--navy); border-bottom: 1px solid rgba(42,61,79,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s; }
+.step-secondary-cta:hover { color: var(--gold); border-color: var(--gold); }
+.step-continue-btn { background: var(--pure-white); border: 2px solid var(--gold); color: var(--navy); font-family: var(--font-body); font-size: 0.9rem; font-weight: 700; padding: 0.65rem 1.5rem; border-radius: 6px; cursor: pointer; transition: background 0.2s, color 0.2s; }
+.step-continue-btn:hover { background: var(--gold); color: var(--navy); }
+
+/* Tier select cards (Step 2) */
+.tier-select-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+.tier-select-card { background: var(--pure-white); border: 2px solid var(--border-gray); border-radius: 10px; padding: 1.5rem 1.35rem 1.75rem; cursor: pointer; transition: border-color 0.2s, background 0.2s, transform 0.15s; position: relative; display: flex; flex-direction: column; }
+.tier-select-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+.tier-select-card.selected { border-color: var(--gold); background: rgba(255,182,77,0.05); }
+.tier-select-radio { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border-gray); position: absolute; top: 1.25rem; right: 1.25rem; display: flex; align-items: center; justify-content: center; transition: border-color 0.2s; }
+.tier-select-card.selected .tier-select-radio { border-color: var(--gold); }
+.tier-select-radio-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); opacity: 0; transition: opacity 0.2s; }
+.tier-select-card.selected .tier-select-radio-dot { opacity: 1; }
+.tier-select-badge { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 0.2rem 0.65rem; border-radius: 100px; margin-bottom: 0.75rem; width: fit-content; }
+.tier-select-card h4 { font-family: var(--font-display); font-size: 1.15rem; color: var(--near-black); margin-bottom: 0.5rem; padding-right: 2rem; line-height: 1.3; }
+.tier-select-price { font-family: var(--font-display); font-size: 1.4rem; color: var(--navy); line-height: 1.1; margin-bottom: 0.5rem; }
+.tier-select-price span { font-size: 0.85rem; color: var(--medium-gray); font-family: var(--font-body); font-weight: 400; }
+.tier-select-card.selected .tier-select-price { color: var(--orange); }
+.tier-select-desc { font-size: 0.85rem; color: var(--medium-gray); line-height: 1.5; margin-bottom: 1rem; min-height: 3.5em; }
+.tier-select-list { list-style: none; padding: 0; margin: 0; }
+.tier-select-list li { position: relative; padding: 0.3rem 0 0.3rem 1.2rem; font-size: 0.82rem; color: var(--dark-gray); line-height: 1.5; }
+.tier-select-list li::before { content: '\2713'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+
+/* Tier anchor inline */
+.tier-anchor-inline { display: flex; justify-content: center; align-items: center; gap: 0.75rem; flex-wrap: wrap; padding: 1rem 1.25rem; background: var(--section-gray); border-radius: 8px; margin-bottom: 1.5rem; font-size: 0.82rem; color: var(--medium-gray); }
+.tier-anchor-item { white-space: nowrap; }
+.tier-anchor-item strong { color: var(--dark-gray); font-weight: 700; }
+.tier-anchor-us { color: var(--navy); }
+.tier-anchor-us strong { color: var(--gold); }
+.tier-anchor-sep { color: var(--border-gray); }
+
+/* Co-invest callout */
+.coinvest-callout { display: flex; gap: 1.25rem; align-items: flex-start; padding: 1.25rem 1.5rem; background: rgba(255,182,77,0.06); border: 1px solid var(--gold-border); border-radius: 8px; margin-bottom: 1.5rem; }
+.coinvest-callout svg { width: 36px; height: 36px; color: var(--gold); flex-shrink: 0; margin-top: 0.15rem; }
+.coinvest-callout-title { font-weight: 700; color: var(--near-black); font-size: 0.92rem; margin-bottom: 0.35rem; }
+.coinvest-callout-body { font-size: 0.85rem; color: var(--dark-gray); line-height: 1.55; margin: 0; }
+
+/* Month view collapsible (inside Step 2) */
+.month-view { background: var(--section-gray); border: 1px solid var(--border-gray); border-radius: 8px; margin-bottom: 1.5rem; overflow: hidden; }
+.month-view summary { padding: 0.9rem 1.25rem; cursor: pointer; font-weight: 600; font-size: 0.9rem; color: var(--navy); display: flex; justify-content: space-between; align-items: center; list-style: none; }
+.month-view summary::-webkit-details-marker { display: none; }
+.month-view summary::after { content: '+'; font-size: 1.3rem; color: var(--gold); font-weight: 400; line-height: 1; }
+.month-view[open] summary::after { content: '\2212'; }
+.month-view-body { padding: 0 1.25rem 1.25rem; }
+.month-view-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1rem; }
+.month-view-card { background: var(--pure-white); border: 1px solid var(--border-gray); border-radius: 8px; padding: 1.1rem 1rem; }
+.month-view-num { font-family: var(--font-display); font-size: 1.4rem; color: var(--gold); line-height: 1; margin-bottom: 0.4rem; }
+.month-view-card h5 { font-family: var(--font-body); font-size: 0.85rem; font-weight: 700; color: var(--near-black); margin-bottom: 0.35rem; line-height: 1.35; }
+.month-view-card p { font-size: 0.78rem; color: var(--dark-gray); line-height: 1.5; margin: 0; }
+.month-view-time { font-size: 0.85rem; color: var(--dark-gray); line-height: 1.6; text-align: center; padding-top: 0.25rem; }
+.month-view-time strong { color: var(--near-black); font-weight: 700; }
+
+/* Summary card (Step 3) */
+.summary-card { background: var(--deep-navy); border-radius: 12px; padding: 2rem 2.25rem; color: var(--warm-white); }
+.summary-kicker { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 1.25rem; }
+.summary-grid { display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.summary-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
+.summary-label { font-size: 0.82rem; color: var(--light-gray); }
+.summary-value { font-size: 0.95rem; color: var(--warm-white); font-weight: 600; text-align: right; max-width: 65%; }
+.summary-price-row .summary-label { font-size: 0.88rem; color: var(--warm-white); font-weight: 600; }
+.summary-price { font-family: var(--font-display); font-size: 1.3rem; color: var(--gold); font-weight: 400; }
+.summary-next { background: rgba(0,0,0,0.15); border-radius: 8px; padding: 1.15rem 1.35rem; margin-bottom: 1.5rem; }
+.summary-next p { font-size: 0.9rem; color: var(--light-gray); line-height: 1.65; margin: 0; }
+.summary-next strong { color: var(--warm-white); font-weight: 700; }
+.summary-ctas { display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap; }
+.summary-primary-cta { padding: 0.9rem 2rem; font-size: 0.95rem; }
+.summary-secondary-cta { color: var(--light-gray); font-size: 0.88rem; border-bottom: 1px solid rgba(255,255,255,0.25); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+.summary-secondary-cta:hover { color: var(--gold); border-color: var(--gold); }
+
+/* Mobile CTA hide in explorer */
+.mobile-cta { transition: transform 0.3s var(--ease), opacity 0.3s; }
+.mobile-cta.hidden-in-explorer { transform: translateY(100%); opacity: 0; pointer-events: none; }
+
+/* Explorer mobile */
+@media (max-width: 860px) {
+  .fit-gate-cards { grid-template-columns: 1fr; }
+  .foundation-options { grid-template-columns: 1fr; }
+  .tier-select-cards { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .foundation-details-body { grid-template-columns: 1fr; gap: 1.25rem; }
+  .summary-card { padding: 1.5rem 1.35rem; }
+  .summary-value { text-align: left; max-width: 100%; }
+  .summary-row { flex-direction: column; gap: 0.2rem; }
+  .step-continue-row { flex-direction: column-reverse; align-items: stretch; gap: 1rem; }
+  .step-continue-btn { width: 100%; }
+  .step-secondary-cta { text-align: center; }
+  .summary-ctas { flex-direction: column; align-items: stretch; }
+  .summary-primary-cta { width: 100%; justify-content: center; }
+  .summary-secondary-cta { text-align: center; }
+  .tier-anchor-inline { flex-direction: column; gap: 0.35rem; }
+  .tier-anchor-sep { display: none; }
+  .coinvest-callout { flex-direction: column; gap: 0.75rem; }
+  .month-view-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .proof-stats { grid-template-columns: 1fr; gap: 1.5rem; }
+  .proof-case-stats { gap: 1.5rem; }
+  .proof-case-card { padding: 1.25rem 1.5rem; }
+
+  /* FAQ mobile: override the site-wide 1rem 2rem 1rem 0 pattern that pushes text to the left edge */
+  .faq .faq-item summary { padding: 1rem 1.15rem !important; gap: 0.75rem !important; font-size: 0.92rem !important; }
+  .faq .faq-item-body { padding: 0 1.15rem 1rem !important; font-size: 0.9rem !important; }
+}
+
+@media (max-width: 480px) {
+  .month-view-grid { grid-template-columns: 1fr; }
+}
+
+/* PROOF BLOCK (unified aggregate + PV case) */
+.proof-block { padding: var(--section-pad) 0; background: var(--deep-navy); }
+.proof-block-inner { max-width: 920px; margin: 0 auto; text-align: center; }
+.proof-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+.proof-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 3rem; }
+.proof-stat-num { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 2.8rem); color: var(--gold); line-height: 1.1; margin-bottom: 0.4rem; }
+.proof-stat-label { font-size: 0.78rem; color: var(--light-gray); line-height: 1.5; }
+.proof-divider { height: 1px; background: rgba(255,255,255,0.12); margin: 2.5rem auto; max-width: 400px; }
+.proof-case-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.35rem; }
+.proof-case-sub { font-size: 0.85rem; color: var(--light-gray); letter-spacing: 0.02em; margin-bottom: 1.25rem; font-style: italic; }
+.proof-case-desc { font-size: 1rem; color: var(--warm-white); max-width: 640px; margin: 0 auto 2rem; line-height: 1.7; }
+.proof-case-card { display: inline-block; padding: 1.5rem 2.5rem; border: 1px solid var(--gold-border); border-radius: 10px; background: var(--gold-soft); margin-bottom: 1.5rem; }
+.proof-case-stats { display: flex; gap: 2.5rem; }
+.proof-case-stat { text-align: center; }
+.proof-case-num { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.2rem); color: var(--gold); line-height: 1.1; margin-bottom: 0.3rem; }
+.proof-case-label { font-size: 0.78rem; color: var(--light-gray); }
+.proof-case-link { display: inline-block; font-size: 0.9rem; color: var(--gold); border-bottom: 1px solid rgba(255,182,77,0.4); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+.proof-case-link:hover { color: var(--warm-white); border-color: var(--warm-white); }
+
+/* FAQ */
+.faq { padding: var(--section-pad) 0; background: var(--warm-white); border-top: 1px solid var(--border-gray); }
+.faq h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.3vw, 2.4rem); color: var(--near-black); margin-bottom: 2.5rem; text-align: center; line-height: 1.25; }
+.faq-list { max-width: 860px; margin: 0 auto; }
+.faq-item { background: var(--pure-white); border: 1px solid var(--border-gray); border-radius: 8px; margin-bottom: 0.75rem; overflow: hidden; transition: border-color 0.2s; }
+.faq-item[open] { border-color: var(--gold); }
+.faq-item summary { padding: 1.15rem 1.5rem; cursor: pointer; font-weight: 600; font-size: 0.95rem; color: var(--near-black); display: flex; justify-content: space-between; align-items: center; gap: 1rem; list-style: none; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: '+'; font-size: 1.4rem; color: var(--gold); font-weight: 400; line-height: 1; transition: transform 0.2s; flex-shrink: 0; }
+.faq-item[open] summary::after { content: '\2212'; }
+.faq-item-body { padding: 0 1.5rem 1.25rem; font-size: 0.92rem; color: var(--dark-gray); line-height: 1.7; }
+.faq-item-body a { color: var(--navy); border-bottom: 1px solid rgba(42,61,79,0.3); transition: color 0.2s, border-color 0.2s; }
+.faq-item-body a:hover { color: var(--gold); border-color: var(--gold); }
 
 .footer { background: var(--near-black); padding: 4rem 0 2rem; border-top: 1px solid rgba(255,255,255,0.06); }
 .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
@@ -213,14 +355,6 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 
 @media (max-width: 960px) {
   .bench-nodes { gap: 1.5rem; }
-  .diff-callout-inner { grid-template-columns: 1fr; text-align: center; }
-  .hiw-grid { grid-template-columns: 1fr 1fr; }
-  .tiers-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
-  .tier-card-featured { order: -1; }
-  .outcomes-grid { grid-template-columns: 1fr 1fr; }
-  .coinvest-inner { grid-template-columns: 1fr; text-align: center; }
-  .coinvest-icon { margin: 0 auto; }
-  .case-proof-stats { gap: 2rem; }
   .footer-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 768px) {
@@ -231,13 +365,12 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
   .mobile-cta { display: block; }
   body { padding-bottom: 60px; }
   .scroll-cta { display: none; }
-  .bench-nodes { flex-direction: column; align-items: center; gap: 1rem; }
+  .bench-nodes { grid-template-columns: 1fr 1fr; gap: 1.5rem 1rem; padding-top: 0; }
   .bench-nodes::before { display: none; }
+  .bench-connector { display: none; }
+  .bench-viz { padding: 2rem 1.5rem; }
   .bench-node::before { display: none; }
   .bench-dot { margin: 0 auto 0.5rem; }
-  .hiw-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
-  .outcomes-grid { grid-template-columns: 1fr; }
-  .case-proof-stats { flex-direction: column; gap: 1rem; }
   .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
   .hero-ctas { flex-direction: column; align-items: flex-start; }
 }
@@ -292,12 +425,6 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 .nav-hamburger-open span:nth-child(2) { opacity: 0; }
 .nav-hamburger-open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-/* ============================================
-   MOBILE OPTIMIZATION BLOCK (added 2026-04-16)
-   Surgical fixes for phone experience applied site-wide.
-   Additive only: does not replace any existing styles.
-   ============================================ */
-
 /* Tablet and below: tighten section padding and typography */
 @media (max-width: 768px) {
   :root {
@@ -311,41 +438,14 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
   h3 { line-height: 1.3; }
 
   /* Cards with padding: tighten so stacked cards don't eat the screen */
-  .prod-card, .freq-card, .layer-card,
-  .tier-card, .hiw-card, .outcome-card,
-  .del-card, .how-step, .invest-card, .invest-card-featured,
-  .example-card, .example-card-before, .example-card-after,
-  .foundation-body, .foundation-header,
-  .approach-card, .ba-card, .big-number-card, .case-card,
-  .cycle-step, .detail-card, .diff-card, .dim-card,
-  .q-card, .quiz-step, .res-card, .step-card,
-  .success-card, .testimonial-card, .wt-card,
-  .alt-tool-card,
-  .fact-card, .format-card, .evo-card,
-  .gate-card, .insight-card, .lane-card,
-  .pn-card, .pq-card, .result-card, .form-card {
-    padding: 1.5rem 1.25rem !important;
-  }
   /* Reduce gap between stacked cards */
-  .prod-cards, .freq-cards, .layers-grid,
-  .tiers-grid, .hiw-grid, .outcomes-grid,
-  .del-grid, .how-grid, .example-cards,
-  .approach-grid, .ba-cards, .big-number-grid,
-  .cases-grid, .diff-grid, .engine-grid,
-  .principles-grid, .problem-grid, .res-grid,
-  .testimonial-grid, .who-grid, .wt-grid,
-  .alt-tools-grid, .contact-grid,
-  .facts-grid, .formats-grid, .founder-grid,
-  .insight-grid, .lanes-grid, .output-grid,
-  .pn-grid, .posts-grid, .results-grid,
-  .client-grid, .footer-grid {
+  .footer-grid {
     gap: 1rem !important;
   }
   /* Reduce padding inside sections with extra inner padding */
-  .diff-callout, .coinvest-section { padding: 2rem 0 !important; }
 
   /* FAQ items: larger tap target */
-  .faq-q, .faq-item summary { padding: 1rem 2rem 1rem 0 !important; }
+  .faq-item summary { padding: 1rem 2rem 1rem 0 !important; }
 
   /* Buttons: full-width primary CTA for easier thumb access.
      Only target actual button classes, not secondary text links. */
@@ -415,30 +515,15 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
   .hero h1 { font-size: clamp(2rem, 8vw, 2.6rem) !important; }
 
   /* Tighter card padding on small screens */
-  .prod-card, .freq-card, .layer-card,
-  .tier-card, .hiw-card, .outcome-card,
-  .del-card, .invest-card, .invest-card-featured,
-  .approach-card, .ba-card, .big-number-card,
-  .case-card, .cycle-step, .detail-card, .diff-card,
-  .dim-card, .q-card, .res-card, .step-card,
-  .success-card, .testimonial-card, .wt-card,
-  .alt-tool-card,
-  .fact-card, .format-card, .evo-card,
-  .gate-card, .insight-card, .lane-card,
-  .pn-card, .pq-card, .result-card, .form-card {
-    padding: 1.25rem 1rem !important;
-    border-radius: 10px !important;
-  }
 
   .nav-logo { font-size: 0.95rem !important; }
   .closing-cta h2 { font-size: clamp(1.5rem, 6vw, 2rem) !important; }
-  .who-list li, .foundation-col ul li { padding: 0.4rem 0 0.4rem 1.4rem !important; }
 }
 
 </style>
 <link rel="canonical" href="https://clarityforgestudios.com/strategic-partnerships">
-<meta property="og:title" content="Strategic Media Partnerships for Energy Organizations | ClarityForge">
-<meta property="og:description" content="Institutional authority building for energy firms. Executive video series, multi-leader amplification, and performance-driven media infrastructure.">
+<meta property="og:title" content="Strategic Media Partnerships | ClarityForge">
+<meta property="og:description" content="Coordinated video series for organizations with three or more public-facing contributors. Foundation Build aligns the architecture; the monthly retainer runs the system.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://clarityforgestudios.com/strategic-partnerships">
 <meta property="og:site_name" content="ClarityForge Studios">
@@ -508,12 +593,11 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 <section class="hero">
   <div class="container">
     <div class="hero-content">
-      <h1 class="anim-entry anim-d1">Your organization has brilliant people.<br><em>The outside world should know them.</em></h1>
-      <p class="hero-sub anim-entry anim-d2">We build institutional media infrastructure that makes your leadership bench visible, credible, and impossible to ignore.</p>
+      <h1 class="anim-entry anim-d1">Your organization has multiple people worth listening to.<br><em>Build a video series that lets them all show up.</em></h1>
+      <p class="hero-sub anim-entry anim-d2">For teams with three or more public-facing voices &mdash; researchers, fellows, directors, partners, organizers. We build a coordinated video series across your organization so every voice reinforces a single institutional signal.</p>
       <div class="hero-ctas anim-entry anim-d3">
-        <a href="/contact" class="btn-primary">Schedule a Working Session</a>
-        <a href="#foundation-build" class="hero-secondary">How engagements start</a>
-        <a href="#pricing" class="hero-secondary">See partnership tiers</a>
+        <a href="#explorer" class="btn-primary">See if this fits</a>
+        <a href="/contact" class="hero-secondary">Schedule a working session</a>
       </div>
     </div>
   </div>
@@ -525,23 +609,21 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
     <div class="who-for-inner">
       <span class="who-for-label">Built for:</span>
       <div class="who-for-tags">
-        <span class="who-for-tag">Infrastructure firms</span>
-        <span class="who-for-tag">Energy consulting firms</span>
         <span class="who-for-tag">Trade associations</span>
-        <span class="who-for-tag">Clean energy organizations</span>
+        <span class="who-for-tag">Energy consulting firms</span>
         <span class="who-for-tag">Policy and advocacy groups</span>
+        <span class="who-for-tag">Mission-funded media</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- THE CASE (PAS+E rebalanced) + BENCH VISUAL (full-width below) -->
+<!-- THE CASE — tightened to lede + bench viz -->
 <section class="problem">
   <div class="container">
     <div class="problem-text">
-      <h2>Logos Don't Build Trust. People Do.</h2>
-      <p>Your organization publishes reports, sponsors events, and shows up at conferences. That work matters. But the firms that get called by journalists, remembered by program offices, and chosen by top recruits all have something in common: visible, public-facing leaders showing up consistently where decisions get made.</p>
-      <p>Your leadership bench has that expertise. The infrastructure to make it visible is what's missing. We build that infrastructure across your team, not just for one person. Each leader owns a topic, shows up on their own channels, and the collective effect compounds your organization's authority. <strong>A comms firm writes press releases. We build repeatable systems that make your leaders visible every week.</strong></p>
+      <h2>Logos don't build trust.<br>People do.</h2>
+      <p>The organizations that get cited, remembered, and pulled into the conversations that shape policy all have one thing in common: several of their people are publicly visible, consistently, in the places where decisions get made. <strong>A comms shop writes press releases. We build the system that puts your people in the feed every week.</strong></p>
     </div>
     <div class="bench-viz">
       <div class="bench-center"><span>Your<br>Org</span></div>
@@ -549,23 +631,23 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
       <div class="bench-nodes">
         <div class="bench-node">
           <div class="bench-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20v-2a6 6 0 0112 0v2"/></svg></div>
-          <p class="bench-node-label">CEO</p>
+          <p class="bench-node-label">Lead voice</p>
           <p class="bench-node-topic">Grid policy</p>
         </div>
         <div class="bench-node">
           <div class="bench-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20v-2a6 6 0 0112 0v2"/></svg></div>
-          <p class="bench-node-label">VP Operations</p>
-          <p class="bench-node-topic">Procurement</p>
+          <p class="bench-node-label">Program director</p>
+          <p class="bench-node-topic">Workforce</p>
         </div>
         <div class="bench-node">
           <div class="bench-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20v-2a6 6 0 0112 0v2"/></svg></div>
-          <p class="bench-node-label">Director</p>
-          <p class="bench-node-topic">Innovation</p>
+          <p class="bench-node-label">Senior fellow</p>
+          <p class="bench-node-topic">Clean energy</p>
         </div>
         <div class="bench-node">
           <div class="bench-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20v-2a6 6 0 0112 0v2"/></svg></div>
-          <p class="bench-node-label">Partner</p>
-          <p class="bench-node-topic">National security</p>
+          <p class="bench-node-label">Field organizer</p>
+          <p class="bench-node-topic">Regional advocacy</p>
         </div>
       </div>
       <p class="bench-caption">One organization. Multiple voices. Each owns a topic. Authority compounds.</p>
@@ -573,236 +655,375 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
   </div>
 </section>
 
-<!-- DIFFERENTIATOR CALLOUT -->
-<section class="diff-callout">
+<!-- ═══ EXPLORER (progressive disclosure) ═══ -->
+<section class="explorer" id="explorer">
   <div class="container">
-    <div class="diff-callout-inner">
-      <div class="diff-callout-icon">5x</div>
-      <div class="diff-callout-text">
-        <p>Personal profiles get roughly 5x more organic reach than company pages.</p>
-        <p>When your leaders are visible, your organization's brand benefits. The algorithm amplifies human voices over logos. Investing in executive visibility is the highest-leverage institutional marketing decision you can make.</p>
-      </div>
+    <div class="explorer-intro">
+      <h2>Build your engagement</h2>
+      <p>Three quick steps to see whether this fits, what you'd need, and what it would cost.</p>
     </div>
-  </div>
-</section>
 
-<!-- HOW IT WORKS -->
-<section class="how-it-works">
-  <div class="container">
-    <h2>What a Month Looks Like for Your Team</h2>
-    <p class="how-it-works-sub">We handle strategy, production, and distribution. Your leaders show up for the conversations.</p>
-    <div class="hiw-grid">
-      <div class="hiw-card">
-        <p class="hiw-number">1</p>
-        <h3>Strategy Session</h3>
-        <p>We align on priority narratives, upcoming opportunities, and which leaders speak to what topics this month.</p>
+    <!-- ════ STEP 0: FIT GATE ════ -->
+    <div class="fit-gate" id="fitGate">
+      <div class="fit-gate-header">
+        <p class="fit-gate-kicker">Start here</p>
+        <h3>Does your team have three or more public-facing voices?</h3>
       </div>
-      <div class="hiw-card">
-        <p class="hiw-number">2</p>
-        <h3>Record</h3>
-        <p>Each leader records 1-2 sessions. Formats include 1:1 expert conversations, solo briefings, policy breakdowns, and event recaps. 30-45 minutes per session.</p>
-      </div>
-      <div class="hiw-card">
-        <p class="hiw-number">3</p>
-        <h3>Produce</h3>
-        <p>We edit, master, create clips, write LinkedIn copy, build thumbnails, and prepare distribution packages for each leader's channels.</p>
-      </div>
-      <div class="hiw-card">
-        <p class="hiw-number">4</p>
-        <h3>Distribute + Measure</h3>
-        <p>Content publishes across LinkedIn, YouTube, and your priority platforms. We coordinate cross-posting, track engagement quality, and report on what's working.</p>
-      </div>
-    </div>
-    <p class="hiw-time"><strong>Executive time commitment: 30-45 minutes per recording session, plus a quick review.</strong> We handle everything else. Strategy, production, writing, distribution, and measurement. That's 15-20 hours of work per leader that your team doesn't have to do.</p>
-  </div>
-</section>
-
-<!-- MARKET CONTEXT ANCHOR BAR -->
-<div style="background: var(--warm-white); padding: 1.5rem 0; border-bottom: 1px solid var(--border-gray);">
-  <div class="container">
-    <div style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; flex-wrap: wrap; font-size: 0.82rem; color: var(--medium-gray);">
-      <span style="padding: 0.4rem 1rem; background: var(--section-gray); border-radius: 100px; border: 1px solid var(--border-gray);">In-house content team: <strong style="color: var(--dark-gray);">$8,000-15,000+/mo</strong></span>
-      <span style="color: var(--border-gray);">|</span>
-      <span style="padding: 0.4rem 1rem; background: var(--section-gray); border-radius: 100px; border: 1px solid var(--border-gray);">Premium agencies: <strong style="color: var(--dark-gray);">$5,000-11,000/episode</strong></span>
-      <span style="color: var(--border-gray);">|</span>
-      <span style="padding: 0.4rem 1rem; background: rgba(255,182,77,0.08); border-radius: 100px; border: 1px solid rgba(255,182,77,0.25); color: var(--navy); font-weight: 600;">ClarityForge: <strong style="color: var(--gold);">starts at $1,750/mo</strong></span>
-    </div>
-  </div>
-</div>
-
-<!-- FOUNDATION BUILD -->
-<section class="foundation" id="foundation-build">
-  <div class="container">
-    <p class="foundation-kicker">Step 1: Foundation Build</p>
-    <h2>Before we produce. We build the foundation.</h2>
-    <p class="foundation-sub">Every institutional engagement starts with a one-time Foundation Build. This is the strategic and visual infrastructure that makes everything downstream work. Without it, production is just content. With it, production compounds into authority.</p>
-
-    <div class="foundation-card">
-      <div class="foundation-header">
-        <div class="foundation-header-left">
-          <h3>Foundation Build</h3>
-          <p>One-time kickoff. 2&ndash;4 weeks from start to delivery. Required before any monthly retainer begins.</p>
+      <div class="fit-gate-cards">
+        <div class="fit-gate-card" onclick="confirmFit('yes')">
+          <p class="fit-gate-card-label">Yes</p>
+          <h4>Three or more of us publish under our own names</h4>
+          <p class="fit-gate-card-note">Researchers, fellows, directors, partners, organizers, or any mix. Each can own a topic on their own channels.</p>
+          <span class="fit-gate-card-cta">Continue &rarr;</span>
         </div>
-        <div class="foundation-price">
-          $3,500&ndash;$6,000
-          <span>one-time</span>
+        <div class="fit-gate-card" onclick="confirmFit('unsure')">
+          <p class="fit-gate-card-label">Not sure</p>
+          <h4>We're thinking about it but haven't decided who</h4>
+          <p class="fit-gate-card-note">That's fine. We'll help you map the bench in the working session. Continue to see what the engagement looks like.</p>
+          <span class="fit-gate-card-cta">Continue &rarr;</span>
+        </div>
+        <div class="fit-gate-card fit-gate-card-info">
+          <p class="fit-gate-card-label">Just one</p>
+          <h4>One person is the public voice</h4>
+          <p class="fit-gate-card-note">One voice has two homes. Both are better fits than this page.</p>
+          <div class="fit-gate-card-links">
+            <a href="/executive-visibility">Executive Visibility &rarr;</a>
+            <span class="fit-gate-card-links-note">Video-first profile and thought leadership</span>
+            <a href="/podcast-production">Podcast Production &rarr;</a>
+            <span class="fit-gate-card-links-note">A regular show with one host</span>
+          </div>
         </div>
       </div>
-
-      <div class="foundation-body">
-        <div class="foundation-col">
-          <h4>Strategic Infrastructure</h4>
-          <ul>
-            <li><strong>Audience Definition Brief</strong> &mdash; primary audiences, titles, sectors, influence tiers</li>
-            <li><strong>Content Territory Map</strong> &mdash; 4&ndash;6 recurring themes your organization owns</li>
-            <li><strong>Episode or Series Architecture</strong> &mdash; standardized structure for consistent production</li>
-            <li><strong>Messaging Positioning Memo</strong> &mdash; how your voice shows up in energy, infrastructure, or security</li>
-            <li><strong>Multi-Voice Profiles</strong> &mdash; individual AI voice profiles for each public-facing leader, plus an organizational voice layer that keeps everyone coherent</li>
-            <li><strong>Distribution Playbook</strong> &mdash; posting cadence, tagging structure, cross-leader amplification</li>
-            <li><strong>90-Day Launch Plan</strong> &mdash; calendar aligned to tentpole moments and announcements</li>
-          </ul>
-        </div>
-        <div class="foundation-col">
-          <h4>Visual Infrastructure</h4>
-          <ul>
-            <li><strong>Series cover art</strong> &mdash; YouTube and LinkedIn compatible</li>
-            <li><strong>Custom thumbnail system</strong> &mdash; 3&ndash;5 reusable templates</li>
-            <li><strong>Branded intro and outro motion graphics</strong></li>
-            <li><strong>Lower thirds template</strong> &mdash; consistent on-screen identification</li>
-            <li><strong>Caption styling system</strong> &mdash; brand-aligned subtitles</li>
-            <li><strong>LinkedIn clip visual formatting</strong> &mdash; consistent clip presentation</li>
-            <li><strong>YouTube channel banner refinement</strong> (if needed)</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="foundation-footer">
-        <p>Pricing depends on scope of motion graphics and documentation depth, and on whether you have one or multiple public-facing leaders. We'll scope it together during a working session.</p>
-        <a href="/contact">Schedule a Working Session</a>
-      </div>
     </div>
-  </div>
-</section>
 
-<!-- PRICING TIERS -->
-<section class="tiers" id="pricing">
-  <div class="container">
-    <h2>Step 2: Choose Your Monthly Partnership</h2>
-    <p class="tiers-sub">Once the Foundation Build is in place, choose the ongoing partnership level that fits your team. Every tier builds on the same infrastructure.</p>
-    <div class="tiers-grid">
-
-      <div class="tier-card">
-        <h3>Production Partner</h3>
-        <p class="tier-price">$1,750-$2,750<span>/mo</span></p>
-        <ul class="tier-list">
-          <li>Executive video series: 4 episodes/month (1:1 conversations, solo briefings, or policy breakdowns)</li>
-          <li>Full edit, audio mastering, captions</li>
-          <li>YouTube + LinkedIn exports</li>
-          <li>8 short-form clips per month</li>
-          <li>Basic platform optimization</li>
-        </ul>
-        <a href="/contact" class="tier-cta tier-cta-default">Start Here</a>
-      </div>
-
-      <div class="tier-card tier-card-featured">
-        <span class="tier-badge">Recommended</span>
-        <h3>Strategy + Production</h3>
-        <p class="tier-price">$3,500-$4,500<span>/mo</span></p>
-        <ul class="tier-list">
-          <li>Everything in Production Partner</li>
-          <li>Episode framing and narrative guidance</li>
-          <li>Custom thumbnails and visual identity</li>
-          <li>LinkedIn post copy for each episode and clip</li>
-          <li>Distribution sequencing across channels</li>
-          <li>Guest amplification coordination</li>
-          <li>Monthly strategy session and performance review</li>
-        </ul>
-        <a href="/contact" class="tier-cta tier-cta-primary">Start Here</a>
-      </div>
-
-      <div class="tier-card">
-        <h3>Institutional Growth Partner</h3>
-        <p class="tier-price">$5,000-$7,500<span>/mo</span></p>
-        <ul class="tier-list">
-          <li>Everything in Strategy + Production</li>
-          <li>Multi-leader visibility across 2-4 executives (voice profiles built in Foundation)</li>
-          <li>Topic ownership mapping (who speaks to what)</li>
-          <li>Monthly Signal Brief: priority narratives, opportunities, emerging issues</li>
-          <li>Cross-post coordination across team accounts</li>
-          <li>Quarterly strategy workshop</li>
-          <li>Performance dashboard tracking institutional engagement quality</li>
-        </ul>
-        <a href="/contact" class="tier-cta tier-cta-default">Start Here</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- CO-INVESTMENT (own section) -->
-<section class="coinvest-section">
-  <div class="container">
-    <div class="coinvest-inner">
-      <svg class="coinvest-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="24" cy="24" r="18"/><path d="M24 14v20M18 20h8a4 4 0 010 8h-8"/></svg>
+    <!-- ════ FIT CONFIRMED BAR ════ -->
+    <div class="fit-active-bar" id="fitActiveBar">
       <div>
-        <h3>Co-Investment Model for Nonprofits and Associations</h3>
-        <p>We work with budget-constrained organizations through a co-investment model. Outside funders, foundations, or strategic partners cover 50% of the cost. Your organization invests the other 50%. Same system, lower barrier to entry. Ask us about it in your working session.</p>
+        <span class="fit-active-label">You're building: </span>
+        <span class="fit-active-name" id="fitActiveName"></span>
       </div>
+      <div class="fit-active-actions">
+        <button class="fit-expand-all" id="fitExpandBtn" onclick="toggleExpandAll()">Show all steps</button>
+        <button class="fit-switch-btn" onclick="resetFit()">&larr; Start over</button>
+      </div>
+    </div>
+
+    <!-- ════ EXPLORER BODY (gated) ════ -->
+    <div class="explorer-body" id="explorerBody">
+
+      <!-- ════ STEP 1: FOUNDATION STATUS ════ -->
+      <div class="disclosure-step" id="step1" data-state="current" data-step="1">
+        <div class="disclosure-header" onclick="openStep(1)">
+          <div class="disclosure-title">
+            <div class="step-number">1</div>
+            <span class="disclosure-heading">Do you already have the foundation in place?</span>
+            <span class="disclosure-summary" id="step1Summary"></span>
+          </div>
+          <a class="disclosure-edit">Edit</a>
+        </div>
+        <div class="disclosure-body">
+          <p class="step-lede">Every multi-voice video series needs a shared architecture before production starts &mdash; audience definition, topic territory, voice profiles per contributor, distribution rhythm, visual system. We call that the Foundation Build. It's a one-time engagement, 2-4 weeks, scoped collaboratively during a working session. No pricing here; it depends on how many voices and how much visual work.</p>
+
+          <div class="foundation-options">
+            <div class="foundation-option" id="fndNo" onclick="selectFoundation('no')">
+              <div class="foundation-option-radio"><div class="foundation-option-radio-dot"></div></div>
+              <h4>We don't have it yet</h4>
+              <p>Most organizations don't. Foundation Build kicks off the engagement and takes 2-4 weeks. We scope it together on a working session so the deliverables match your setup.</p>
+              <p class="foundation-option-next"><strong>Next step:</strong> schedule a working session to scope Foundation Build, or continue below to see monthly engagement options.</p>
+            </div>
+
+            <div class="foundation-option" id="fndYes" onclick="selectFoundation('yes')">
+              <div class="foundation-option-radio"><div class="foundation-option-radio-dot"></div></div>
+              <h4>We have it documented already</h4>
+              <p>Audience brief, topic map, voice profiles per contributor, and a distribution playbook. If that's already nailed down, we can start the retainer with a short onboarding instead of a full Foundation Build.</p>
+              <p class="foundation-option-next"><strong>Next step:</strong> we'll review what you have during the working session and confirm fit before the retainer begins.</p>
+            </div>
+          </div>
+
+          <details class="foundation-details">
+            <summary>What's inside a Foundation Build?</summary>
+            <div class="foundation-details-body">
+              <div class="foundation-details-col">
+                <h5>Strategic infrastructure</h5>
+                <ul>
+                  <li>Audience definition brief</li>
+                  <li>Content territory map (4-6 recurring themes)</li>
+                  <li>Series architecture and standardized episode structure</li>
+                  <li>Messaging positioning memo</li>
+                  <li>Multi-voice profiles for each contributor + organizational voice layer</li>
+                  <li>Distribution playbook (cadence, tagging, cross-voice amplification)</li>
+                  <li>90-day launch plan aligned to tentpole moments</li>
+                </ul>
+              </div>
+              <div class="foundation-details-col">
+                <h5>Visual infrastructure</h5>
+                <ul>
+                  <li>Series cover art (YouTube + LinkedIn compatible)</li>
+                  <li>Custom thumbnail system (3-5 reusable templates)</li>
+                  <li>Branded intro/outro motion graphics</li>
+                  <li>Lower thirds template</li>
+                  <li>Caption styling system</li>
+                  <li>LinkedIn clip visual formatting</li>
+                  <li>YouTube channel banner refinement (if needed)</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <div class="step-continue-row">
+            <a href="/contact" class="step-secondary-cta">Schedule a working session to scope this</a>
+            <button class="step-continue-btn" onclick="advanceStep(1)">Continue &rarr;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════ STEP 2: MONTHLY ENGAGEMENT TIER ════ -->
+      <div class="disclosure-step" id="step2" data-state="upcoming" data-step="2">
+        <div class="disclosure-header" onclick="openStep(2)">
+          <div class="disclosure-title">
+            <div class="step-number">2</div>
+            <span class="disclosure-heading">Choose your monthly engagement</span>
+            <span class="disclosure-summary" id="step2Summary"></span>
+          </div>
+          <a class="disclosure-edit">Edit</a>
+        </div>
+        <div class="disclosure-body">
+          <p class="step-lede">After Foundation Build, the monthly retainer runs the video series. Three levels depending on how much coordination and strategic work your team needs each month.</p>
+
+          <div class="tier-select-cards">
+            <div class="tier-select-card" id="tierProduction" onclick="selectTier('production')">
+              <div class="tier-select-radio"><div class="tier-select-radio-dot"></div></div>
+              <h4>Production partner</h4>
+              <p class="tier-select-price">$1,750 &ndash; $2,750<span>/mo</span></p>
+              <p class="tier-select-desc">Execute against a defined roadmap. Production muscle without layered strategy.</p>
+              <ul class="tier-select-list">
+                <li>4 videos per month across your contributors</li>
+                <li>Full edit, audio mastering, captions</li>
+                <li>YouTube + LinkedIn exports</li>
+                <li>8 short-form clips per month</li>
+                <li>Basic platform optimization</li>
+              </ul>
+            </div>
+
+            <div class="tier-select-card selected" id="tierStrategy" onclick="selectTier('strategy')">
+              <div class="tier-select-radio"><div class="tier-select-radio-dot"></div></div>
+              <span class="tier-select-badge">Most common</span>
+              <h4>Strategy + production</h4>
+              <p class="tier-select-price">$3,500 &ndash; $4,500<span>/mo</span></p>
+              <p class="tier-select-desc">Production plus the editorial and coordination layer that ties the voices together.</p>
+              <ul class="tier-select-list">
+                <li>Everything in Production Partner</li>
+                <li>Topic framing and narrative guidance per contributor</li>
+                <li>Custom thumbnails per video</li>
+                <li>LinkedIn copy and distribution sequencing</li>
+                <li>Guest amplification coordination</li>
+                <li>Monthly strategy session and performance review</li>
+              </ul>
+            </div>
+
+            <div class="tier-select-card" id="tierInstitutional" onclick="selectTier('institutional')">
+              <div class="tier-select-radio"><div class="tier-select-radio-dot"></div></div>
+              <h4>Institutional growth partner</h4>
+              <p class="tier-select-price">$5,000 &ndash; $7,500<span>/mo</span></p>
+              <p class="tier-select-desc">The full multi-voice operation. Bench-level coordination and sector influence work.</p>
+              <ul class="tier-select-list">
+                <li>Everything in Strategy + Production</li>
+                <li>Visible bench-building across 2-4 contributors</li>
+                <li>Topic ownership mapping and territory enforcement</li>
+                <li>Monthly Signal Brief (citation and influence tracking)</li>
+                <li>Cross-post coordination across team accounts</li>
+                <li>Quarterly strategy workshop</li>
+                <li>Performance dashboard tied to institutional metrics</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Market anchor inline with tiers -->
+          <div class="tier-anchor-inline">
+            <span class="tier-anchor-item">In-house team: <strong>$8K &ndash; $15K+/mo</strong></span>
+            <span class="tier-anchor-sep">&middot;</span>
+            <span class="tier-anchor-item">Institutional agencies: <strong>$5K &ndash; $25K+/mo</strong></span>
+            <span class="tier-anchor-sep">&middot;</span>
+            <span class="tier-anchor-item tier-anchor-us">ClarityForge: <strong>$1,750 &ndash; $7,500/mo</strong></span>
+          </div>
+
+          <!-- Co-investment callout -->
+          <div class="coinvest-callout">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="24" cy="24" r="18"/><path d="M24 14v20M18 20h8a4 4 0 010 8h-8"/></svg>
+            <div>
+              <p class="coinvest-callout-title">Budget-constrained nonprofit or association?</p>
+              <p class="coinvest-callout-body">Ask about our co-investment model. Outside funders, foundations, or strategic partners cover 50%. Your organization invests the other 50%. Same system, lower barrier. We'll walk through it in the working session.</p>
+            </div>
+          </div>
+
+          <!-- What a month looks like (collapsible) -->
+          <details class="month-view">
+            <summary>What a month actually looks like for your team</summary>
+            <div class="month-view-body">
+              <div class="month-view-grid">
+                <div class="month-view-card">
+                  <p class="month-view-num">1</p>
+                  <h5>Strategy session</h5>
+                  <p>We align on priority narratives, upcoming opportunities, and which contributors speak to what topics this month.</p>
+                </div>
+                <div class="month-view-card">
+                  <p class="month-view-num">2</p>
+                  <h5>Record</h5>
+                  <p>Each contributor records 1-2 sessions. 1:1 expert conversations, solo briefings, topic explainers, or event recaps. 30-45 minutes per session.</p>
+                </div>
+                <div class="month-view-card">
+                  <p class="month-view-num">3</p>
+                  <h5>Produce</h5>
+                  <p>We edit, master, cut clips, write LinkedIn copy, build thumbnails, prepare distribution packages for each contributor's channels.</p>
+                </div>
+                <div class="month-view-card">
+                  <p class="month-view-num">4</p>
+                  <h5>Distribute + measure</h5>
+                  <p>Videos publish across LinkedIn, YouTube, and priority platforms. We coordinate cross-posting, track engagement, report on what's working.</p>
+                </div>
+              </div>
+              <p class="month-view-time"><strong>Contributor time commitment: 30-45 minutes per session, plus a quick review.</strong> That's typically 15-20 hours of work per contributor per month your team doesn't carry.</p>
+            </div>
+          </details>
+
+          <div class="step-continue-row">
+            <button class="step-continue-btn" onclick="advanceStep(2)">Continue &rarr;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════ STEP 3: SUMMARY + WORKING SESSION CTA ════ -->
+      <div class="disclosure-step" id="step3" data-state="upcoming" data-step="3">
+        <div class="disclosure-header" onclick="openStep(3)">
+          <div class="disclosure-title">
+            <div class="step-number">3</div>
+            <span class="disclosure-heading">Review and schedule</span>
+            <span class="disclosure-summary" id="step3Summary"></span>
+          </div>
+          <a class="disclosure-edit">Edit</a>
+        </div>
+        <div class="disclosure-body">
+          <div class="summary-card" id="summaryCard">
+            <p class="summary-kicker">Your configuration</p>
+            <div class="summary-grid">
+              <div class="summary-row">
+                <p class="summary-label">Fit</p>
+                <p class="summary-value" id="summaryFit"></p>
+              </div>
+              <div class="summary-row">
+                <p class="summary-label">Foundation status</p>
+                <p class="summary-value" id="summaryFoundation"></p>
+              </div>
+              <div class="summary-row">
+                <p class="summary-label">Monthly engagement</p>
+                <p class="summary-value" id="summaryTier"></p>
+              </div>
+              <div class="summary-row summary-price-row">
+                <p class="summary-label">Monthly investment range</p>
+                <p class="summary-value summary-price" id="summaryPrice"></p>
+              </div>
+            </div>
+
+            <div class="summary-next">
+              <p><strong>Next step:</strong> a 30-60 minute working session. We'll walk through your contributors, scope the Foundation Build if you need one, and confirm fit before anything else. No commitment at the session itself.</p>
+            </div>
+
+            <div class="summary-ctas">
+              <a href="https://cal.com/natepeavey/intro-call" target="_blank" rel="noopener" class="btn-primary summary-primary-cta">Schedule a working session &rarr;</a>
+              <a href="/contact" class="summary-secondary-cta">Or send a message first</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- WHAT THIS PRODUCES (4 outcomes in cards) -->
-<section class="outcomes">
+<!-- PROOF BLOCK: aggregate stats + PV case study in one unified section -->
+<section class="proof-block">
   <div class="container">
-    <h2>What Institutional Visibility Produces</h2>
-    <div class="outcomes-grid">
-      <div class="outcome-card">
-        <svg class="outcome-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="24" cy="16" r="8"/><path d="M8 44v-4a16 16 0 0132 0v4"/></svg>
-        <h3>Talent Attraction</h3>
-        <p>Top recruits choose firms with visible leaders over firms with better benefits pages.</p>
+    <div class="proof-block-inner">
+      <p class="proof-eyebrow">What this looks like in practice</p>
+      <div class="proof-stats">
+        <div>
+          <p class="proof-stat-num">120%</p>
+          <p class="proof-stat-label">Average client reach growth in the first six months</p>
+        </div>
+        <div>
+          <p class="proof-stat-num">100%</p>
+          <p class="proof-stat-label">Client retention across every engagement to date</p>
+        </div>
+        <div>
+          <p class="proof-stat-num">Millions</p>
+          <p class="proof-stat-label">Of impressions per month across the client portfolio</p>
+        </div>
       </div>
-      <div class="outcome-card">
-        <svg class="outcome-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 36l10-10 8 8L42 12"/><polyline points="30,12 42,12 42,24"/></svg>
-        <h3>Policy Influence</h3>
-        <p>Regulators and program offices call the firm whose leaders they already see and trust.</p>
+
+      <div class="proof-divider"></div>
+
+      <p class="proof-case-eyebrow">Project Vanguard</p>
+      <p class="proof-case-sub">Veteran-Led Energy Workforce Initiative</p>
+      <p class="proof-case-desc">One-year retainer building the public-facing media operation for Kevin Doffing's veteran energy workforce initiative. A visible bench across contributors, coordinated Substack and podcast rhythm, and the distribution system that turns a mission into a recognized institutional voice.</p>
+      <div class="proof-case-card">
+        <div class="proof-case-stats">
+          <div class="proof-case-stat">
+            <p class="proof-case-num">12 mo</p>
+            <p class="proof-case-label">Active retainer</p>
+          </div>
+          <div class="proof-case-stat">
+            <p class="proof-case-num">Multi-voice</p>
+            <p class="proof-case-label">Coordinated bench</p>
+          </div>
+        </div>
       </div>
-      <div class="outcome-card">
-        <svg class="outcome-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="24" cy="24" r="18"/><path d="M24 14v10l7 7"/></svg>
-        <h3>Brand Recognition</h3>
-        <p>Your organization becomes known in the conversations where partnerships, deals, and funding decisions happen.</p>
-      </div>
-      <div class="outcome-card">
-        <svg class="outcome-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="28" y="4" width="16" height="16" rx="2"/><rect x="16" y="28" width="16" height="16" rx="2"/><line x1="12" y1="20" x2="24" y2="28"/><line x1="36" y1="20" x2="24" y2="28"/></svg>
-        <h3>Partnership Leverage</h3>
-        <p>Strategic partners and consortium leads reach out because your institutional credibility is visible, not just claimed.</p>
-      </div>
+      <br>
+      <a href="/work/project-vanguard" class="proof-case-link">Read the full case study &rarr;</a>
     </div>
   </div>
 </section>
 
-<!-- CASE STUDY + PROOF (combined dark band) -->
-<section class="case-proof">
+<!-- FAQ -->
+<section class="faq">
   <div class="container">
-    <div class="case-proof-inner">
-      <p class="case-proof-label">Institutional Work</p>
-      <h2>We've designed institutional video series and authority infrastructure for energy and national security firms.</h2>
-      <p>From executive briefing platforms to multi-leader amplification systems, we build the media infrastructure that makes organizations visible at the institutional level. Our clients retain because the system compounds.</p>
-      <div class="case-proof-stats">
-        <div class="case-proof-stat">
-          <p class="case-proof-stat-number">100%</p>
-          <p class="case-proof-stat-label">Client retention rate</p>
-        </div>
-        <div class="case-proof-stat">
-          <p class="case-proof-stat-number">+120%</p>
-          <p class="case-proof-stat-label">Average reach growth in 6 months</p>
-        </div>
-        <div class="case-proof-stat">
-          <p class="case-proof-stat-number">Millions</p>
-          <p class="case-proof-stat-label">Monthly impressions across client platforms</p>
-        </div>
-      </div>
-      <a href="/work" class="case-proof-link">See our case studies</a>
+    <h2>Common questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Can we skip the Foundation Build and start with a monthly retainer?</summary>
+        <div class="faq-item-body">Only if you already have the architecture documented &mdash; audience brief, topic map, voice profiles per contributor, distribution playbook. Step 1 of the explorer asks about this directly. If you have it, we review it in the working session and start with a short onboarding instead. If you don't, we scope Foundation Build together and it kicks off the engagement.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What counts as a public-facing contributor?</summary>
+        <div class="faq-item-body">Anyone at your organization who publishes under their own name, or plans to &mdash; on video, Substack, LinkedIn, research reports, or conference stages. Role titles don't matter much; willingness to show up on camera does. If three or more of your people fit that description, this page is for you.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How is this different from the podcast production page?</summary>
+        <div class="faq-item-body">Podcast production is a monthly system for one voice &mdash; a solo expert or a single-leader organization. This is the multi-voice model: several contributors coordinated under one shared architecture, with Foundation Build up front that makes coordination possible. Different structure, different pricing, different deliverables. If you're a one-voice show, <a href="/podcast-production">start there</a>.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What does a coordinated video series actually produce?</summary>
+        <div class="faq-item-body">Four things that compound over time. <strong>Talent and funder attraction</strong> &mdash; the people who could join you or fund you choose organizations with visible voices over organizations with better About pages. <strong>Policy and press influence</strong> &mdash; regulators, program officers, and journalists call the organization whose people they already see and trust. <strong>Sector recognition</strong> &mdash; your organization becomes known in the conversations where partnerships, grants, and policy decisions happen. <strong>Partnership leverage</strong> &mdash; strategic partners and coalition leads reach out because your credibility is visible, not just claimed. The algorithm works in your favor here: personal profiles get roughly 5x more organic reach than company pages, so investing in your contributors' visibility is a higher-leverage move than investing in the organization's own page.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What does the Foundation Build actually cost?</summary>
+        <div class="faq-item-body">Scoped on a call. It depends on how many contributors you're profiling (3 vs. 8), how much motion graphics work you need, and how deep the positioning documentation has to go. We walk through your setup in the working session and give you a specific number before anything else moves. No commitment at that session.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What's the typical engagement length?</summary>
+        <div class="faq-item-body">12 months is standard. Foundation Build is the 2-4 week kickoff; the retainer runs month to month after that with a quarterly review point. Most partnerships continue past 12 months because the compounding shows up around month 6-9 and neither side wants to break the rhythm.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How much time do our contributors actually spend on this?</summary>
+        <div class="faq-item-body">30-45 minutes per recording session, plus a quick review pass. We handle strategy, production, copywriting, distribution, and measurement. That's typically 15-20 hours of work per contributor per month that doesn't land on your team.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Do you work with organizations outside of energy?</summary>
+        <div class="faq-item-body">Energy is the focus. The model works for any mission-funded or institutional organization with multiple public-facing voices, but our proof points and network are in energy, policy, and climate. If you're adjacent &mdash; climate finance, energy workforce, grid infrastructure, environmental policy, public-interest research &mdash; that's a fit. Further outside the sector, we'll tell you honestly if we're the right partner.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What about the co-investment model?</summary>
+        <div class="faq-item-body">For budget-constrained nonprofits and associations, we structure a 50/50 co-investment: a foundation, funder, or strategic partner covers half, your organization covers the other half. Same deliverables, lower barrier. We walk through the details in the working session if it's a fit.</div>
+      </details>
     </div>
   </div>
 </section>
@@ -810,10 +1031,10 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
 <!-- CTA -->
 <section class="closing-cta">
   <div class="container">
-    <h2>Let's make your leadership bench visible.</h2>
-    <a href="/contact" class="btn-primary">Schedule a Working Session</a>
-        <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a href="/content-engine" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">See the full system map</a></p>
-    <p class="closing-micro">Every institutional engagement starts with a working session. 100% client retention.</p>
+    <h2>Ready to turn multiple voices into a single institutional signal?</h2>
+    <a href="#explorer" class="btn-primary">Build your engagement</a>
+    <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a href="/contact" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">Or reach out directly</a> &middot; <a href="/content-engine" style="color: var(--medium-gray); border-bottom: 1px solid rgba(176,184,193,0.3); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;">See the full system map</a></p>
+    <p class="closing-micro">Every engagement starts with a working session. No commitment, no cost.</p>
   </div>
 </section>
 
@@ -849,13 +1070,216 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
   </div>
 </footer>
 
-<div class="mobile-cta"><a href="/contact" class="btn-primary">Schedule a Working Session</a></div>
+<div class="mobile-cta" id="mobileCta"><a href="#explorer" class="btn-primary">Build your engagement</a></div>
 
 <div class="scroll-cta" id="scrollCta">
   <button class="scroll-cta-close" id="scrollCtaClose" aria-label="Dismiss">&times;</button>
-  <p>Ready to make your leadership bench visible?</p>
-  <a href="/contact" class="btn-primary">Schedule a Working Session &rarr;</a>
+  <p>Build your engagement and see if this fits.</p>
+  <a href="#explorer" class="btn-primary">See the explorer &rarr;</a>
 </div>
+
+<script>
+(function() {
+  /* ═══ EXPLORER STATE MACHINE ═══ */
+
+  var currentFit = null;       // 'yes' | 'unsure'
+  var currentFoundation = null; // 'yes' | 'no'
+  var currentTier = 'strategy'; // default to Strategy + Production
+  var expandedView = false;
+
+  var fitLabels = {
+    yes:    'Multi-voice engagement (3+ contributors)',
+    unsure: 'Multi-voice engagement (contributors TBD)'
+  };
+
+  var foundationLabels = {
+    no:  'Foundation Build needed (scope on call)',
+    yes: 'Foundation already documented'
+  };
+
+  var tierData = {
+    production: {
+      name: 'Production Partner',
+      price: '$1,750 – $2,750/mo'
+    },
+    strategy: {
+      name: 'Strategy + Production',
+      price: '$3,500 – $4,500/mo'
+    },
+    institutional: {
+      name: 'Institutional Growth Partner',
+      price: '$5,000 – $7,500/mo'
+    }
+  };
+
+  /* ── FIT GATE ── */
+
+  window.confirmFit = function(choice) {
+    currentFit = choice;
+    document.getElementById('fitGate').style.display = 'none';
+    document.getElementById('fitActiveBar').classList.add('visible');
+    document.getElementById('fitActiveName').textContent = fitLabels[choice];
+    document.getElementById('explorerBody').classList.add('visible');
+    setTimeout(function() {
+      document.getElementById('fitActiveBar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  };
+
+  window.resetFit = function() {
+    currentFit = null;
+    currentFoundation = null;
+    expandedView = false;
+    document.body.classList.remove('explorer-expanded');
+    document.getElementById('fitExpandBtn').textContent = 'Show all steps';
+    document.getElementById('fitGate').style.display = 'block';
+    document.getElementById('fitActiveBar').classList.remove('visible');
+    document.getElementById('explorerBody').classList.remove('visible');
+    // Reset steps
+    setStepState(1, 'current');
+    setStepState(2, 'upcoming');
+    setStepState(3, 'upcoming');
+    // Clear selections
+    document.getElementById('fndYes').classList.remove('selected');
+    document.getElementById('fndNo').classList.remove('selected');
+    // Clear summaries
+    document.getElementById('step1Summary').textContent = '';
+    document.getElementById('step2Summary').textContent = '';
+    document.getElementById('step3Summary').textContent = '';
+    // Scroll back
+    document.getElementById('explorer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  window.toggleExpandAll = function() {
+    expandedView = !expandedView;
+    document.body.classList.toggle('explorer-expanded', expandedView);
+    document.getElementById('fitExpandBtn').textContent = expandedView ? 'Collapse to one step' : 'Show all steps';
+  };
+
+  /* ── PROGRESSIVE DISCLOSURE ── */
+
+  function setStepState(stepNum, state) {
+    var el = document.getElementById('step' + stepNum);
+    if (el) el.setAttribute('data-state', state);
+  }
+
+  function getStepState(stepNum) {
+    var el = document.getElementById('step' + stepNum);
+    return el ? el.getAttribute('data-state') : null;
+  }
+
+  window.openStep = function(stepNum) {
+    if (expandedView) return;
+    var state = getStepState(stepNum);
+    if (state === 'upcoming') return;
+    for (var i = 1; i <= 3; i++) {
+      if (i === stepNum) {
+        setStepState(i, 'current');
+      } else {
+        var s = getStepState(i);
+        if (s === 'current') setStepState(i, 'done');
+      }
+    }
+  };
+
+  window.advanceStep = function(stepNum) {
+    // Gate advance from step 1 — require a foundation choice
+    if (stepNum === 1 && !currentFoundation) {
+      alert('Please select whether you already have the foundation documented, or need to scope one.');
+      return;
+    }
+    if (stepNum < 3) {
+      setStepState(stepNum, 'done');
+      setStepState(stepNum + 1, 'current');
+      updateStepSummary(stepNum);
+      if (stepNum + 1 === 3) {
+        populateSummaryCard();
+      }
+      setTimeout(function() {
+        var next = document.getElementById('step' + (stepNum + 1));
+        if (next) next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    } else {
+      setStepState(3, 'done');
+      updateStepSummary(3);
+    }
+  };
+
+  function updateStepSummary(stepNum) {
+    if (stepNum === 1) {
+      document.getElementById('step1Summary').textContent = '— ' + foundationLabels[currentFoundation];
+    } else if (stepNum === 2) {
+      document.getElementById('step2Summary').textContent = '— ' + tierData[currentTier].name;
+    } else if (stepNum === 3) {
+      document.getElementById('step3Summary').textContent = '— ready to schedule';
+    }
+  }
+
+  /* ── SELECTIONS ── */
+
+  window.selectFoundation = function(choice) {
+    currentFoundation = choice;
+    document.getElementById('fndYes').classList.toggle('selected', choice === 'yes');
+    document.getElementById('fndNo').classList.toggle('selected', choice === 'no');
+  };
+
+  window.selectTier = function(tier) {
+    currentTier = tier;
+    document.getElementById('tierProduction').classList.toggle('selected', tier === 'production');
+    document.getElementById('tierStrategy').classList.toggle('selected', tier === 'strategy');
+    document.getElementById('tierInstitutional').classList.toggle('selected', tier === 'institutional');
+  };
+
+  /* ── SUMMARY CARD ── */
+
+  function populateSummaryCard() {
+    document.getElementById('summaryFit').textContent = fitLabels[currentFit] || '—';
+    document.getElementById('summaryFoundation').textContent = foundationLabels[currentFoundation] || '—';
+    document.getElementById('summaryTier').textContent = tierData[currentTier].name;
+    document.getElementById('summaryPrice').textContent = tierData[currentTier].price;
+  }
+
+  /* ── SCROLL CTA ── */
+
+  var scrollCta = document.getElementById('scrollCta');
+  var closeBtn = document.getElementById('scrollCtaClose');
+  var scrollShown = false, scrollDismissed = false;
+  try { scrollDismissed = sessionStorage.getItem('cf_sp_scroll_cta_dismissed') === '1'; } catch(e) {}
+  if (!scrollDismissed) {
+    window.addEventListener('scroll', function() {
+      if (scrollShown || scrollDismissed) return;
+      var scrollPct = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+      if (scrollPct > 0.6) {
+        scrollCta.classList.add('visible');
+        scrollShown = true;
+      }
+    });
+  }
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function() {
+      scrollCta.classList.remove('visible');
+      scrollDismissed = true;
+      try { sessionStorage.setItem('cf_sp_scroll_cta_dismissed', '1'); } catch(e) {}
+    });
+  }
+
+  /* ── MOBILE CTA AUTO-HIDE IN EXPLORER ── */
+
+  var mobileCta = document.getElementById('mobileCta');
+  var explorerSection = document.getElementById('explorer');
+  if (mobileCta && explorerSection && 'IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          mobileCta.classList.add('hidden-in-explorer');
+        } else {
+          mobileCta.classList.remove('hidden-in-explorer');
+        }
+      });
+    }, { threshold: 0, rootMargin: '-80px 0px -40% 0px' });
+    observer.observe(explorerSection);
+  }
+})();
+</script>
 
 
 <!-- LinkedIn Insight Tag -->

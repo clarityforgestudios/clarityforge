@@ -25,6 +25,7 @@ Energy sector only — utilities, grid operators, energy policy organizations, w
 - [Work](https://clarityforgestudios.com/work): Case studies including Energy Capital Podcast and Project Vanguard
 - [About](https://clarityforgestudios.com/about): Founder background and company mission
 - [Content Cost Calculator](https://clarityforgestudios.com/content-cost-calculator): Interactive tool for estimating internal content production cost
+- [LinkedIn 2026 Readiness Diagnostic](https://clarityforgestudios.com/linkedin-2026): Interactive diagnostic scoring a leader's or organization's LinkedIn strategy against the four 2026 algorithm shifts (slow burn, personal vs. page, repost decision, interest clusters)
 - [Blog](https://clarityforgestudios.com/blog): The Forge — writing on the gap between expertise and public influence
 
 ## Proof points
