@@ -1547,13 +1547,12 @@ body.path-c .path-content[data-paths~="c"] { display: block; }
           <div id="scopingSummaryContent"></div>
         </div>
 
-        <form id="scopingForm" action="https://formspree.io/f/mdaprklq" method="POST" onsubmit="return submitScopingForm(event)">
+        <form id="scopingForm" action="https://nathanpeavey.app.n8n.cloud/webhook/clarityforge-forms" method="POST" onsubmit="return submitScopingForm(event)">
           <!-- Honeypot field for spam protection -->
           <div class="scoping-form-honeypot">
             <label>Leave this empty: <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
           </div>
 
-          <input type="hidden" name="_subject" value="Pricing explorer inquiry (configuration attached)">
           <input type="hidden" name="source" value="podcast-production pricing explorer">
           <input type="hidden" name="path" id="formPath" value="">
           <input type="hidden" name="production_level" id="formProd" value="">
@@ -2148,22 +2147,26 @@ body.path-c .path-content[data-paths~="c"] { display: block; }
     btn.disabled = true;
     btn.textContent = 'Sending...';
 
+    // Build JSON payload from form fields
     var formData = new FormData(form);
+    var payload = {};
+    formData.forEach(function(value, key) { payload[key] = value; });
 
     fetch(form.action, {
       method: 'POST',
-      body: formData,
-      headers: { 'Accept': 'application/json' }
+      body: JSON.stringify(payload),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
     })
     .then(function(response) {
       if (response.ok) {
         document.getElementById('quoteCard').classList.add('submitted');
       } else {
-        response.json().then(function(data) {
-          btn.disabled = false;
-          btn.textContent = 'Send configuration & get booking link';
-          alert('Something went wrong. Please try again or email nathan@clarityforgestudios.com directly.');
-        });
+        btn.disabled = false;
+        btn.textContent = 'Send configuration & get booking link';
+        alert('Something went wrong. Please try again or email nathan@clarityforgestudios.com directly.');
       }
     })
     .catch(function() {
