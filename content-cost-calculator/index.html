@@ -1029,35 +1029,47 @@ function submitGate() {
   btn.disabled = true;
   btn.textContent = 'Sending...';
 
-  var formData = new FormData();
-  formData.append('email', email);
-  formData.append('source', 'Content Cost Calculator');
-  formData.append('_gotcha', '');
-  formData.append('role', state.role);
-  formData.append('hourly_rate', state.hourlyRate);
-  formData.append('platforms', state.platforms.join(', '));
-  formData.append('frequency', state.frequency);
-  formData.append('has_help', state.hasHelp);
-  formData.append('annual_cost', state.calculatedAnnual || '');
-  formData.append('monthly_hours', state.calculatedMonthlyHrs || '');
+  // Compute cost narrative for the payload
+  var costNarrative = '';
+  if (state.calculatedAnnual && state.hourlyRate) {
+    costNarrative = 'At $' + state.hourlyRate + '/hr spending ' + (state.calculatedMonthlyHrs || '?') + ' hrs/month, you\'re absorbing about $' + formatNum(state.calculatedAnnual) + '/year in opportunity cost.';
+  }
 
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'https://formspree.io/f/mdaprklq');
-  xhr.setRequestHeader('Accept', 'application/json');
-  xhr.onload = function() {
-    if (xhr.status >= 200 && xhr.status < 300) {
+  var payload = {
+    email: email,
+    source: 'Content Cost Calculator',
+    _gotcha: '',
+    role: state.role,
+    hourly_rate: state.hourlyRate,
+    platforms: state.platforms.join(', '),
+    frequency: state.frequency,
+    has_help: state.hasHelp,
+    annual_cost: state.calculatedAnnual || '',
+    monthly_hours: state.calculatedMonthlyHrs || '',
+    cost_narrative: costNarrative
+  };
+
+  fetch('https://nathanpeavey.app.n8n.cloud/webhook/clarityforge-forms', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  })
+  .then(function(response) {
+    if (response.ok) {
       document.getElementById('gateForm').style.display = 'none';
       document.getElementById('gateSuccess').style.display = 'block';
     } else {
       btn.disabled = false;
       btn.textContent = 'Send it';
     }
-  };
-  xhr.onerror = function() {
+  })
+  .catch(function() {
     btn.disabled = false;
     btn.textContent = 'Send it';
-  };
-  xhr.send(formData);
+  });
 }
 
 /* ============================

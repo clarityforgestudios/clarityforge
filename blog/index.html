@@ -679,10 +679,10 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
       subBtn.textContent = 'Subscribing...';
       subBtn.disabled = true;
 
-      fetch('https://formspree.io/f/mdaprklq', {
+      fetch('https://nathanpeavey.app.n8n.cloud/webhook/clarityforge-forms', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ email: email, source: 'Blog Subscribe', _gotcha: '', _subject: 'New blog subscriber: ' + email })
+        body: JSON.stringify({ email: email, source: 'Blog Subscribe', _gotcha: '' })
       })
       .then(function(res) {
         if (res.ok) {

@@ -390,7 +390,7 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
     <div class="contact-grid">
 
       <!-- FORM -->
-      <form class="form-card" action="https://formspree.io/f/mdaprklq" method="POST">
+      <form id="contactForm" class="form-card" action="https://nathanpeavey.app.n8n.cloud/webhook/clarityforge-forms" method="POST" onsubmit="return submitContactForm(event)">
         <h2 style="font-family: var(--font-display); font-size: 1.4rem; color: var(--near-black); margin-bottom: 0.25rem;">Tell us about your project</h2>
         <p style="font-size: 0.78rem; color: var(--medium-gray); margin-bottom: 2rem;">Fields marked with <span style="color: var(--gold);">*</span> are required.</p>
         <div class="form-row">
@@ -431,12 +431,17 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
           <label class="form-label">Tell us about your project</label>
           <textarea name="message" class="form-textarea" placeholder="What are you working on? Who's your audience? What have you tried so far? Any context helps us prepare for the conversation."></textarea>
         </div>
-        <input type="hidden" name="_subject" value="New ClarityForge Contact Form Submission">
-        <input type="hidden" name="_next" value="https://clarityforgestudios.com/contact">
-        <button type="submit" class="form-submit">Send It</button>
+        <input type="hidden" name="source" value="Contact Form">
+        <button type="submit" class="form-submit" id="contactSubmitBtn">Send It</button>
         <p style="font-size: 0.78rem; color: var(--medium-gray); margin-top: 1rem;">100% client retention. Every engagement starts with a conversation like this.</p>
       <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
 </form>
+
+      <!-- Inline success state (shown after submit) -->
+      <div id="contactSuccess" class="form-card" style="display:none;text-align:center;">
+        <h2 style="font-family: var(--font-display); font-size: 1.4rem; color: var(--near-black); margin-bottom: 0.5rem;">Message sent.</h2>
+        <p style="font-size: 0.95rem; color: var(--dark-gray); line-height: 1.5;">Thanks for reaching out. We'll review within 24 hours and reply with a proposed time for a 30-minute call. Check your inbox for a confirmation from nathan@clarityforgestudios.com.</p>
+      </div>
 
       <!-- SIDEBAR -->
       <div class="contact-sidebar">
@@ -492,6 +497,47 @@ img { max-width: 100%; display: block; } a { text-decoration: none; color: inher
     <div class="footer-bottom"><span>&copy; 2026 ClarityForge Studios LLC</span><a href="/privacy-policy">Privacy Policy</a></div>
   </div>
 </footer>
+
+<script>
+// Contact form submit handler — POST as JSON to n8n webhook
+window.submitContactForm = function(event) {
+  event.preventDefault();
+  var form = document.getElementById('contactForm');
+  var btn = document.getElementById('contactSubmitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  var formData = new FormData(form);
+  var payload = {};
+  formData.forEach(function(value, key) { payload[key] = value; });
+
+  fetch(form.action, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  })
+  .then(function(response) {
+    if (response.ok) {
+      form.style.display = 'none';
+      document.getElementById('contactSuccess').style.display = 'block';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Send It';
+      alert('Something went wrong. Please try again or email nathan@clarityforgestudios.com directly.');
+    }
+  })
+  .catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Send It';
+    alert('Something went wrong. Please try again or email nathan@clarityforgestudios.com directly.');
+  });
+
+  return false;
+};
+</script>
 
 <script>
 (function() {

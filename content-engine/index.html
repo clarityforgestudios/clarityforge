@@ -498,7 +498,49 @@ function setFreq(f,btn){selectedFreq=f;var btns=document.querySelectorAll('.freq
 function renderCalc(){if(!currentLane)return;var L=LANES[currentLane];var f=selectedFreq;var unit=L.calc.unitLabel;var headText=f+' '+unit+(f>1?'s':'')+' / month';document.getElementById('calcHead').textContent=headText;var rows=L.calc.rows(f);var totalLo=0,totalHi=0;var h='';for(var i=0;i<rows.length;i++){var r=rows[i];var lo=Math.round(r.lo*100)/100;var hi=Math.round(r.hi*100)/100;if(!r.exclude){totalLo+=lo;totalHi+=hi}var val=lo===hi?lo:lo+'-'+hi;h+='<tr><td class="row-label">'+r.label+'</td><td>'+val+'</td></tr>'}var totalLoR=Math.round(totalLo);var totalHiR=Math.round(totalHi);h+='<tr class="row-total"><td>Total distributed assets</td><td>'+totalLoR+'-'+totalHiR+'</td></tr>';var timeMin=L.calc.timePerUnit*f;h+='<tr class="row-time"><td>Your time investment</td><td>'+timeMin+' minutes</td></tr>';document.getElementById('calcBody').innerHTML=h;var perPieceLo=Math.round(timeMin/totalHiR);var perPieceHi=Math.round(timeMin/totalLoR);var perPiece=perPieceLo===perPieceHi?perPieceLo:perPieceLo+'-'+perPieceHi;document.getElementById('calcInsight').innerHTML='<strong>'+perPiece+' minutes per distributed piece</strong><span>You invest '+timeMin+' minutes. Your system produces '+totalLoR+'-'+totalHiR+' distributed pieces.</span>'}
 function renderDIY(diy){document.getElementById('diyTitle').textContent=diy.title;document.getElementById('diySub').textContent=diy.sub;var h='<div class="diy-col diy-col-bad"><div class="diy-col-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> DIY: You do everything</div>';for(var i=0;i<diy.bad.length;i++){h+='<div class="diy-item"><span>'+esc(diy.bad[i].task)+'</span><span>'+esc(diy.bad[i].time)+'</span></div>'}h+='<div class="diy-total">'+esc(diy.badTotal)+'</div></div>';h+='<div class="diy-col diy-col-good"><div class="diy-col-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="8,12 11,15 16,9"/></svg> Production partner: You show up once</div>';for(var j=0;j<diy.good.length;j++){var last=j===diy.good.length-1?' style="border-bottom:none"':'';h+='<div class="diy-item"'+last+'><span>'+esc(diy.good[j].task)+'</span><span>'+esc(diy.good[j].time)+'</span></div>'}h+='<div class="diy-total">'+esc(diy.goodTotal)+'</div></div>';document.getElementById('diyCompare').innerHTML=h;document.getElementById('diyConversion').innerHTML='<strong>'+esc(diy.conversionLine)+'</strong><br>'+esc(diy.conversionSub)}
 function updateCTA(){if(!currentLane)return;var L=LANES[currentLane];var nodeCount=0;for(var k in nodesClicked)nodeCount++;var title=document.getElementById('ctaTitle');var desc=document.getElementById('ctaDesc');var btn=document.getElementById('ctaBtn');if(nodeCount>=3){title.textContent=L.cta.title;desc.textContent=L.cta.desc;btn.textContent=L.cta.btnText;btn.href=L.cta.btnHref}else{title.textContent=L.cta.altTitle;desc.textContent=L.cta.altDesc;btn.textContent=L.cta.altBtnText;btn.href=L.cta.altBtnHref}}
-function submitGate(){var email=document.getElementById('gateEmail').value.trim();if(!email||email.indexOf('@')<1||email.indexOf('.',email.indexOf('@'))<0||email.length<5)return;var btn=document.getElementById('gateBtn');btn.disabled=true;btn.textContent='Sending...';var clickedList=[];for(var k in nodesClicked)clickedList.push(k);var formData=new FormData();formData.append('email',email);formData.append('source','Content Engine Tool');formData.append('_gotcha','');formData.append('lane_selected',currentLane||'none');formData.append('nodes_explored',clickedList.join(', '));formData.append('episode_frequency',selectedFreq+' per month');var xhr=new XMLHttpRequest();xhr.open('POST','https://formspree.io/f/mdaprklq');xhr.setRequestHeader('Accept','application/json');xhr.onload=function(){if(xhr.status>=200&&xhr.status<300){document.getElementById('gateForm').style.display='none';document.getElementById('gateSuccess').style.display='block'}else{btn.disabled=false;btn.textContent='Send it';document.getElementById('gateSuccess').style.display='none';document.getElementById('gateSuccess').textContent='Something went wrong. Try again.';document.getElementById('gateSuccess').style.display='block';document.getElementById('gateSuccess').style.color='var(--orange)'}};xhr.onerror=function(){btn.disabled=false;btn.textContent='Send it'};xhr.send(formData)}
+function submitGate(){var email=document.getElementById('gateEmail').value.trim();if(!email||email.indexOf('@')<1||email.indexOf('.',email.indexOf('@'))<0||email.length<5)return;var btn=document.getElementById('gateBtn');btn.disabled=true;btn.textContent='Sending...';var clickedList=[];for(var k in nodesClicked)clickedList.push(k);
+
+// Lane-specific recommendation for payload
+var laneRecommendation = '';
+if (currentLane === 'podcast') laneRecommendation = 'Your lane is podcast production. The most useful next step is exploring how one recording becomes a full content month. Start with the Podcast Readiness Checklist or a Story Sprint.';
+else if (currentLane === 'executive') laneRecommendation = 'Your lane is executive visibility. The most useful next step is clarifying positioning first. Take the Visibility Scorecard or start with a Story Sprint.';
+else if (currentLane === 'org') laneRecommendation = 'Your lane is multi-voice organization. The most useful next step is mapping your leadership bench. Explore Strategic Partnerships or start with a Story Sprint to align the team.';
+else laneRecommendation = 'Start with the Visibility Scorecard to diagnose where you are, then explore which lane fits your situation.';
+
+var payload = {
+  email: email,
+  source: 'Content Engine Tool',
+  _gotcha: '',
+  lane_selected: currentLane || 'none',
+  nodes_explored: clickedList.join(', '),
+  episode_frequency: selectedFreq + ' per month',
+  lane_recommendation: laneRecommendation
+};
+
+fetch('https://nathanpeavey.app.n8n.cloud/webhook/clarityforge-forms', {
+  method: 'POST',
+  body: JSON.stringify(payload),
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  }
+})
+.then(function(response){
+  if(response.ok){
+    document.getElementById('gateForm').style.display='none';
+    document.getElementById('gateSuccess').style.display='block';
+  } else {
+    btn.disabled=false;btn.textContent='Send it';
+    document.getElementById('gateSuccess').style.display='none';
+    document.getElementById('gateSuccess').textContent='Something went wrong. Try again.';
+    document.getElementById('gateSuccess').style.display='block';
+    document.getElementById('gateSuccess').style.color='var(--orange)';
+  }
+})
+.catch(function(){
+  btn.disabled=false;btn.textContent='Send it';
+});
+}
 function esc(s){var d=document.createElement('div');d.appendChild(document.createTextNode(s));return d.innerHTML}
 window.addEventListener('scroll',function(){var st=window.pageYOffset||document.documentElement.scrollTop;var h=document.documentElement.scrollHeight-document.documentElement.clientHeight;var pct=h>0?(st/h)*100:0;document.getElementById('scrollProgress').style.width=pct+'%'});
 </script>

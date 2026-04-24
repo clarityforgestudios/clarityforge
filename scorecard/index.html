@@ -792,28 +792,114 @@ function showResults() {
   setTimeout(function(){ document.getElementById('results').scrollIntoView({ behavior:'smooth' }); }, 200);
 }
 
+// Pure compute function — returns all derived data for both payload + display
+function computeScorecardResults() {
+  var tot = sc.reduce(function(a,b){return a+b;},0);
+  var tier = tot <= 20 ? 'Foundation Needed' : tot <= 35 ? 'Pieces Without a System' : 'Ready to Scale';
+
+  // Per-dimension breakdown (sorted weakest first)
+  var dims = QS.map(function(q,i){return {d:q.d,s:sc[i],gap:q.gap,mid:q.mid,strong:q.strong,idx:q.idx};}).sort(function(a,b){return a.s-b.s;});
+  var weak = dims.filter(function(d){return d.s<=2;});
+
+  // Build dimension_guidance array for payload
+  var dimensionGuidance = dims.map(function(d) {
+    var verdict = 'Building', guidance = d.mid;
+    if (d.s <= 2) { verdict = 'Gap'; guidance = d.gap; }
+    else if (d.s >= 4) { verdict = 'Solid'; guidance = d.strong; }
+    return { dim: d.d, score: d.s, verdict: verdict, guidance: guidance };
+  });
+
+  // Dependency logic
+  var scoreByDim = {};
+  QS.forEach(function(q,i){ scoreByDim[q.d] = sc[i]; });
+  var dependencies = [];
+  if (scoreByDim['Conversion'] <= 2 && (scoreByDim['Audience Clarity'] <= 3 || scoreByDim['Positioning'] <= 3)) {
+    var upstream = [];
+    if (scoreByDim['Audience Clarity'] <= 3) upstream.push('Audience Clarity');
+    if (scoreByDim['Positioning'] <= 3) upstream.push('Positioning');
+    dependencies.push('Your Conversion score is low, but that\'s downstream of ' + upstream.join(' and ') + '. Fix ' + (upstream.length === 1 ? 'that' : 'those') + ' first and Conversion will improve naturally.');
+  }
+  if (scoreByDim['Authority Signals'] <= 2 && (scoreByDim['Cadence'] <= 3 || scoreByDim['Distribution'] <= 3)) {
+    var upstream2 = [];
+    if (scoreByDim['Cadence'] <= 3) upstream2.push('Cadence');
+    if (scoreByDim['Distribution'] <= 3) upstream2.push('Distribution');
+    dependencies.push('Authority Signals are low, but that\'s because ' + upstream2.join(' and ') + ' ' + (upstream2.length === 1 ? 'isn\'t' : 'aren\'t') + ' strong enough yet. Build the publishing habit and multi-platform presence first.');
+  }
+  if (scoreByDim['Scalability'] <= 2 && scoreByDim['Infrastructure'] <= 3) {
+    dependencies.push('Scalability depends on Infrastructure. You can\'t scale a system that isn\'t fully built yet. Strengthen your content infrastructure first, then focus on making it run without you.');
+  }
+
+  // Tier body text (the insight paragraph)
+  var tierBodyHeading, tierBodyText;
+  if (tot > 35 && weak.length > 0) {
+    var wn = weak.map(function(d){return d.d;}).join(', ');
+    tierBodyHeading = 'Almost there';
+    tierBodyText = 'You\'re in strong shape overall, but ' + wn + ' ' + (weak.length===1?'is':'are') + ' holding you back from full potential. A production partner can close ' + (weak.length===1?'this gap':'these gaps') + ' as part of building your system.';
+  } else if (weak.length > 0) {
+    var wn2 = weak.map(function(d){return d.d;}).join(', ');
+    tierBodyHeading = 'Where to focus first';
+    tierBodyText = 'Your biggest gaps are in ' + wn2 + '. A Story Sprint will prioritize these into a sequenced 30-day plan so you know what to tackle first.';
+  } else if (tot <= 35) {
+    tierBodyHeading = 'No major gaps, but room to grow';
+    tierBodyText = 'You don\'t have any critical weaknesses, but several dimensions are in the "building" range. A Story Sprint will sequence them into a plan.';
+  } else {
+    tierBodyHeading = 'You\'re in strong shape';
+    tierBodyText = 'Your visibility infrastructure is working. The opportunity now is building the system that compounds what you already have.';
+  }
+
+  var ctaVariant = tot > 35 ? 'ready-to-scale' : 'build-foundation';
+
+  return {
+    total_score: tot,
+    tier: tier,
+    tier_body_heading: tierBodyHeading,
+    tier_body: tierBodyText,
+    dimension_guidance: dimensionGuidance,
+    dependency_insights: dependencies.join(' '),
+    weak_count: weak.length,
+    cta_variant: ctaVariant,
+    // Kept for backward compatibility with existing display paths
+    _dims: dims,
+    _weak: weak,
+    _dependencies: dependencies
+  };
+}
+
 function unlock() {
   var email = document.getElementById('emailIn').value;
   if (!email || email.indexOf('@') === -1) { document.getElementById('emailIn').style.borderColor='#E8713A'; return; }
   var btn = document.getElementById('unlockBtn');
   btn.disabled = true; btn.textContent = 'Sending...';
 
-  var tot = sc.reduce(function(a,b){return a+b;},0);
-  var tier = tot <= 20 ? 'Foundation Needed' : tot <= 35 ? 'Pieces Without a System' : 'Ready to Scale';
-  var sorted = QS.map(function(q,i){return {d:q.d,s:sc[i]};}).sort(function(a,b){return a.s-b.s;});
-  var weakest = sorted.slice(0,3).map(function(x){return x.d+' ('+x.s+'/5)';}).join(', ');
+  var r = computeScorecardResults();
+  var weakest = r._dims.slice(0,3).map(function(x){return x.d+' ('+x.s+'/5)';}).join(', ');
 
-  fetch('https://formspree.io/f/mdaprklq', {
-    method:'POST', headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({ email:email, source:'Visibility Scorecard',_gotcha:'', total_score:tot, tier:tier, weakest_dimensions:weakest, all_scores:sc.map(function(s,i){return QS[i].d+': '+s;}).join(', ') })
+  fetch('https://nathanpeavey.app.n8n.cloud/webhook/clarityforge-forms', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify({
+      email: email,
+      source: 'Visibility Scorecard',
+      _gotcha: '',
+      total_score: r.total_score,
+      tier: r.tier,
+      tier_body_heading: r.tier_body_heading,
+      tier_body: r.tier_body,
+      weakest_dimensions: weakest,
+      all_scores: sc.map(function(s,i){return QS[i].d+': '+s;}).join(', '),
+      dimension_guidance: r.dimension_guidance,
+      dependency_insights: r.dependency_insights,
+      cta_variant: r.cta_variant
+    })
   }).then(function(){showBreakdown();}).catch(function(){showBreakdown();});
 }
 
 function showBreakdown() {
   document.getElementById('gate').style.display = 'none';
-  var dims = QS.map(function(q,i){return {d:q.d,s:sc[i],gap:q.gap,mid:q.mid,strong:q.strong,idx:q.idx};}).sort(function(a,b){return a.s-b.s;});
-  var weak = dims.filter(function(d){return d.s<=2;});
-  var tot = sc.reduce(function(a,b){return a+b;},0);
+  var r = computeScorecardResults();
+  var dims = r._dims;
+  var weak = r._weak;
+  var tot = r.total_score;
 
   var h = '<h3 class="bd-header">Your Dimension Breakdown</h3><p class="bd-sub">Each dimension includes a specific recommendation based on your score. Sorted weakest to strongest.</p>';
   dims.forEach(function(d) {
@@ -826,51 +912,22 @@ function showBreakdown() {
     h += '</div>';
   });
 
-  // Dependency logic for summary insight
-  // Build a score lookup by dimension name
-  var scoreByDim = {};
-  QS.forEach(function(q,i){ scoreByDim[q.d] = sc[i]; });
-  var dependencies = [];
-
-  // Check if Conversion is weak but Audience Clarity or Positioning explains it
-  if (scoreByDim['Conversion'] <= 2) {
-    if (scoreByDim['Audience Clarity'] <= 3 || scoreByDim['Positioning'] <= 3) {
-      var upstream = [];
-      if (scoreByDim['Audience Clarity'] <= 3) upstream.push('Audience Clarity');
-      if (scoreByDim['Positioning'] <= 3) upstream.push('Positioning');
-      dependencies.push('Your Conversion score is low, but that\'s downstream of ' + upstream.join(' and ') + '. Fix ' + (upstream.length === 1 ? 'that' : 'those') + ' first and Conversion will improve naturally.');
-    }
-  }
-  // Check if Authority Signals is weak but Cadence/Distribution explains it
-  if (scoreByDim['Authority Signals'] <= 2) {
-    if (scoreByDim['Cadence'] <= 3 || scoreByDim['Distribution'] <= 3) {
-      var upstream2 = [];
-      if (scoreByDim['Cadence'] <= 3) upstream2.push('Cadence');
-      if (scoreByDim['Distribution'] <= 3) upstream2.push('Distribution');
-      dependencies.push('Authority Signals are low, but that\'s because ' + upstream2.join(' and ') + ' ' + (upstream2.length === 1 ? 'isn\'t' : 'aren\'t') + ' strong enough yet. Build the publishing habit and multi-platform presence first.');
-    }
-  }
-  // Check if Scalability is weak and Infrastructure isn't strong
-  if (scoreByDim['Scalability'] <= 2 && scoreByDim['Infrastructure'] <= 3) {
-    dependencies.push('Scalability depends on Infrastructure. You can\'t scale a system that isn\'t fully built yet. Strengthen your content infrastructure first, then focus on making it run without you.');
-  }
-
+  // Insight paragraph — display version has extra on-screen copy that references "above".
+  // Email template gets the cleaner tier_body from the payload.
   if (tot > 35 && weak.length > 0) {
-    // Ready to Scale but with a few weak spots
-    var wn = weak.map(function(d){return d.d;}).join(', ');
-    h += '<div class="bd-insight"><h4>Almost there</h4><p>You\'re in strong shape overall, but '+wn+' '+(weak.length===1?'is':'are')+' holding you back from full potential. The action items above show you exactly what to address. A production partner can close '+(weak.length===1?'this gap':'these gaps')+' as part of building your system.';
-    if (dependencies.length > 0) {
+    var wnDisp = weak.map(function(d){return d.d;}).join(', ');
+    h += '<div class="bd-insight"><h4>Almost there</h4><p>You\'re in strong shape overall, but '+wnDisp+' '+(weak.length===1?'is':'are')+' holding you back from full potential. The action items above show you exactly what to address. A production partner can close '+(weak.length===1?'this gap':'these gaps')+' as part of building your system.';
+    if (r._dependencies.length > 0) {
       h += '</p><p style="margin-top:0.5rem;font-style:italic;font-size:0.82rem;color:var(--orange-dark);">';
-      h += dependencies.join(' ');
+      h += r._dependencies.join(' ');
     }
     h += '</p></div>';
   } else if (weak.length > 0) {
-    // Foundation Needed or Pieces Without a System with gaps
-    var wn = weak.map(function(d){return d.d;}).join(', ');
-    h += '<div class="bd-insight"><h4>Where to focus first</h4><p>Your biggest gaps are in '+wn+'. The action items above tell you exactly what to do for each one.';
-    if (dependencies.length > 0) {
+    var wnDisp2 = weak.map(function(d){return d.d;}).join(', ');
+    h += '<div class="bd-insight"><h4>Where to focus first</h4><p>Your biggest gaps are in '+wnDisp2+'. The action items above tell you exactly what to do for each one.';
+    if (r._dependencies.length > 0) {
       h += '</p><p style="margin-top:0.5rem;font-style:italic;font-size:0.82rem;color:var(--orange-dark);">';
-      h += dependencies.join(' ');
+      h += r._dependencies.join(' ');
     }
     h += '</p><p style="margin-top:0.5rem;">A Story Sprint will prioritize these into a sequenced 30-day plan so you know what to tackle first.</p></div>';
   } else if (tot <= 35) {
@@ -886,7 +943,7 @@ function showBreakdown() {
 
   // Conditional CTA
   var ctaHtml;
-  if (tot > 35) {
+  if (r.cta_variant === 'ready-to-scale') {
     ctaHtml = '<div class="cta-block"><h3>You don\'t need more planning.</h3><p>You need a partner to build the system that turns your visibility into a compounding engine. See how ClarityForge works with energy leaders.</p><a href="/services" class="btn-primary">Explore Services</a><p style="margin-top:0.75rem;font-size:0.85rem;"><a href="/contact" style="color:var(--medium-gray);border-bottom:1px solid rgba(176,184,193,0.3);padding-bottom:1px;">Or book a call to talk through it</a></p></div>';
   } else {
     ctaHtml = '<div class="cta-block"><h3>Ready to close the gaps?</h3><p>A Story Sprint gives you positioning, content pillars, audience profiles, and a 30-day publishing plan. Everything you need to start building.</p><a href="/story-sprint" class="btn-primary">Start a Story Sprint</a><p style="margin-top:0.75rem;font-size:0.85rem;"><a href="/resources" style="color:var(--medium-gray);border-bottom:1px solid rgba(176,184,193,0.3);padding-bottom:1px;">Or explore more free resources</a></p></div>';

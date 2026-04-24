@@ -700,27 +700,82 @@ function unlock() {
   var btn = document.getElementById('unlockBtn');
   btn.disabled = true; btn.textContent = 'Sending...';
 
+  var r = computeChecklistResults();
+
+  fetch('https://nathanpeavey.app.n8n.cloud/webhook/clarityforge-forms', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      email: email,
+      source: 'Podcast Readiness Checklist',
+      _gotcha: '',
+      score: r.score,
+      tier: r.tier,
+      foundation_passed: r.foundation_passed,
+      foundation_gaps: r.foundation_gaps,
+      gaps: r.gaps,
+      tier_body_heading: r.tier_body_heading,
+      tier_body: r.tier_body,
+      question_breakdown: r.question_breakdown,
+      cta_variant: r.cta_variant
+    })
+  }).then(function() { showBreakdown(); }).catch(function() { showBreakdown(); });
+}
+
+// Pure compute function — returns all derived data for both payload + display
+function computeChecklistResults() {
   var yesCount = answers.filter(function(a) { return a === true; }).length;
   var allItems = [];
-  var gapDetails = [];
-  sections.forEach(function(sec) { sec.items.forEach(function(item) { allItems.push(item); }); });
-  answers.forEach(function(a, i) {
-    if (a !== true) gapDetails.push(allItems[i].q);
-  });
+  sections.forEach(function(sec) { sec.items.forEach(function(item) { allItems.push({ q: item.q, yes: item.yes, no: item.no, section: sec.title, color: sec.color }); }); });
   var foundationOk = answers[0] === true && answers[1] === true && answers[2] === true;
   var tier = yesCount <= 4 || !foundationOk ? 'Not Ready Yet' : yesCount <= 8 ? 'Getting Close' : 'Ready to Launch';
 
-  fetch('https://formspree.io/f/mdaprklq', {
-    method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      email: email,
-      source: 'Podcast Readiness Checklist', _gotcha: '',
-      score: yesCount + '/12',
-      tier: tier,
-      foundation_passed: foundationOk ? 'Yes' : 'No',
-      gaps: gapDetails.length > 0 ? gapDetails.join('; ') : 'None - fully ready'
-    })
-  }).then(function() { showBreakdown(); }).catch(function() { showBreakdown(); });
+  var gapDetails = [];
+  var questionBreakdown = [];
+  answers.forEach(function(a, i) {
+    var item = allItems[i];
+    if (a !== true) gapDetails.push(item.q);
+    questionBreakdown.push({
+      section: item.section,
+      question: item.q,
+      passed: a === true,
+      guidance: a === true ? item.yes : item.no
+    });
+  });
+
+  var foundationGaps = [];
+  if (answers[0] !== true) foundationGaps.push('audience clarity');
+  if (answers[1] !== true) foundationGaps.push('positioning');
+  if (answers[2] !== true) foundationGaps.push('consistency commitment');
+  var totalGaps = answers.filter(function(a) { return a !== true; }).length;
+
+  var tierBodyHeading, tierBodyText;
+  if (foundationGaps.length > 0) {
+    tierBodyHeading = 'Start here';
+    tierBodyText = 'Your foundation has gaps in ' + foundationGaps.join(' and ') + '. These need to be resolved before anything else. A Story Sprint addresses all three in a single 60-minute session and gives you a concrete plan to move forward.';
+  } else if (totalGaps > 0) {
+    tierBodyHeading = 'Your foundation is solid';
+    tierBodyText = 'The core is there. You have ' + totalGaps + ' gap' + (totalGaps === 1 ? '' : 's') + ' to close before launch. A Story Sprint will sequence these into a launch timeline so you know what to tackle first.';
+  } else {
+    tierBodyHeading = 'You\'re ready';
+    tierBodyText = 'Every box is checked. You don\'t need more planning. You need a production partner who handles editing, clips, show notes, distribution, and repurposing so you can focus on the conversation.';
+  }
+
+  var ctaVariant = (yesCount >= 9 && foundationOk) ? 'ready-to-launch' : 'story-sprint';
+
+  return {
+    score: yesCount + '/12',
+    yes_count: yesCount,
+    tier: tier,
+    foundation_passed: foundationOk ? 'Yes' : 'No',
+    foundation_gaps: foundationGaps,
+    gaps: gapDetails.length > 0 ? gapDetails.join('; ') : 'None - fully ready',
+    total_gaps: totalGaps,
+    tier_body_heading: tierBodyHeading,
+    tier_body: tierBodyText,
+    question_breakdown: questionBreakdown,
+    cta_variant: ctaVariant
+  };
 }
 
 function showBreakdown() {

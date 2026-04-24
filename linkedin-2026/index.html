@@ -809,12 +809,14 @@ a{text-decoration:none;color:inherit}
               <input type="text" name="company" placeholder="Company or organization (optional)" class="diag-gate-input">
             </div>
             <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
-            <input type="hidden" name="_subject" id="diagGateSubject" value="LinkedIn 2026 Diagnostic Results">
             <input type="hidden" name="source" value="linkedin-2026 diagnostic">
             <input type="hidden" name="audience_type" id="diagGateAudience" value="">
             <input type="hidden" name="overall_score" id="diagGateOverallScore" value="">
             <input type="hidden" name="dimension_scores" id="diagGateDimScores" value="">
             <input type="hidden" name="answers_summary" id="diagGateAnswersSummary" value="">
+            <input type="hidden" name="band_name" id="diagGateBandName" value="">
+            <input type="hidden" name="band_body" id="diagGateBandBody" value="">
+            <input type="hidden" name="dimension_guidance" id="diagGateDimGuidance" value="">
             <button type="submit" class="diag-gate-submit" id="diagGateSubmit">
               Send me the full report
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -1657,7 +1659,23 @@ function showResults(){
     }
   });
   document.getElementById('diagGateAnswersSummary').value = summary;
-  document.getElementById('diagGateSubject').value = 'LinkedIn 2026 Diagnostic — ' + scores.overall + '/100 (' + bandData.band + ')';
+
+  // Enrichment: band name, band body, per-dimension guidance
+  document.getElementById('diagGateBandName').value = bandData.band;
+  document.getElementById('diagGateBandBody').value = bandData.verdict + ' ' + bandData.sub;
+  var dimGuidanceArr = dimOrder.map(function(key){
+    var score = scores[key];
+    var band = bandFor(score);
+    var dim = DIMS[key];
+    return {
+      dim: dim.label,
+      shift: dim.shift,
+      score: score,
+      band: band,
+      guidance: dim.bandText[band]
+    };
+  });
+  document.getElementById('diagGateDimGuidance').value = JSON.stringify(dimGuidanceArr);
 
   if(typeof gtag === 'function'){
     gtag('event', 'diagnostic_complete', {
@@ -1744,12 +1762,29 @@ function submitDiagGate(e){
   if(form.querySelector('input[name="_gotcha"]').value){ return; }
   btn.disabled = true;
   btn.innerHTML = 'Sending…';
+
+  // Build JSON payload from form fields, parsing JSON-encoded values
   var formData = new FormData(form);
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'https://formspree.io/f/mdaprklq');
-  xhr.setRequestHeader('Accept', 'application/json');
-  xhr.onload = function(){
-    if(xhr.status >= 200 && xhr.status < 300){
+  var payload = {};
+  formData.forEach(function(value, key) {
+    // Parse dimension_scores + dimension_guidance (they're JSON strings)
+    if (key === 'dimension_scores' || key === 'dimension_guidance') {
+      try { payload[key] = JSON.parse(value); } catch(e) { payload[key] = value; }
+    } else {
+      payload[key] = value;
+    }
+  });
+
+  fetch('https://nathanpeavey.app.n8n.cloud/webhook/clarityforge-forms', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  })
+  .then(function(response){
+    if(response.ok){
       form.style.display = 'none';
       success.classList.add('active');
       if(typeof gtag === 'function'){
@@ -1763,13 +1798,12 @@ function submitDiagGate(e){
       btn.innerHTML = 'Send me the full report <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>';
       alert('Something went wrong. Please email nathan@clarityforgestudios.com directly.');
     }
-  };
-  xhr.onerror = function(){
+  })
+  .catch(function(){
     btn.disabled = false;
     btn.innerHTML = 'Send me the full report <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>';
     alert('Something went wrong. Please email nathan@clarityforgestudios.com directly.');
-  };
-  xhr.send(formData);
+  });
 }
 
 // Clear error state on input

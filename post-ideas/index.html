@@ -658,18 +658,33 @@ var idea=IDEAS[s.p][s.c];
 return PILLAR_NAMES[s.p]+': '+idea.t;
 }).join('; ');
 
+var savedIdeasArr = saved.map(function(s){
+  var idea = IDEAS[s.p][s.c];
+  return { pillar: PILLAR_NAMES[s.p], title: idea.t };
+});
+
 var pillarsCovered=[];
 saved.forEach(function(s){if(pillarsCovered.indexOf(PILLAR_NAMES[s.p])===-1)pillarsCovered.push(PILLAR_NAMES[s.p])});
 
-fetch('https://formspree.io/f/mdaprklq',{
-method:'POST',headers:{'Content-Type':'application/json'},
-body:JSON.stringify({
-email:email,
-source:'LinkedIn Post Ideas Tool',_gotcha:'',
-ideas_saved:saved.length,
-pillars_explored:pillarsCovered.join(', '),
-saved_ideas:ideaList
-})
+var ctaVariant;
+if (saved.length === 0) ctaVariant = 'none';
+else if (saved.length <= 3) ctaVariant = 'light';
+else ctaVariant = 'strong';
+
+fetch('https://nathanpeavey.app.n8n.cloud/webhook/clarityforge-forms',{
+  method:'POST',
+  headers:{'Content-Type':'application/json','Accept':'application/json'},
+  body:JSON.stringify({
+    email:email,
+    source:'LinkedIn Post Ideas Tool',
+    _gotcha:'',
+    ideas_saved:saved.length,
+    pillars_explored:pillarsCovered.join(', '),
+    saved_ideas:ideaList,
+    saved_ideas_list: savedIdeasArr,
+    pillar_count_num: pillarsCovered.length,
+    cta_variant: ctaVariant
+  })
 }).then(function(){showSuccess()}).catch(function(){showSuccess()});
 }
 
