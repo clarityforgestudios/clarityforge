@@ -817,7 +817,6 @@ a{text-decoration:none;color:inherit}
             <input type="hidden" name="band_name" id="diagGateBandName" value="">
             <input type="hidden" name="band_body" id="diagGateBandBody" value="">
             <input type="hidden" name="dimension_guidance" id="diagGateDimGuidance" value="">
-            <input type="hidden" name="biggest_gaps" id="diagGateBiggestGaps" value="">
             <button type="submit" class="diag-gate-submit" id="diagGateSubmit">
               Send me the full report
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -1678,26 +1677,6 @@ function showResults(){
   });
   document.getElementById('diagGateDimGuidance').value = JSON.stringify(dimGuidanceArr);
 
-  // Biggest gaps (top 2 lowest-scoring dims) with their looked-up fix content.
-  // This mirrors the on-site "Fix these first" card rendering — we serialize
-  // what the page already computed so the email dispatcher can render it
-  // without re-implementing the GAP_FIXES lookup.
-  var biggestGapsArr = gapsWithScores.map(function(gap, i){
-    var band = bandFor(gap.score);
-    var fix = GAP_FIXES[gap.key][band] || GAP_FIXES[gap.key]['low'];
-    var dim = DIMS[gap.key];
-    return {
-      num: i + 1,
-      dim_key: gap.key,
-      dim_label: dim.label,
-      score: gap.score,
-      title: fix.title,
-      text: fix.text,
-      fix: fix.fix
-    };
-  });
-  document.getElementById('diagGateBiggestGaps').value = JSON.stringify(biggestGapsArr);
-
   if(typeof gtag === 'function'){
     gtag('event', 'diagnostic_complete', {
       'event_category': 'diagnostic',
@@ -1788,8 +1767,8 @@ function submitDiagGate(e){
   var formData = new FormData(form);
   var payload = {};
   formData.forEach(function(value, key) {
-    // Parse dimension_scores + dimension_guidance + biggest_gaps (they're JSON strings)
-    if (key === 'dimension_scores' || key === 'dimension_guidance' || key === 'biggest_gaps') {
+    // Parse dimension_scores + dimension_guidance (they're JSON strings)
+    if (key === 'dimension_scores' || key === 'dimension_guidance') {
       try { payload[key] = JSON.parse(value); } catch(e) { payload[key] = value; }
     } else {
       payload[key] = value;

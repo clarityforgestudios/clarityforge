@@ -816,13 +816,13 @@ function resetCalc() {
 /* ============================
    RESULTS CALCULATION
    ============================ */
-/* ============================
-   COMPUTE (pure function — no DOM)
-   Returns all derived values needed by both the on-site render
-   and the form submission payload. This is the single source of
-   truth for the results logic; logic conservation principle.
-   ============================ */
-function computeResults() {
+function showResults() {
+  // Hide calc, show results
+  document.querySelector('.calc-wrap').style.display = 'none';
+  document.getElementById('resultsSection').style.display = 'block';
+  document.getElementById('altTools').style.display = 'block';
+
+  // Calculate
   var rate = state.hourlyRate;
   var platformItems = STEPS[2].items;
   var totalHrsWeek = 0;
@@ -848,7 +848,7 @@ function computeResults() {
   breakdown.push({ task: 'Engagement (commenting, replies)', hrs: engageTime });
   totalHrsWeek += planTime + ideaTime + engageTime;
 
-  // Frequency adjustment
+  // Frequency adjustment - NEW LOGIC
   // "Rarely" doesn't mean less work. It means roughly the same planning/drafting
   // effort but most of it never ships. We keep hours high but note the waste.
   var freqOpts = STEPS[3].options;
@@ -871,6 +871,7 @@ function computeResults() {
   }
 
   // Your personal weekly/monthly time
+  // freqMult scales effort but floor at 0.6 (you still spend time even when not publishing)
   var yourHrsWeek = totalHrsWeek * freqMult * helpMult;
   var yourHrsMonth = yourHrsWeek * 4.33;
   var monthlyCost = yourHrsMonth * rate;
@@ -881,13 +882,15 @@ function computeResults() {
   var wastedCost = wastedHrsMonth * rate;
 
   // What they are producing vs what they could produce with a system
+  // Realistic output estimates per platform with a system
   var potentialPiecesPerPlatform = 8;
   var potentialPieces = state.platforms.length * potentialPiecesPerPlatform;
+  // Actual output based on frequency: rarely=2-3/platform, sometimes=4-5, consistent=6-7
   var piecesPerPlatform = state.frequency === 'rarely' ? 2 : state.frequency === 'sometimes' ? 4.5 : 7;
   var actualPieces = Math.max(1, Math.round(state.platforms.length * piecesPerPlatform));
   var costPerPiece = actualPieces > 0 ? Math.round(monthlyCost / actualPieces) : 0;
 
-  // Opportunity cost framing (tier-based)
+  // Opportunity cost framing
   var oppActivities = [];
   if (rate >= 200) {
     oppActivities.push({ activity: 'Close a deal or partnership', value: '$10K-50K+' });
@@ -903,78 +906,14 @@ function computeResults() {
     oppActivities.push({ activity: 'Build your professional network', value: '5-10 new connections' });
   }
 
-  // Partner comparison
+  // Partner comparison - more specific
   var partnerHrs = state.platforms.indexOf('podcast') > -1 ? 5 : 2;
   var timeSavedMonthly = Math.round(yourHrsMonth - partnerHrs);
   var timeSavedAnnual = timeSavedMonthly * 12;
 
-  // Consistency scores
-  var pubScore = Math.round(freqMult * 100);
-  var qualScore = state.hasHelp === 'none' ? 35 : state.hasHelp === 'some' ? 55 : 80;
-  var outputScore = Math.min(100, Math.round((actualPieces / potentialPieces) * 100));
-
-  // Headline tier (drives email + on-site heading selection)
-  var headlineTier;
-  if (annualCost > 50000) headlineTier = 'six-figure';
-  else if (annualCost > 25000) headlineTier = 'costs-more';
-  else headlineTier = 'baseline';
-
-  return {
-    rate: rate,
-    breakdown: breakdown,
-    freqMult: freqMult,
-    helpMult: helpMult,
-    wasteFactor: wasteFactor,
-    yourHrsMonth: yourHrsMonth,
-    monthlyCost: monthlyCost,
-    annualCost: annualCost,
-    wastedHrsMonth: wastedHrsMonth,
-    wastedCost: wastedCost,
-    potentialPieces: potentialPieces,
-    actualPieces: actualPieces,
-    costPerPiece: costPerPiece,
-    oppActivities: oppActivities,
-    partnerHrs: partnerHrs,
-    timeSavedMonthly: timeSavedMonthly,
-    timeSavedAnnual: timeSavedAnnual,
-    pubScore: pubScore,
-    qualScore: qualScore,
-    outputScore: outputScore,
-    headlineTier: headlineTier
-  };
-}
-
-function showResults() {
-  // Hide calc, show results
-  document.querySelector('.calc-wrap').style.display = 'none';
-  document.getElementById('resultsSection').style.display = 'block';
-  document.getElementById('altTools').style.display = 'block';
-
-  var r = computeResults();
-  var rate = r.rate;
-  var breakdown = r.breakdown;
-  var freqMult = r.freqMult;
-  var helpMult = r.helpMult;
-  var yourHrsMonth = r.yourHrsMonth;
-  var monthlyCost = r.monthlyCost;
-  var annualCost = r.annualCost;
-  var wastedHrsMonth = r.wastedHrsMonth;
-  var wastedCost = r.wastedCost;
-  var potentialPieces = r.potentialPieces;
-  var actualPieces = r.actualPieces;
-  var costPerPiece = r.costPerPiece;
-  var oppActivities = r.oppActivities;
-  var partnerHrs = r.partnerHrs;
-  var timeSavedMonthly = r.timeSavedMonthly;
-  var timeSavedAnnual = r.timeSavedAnnual;
-  var pubScore = r.pubScore;
-  var qualScore = r.qualScore;
-  var outputScore = r.outputScore;
-
-  // Store calculated values for form submission (back-compat with existing submitGate)
+  // Store calculated values for form submission
   state.calculatedAnnual = Math.round(annualCost);
   state.calculatedMonthlyHrs = Math.round(yourHrsMonth);
-  state.computed = r;
 
   // === RENDER RESULTS ===
 
@@ -1031,6 +970,9 @@ function showResults() {
 
   // 5. CONSISTENCY SCORE - quick visual gut-check
   var gapHtml = '';
+  var pubScore = Math.round(freqMult * 100);
+  var qualScore = state.hasHelp === 'none' ? 35 : state.hasHelp === 'some' ? 55 : 80;
+  var outputScore = Math.min(100, Math.round((actualPieces / potentialPieces) * 100));
   gapHtml += renderGapBar('Publishing consistency', pubScore);
   gapHtml += renderGapBar('Estimated content quality', qualScore);
   gapHtml += renderGapBar('Output vs. potential', outputScore);
@@ -1087,23 +1029,10 @@ function submitGate() {
   btn.disabled = true;
   btn.textContent = 'Sending...';
 
-  // Pull from shared compute (populated by showResults()). If the user somehow
-  // submits before showResults has run, recompute on the fly.
-  var r = state.computed || computeResults();
-
-  // Build monthly breakdown with adjusted hours + cost per row (matching on-site render math)
-  var breakdownMonthly = r.breakdown.map(function(b){
-    var adjHrs = b.hrs * r.freqMult * r.helpMult * 4.33;
-    return {
-      task: b.task,
-      adjHrs: Number(adjHrs.toFixed(1)),
-      adjCost: Math.round(adjHrs * r.rate)
-    };
-  });
-
+  // Compute cost narrative for the payload
   var costNarrative = '';
-  if (r.annualCost && r.rate) {
-    costNarrative = 'At $' + r.rate + '/hr spending ' + Math.round(r.yourHrsMonth) + ' hrs/month, you\'re absorbing about $' + formatNum(Math.round(r.annualCost)) + '/year in opportunity cost.';
+  if (state.calculatedAnnual && state.hourlyRate) {
+    costNarrative = 'At $' + state.hourlyRate + '/hr spending ' + (state.calculatedMonthlyHrs || '?') + ' hrs/month, you\'re absorbing about $' + formatNum(state.calculatedAnnual) + '/year in opportunity cost.';
   }
 
   var payload = {
@@ -1115,33 +1044,9 @@ function submitGate() {
     platforms: state.platforms.join(', '),
     frequency: state.frequency,
     has_help: state.hasHelp,
-    // Primary numbers (back-compat + hero)
-    annual_cost: Math.round(r.annualCost),
-    monthly_cost: Math.round(r.monthlyCost),
-    monthly_hours: Math.round(r.yourHrsMonth),
-    cost_narrative: costNarrative,
-    headline_tier: r.headlineTier,
-    // Breakdown table
-    platform_breakdown: breakdownMonthly,
-    // Waste
-    wasted_hours: Math.round(r.wastedHrsMonth),
-    wasted_cost: Math.round(r.wastedCost),
-    // Output
-    actual_pieces: r.actualPieces,
-    potential_pieces: r.potentialPieces,
-    cost_per_piece: r.costPerPiece,
-    // Opportunity
-    opp_activities: r.oppActivities,
-    // Partner comparison
-    partner_hrs: r.partnerHrs,
-    time_saved_monthly: r.timeSavedMonthly,
-    time_saved_annual: r.timeSavedAnnual,
-    // Consistency bars
-    consistency_scores: {
-      pubScore: r.pubScore,
-      qualScore: r.qualScore,
-      outputScore: r.outputScore
-    }
+    annual_cost: state.calculatedAnnual || '',
+    monthly_hours: state.calculatedMonthlyHrs || '',
+    cost_narrative: costNarrative
   };
 
   fetch('https://nathanpeavey.app.n8n.cloud/webhook/clarityforge-forms', {
