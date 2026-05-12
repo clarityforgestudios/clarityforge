@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>An Engagement Proposal for Volts | ClarityForge Studios</title>
+<meta name="description" content="A proposal for David Roberts: a six-month operational engagement to professionalize production and grow paid subscribers.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet"></noscript>
+<style>
+:root {
+  --deep-navy: #1A2A3A; --navy: #2A3D4F; --gold: #FFB64D; --orange: #E8713A; --orange-dark: #D4622E;
+  --near-black: #1C1E22; --dark-gray: #3D4550; --medium-gray: #6B7785; --light-gray: #B0B8C1;
+  --border-gray: #DFE2E6; --section-gray: #F2F3F5; --warm-white: #FAFAF8; --pure-white: #FFFFFF;
+  --success-green: #27AE60;
+  --font-display: 'DM Serif Display', Georgia, serif; --font-body: 'DM Sans', system-ui, sans-serif;
+  --section-pad: clamp(4rem, 8vw, 7rem); --container: min(980px, 90vw);
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font-body); font-size: 18px; line-height: 1.7; color: var(--dark-gray); background: var(--warm-white); }
+img { max-width: 100%; display: block; } a { text-decoration: none; color: inherit; }
+.container { width: var(--container); margin: 0 auto; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.anim-entry { opacity: 0; animation: fadeUp 0.7s var(--ease) forwards; }
+.anim-d1 { animation-delay: 80ms; } .anim-d2 { animation-delay: 200ms; } .anim-d3 { animation-delay: 320ms; }
+
+/* ==== TOPBAR ==== */
+.topbar {
+  background: var(--deep-navy);
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.topbar-inner {
+  width: var(--container);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.topbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--warm-white);
+}
+.topbar-logo svg { width: auto; height: 26px; }
+.topbar-meta {
+  font-size: 0.82rem;
+  color: var(--light-gray);
+  letter-spacing: 0.04em;
+}
+.topbar-meta strong { color: var(--warm-white); font-weight: 600; }
+
+/* ==== HERO ==== */
+.hero {
+  background: var(--deep-navy);
+  padding: clamp(4rem, 8vw, 6rem) 0 clamp(4rem, 7vw, 5rem);
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 45%; height: 100%;
+  background: radial-gradient(ellipse at 80% 40%, rgba(255,182,77,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 2; max-width: 780px; }
+.hero-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.8vw, 3.4rem);
+  color: var(--warm-white);
+  line-height: 1.15;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-sub {
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  color: var(--light-gray);
+  max-width: 620px;
+  line-height: 1.6;
+}
+.hero-meta {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.hero-meta-item {
+  font-size: 0.82rem;
+  color: var(--light-gray);
+}
+.hero-meta-item strong {
+  display: block;
+  color: var(--warm-white);
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+/* ==== SECTION BASE ==== */
+.section {
+  padding: clamp(3.5rem, 6vw, 5rem) 0;
+  border-bottom: 1px solid var(--border-gray);
+}
+.section:last-of-type { border-bottom: none; }
+.section.alt { background: var(--section-gray); }
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--orange);
+  margin-bottom: 1rem;
+}
+.section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  color: var(--near-black);
+  margin-bottom: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}
+.section p {
+  max-width: 720px;
+  margin-bottom: 1.2rem;
+  color: var(--dark-gray);
+}
+.section p strong { color: var(--near-black); font-weight: 600; }
+.section p.lead {
+  font-size: 1.1rem;
+  color: var(--near-black);
+}
+
+/* ==== HEARD (priority recap items) ==== */
+.heard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0 1rem;
+}
+.heard-item {
+  background: var(--warm-white);
+  border: 1px solid var(--border-gray);
+  border-left: 3px solid var(--gold);
+  padding: 1.1rem 1.3rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  color: var(--near-black);
+  line-height: 1.55;
+}
+.heard-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--medium-gray);
+  margin-bottom: 0.5rem;
+}
+
+/* ==== OFFER CARD ==== */
+.offer-card {
+  background: var(--deep-navy);
+  border-radius: 12px;
+  padding: clamp(2rem, 4vw, 3rem);
+  color: var(--warm-white);
+  margin: 2.5rem 0 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.offer-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(255,182,77,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.offer-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+  position: relative;
+  z-index: 1;
+}
+.offer-card h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  color: var(--warm-white);
+  margin-bottom: 1.2rem;
+  line-height: 1.25;
+  font-weight: 400;
+  position: relative;
+  z-index: 1;
+}
+.offer-card p.offer-sub {
+  color: var(--light-gray);
+  font-size: 0.95rem;
+  margin-bottom: 0;
+  max-width: 560px;
+  position: relative;
+  z-index: 1;
+}
+.offer-pricing {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  position: relative;
+  z-index: 1;
+}
+.offer-pricing-item-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--light-gray);
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+.offer-pricing-item-value {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--warm-white);
+  line-height: 1.1;
+  font-weight: 400;
+}
+.offer-pricing-item-value .sub {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--light-gray);
+  font-weight: 400;
+}
+.offer-pricing-item.highlight .offer-pricing-item-value {
+  color: var(--gold);
+}
+
+/* ==== COMPARISON ==== */
+.comparison-note {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: var(--medium-gray);
+  font-style: italic;
+}
+
+/* ==== DELIVERABLES (scope groups) ==== */
+.deliverables { margin-top: 1.5rem; }
+.del-group {
+  background: var(--pure-white);
+  border: 1px solid var(--border-gray);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.del-group-header {
+  background: var(--section-gray);
+  padding: 0.9rem 1.5rem;
+  border-bottom: 1px solid var(--border-gray);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.del-group-number {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--gold);
+  min-width: 1.5rem;
+}
+.del-group-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--navy);
+}
+.del-items { list-style: none; }
+.del-item {
+  padding: 0.85rem 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  border-bottom: 1px solid var(--border-gray);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--dark-gray);
+}
+.del-item:last-child { border-bottom: none; }
+.del-item-check {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 5px;
+  color: var(--success-green);
+}
+
+/* ==== NEED LIST ==== */
+.need-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+  list-style: none;
+}
+.need-list li {
+  padding: 1rem 1.2rem;
+  background: var(--pure-white);
+  border: 1px solid var(--border-gray);
+  border-radius: 6px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+.need-list li::before {
+  content: '→';
+  color: var(--gold);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ==== TIMELINE ==== */
+.timeline {
+  margin-top: 1.5rem;
+  list-style: none;
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1.5rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--border-gray);
+  align-items: flex-start;
+}
+.timeline-item:first-child { padding-top: 0; }
+.timeline-item:last-child { border-bottom: none; }
+.timeline-marker {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--navy);
+  font-weight: 400;
+  background: var(--warm-white);
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  border: 1px solid var(--border-gray);
+  height: fit-content;
+  white-space: nowrap;
+  min-width: 120px;
+  text-align: center;
+}
+.timeline-content {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  padding-top: 0.3rem;
+  color: var(--dark-gray);
+}
+.timeline-content strong {
+  color: var(--near-black);
+  font-weight: 600;
+}
+
+/* ==== TERMS ==== */
+.terms-list {
+  list-style: none;
+  margin-top: 1rem;
+}
+.terms-list li {
+  padding: 0.7rem 0 0.7rem 1.5rem;
+  position: relative;
+  font-size: 0.98rem;
+  color: var(--dark-gray);
+  line-height: 1.55;
+}
+.terms-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 1.15rem;
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.terms-list li strong { color: var(--near-black); font-weight: 600; }
+
+/* ==== PHASE TWO CALLOUT ==== */
+.phase-two-callout {
+  background: var(--warm-white);
+  border: 1px solid var(--border-gray);
+  border-left: 3px solid var(--medium-gray);
+  border-radius: 4px;
+  padding: 1.4rem 1.6rem;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: var(--dark-gray);
+  line-height: 1.65;
+}
+.phase-two-callout strong { color: var(--near-black); font-weight: 600; }
+
+/* ==== CLOSE ==== */
+.close {
+  background: var(--deep-navy);
+  padding: clamp(4rem, 7vw, 5rem) 0;
+  color: var(--warm-white);
+  position: relative;
+  overflow: hidden;
+}
+.close::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 40%; height: 60%;
+  background: radial-gradient(ellipse at 20% 100%, rgba(232,113,58,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.close-inner { position: relative; z-index: 2; max-width: 720px; }
+.close-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.close h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  color: var(--warm-white);
+  line-height: 1.25;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+.close p {
+  color: var(--light-gray);
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin-bottom: 1.5rem;
+  line-height: 1.65;
+}
+.close p:last-of-type { margin-bottom: 2rem; }
+.close-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--gold);
+  color: var(--navy);
+  font-weight: 700;
+  padding: 0.9rem 2rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
+  box-shadow: 0 2px 12px rgba(255,182,77,0.2);
+}
+.btn-primary:hover { background: var(--orange); color: var(--pure-white); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(232,113,58,0.3); }
+.btn-secondary {
+  color: var(--light-gray);
+  font-size: 0.92rem;
+  border-bottom: 1px solid rgba(176,184,193,0.3);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-secondary:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ==== FOOTER ==== */
+.footer-min {
+  background: var(--near-black);
+  padding: 1.5rem 0;
+  color: var(--medium-gray);
+  font-size: 0.82rem;
+  text-align: center;
+}
+.footer-min a { color: var(--light-gray); border-bottom: 1px solid rgba(176,184,193,0.2); }
+.footer-min a:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  .topbar-meta { display: none; }
+  .hero-meta { gap: 1.5rem; }
+  .offer-pricing { grid-template-columns: 1fr; }
+  .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  .timeline-marker { justify-self: flex-start; min-width: auto; }
+  .close-ctas { flex-direction: column; align-items: flex-start; }
+  .close-ctas .btn-primary { width: 100%; justify-content: center; }
+}
+
+/* ==== PRINT ==== */
+@media print {
+  body { background: white; font-size: 14px; }
+  .topbar, .hero, .offer-card, .close { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .section { padding: 2rem 0; page-break-inside: avoid; }
+  .hero { padding: 2rem 0; }
+  .close { padding: 2rem 0; }
+  .anim-entry { opacity: 1; animation: none; }
+  .container { width: 92%; }
+}
+</style>
+</head>
+<body>
+
+<!-- ==== TOPBAR ==== -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="https://clarityforgestudios.com" class="topbar-logo">
+      <svg viewBox="0 0 400 565" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 109.366V336.996C0 349.904 12.155 359.369 24.6645 356.282L131.375 329.656V216.829C131.375 204.174 139.985 193.139 152.292 190.102L383.591 132.752C393.112 130.373 399.747 121.869 399.747 112.1V19.8733C399.747 6.96569 387.592-2.4999 375.082 0.587803L15.0924 90.0807C6.22943 92.2573 0 100.255 0 109.366Z" fill="#FFB64D"/>
+        <path d="M375.488 269.137L131.426 329.676V551.991C131.426 564.291 146.873 569.707 154.571 560.141L246.645 435.974C246.898 435.62 247.303 435.417 247.708 435.316L383.54 401.503C393.214 399.074 400.051 390.418 400.051 380.446V288.372C400.051 275.565 387.997 266.1 375.538 269.187L375.488 269.137Z" fill="#FF682C"/>
+      </svg>
+      ClarityForge Studios
+    </a>
+    <div class="topbar-meta">Prepared for <strong>David Roberts</strong> · May 2026</div>
+  </div>
+</header>
+
+<!-- ==== HERO ==== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-label anim-entry anim-d1">A Proposal for Volts</div>
+      <h1 class="anim-entry anim-d2">A Production &amp; <em>Audience Layer</em></h1>
+      <p class="hero-sub anim-entry anim-d3">A six-month operational engagement to professionalize the workflow and grow the paid subscriber base. You record. The rest runs through one operator, on a system, in your voice.</p>
+      <div class="hero-meta anim-entry anim-d3">
+        <div class="hero-meta-item">Prepared by<strong>Nate Peavey</strong></div>
+        <div class="hero-meta-item">Client<strong>David Roberts, Volts</strong></div>
+        <div class="hero-meta-item">Kickoff<strong>July 2026</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==== WHAT THIS IS ==== -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">What This Is</div>
+    <h2>What I heard from you.</h2>
+    <p class="lead">This is a confirmation of what we landed on over our recent emails and our call. The goal is to put the operating model, scope, pricing, and timeline in one place so you can read it in five minutes and either say yes or push back on anything that doesn't sit right.</p>
+    <div class="heard-grid">
+      <div class="heard-item">
+        <div class="heard-label">Priority 1</div>
+        Professionalize the workflow and grow the paid subscriber base, ideally by converting more of the existing free list.
+      </div>
+      <div class="heard-item">
+        <div class="heard-label">Priority 2</div>
+        One point of contact pulling the thread through everything that's not the work itself.
+      </div>
+      <div class="heard-item">
+        <div class="heard-label">Priority 3</div>
+        Editorial control preserved. Diversifying voices in the brand, carefully, with you having last say.
+      </div>
+      <div class="heard-item">
+        <div class="heard-label">Back Burner</div>
+        Migration, brand refresh, sponsorship work. All scoped separately when and if they make sense.
+      </div>
+    </div>
+    <p style="margin-top:2rem;">Nothing in here is fixed in stone until we both agree to it. Push back on anything I got wrong.</p>
+  </div>
+</section>
+
+<!-- ==== THE OFFER ==== -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-label">The Offer</div>
+    <h2>A six-month engagement at a single monthly rate.</h2>
+    <p>One number covers production, audience development, and the editorial framework around it. No setup fee. No hidden line items. Per-episode overage only kicks in if you run heavier than your stated cadence.</p>
+
+    <div class="offer-card">
+      <div class="offer-label">Phase One Monthly Retainer</div>
+      <h3>Production, audience development, and narrative strategy, integrated.</h3>
+      <p class="offer-sub">Covers everything in scope for up to eight episodes per month. Per-episode overage above eight is billed separately at the rate below.</p>
+      <div class="offer-pricing">
+        <div class="offer-pricing-item highlight">
+          <div class="offer-pricing-item-label">Monthly Retainer</div>
+          <div class="offer-pricing-item-value">$8,500<span class="sub">/mo</span></div>
+        </div>
+        <div class="offer-pricing-item">
+          <div class="offer-pricing-item-label">Base Episode Capacity</div>
+          <div class="offer-pricing-item-value">8<span class="sub">/mo</span></div>
+        </div>
+        <div class="offer-pricing-item">
+          <div class="offer-pricing-item-label">Per-Episode Overage</div>
+          <div class="offer-pricing-item-value">$700<span class="sub">/ep</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="comparison-note">For context, your current monthly spend across Kyle, Basil, and Sam at this cadence is roughly $9,000–$11,800 for production alone. This number is in the same neighborhood, with the strategic layer included rather than added.</p>
+  </div>
+</section>
+
+<!-- ==== WHAT'S IN SCOPE ==== -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">What's In Scope</div>
+    <h2>Four areas of work, one operator.</h2>
+    <p>You record. From there, the operation runs through ClarityForge. Strategic calls about Volts as a product stay yours. The strategic work around the <em>business</em> of Volts is what I run.</p>
+
+    <div class="deliverables">
+
+      <div class="del-group">
+        <div class="del-group-header">
+          <div class="del-group-number">01</div>
+          <div class="del-group-title">Production</div>
+        </div>
+        <ul class="del-items">
+          <li class="del-item">
+            <svg class="del-item-check" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Full audio production from raw recording: cleanup, theme music, mid-roll insertion, dual versions for free and paid feeds.</span>
+          </li>
+          <li class="del-item">
+            <svg class="del-item-check" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Transcription with hand correction. Episode page publishing on Substack.</span>
+          </li>
+          <li class="del-item">
+            <svg class="del-item-check" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>YouTube upload with proper titles, chapters, thumbnails, and SEO-aware show notes.</span>
+          </li>
+          <li class="del-item">
+            <svg class="del-item-check" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Two to three short audio-driven clips per episode for social distribution.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="del-group">
+        <div class="del-group-header">
+          <div class="del-group-number">02</div>
+          <div class="del-group-title">Audience Development</div>
+        </div>
+        <ul class="del-items">
+          <li class="del-item">
+            <svg class="del-item-check" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Rolling back-catalog YouTube and search optimization so old episodes keep producing.</span>
+          </li>
+          <li class="del-item">
+            <svg class="del-item-check" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>One themed back-catalog bundle promotion per month.</span>
+          </li>
+          <li class="del-item">
+            <svg class="del-item-check" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Searchable archive infrastructure buildout.</span>
+          </li>
+          <li class="del-item">
+            <svg class="del-item-check" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Paid-subscriber conversion strategy focused on the existing free list.</span>
+          </li>
+          <li class="del-item">
+            <svg class="del-item-check" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Marketing-army referral structure designed and piloted. Monthly metrics report you can read in two minutes.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="del-group">
+        <div class="del-group-header">
+          <div class="del-group-number">03</div>
+          <div class="del-group-title">Narrative Strategy</div>
+        </div>
+        <ul class="del-items">
+          <li class="del-item">
+            <svg class="del-item-check" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Rules-and-guardrails framework so other voices can operate inside the Volts brand without you having to police it.</span>
+          </li>
+          <li class="del-item">
+            <svg class="del-item-check" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Editorial consistency framework. Voice profile document for anyone working on Volts content, including AI tools.</span>
+          </li>
+          <li class="del-item">
+            <svg class="del-item-check" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Light coordination on collaborations and guest essays as opportunities surface.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="del-group">
+        <div class="del-group-header">
+          <div class="del-group-number">04</div>
+          <div class="del-group-title">Operating Cadence</div>
+        </div>
+        <ul class="del-items">
+          <li class="del-item">
+            <svg class="del-item-check" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Single point of contact. One scheduled thirty-minute touchpoint per month, skippable without consequence.</span>
+          </li>
+          <li class="del-item">
+            <svg class="del-item-check" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Approval surfaces designed for five-minute decisions, not extended reviews.</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==== WHAT I NEED ==== -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-label">What I Need From You</div>
+    <h2>Recording. A short list of approvals. Otherwise, you stay on the work.</h2>
+    <ul class="need-list">
+      <li>Recording on your existing cadence. Riverside or whatever setup works for you.</li>
+      <li>The monthly touchpoint when it's useful. Skip it when it's not.</li>
+      <li>Voice profile sign-off during transition, plus any future voice additions.</li>
+      <li>Brand guardrail rules signed off once. Updated only when something genuinely changes.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ==== KICKOFF PLAN ==== -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Kickoff Plan</div>
+    <h2>July 1, with a runway to make the transition clean.</h2>
+    <p>The next two months handle the soft work of transitioning your existing setup with dignity. Production handover lands July 1. Audience development activates from there.</p>
+
+    <ul class="timeline">
+      <li class="timeline-item">
+        <div class="timeline-marker">May &ndash; June</div>
+        <div class="timeline-content"><strong>Transition runway.</strong> Voice profile and brand audit. Coordination with Kyle, Basil, and Sam, with the month-or-two advance warning you wanted to give them. Conversation with Kyle about joining the operation, if he wants it. Onboarding documentation. Your existing setup keeps running.</div>
+      </li>
+      <li class="timeline-item">
+        <div class="timeline-marker">July 1</div>
+        <div class="timeline-content"><strong>Production handover.</strong> First episode through the ClarityForge workflow. Monthly touchpoint cadence established. Back-catalog optimization begins in parallel.</div>
+      </li>
+      <li class="timeline-item">
+        <div class="timeline-marker">Months 2 &ndash; 3</div>
+        <div class="timeline-content"><strong>Audience layer activates.</strong> First themed back-catalog bundle launches. Searchable archive infrastructure goes live. Marketing-army pilot designed and tested. First quarterly review.</div>
+      </li>
+      <li class="timeline-item">
+        <div class="timeline-marker">Month 4+</div>
+        <div class="timeline-content"><strong>Reconnoiter.</strong> Review what's working. Decide together what gets added next: sponsorship coordination, editorial additions, brand refresh, migration. All natural next conversations, none in this scope.</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ==== TERMS ==== -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-label">Terms</div>
+    <h2>Six months, then month-to-month.</h2>
+    <ul class="terms-list">
+      <li><strong>Initial term:</strong> Six months, beginning with the first invoiced month.</li>
+      <li><strong>After initial term:</strong> Month-to-month continuation. No auto-renewal.</li>
+      <li><strong>Termination:</strong> Thirty-day written notice from either side, any time.</li>
+      <li><strong>Invoicing:</strong> Monthly, net 15, beginning July 1, 2026.</li>
+      <li><strong>Overage:</strong> Per-episode overage above 8/month invoiced with the same monthly cycle.</li>
+    </ul>
+
+    <div class="phase-two-callout">
+      <strong>What's not in this proposal:</strong> Sponsorship coordination, editorial additions (guest essays, collabs, special episodes), brand refresh, and platform migration are deliberately out of scope for the first six months. You wanted to see how far we can get without them, and that's the right call. When and if any of those make sense to add, we scope them separately at that point.
+    </div>
+  </div>
+</section>
+
+<!-- ==== CLOSE ==== -->
+<section class="close">
+  <div class="container">
+    <div class="close-inner">
+      <div class="close-label">Next Step</div>
+      <h2>If this looks right, reply with a yes.</h2>
+      <p>I'll send a short countersignable agreement that mirrors what's in here. We can talk through anything that needs adjusting on a call, or by writing back, whichever's easier.</p>
+      <p>No rush, but whenever you're ready I'll get started on the backend and prep documents.</p>
+      <div class="close-ctas">
+        <a href="mailto:nathan@clarityforgestudios.com?subject=Re%3A%20Volts%20Engagement%20Proposal" class="btn-primary">
+          Reply to confirm
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="mailto:nathan@clarityforgestudios.com?subject=Re%3A%20Volts%20Engagement%20Proposal" class="btn-secondary">Or push back on anything that's off</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==== FOOTER ==== -->
+<footer class="footer-min">
+  <div class="container">
+    Prepared by Nate Peavey, ClarityForge Studios &middot; May 2026 &middot; <a href="mailto:nathan@clarityforgestudios.com">nathan@clarityforgestudios.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
