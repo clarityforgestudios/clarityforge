@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QVX5YQ0TYH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QVX5YQ0TYH');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Content Cost Calculator | ClarityForge Studios</title>
+<meta name="description" content="Find out what your content is actually costing you. Calculate the hidden labor, opportunity cost, and consistency gaps in your current approach. Free interactive tool for energy leaders.">
+<meta property="og:title" content="What Is Your Content Actually Costing You? | ClarityForge Studios">
+<meta property="og:description" content="Most energy leaders spend 15-25 hours per month on content without realizing it. Calculate your real cost in 2 minutes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://clarityforgestudios.com/content-cost-calculator">
+<meta property="og:site_name" content="ClarityForge Studios">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="What Is Your Content Actually Costing You? | ClarityForge Studios">
+<meta name="twitter:description" content="Most energy leaders spend 15-25 hours per month on content without realizing it. Calculate your real cost in 2 minutes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display&display=swap" rel="stylesheet"></noscript>
+<style>
+:root{--deep-navy:#1A2A3A;--navy:#2A3D4F;--gold:#FFB64D;--orange:#E8713A;--orange-dark:#D4622E;--near-black:#1C1E22;--dark-gray:#3D4550;--medium-gray:#6B7785;--light-gray:#B0B8C1;--border-gray:#DFE2E6;--section-gray:#F2F3F5;--warm-white:#FAFAF8;--pure-white:#FFFFFF;--success:#4A8C5E;--success-light:#E8F5E9;--warn-light:#FFF0E8;--red-soft:#E85A5A;--font-display:'DM Serif Display',Georgia,serif;--font-body:'DM Sans',system-ui,sans-serif;--section-pad:clamp(4rem,8vw,7rem);--container:min(1200px,90vw);--ease:cubic-bezier(.25,.46,.45,.94)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-body);font-size:18px;line-height:1.7;color:var(--dark-gray);background:var(--warm-white)}
+a{text-decoration:none;color:inherit}.container{width:var(--container);margin:0 auto}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.anim-entry{opacity:0;animation:fadeUp .7s var(--ease) forwards}
+.anim-d1{animation-delay:0ms}.anim-d2{animation-delay:150ms}.anim-d3{animation-delay:300ms}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--deep-navy);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-inner{width:var(--container);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:1rem 0;gap:2rem}
+.nav-logo{display:flex;align-items:center;gap:.65rem;font-family:var(--font-body);font-weight:600;font-size:1.05rem;color:var(--warm-white);letter-spacing:-.01em}
+.nav-logo svg{width:auto;height:28px}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a{color:var(--light-gray);font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:var(--navy);font-weight:700;padding:.6rem 1.4rem;border-radius:6px;font-size:.85rem;transition:background .2s,transform .15s;border:none;cursor:pointer}
+.nav-cta:hover{background:var(--orange);color:var(--pure-white);transform:translateY(-1px)}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--warm-white);margin:5px 0;transition:.3s}
+
+/* HERO */
+.hero{background:var(--deep-navy);padding:calc(var(--section-pad) + 4rem) 0 var(--section-pad);text-align:center;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;top:0;right:0;width:40%;height:100%;background:radial-gradient(ellipse at 80% 40%,rgba(255,182,77,.06) 0%,transparent 70%);pointer-events:none}
+.hero-content{position:relative;z-index:2;max-width:640px;margin:0 auto}
+.hero h1{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.2rem);color:var(--warm-white);line-height:1.15;margin-bottom:1.2rem;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero-sub{font-size:clamp(1rem,1.8vw,1.1rem);color:var(--light-gray);max-width:520px;margin:0 auto;line-height:1.6}
+.hero-meta{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin-top:2rem}
+.hero-meta-item{text-align:center}
+.hero-meta-item strong{display:block;color:var(--gold);font-size:1.6rem;font-family:var(--font-display)}
+.hero-meta-item span{color:var(--light-gray);font-size:.8rem}
+
+/* CALCULATOR */
+.calc-wrap{padding:var(--section-pad) 0;background:var(--warm-white)}
+.calc-inner{max-width:680px;margin:0 auto}
+.calc-progress{display:flex;gap:.4rem;margin-bottom:2.5rem}
+.calc-progress-step{flex:1;height:4px;border-radius:2px;background:var(--border-gray);transition:background .3s}
+.calc-progress-step.done{background:var(--gold)}
+.calc-progress-step.active{background:var(--gold);opacity:.6}
+
+/* STEP CARD */
+.step-card{background:var(--pure-white);border:1px solid var(--border-gray);border-radius:12px;padding:2.5rem;box-shadow:0 2px 12px rgba(0,0,0,.04);animation:fadeUp .35s var(--ease)}
+.step-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:.6rem}
+.step-question{font-family:var(--font-display);font-size:1.3rem;color:var(--near-black);line-height:1.35;margin-bottom:.5rem}
+.step-context{font-size:.82rem;color:var(--medium-gray);margin-bottom:1.5rem;line-height:1.5}
+
+/* INPUT STYLES */
+.input-group{margin-bottom:1.5rem}
+.input-label{font-size:.78rem;font-weight:600;color:var(--dark-gray);margin-bottom:.4rem;display:block}
+.input-field{width:100%;padding:.75rem 1rem;border:1.5px solid var(--border-gray);border-radius:8px;font-family:var(--font-body);font-size:1rem;color:var(--near-black);background:var(--warm-white);transition:border-color .2s,box-shadow .2s;outline:none}
+.input-field:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(255,182,77,.15)}
+.input-field::placeholder{color:var(--light-gray)}
+.input-suffix{display:flex;align-items:center;gap:0}
+.input-suffix .input-field{border-radius:8px 0 0 8px;border-right:none}
+.input-suffix-text{padding:.75rem 1rem;background:var(--section-gray);border:1.5px solid var(--border-gray);border-left:none;border-radius:0 8px 8px 0;font-size:.85rem;color:var(--medium-gray);font-weight:500;white-space:nowrap}
+
+/* OPTION BUTTONS */
+.option-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.5rem}
+.option-grid-3{grid-template-columns:1fr 1fr 1fr}
+.option-btn{padding:.8rem 1rem;border:1.5px solid var(--border-gray);border-radius:8px;background:var(--pure-white);font-family:var(--font-body);font-size:.88rem;font-weight:500;color:var(--dark-gray);cursor:pointer;transition:all .15s;text-align:center;-webkit-tap-highlight-color:transparent}
+.option-btn:hover{border-color:var(--gold);background:#FFF8ED}
+.option-btn.selected{border-color:var(--gold);background:var(--gold);color:var(--deep-navy);font-weight:700}
+.option-btn-sub{display:block;font-size:.68rem;font-weight:400;color:var(--medium-gray);margin-top:.15rem}
+.option-btn.selected .option-btn-sub{color:var(--deep-navy);opacity:.7}
+
+/* CHECKBOX LIST */
+.check-list{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem}
+.check-item{display:flex;align-items:center;gap:.7rem;padding:.6rem .9rem;border:1.5px solid var(--border-gray);border-radius:8px;cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.check-item:hover{border-color:var(--gold);background:#FFF8ED}
+.check-item.checked{border-color:var(--gold);background:rgba(255,182,77,.08)}
+.check-box{width:20px;height:20px;border:2px solid var(--border-gray);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.check-item.checked .check-box{border-color:var(--gold);background:var(--gold)}
+.check-item.checked .check-box::after{content:'';display:block;width:6px;height:10px;border:solid var(--deep-navy);border-width:0 2px 2px 0;transform:rotate(45deg);margin-top:-2px}
+.check-text{font-size:.88rem;color:var(--dark-gray)}
+.check-item.checked .check-text{color:var(--near-black);font-weight:500}
+
+/* NAV BUTTONS */
+.step-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--section-gray)}
+.step-back{font-size:.85rem;font-weight:600;color:var(--medium-gray);cursor:pointer;background:none;border:none;font-family:var(--font-body);padding:.5rem 0;transition:color .2s}
+.step-back:hover{color:var(--near-black)}
+.step-next{background:var(--gold);color:var(--deep-navy);font-weight:700;padding:.75rem 1.8rem;border-radius:6px;font-size:.9rem;border:none;cursor:pointer;font-family:var(--font-body);transition:background .2s,transform .15s}
+.step-next:hover{background:var(--orange);color:var(--pure-white);transform:translateY(-1px)}
+.step-next:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.step-next:disabled:hover{background:var(--gold);color:var(--deep-navy)}
+
+/* RESULTS */
+.results-section{padding:var(--section-pad) 0;background:var(--section-gray);display:none}
+.results-inner{max-width:760px;margin:0 auto}
+.results-headline{text-align:center;margin-bottom:3rem}
+.results-headline h2{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);color:var(--near-black);margin-bottom:.6rem;line-height:1.2}
+.results-headline p{font-size:.95rem;color:var(--medium-gray);max-width:480px;margin:0 auto}
+
+/* BIG NUMBER */
+.big-number-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2.5rem}
+.big-number-card{background:var(--pure-white);border-radius:12px;padding:2rem;text-align:center;border:1px solid var(--border-gray)}
+.big-number-card.highlight{background:var(--deep-navy);border-color:transparent}
+.big-number-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--medium-gray);margin-bottom:.5rem}
+.big-number-card.highlight .big-number-label{color:var(--light-gray)}
+.big-number-value{font-family:var(--font-display);font-size:clamp(2rem,5vw,2.8rem);color:var(--near-black);line-height:1.1}
+.big-number-card.highlight .big-number-value{color:var(--gold)}
+.big-number-sub{font-size:.78rem;color:var(--medium-gray);margin-top:.4rem}
+.big-number-card.highlight .big-number-sub{color:var(--light-gray)}
+
+/* BREAKDOWN TABLE */
+.breakdown{background:var(--pure-white);border-radius:12px;border:1px solid var(--border-gray);overflow:hidden;margin-bottom:2.5rem}
+.breakdown-header{padding:1.2rem 1.5rem;border-bottom:1px solid var(--border-gray);display:flex;justify-content:space-between;align-items:center}
+.breakdown-title{font-family:var(--font-display);font-size:1.05rem;color:var(--near-black)}
+.breakdown-body{padding:0}
+.breakdown-row{display:grid;grid-template-columns:1fr auto auto;gap:1rem;padding:.75rem 1.5rem;border-bottom:1px solid var(--section-gray);align-items:center}
+.breakdown-row:last-child{border-bottom:none}
+.breakdown-row.total-row{background:var(--section-gray);font-weight:700;border-bottom:none}
+.breakdown-task{font-size:.85rem;color:var(--dark-gray)}
+.breakdown-hrs{font-size:.85rem;color:var(--medium-gray);text-align:right;white-space:nowrap}
+.breakdown-cost{font-size:.85rem;color:var(--near-black);font-weight:600;text-align:right;white-space:nowrap}
+.total-row .breakdown-task,.total-row .breakdown-hrs,.total-row .breakdown-cost{color:var(--near-black)}
+
+/* INSIGHT CARDS */
+.insight-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:2.5rem}
+.insight-card{background:var(--pure-white);border-radius:10px;padding:1.5rem;border:1px solid var(--border-gray);text-align:center}
+.insight-icon{font-size:1.6rem;margin-bottom:.5rem}
+.insight-value{font-family:var(--font-display);font-size:1.3rem;color:var(--near-black);margin-bottom:.3rem}
+.insight-label{font-size:.75rem;color:var(--medium-gray);line-height:1.4}
+
+/* COMPARISON */
+.compare-section{background:var(--pure-white);border-radius:12px;border:1px solid var(--border-gray);overflow:hidden;margin-bottom:2.5rem}
+.compare-header{padding:1.2rem 1.5rem;border-bottom:1px solid var(--border-gray)}
+.compare-header h3{font-family:var(--font-display);font-size:1.05rem;color:var(--near-black)}
+.compare-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.compare-col{padding:1.5rem}
+.compare-col:first-child{border-right:1px solid var(--border-gray)}
+.compare-col-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;display:flex;align-items:center;gap:.4rem}
+.compare-col:first-child .compare-col-label{color:var(--red-soft)}
+.compare-col:last-child .compare-col-label{color:var(--success)}
+.compare-metric{margin-bottom:1rem}
+.compare-metric:last-child{margin-bottom:0}
+.compare-metric-value{font-family:var(--font-display);font-size:1.1rem;color:var(--near-black)}
+.compare-metric-label{font-size:.72rem;color:var(--medium-gray)}
+
+/* CONSISTENCY GAP */
+.gap-bar-section{background:var(--pure-white);border-radius:12px;border:1px solid var(--border-gray);padding:1.5rem;margin-bottom:2.5rem}
+.gap-bar-title{font-family:var(--font-display);font-size:1.05rem;color:var(--near-black);margin-bottom:1rem}
+.gap-bar-row{margin-bottom:1rem}
+.gap-bar-row:last-child{margin-bottom:0}
+.gap-bar-label{display:flex;justify-content:space-between;font-size:.78rem;margin-bottom:.3rem}
+.gap-bar-label span:first-child{color:var(--dark-gray);font-weight:500}
+.gap-bar-label span:last-child{color:var(--medium-gray)}
+.gap-bar-track{height:8px;background:var(--section-gray);border-radius:4px;overflow:hidden}
+.gap-bar-fill{height:100%;border-radius:4px;transition:width .8s var(--ease)}
+.gap-bar-fill.low{background:var(--red-soft)}
+.gap-bar-fill.mid{background:var(--gold)}
+.gap-bar-fill.high{background:var(--success)}
+
+/* CTA */
+.results-cta{text-align:center;padding:2.5rem;background:var(--deep-navy);border-radius:12px;margin-bottom:2rem}
+.results-cta h3{font-family:var(--font-display);font-size:clamp(1.3rem,3vw,1.7rem);color:var(--warm-white);margin-bottom:.6rem}
+.results-cta p{font-size:.88rem;color:var(--light-gray);max-width:460px;margin:0 auto 1.5rem;line-height:1.55}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);font-weight:700;padding:.9rem 2rem;border-radius:6px;font-size:1rem;transition:background .25s,transform .15s,box-shadow .25s;box-shadow:0 2px 12px rgba(255,182,77,.2)}
+.btn-primary:hover{background:var(--orange);color:var(--pure-white);transform:translateY(-2px);box-shadow:0 4px 20px rgba(232,113,58,.3)}
+.results-cta-sub{font-size:.75rem;color:var(--medium-gray);margin-top:.8rem}
+
+/* EMAIL GATE */
+.gate-card{max-width:480px;margin:0 auto;background:var(--pure-white);border-radius:12px;padding:2rem;border:1px solid var(--border-gray);text-align:center}
+.gate-card h3{font-family:var(--font-display);font-size:1.1rem;color:var(--near-black);margin-bottom:.4rem}
+.gate-card p{font-size:.82rem;color:var(--medium-gray);margin-bottom:1.2rem}
+.gate-form{display:flex;gap:.5rem;max-width:360px;margin:0 auto}
+.gate-form input{flex:1;padding:.65rem .9rem;border:1.5px solid var(--border-gray);border-radius:6px;font-family:var(--font-body);font-size:.9rem;outline:none}
+.gate-form input:focus{border-color:var(--gold)}
+.gate-form button{background:var(--gold);color:var(--deep-navy);font-weight:700;padding:.65rem 1.2rem;border-radius:6px;border:none;cursor:pointer;font-family:var(--font-body);font-size:.85rem;transition:background .2s;white-space:nowrap}
+.gate-form button:hover{background:var(--orange);color:var(--pure-white)}
+.gate-note{font-size:.7rem;color:var(--medium-gray);margin-top:.6rem}
+.gate-success{display:none;font-size:.88rem;color:var(--success);font-weight:600;margin-top:0;padding-top:.5rem}
+
+/* ALT TOOLS */
+.alt-tools{padding:0 0 var(--section-pad);text-align:center;background:var(--section-gray)}
+.alt-tools-label{font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--medium-gray);margin-bottom:1.2rem}
+.alt-tools-grid{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;max-width:700px;margin:0 auto}
+.alt-tool-card{flex:1;min-width:180px;max-width:220px;padding:1rem;background:var(--pure-white);border:1.5px solid var(--border-gray);border-radius:10px;transition:border-color .2s;text-align:center}
+.alt-tool-card:hover{border-color:var(--gold)}
+.alt-tool-card-title{display:block;font-family:var(--font-display);font-size:.95rem;color:var(--near-black);margin-bottom:.3rem}
+.alt-tool-card-desc{font-size:.72rem;color:var(--medium-gray)}
+
+/* RECALC */
+.recalc-bar{text-align:center;margin-bottom:2rem}
+.recalc-btn{font-size:.82rem;font-weight:600;color:var(--gold);cursor:pointer;background:none;border:none;font-family:var(--font-body);border-bottom:1px solid var(--gold);padding-bottom:2px;transition:color .2s}
+.recalc-btn:hover{color:var(--orange)}
+
+/* FOOTER */
+.footer{background:var(--near-black);padding:4rem 0 2rem;border-top:1px solid rgba(255,255,255,.06)}
+.footer-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand h3{font-family:var(--font-body);font-weight:600;color:var(--warm-white);font-size:1rem;margin-bottom:.5rem}
+.footer-brand p{font-size:.82rem;color:var(--medium-gray);line-height:1.6}
+.footer-links h4,.footer-contact h4{font-size:.78rem;color:var(--light-gray);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;font-weight:600}
+.footer-links a,.footer-contact a{display:block;font-size:.88rem;color:var(--medium-gray);padding:.25rem 0;transition:color .2s}
+.footer-links a:hover,.footer-contact a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:var(--medium-gray)}
+.footer-bottom a{color:var(--medium-gray);transition:color .2s}.footer-bottom a:hover{color:var(--gold)}
+
+.mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--deep-navy);padding:.75rem 1rem;border-top:2px solid var(--gold);z-index:99;text-align:center}
+.mobile-cta .btn-primary{width:100%;justify-content:center;font-size:.95rem;padding:.8rem}
+
+/* SERVICES DROPDOWN */
+.nav-dropdown-wrap{position:relative}
+.nav-dropdown-trigger{cursor:pointer}
+.nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);background:var(--deep-navy);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.5rem 0;min-width:220px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s,transform .2s;transform:translateX(-50%) translateY(8px);box-shadow:0 8px 24px rgba(0,0,0,.3);margin-top:0;padding-top:.5rem}
+.nav-dropdown-wrap:hover .nav-dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.nav-dropdown a{display:block;padding:.5rem 1.25rem;font-size:.85rem;color:var(--light-gray);transition:background .15s,color .15s;white-space:nowrap}
+.nav-dropdown a:hover{background:rgba(255,182,77,.1);color:var(--gold)}
+.nav-dropdown-all{border-top:1px solid rgba(255,255,255,.08);margin-top:.25rem;padding-top:.6rem;font-weight:600;font-size:.82rem}
+.nav-links.nav-open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--deep-navy);padding:1rem 5vw 1.5rem;border-top:1px solid rgba(255,255,255,.08);box-shadow:0 8px 24px rgba(0,0,0,.3);gap:0;z-index:100}
+.nav-links.nav-open li{padding:.5rem 0}
+.nav-links.nav-open a{font-size:1rem}
+.nav-links.nav-open .nav-dropdown{position:static;transform:none;opacity:1;visibility:visible;pointer-events:auto;box-shadow:none;border:none;padding:0 0 0 1rem;margin-top:.25rem;min-width:0;background:transparent}
+.nav-hamburger-open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.nav-hamburger-open span:nth-child(2){opacity:0}
+.nav-hamburger-open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .big-number-grid{grid-template-columns:1fr 1fr}
+  .insight-grid{grid-template-columns:1fr 1fr 1fr}
+  .footer-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  body{font-size:16px}
+  .nav-links{display:none}.nav-hamburger{display:block}
+  .nav-inner .nav-cta{display:none}
+  .mobile-cta{display:block}body{padding-bottom:60px}
+  .step-card{padding:1.5rem}
+  .option-grid{grid-template-columns:1fr}
+  .option-grid-3{grid-template-columns:1fr}
+  .big-number-grid{grid-template-columns:1fr}
+  .insight-grid{grid-template-columns:1fr}
+  .compare-body{grid-template-columns:1fr}
+  .compare-col:first-child{border-right:none;border-bottom:1px solid var(--border-gray)}
+  .breakdown-row{grid-template-columns:1fr auto;gap:.5rem}
+  .breakdown-hrs{display:none}
+  .gate-form{flex-direction:column}
+  .footer-bottom{flex-direction:column;gap:.5rem;text-align:center}
+}
+@media(max-width:480px){
+  .hero-meta{gap:1.5rem}
+}
+
+/* ============================================
+   MOBILE OPTIMIZATION BLOCK (added 2026-04-16)
+   Surgical fixes for phone experience applied site-wide.
+   Additive only: does not replace any existing styles.
+   ============================================ */
+
+/* Tablet and below: tighten section padding and typography */
+@media (max-width: 768px) {
+  :root {
+    --section-pad: clamp(2.5rem, 6vw, 4rem);
+  }
+  body {
+    font-size: 16px;
+  }
+  h1 { line-height: 1.2; }
+  h2 { line-height: 1.25; }
+  h3 { line-height: 1.3; }
+
+  /* Cards with padding: tighten so stacked cards don't eat the screen */
+  .prod-card, .freq-card, .layer-card,
+  .tier-card, .hiw-card, .outcome-card,
+  .del-card, .how-step, .invest-card, .invest-card-featured,
+  .example-card, .example-card-before, .example-card-after,
+  .foundation-body, .foundation-header,
+  .approach-card, .ba-card, .big-number-card, .case-card,
+  .cycle-step, .detail-card, .diff-card, .dim-card,
+  .q-card, .quiz-step, .res-card, .step-card,
+  .success-card, .testimonial-card, .wt-card,
+  .alt-tool-card,
+  .fact-card, .format-card, .evo-card,
+  .gate-card, .insight-card, .lane-card,
+  .pn-card, .pq-card, .result-card, .form-card {
+    padding: 1.5rem 1.25rem !important;
+  }
+  /* Reduce gap between stacked cards */
+  .prod-cards, .freq-cards, .layers-grid,
+  .tiers-grid, .hiw-grid, .outcomes-grid,
+  .del-grid, .how-grid, .example-cards,
+  .approach-grid, .ba-cards, .big-number-grid,
+  .cases-grid, .diff-grid, .engine-grid,
+  .principles-grid, .problem-grid, .res-grid,
+  .testimonial-grid, .who-grid, .wt-grid,
+  .alt-tools-grid, .contact-grid,
+  .facts-grid, .formats-grid, .founder-grid,
+  .insight-grid, .lanes-grid, .output-grid,
+  .pn-grid, .posts-grid, .results-grid,
+  .client-grid, .footer-grid {
+    gap: 1rem !important;
+  }
+  /* Reduce padding inside sections with extra inner padding */
+  .diff-callout, .coinvest-section { padding: 2rem 0 !important; }
+
+  /* FAQ items: larger tap target */
+  .faq-q, .faq-item summary { padding: 1rem 2rem 1rem 0 !important; }
+
+  /* Buttons: full-width primary CTA for easier thumb access.
+     Only target actual button classes, not secondary text links. */
+  .hero-ctas > .btn-primary,
+  .closing-cta > .btn-primary {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+  .hero-ctas { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  /* Mobile nav menu: higher contrast, clear hierarchy, left-aligned */
+  .nav-links.nav-open {
+    padding: 0.5rem 0 1rem !important;
+    align-items: stretch !important;
+  }
+  .nav-links.nav-open li {
+    padding: 0 !important;
+    width: 100%;
+  }
+  .nav-links.nav-open > li > a,
+  .nav-links.nav-open > li > .nav-dropdown-trigger {
+    display: block;
+    padding: 0.9rem 5vw !important;
+    color: var(--warm-white) !important;
+    font-size: 1rem !important;
+    font-weight: 500;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .nav-links.nav-open > li:last-child > a {
+    border-bottom: none;
+  }
+  .nav-links.nav-open .nav-dropdown {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: rgba(0,0,0,0.15) !important;
+  }
+  .nav-links.nav-open .nav-dropdown a {
+    display: block;
+    padding: 0.75rem 5vw 0.75rem calc(5vw + 1.25rem) !important;
+    color: var(--light-gray) !important;
+    font-size: 0.95rem !important;
+    text-align: left;
+    white-space: normal !important;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .nav-links.nav-open .nav-dropdown a:last-child {
+    border-bottom: none;
+  }
+  .nav-links.nav-open .nav-dropdown-all {
+    border-top: 1px solid rgba(255,255,255,0.08) !important;
+    padding-top: 0.75rem !important;
+    margin-top: 0 !important;
+    color: var(--warm-white) !important;
+    font-weight: 600;
+  }
+
+}
+
+/* Small phones: iPhone SE, older Androids (~375px and below) */
+@media (max-width: 480px) {
+  :root {
+    --container: min(1200px, 92vw);
+    --section-pad: clamp(2rem, 5vw, 3rem);
+  }
+
+  .hero h1 { font-size: clamp(2rem, 8vw, 2.6rem) !important; }
+
+  /* Tighter card padding on small screens */
+  .prod-card, .freq-card, .layer-card,
+  .tier-card, .hiw-card, .outcome-card,
+  .del-card, .invest-card, .invest-card-featured,
+  .approach-card, .ba-card, .big-number-card,
+  .case-card, .cycle-step, .detail-card, .diff-card,
+  .dim-card, .q-card, .res-card, .step-card,
+  .success-card, .testimonial-card, .wt-card,
+  .alt-tool-card,
+  .fact-card, .format-card, .evo-card,
+  .gate-card, .insight-card, .lane-card,
+  .pn-card, .pq-card, .result-card, .form-card {
+    padding: 1.25rem 1rem !important;
+    border-radius: 10px !important;
+  }
+
+  .nav-logo { font-size: 0.95rem !important; }
+  .closing-cta h2 { font-size: clamp(1.5rem, 6vw, 2rem) !important; }
+  .who-list li, .foundation-col ul li { padding: 0.4rem 0 0.4rem 1.4rem !important; }
+}
+
+</style>
+<link rel="canonical" href="https://clarityforgestudios.com/content-cost-calculator">
+<meta property="og:image" content="https://clarityforgestudios.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://clarityforgestudios.com/og-image.jpg">
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "wavaxo0exd");
+</script>
+</head>
+<body>
+
+<nav class="nav"><div class="nav-inner">
+<a href="/" class="nav-logo"><svg viewBox="0 0 400 565" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 109.366V336.996C0 349.904 12.155 359.369 24.6645 356.282L131.375 329.656V216.829C131.375 204.174 139.985 193.139 152.292 190.102L383.591 132.752C393.112 130.373 399.747 121.869 399.747 112.1V19.8733C399.747 6.96569 387.592-2.4999 375.082 0.587803L15.0924 90.0807C6.22943 92.2573 0 100.255 0 109.366Z" fill="#FFB64D"/><path d="M375.488 269.137L131.426 329.676V551.991C131.426 564.291 146.873 569.707 154.571 560.141L246.645 435.974C246.898 435.62 247.303 435.417 247.708 435.316L383.54 401.503C393.214 399.074 400.051 390.418 400.051 380.446V288.372C400.051 275.565 387.997 266.1 375.538 269.187L375.488 269.137Z" fill="#FF682C"/></svg>ClarityForge Studios</a>
+    <ul class="nav-links">
+      <li class="nav-dropdown-wrap"><a href="/services" class="nav-dropdown-trigger">Services</a>
+        <div class="nav-dropdown">
+          <a href="/podcast-production">Podcast Production</a>
+          <a href="/executive-visibility">Executive Visibility</a>
+          <a href="/strategic-partnerships">Strategic Partnerships</a>
+          <a href="/services" class="nav-dropdown-all">All Services</a>
+        </div>
+      </li>
+      <li><a href="/work">Work</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/resources">Resources</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+<a href="/story-sprint" class="nav-cta">Start a Story Sprint</a>
+<button class="nav-hamburger" aria-label="Menu" onclick="this.classList.toggle('nav-hamburger-open');document.querySelector('.nav-links').classList.toggle('nav-open')"><span></span><span></span><span></span></button>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<div class="hero-content">
+  <h1 class="anim-entry anim-d1">What is your content <em>actually costing you?</em></h1>
+  <p class="hero-sub anim-entry anim-d2">Most energy leaders spend 15-25 hours per month on content without realizing it. Answer 5 questions and see the real number.</p>
+  <div class="hero-meta anim-entry anim-d3">
+    <div class="hero-meta-item"><strong>5</strong><span>Questions</span></div>
+    <div class="hero-meta-item"><strong>2 min</strong><span>To complete</span></div>
+    <div class="hero-meta-item"><strong>$0</strong><span>Free forever</span></div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="calc-wrap">
+<div class="container">
+<div class="calc-inner">
+  <div class="calc-progress" id="calcProgress"></div>
+  <div id="stepContainer"></div>
+</div>
+</div>
+</section>
+
+<!-- RESULTS (hidden until calculated) -->
+<section class="results-section" id="resultsSection">
+<div class="container">
+<div class="results-inner">
+
+  <div class="recalc-bar">
+    <button class="recalc-btn" onclick="resetCalc()">&#8592; Change my answers</button>
+  </div>
+
+  <div class="results-headline">
+    <h2 id="resultsTitle"></h2>
+    <p id="resultsSub"></p>
+  </div>
+
+  <div class="big-number-grid" id="bigNumbers"></div>
+
+  <div class="breakdown" id="breakdownSection">
+    <div class="breakdown-header">
+      <span class="breakdown-title">Where your time goes</span>
+    </div>
+    <div class="breakdown-body" id="breakdownBody"></div>
+  </div>
+
+  <div class="insight-grid" id="insightGrid"></div>
+
+  <div class="gap-bar-section" id="gapSection">
+    <div class="gap-bar-title">Your consistency score</div>
+    <div id="gapBars"></div>
+  </div>
+
+  <div class="compare-section">
+    <div class="compare-header"><h3>Your time vs. a production partner</h3></div>
+    <div class="compare-body" id="compareBody"></div>
+  </div>
+
+  <div class="results-cta">
+    <h3>You do not have a content problem. You have a systems problem.</h3>
+    <p>A Story Sprint shows you what a production system looks like for your content, your audience, and your goals. 60 minutes. You leave with a plan that replaces all of this.</p>
+    <a href="/story-sprint" class="btn-primary">Start a Story Sprint</a>
+    <p class="results-cta-sub">$500 individuals / $750 organizations. Upgrade to Sprint+ for a Voice Profile. 100% applies to your first month if you move forward.</p>
+  </div>
+
+  <div class="gate-card">
+    <h3>Get your full cost report</h3>
+    <p>We will email you a summary of these numbers plus 3 specific recommendations for your situation.</p>
+    <div class="gate-form" id="gateForm">
+      <input type="email" id="gateEmail" placeholder="Your email" autocomplete="email">
+      <button type="button" id="gateBtn" onclick="submitGate()">Send it</button>
+    </div>
+    <div class="gate-note">No spam. Just your report.</div>
+    <div class="gate-success" id="gateSuccess">Sent. Check your inbox.</div>
+  </div>
+
+</div>
+</div>
+</section>
+
+<!-- ALT TOOLS -->
+<div class="alt-tools" id="altTools" style="display:none">
+<div class="container">
+  <p class="alt-tools-label">Not ready yet? Start here instead.</p>
+  <div class="alt-tools-grid">
+    <a href="/scorecard" class="alt-tool-card"><span class="alt-tool-card-title">Visibility Scorecard</span><span class="alt-tool-card-desc">Rate yourself on 10 dimensions</span></a>
+    <a href="/content-pillars" class="alt-tool-card"><span class="alt-tool-card-title">Content Pillars</span><span class="alt-tool-card-desc">Define what you talk about</span></a>
+    <a href="/post-ideas" class="alt-tool-card"><span class="alt-tool-card-title">50 Post Ideas</span><span class="alt-tool-card-desc">Grab one and publish today</span></a>
+  </div>
+</div>
+</div>
+
+<footer class="footer"><div class="container"><div class="footer-grid">
+<div class="footer-brand"><h3>ClarityForge Studios</h3><p>Media systems for energy leaders.<br>Bend, Oregon.</p></div>
+<div class="footer-links"><h4>Navigate</h4><a href="/services">Services</a><a href="/podcast-production">Podcast Production</a><a href="/executive-visibility">Executive Visibility</a><a href="/strategic-partnerships">Strategic Partnerships</a><a href="/work">Work</a><a href="/about">About</a><a href="/blog">Blog</a><a href="/resources">Resources</a></div>
+<div class="footer-contact"><h4>Get in Touch</h4><div class="footer-social" style="display:flex;gap:.85rem;margin-bottom:1rem"><a href="https://www.linkedin.com/company/clarityforge-studios/" aria-label="ClarityForge Studios on LinkedIn" target="_blank" rel="noopener" style="padding:0;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid rgba(255,255,255,.12);border-radius:6px;color:var(--medium-gray);transition:color .2s,border-color .2s"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.268 2.37 4.268 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="https://www.youtube.com/@TheForgeYouTube" aria-label="The Forge on YouTube" target="_blank" rel="noopener" style="padding:0;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid rgba(255,255,255,.12);border-radius:6px;color:var(--medium-gray);transition:color .2s,border-color .2s"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a><a href="https://clarityforgestudios.substack.com/" aria-label="The Forge on Substack" target="_blank" rel="noopener" style="padding:0;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid rgba(255,255,255,.12);border-radius:6px;color:var(--medium-gray);transition:color .2s,border-color .2s"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg></a></div><a href="/contact">Email</a><a href="tel:5125696612">(512) 569-6612</a><a href="/contact">Contact</a></div>
+</div><div class="footer-bottom"><span>&copy; 2026 ClarityForge Studios LLC</span><a href="/privacy-policy">Privacy Policy</a></div></div></footer>
+<div class="mobile-cta"><a href="/story-sprint" class="btn-primary">Start a Story Sprint</a></div>
+
+<script>
+/* ============================
+   CALCULATOR STATE & CONFIG
+   ============================ */
+var state = {
+  step: 0,
+  role: '',
+  hourlyRate: 0,
+  hoursPerWeek: 0,
+  platforms: [],
+  frequency: '',
+  hasHelp: ''
+};
+
+var STEPS = [
+  {
+    id: 'role',
+    label: 'Step 1 of 5',
+    question: 'What best describes your role?',
+    context: 'This helps us estimate the opportunity cost of your time.',
+    type: 'options-single',
+    options: [
+      { value: 'c-suite', label: 'C-Suite / Founder', sub: 'CEO, COO, CTO, Founder', rate: 275 },
+      { value: 'vp', label: 'VP / SVP', sub: 'Vice President, Senior VP', rate: 200 },
+      { value: 'director', label: 'Director', sub: 'Director-level', rate: 150 },
+      { value: 'sme', label: 'Subject Matter Expert', sub: 'Researcher, Engineer, Policy, Professor', rate: 125 },
+      { value: 'manager', label: 'Manager / Specialist', sub: 'Manager, Analyst, Coordinator', rate: 100 }
+    ]
+  },
+  {
+    id: 'hourlyRate',
+    label: 'Step 2 of 5',
+    question: 'What do you estimate your fully loaded hourly rate is?',
+    context: 'Include salary, benefits, and overhead. If you are not sure, we pre-filled a reasonable estimate based on your role. Adjust if needed.',
+    type: 'input',
+    inputLabel: 'Hourly rate (USD)',
+    placeholder: '200',
+    suffix: '/ hour'
+  },
+  {
+    id: 'platforms',
+    label: 'Step 3 of 5',
+    question: 'Which platforms are you trying to maintain?',
+    context: 'Check all that apply. Each platform adds planning, formatting, and scheduling time.',
+    type: 'checklist',
+    items: [
+      { value: 'linkedin', label: 'LinkedIn', time: 2.5 },
+      { value: 'newsletter', label: 'Newsletter / Substack', time: 2 },
+      { value: 'podcast', label: 'Podcast', time: 5 },
+      { value: 'youtube', label: 'YouTube', time: 4 },
+      { value: 'twitter', label: 'X (Twitter)', time: 1.5 },
+      { value: 'website', label: 'Website / Blog', time: 3 },
+      { value: 'other', label: 'Other (Reddit, TikTok, etc.)', time: 1.5 }
+    ]
+  },
+  {
+    id: 'frequency',
+    label: 'Step 4 of 5',
+    question: 'How often do you actually publish?',
+    context: 'Be honest. Not how often you intend to. How often content actually goes live.',
+    type: 'options-3',
+    options: [
+      { value: 'rarely', label: 'Rarely', sub: '0-2x per month', multiplier: 0.6, wasteFactor: 0.4 },
+      { value: 'sometimes', label: 'Sometimes', sub: '1-2x per week', multiplier: 0.8, wasteFactor: 0.15 },
+      { value: 'consistent', label: 'Consistently', sub: '3-5x per week', multiplier: 1.0, wasteFactor: 0 }
+    ]
+  },
+  {
+    id: 'hasHelp',
+    label: 'Step 5 of 5',
+    question: 'Do you have any help with content right now?',
+    context: 'Freelancer, VA, internal team member, agency, or are you doing it all yourself?',
+    type: 'options-3',
+    options: [
+      { value: 'none', label: 'No help', sub: 'I do everything myself', overhead: 1.0 },
+      { value: 'some', label: 'Some help', sub: 'Freelancer or part-time VA', overhead: 0.6 },
+      { value: 'team', label: 'Dedicated support', sub: 'Internal or agency', overhead: 0.35 }
+    ]
+  }
+];
+
+var TOTAL_STEPS = STEPS.length;
+
+/* ============================
+   RENDER FUNCTIONS
+   ============================ */
+function renderProgress() {
+  var html = '';
+  for (var i = 0; i < TOTAL_STEPS; i++) {
+    var cls = 'calc-progress-step';
+    if (i < state.step) cls += ' done';
+    else if (i === state.step) cls += ' active';
+    html += '<div class="' + cls + '"></div>';
+  }
+  document.getElementById('calcProgress').innerHTML = html;
+}
+
+function renderStep() {
+  if (state.step >= TOTAL_STEPS) {
+    showResults();
+    return;
+  }
+  var s = STEPS[state.step];
+  var html = '<div class="step-card">';
+  html += '<div class="step-label">' + esc(s.label) + '</div>';
+  html += '<div class="step-question">' + esc(s.question) + '</div>';
+  html += '<div class="step-context">' + esc(s.context) + '</div>';
+
+  if (s.type === 'options' || s.type === 'options-3') {
+    var gridCls = s.type === 'options-3' ? 'option-grid option-grid-3' : 'option-grid';
+    html += '<div class="' + gridCls + '" id="optionGrid">';
+    for (var i = 0; i < s.options.length; i++) {
+      var o = s.options[i];
+      var sel = state[s.id] === o.value ? ' selected' : '';
+      html += '<button class="option-btn' + sel + '" onclick="selectOption(\'' + s.id + '\',\'' + o.value + '\',this)">';
+      html += esc(o.label);
+      if (o.sub) html += '<span class="option-btn-sub">' + esc(o.sub) + '</span>';
+      html += '</button>';
+    }
+    html += '</div>';
+  }
+
+  if (s.type === 'options-single') {
+    html += '<div class="check-list" id="optionGrid">';
+    for (var i2 = 0; i2 < s.options.length; i2++) {
+      var o2 = s.options[i2];
+      var sel2 = state[s.id] === o2.value ? ' selected' : '';
+      html += '<button class="option-btn' + sel2 + '" onclick="selectOption(\'' + s.id + '\',\'' + o2.value + '\',this)" style="text-align:left;display:flex;justify-content:space-between;align-items:center">';
+      html += '<span>' + esc(o2.label) + '</span>';
+      if (o2.sub) html += '<span class="option-btn-sub" style="margin-top:0">' + esc(o2.sub) + '</span>';
+      html += '</button>';
+    }
+    html += '</div>';
+  }
+
+  if (s.type === 'input') {
+    var val = state.hourlyRate || '';
+    html += '<div class="input-group">';
+    html += '<label class="input-label">' + esc(s.inputLabel) + '</label>';
+    html += '<div class="input-suffix">';
+    html += '<input class="input-field" type="number" id="rateInput" value="' + val + '" placeholder="' + esc(s.placeholder) + '" min="25" max="2000" oninput="updateRate(this.value)">';
+    html += '<span class="input-suffix-text">' + esc(s.suffix) + '</span>';
+    html += '</div></div>';
+  }
+
+  if (s.type === 'checklist') {
+    html += '<div class="check-list" id="checkList">';
+    for (var j = 0; j < s.items.length; j++) {
+      var it = s.items[j];
+      var chk = state.platforms.indexOf(it.value) > -1 ? ' checked' : '';
+      html += '<div class="check-item' + chk + '" onclick="toggleCheck(\'' + it.value + '\',this)">';
+      html += '<div class="check-box"></div>';
+      html += '<span class="check-text">' + esc(it.label) + '</span>';
+      html += '</div>';
+    }
+    html += '</div>';
+  }
+
+  // Nav buttons
+  html += '<div class="step-nav">';
+  if (state.step > 0) {
+    html += '<button class="step-back" onclick="prevStep()">&larr; Back</button>';
+  } else {
+    html += '<span></span>';
+  }
+  var canNext = canProceed();
+  html += '<button class="step-next" id="nextBtn" onclick="nextStep()"' + (canNext ? '' : ' disabled') + '>';
+  html += state.step === TOTAL_STEPS - 1 ? 'See my results' : 'Next';
+  html += '</button>';
+  html += '</div>';
+
+  html += '</div>';
+  document.getElementById('stepContainer').innerHTML = html;
+  renderProgress();
+
+  // Auto-focus rate input
+  if (s.type === 'input') {
+    var inp = document.getElementById('rateInput');
+    if (inp) setTimeout(function(){ inp.focus(); }, 100);
+  }
+}
+
+function canProceed() {
+  var s = STEPS[state.step];
+  if (s.id === 'role') return !!state.role;
+  if (s.id === 'hourlyRate') return state.hourlyRate >= 25;
+  if (s.id === 'platforms') return state.platforms.length > 0;
+  if (s.id === 'frequency') return !!state.frequency;
+  if (s.id === 'hasHelp') return !!state.hasHelp;
+  return true;
+}
+
+function selectOption(field, value, btn) {
+  state[field] = value;
+
+  // If selecting role, pre-fill hourly rate
+  if (field === 'role') {
+    var opt = STEPS[0].options;
+    for (var i = 0; i < opt.length; i++) {
+      if (opt[i].value === value) {
+        state.hourlyRate = opt[i].rate;
+        break;
+      }
+    }
+  }
+
+  var btns = btn.parentNode.querySelectorAll('.option-btn');
+  for (var j = 0; j < btns.length; j++) btns[j].classList.remove('selected');
+  btn.classList.add('selected');
+  document.getElementById('nextBtn').disabled = false;
+}
+
+function updateRate(val) {
+  state.hourlyRate = parseInt(val) || 0;
+  document.getElementById('nextBtn').disabled = !canProceed();
+}
+
+function toggleCheck(value, el) {
+  var idx = state.platforms.indexOf(value);
+  if (idx > -1) {
+    state.platforms.splice(idx, 1);
+    el.classList.remove('checked');
+  } else {
+    state.platforms.push(value);
+    el.classList.add('checked');
+  }
+  document.getElementById('nextBtn').disabled = !canProceed();
+}
+
+function nextStep() {
+  if (!canProceed()) return;
+  state.step++;
+  renderStep();
+  // Scroll to top of calc
+  document.querySelector('.calc-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function prevStep() {
+  if (state.step > 0) {
+    state.step--;
+    renderStep();
+  }
+}
+
+function resetCalc() {
+  state.step = 0;
+  state.role = '';
+  state.hourlyRate = 0;
+  state.hoursPerWeek = 0;
+  state.platforms = [];
+  state.frequency = '';
+  state.hasHelp = '';
+  document.getElementById('resultsSection').style.display = 'none';
+  document.getElementById('altTools').style.display = 'none';
+  document.querySelector('.calc-wrap').style.display = 'block';
+  renderStep();
+  document.querySelector('.calc-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ============================
+   RESULTS CALCULATION
+   ============================ */
+/* ============================
+   COMPUTE (pure function — no DOM)
+   Returns all derived values needed by both the on-site render
+   and the form submission payload. This is the single source of
+   truth for the results logic; logic conservation principle.
+   ============================ */
+function computeResults() {
+  var rate = state.hourlyRate;
+  var platformItems = STEPS[2].items;
+  var totalHrsWeek = 0;
+  var breakdown = [];
+
+  for (var i = 0; i < state.platforms.length; i++) {
+    for (var j = 0; j < platformItems.length; j++) {
+      if (platformItems[j].value === state.platforms[i]) {
+        var baseTime = platformItems[j].time;
+        breakdown.push({ task: platformItems[j].label, hrs: baseTime });
+        totalHrsWeek += baseTime;
+      }
+    }
+  }
+
+  // Add overhead tasks (scale with platform count)
+  // Single platform: ~2 hrs overhead. Many platforms: ~4-5 hrs overhead.
+  var planTime = Math.max(0.5, state.platforms.length * 0.35);
+  var ideaTime = Math.max(0.5, state.platforms.length * 0.3);
+  var engageTime = Math.min(2.5, Math.max(0.75, state.platforms.length * 0.5));
+  breakdown.push({ task: 'Content planning and scheduling', hrs: planTime });
+  breakdown.push({ task: 'Ideation and research', hrs: ideaTime });
+  breakdown.push({ task: 'Engagement (commenting, replies)', hrs: engageTime });
+  totalHrsWeek += planTime + ideaTime + engageTime;
+
+  // Frequency adjustment
+  // "Rarely" doesn't mean less work. It means roughly the same planning/drafting
+  // effort but most of it never ships. We keep hours high but note the waste.
+  var freqOpts = STEPS[3].options;
+  var freqMult = 1;
+  var wasteFactor = 0;
+  for (var k = 0; k < freqOpts.length; k++) {
+    if (freqOpts[k].value === state.frequency) {
+      freqMult = freqOpts[k].multiplier;
+      wasteFactor = freqOpts[k].wasteFactor;
+    }
+  }
+
+  // Help adjustment
+  var helpOpts = STEPS[4].options;
+  var helpMult = 1;
+  for (var m = 0; m < helpOpts.length; m++) {
+    if (helpOpts[m].value === state.hasHelp) {
+      helpMult = helpOpts[m].overhead;
+    }
+  }
+
+  // Your personal weekly/monthly time
+  var yourHrsWeek = totalHrsWeek * freqMult * helpMult;
+  var yourHrsMonth = yourHrsWeek * 4.33;
+  var monthlyCost = yourHrsMonth * rate;
+  var annualCost = monthlyCost * 12;
+
+  // Wasted hours: time spent that never becomes published content
+  var wastedHrsMonth = yourHrsMonth * wasteFactor;
+  var wastedCost = wastedHrsMonth * rate;
+
+  // What they are producing vs what they could produce with a system
+  var potentialPiecesPerPlatform = 8;
+  var potentialPieces = state.platforms.length * potentialPiecesPerPlatform;
+  var piecesPerPlatform = state.frequency === 'rarely' ? 2 : state.frequency === 'sometimes' ? 4.5 : 7;
+  var actualPieces = Math.max(1, Math.round(state.platforms.length * piecesPerPlatform));
+  var costPerPiece = actualPieces > 0 ? Math.round(monthlyCost / actualPieces) : 0;
+
+  // Opportunity cost framing (tier-based)
+  var oppActivities = [];
+  if (rate >= 200) {
+    oppActivities.push({ activity: 'Close a deal or partnership', value: '$10K-50K+' });
+    oppActivities.push({ activity: 'Attend an industry conference', value: '3-5 new relationships' });
+    oppActivities.push({ activity: 'Prepare a board presentation', value: 'Strategic alignment' });
+  } else if (rate >= 125) {
+    oppActivities.push({ activity: 'Develop a research paper or talk', value: 'Career credibility' });
+    oppActivities.push({ activity: 'Build a key industry relationship', value: 'Long-term leverage' });
+    oppActivities.push({ activity: 'Mentor a team member', value: 'Organizational capacity' });
+  } else {
+    oppActivities.push({ activity: 'Take on a revenue-generating project', value: 'Direct income' });
+    oppActivities.push({ activity: 'Upskill in your core domain', value: 'Career growth' });
+    oppActivities.push({ activity: 'Build your professional network', value: '5-10 new connections' });
+  }
+
+  // Partner comparison
+  var partnerHrs = state.platforms.indexOf('podcast') > -1 ? 5 : 2;
+  var timeSavedMonthly = Math.round(yourHrsMonth - partnerHrs);
+  var timeSavedAnnual = timeSavedMonthly * 12;
+
+  // Consistency scores
+  var pubScore = Math.round(freqMult * 100);
+  var qualScore = state.hasHelp === 'none' ? 35 : state.hasHelp === 'some' ? 55 : 80;
+  var outputScore = Math.min(100, Math.round((actualPieces / potentialPieces) * 100));
+
+  // Headline tier (drives email + on-site heading selection)
+  var headlineTier;
+  if (annualCost > 50000) headlineTier = 'six-figure';
+  else if (annualCost > 25000) headlineTier = 'costs-more';
+  else headlineTier = 'baseline';
+
+  return {
+    rate: rate,
+    breakdown: breakdown,
+    freqMult: freqMult,
+    helpMult: helpMult,
+    wasteFactor: wasteFactor,
+    yourHrsMonth: yourHrsMonth,
+    monthlyCost: monthlyCost,
+    annualCost: annualCost,
+    wastedHrsMonth: wastedHrsMonth,
+    wastedCost: wastedCost,
+    potentialPieces: potentialPieces,
+    actualPieces: actualPieces,
+    costPerPiece: costPerPiece,
+    oppActivities: oppActivities,
+    partnerHrs: partnerHrs,
+    timeSavedMonthly: timeSavedMonthly,
+    timeSavedAnnual: timeSavedAnnual,
+    pubScore: pubScore,
+    qualScore: qualScore,
+    outputScore: outputScore,
+    headlineTier: headlineTier
+  };
+}
+
+function showResults() {
+  // Hide calc, show results
+  document.querySelector('.calc-wrap').style.display = 'none';
+  document.getElementById('resultsSection').style.display = 'block';
+  document.getElementById('altTools').style.display = 'block';
+
+  var r = computeResults();
+  var rate = r.rate;
+  var breakdown = r.breakdown;
+  var freqMult = r.freqMult;
+  var helpMult = r.helpMult;
+  var yourHrsMonth = r.yourHrsMonth;
+  var monthlyCost = r.monthlyCost;
+  var annualCost = r.annualCost;
+  var wastedHrsMonth = r.wastedHrsMonth;
+  var wastedCost = r.wastedCost;
+  var potentialPieces = r.potentialPieces;
+  var actualPieces = r.actualPieces;
+  var costPerPiece = r.costPerPiece;
+  var oppActivities = r.oppActivities;
+  var partnerHrs = r.partnerHrs;
+  var timeSavedMonthly = r.timeSavedMonthly;
+  var timeSavedAnnual = r.timeSavedAnnual;
+  var pubScore = r.pubScore;
+  var qualScore = r.qualScore;
+  var outputScore = r.outputScore;
+
+  // Store calculated values for form submission (back-compat with existing submitGate)
+  state.calculatedAnnual = Math.round(annualCost);
+  state.calculatedMonthlyHrs = Math.round(yourHrsMonth);
+  state.computed = r;
+
+  // === RENDER RESULTS ===
+
+  // 1. HEADLINE - the shock
+  var titleEl = document.getElementById('resultsTitle');
+  var subEl = document.getElementById('resultsSub');
+  if (annualCost > 50000) {
+    titleEl.textContent = 'Your content is a hidden six-figure line item.';
+    subEl.textContent = 'You are spending more on DIY content than most companies spend on a dedicated hire. And most of it is your time, not theirs.';
+  } else if (annualCost > 25000) {
+    titleEl.textContent = 'Your content costs more than you think.';
+    subEl.textContent = 'The real cost is not just the dollars. It is ' + Math.round(yourHrsMonth) + ' hours every month that you are not spending on the work only you can do.';
+  } else {
+    titleEl.textContent = 'Here is what your content is costing you.';
+    subEl.textContent = Math.round(yourHrsMonth) + ' hours a month adds up. And without a system, that time rarely compounds into real visibility.';
+  }
+
+  // 2. BIG NUMBERS - annual cost + monthly hours (the two things that hit hardest)
+  var bigHtml = '';
+  bigHtml += '<div class="big-number-card highlight"><div class="big-number-label">Annual content cost</div><div class="big-number-value">$' + formatNum(Math.round(annualCost)) + '</div><div class="big-number-sub">In hidden labor and opportunity cost</div></div>';
+  bigHtml += '<div class="big-number-card"><div class="big-number-label">Your time each month</div><div class="big-number-value">' + Math.round(yourHrsMonth) + ' hrs</div><div class="big-number-sub">$' + formatNum(Math.round(monthlyCost)) + '/mo at your rate</div></div>';
+  document.getElementById('bigNumbers').innerHTML = bigHtml;
+
+  // 3. BREAKDOWN - where the time goes (the "oh, that's where it all goes" moment)
+  var bdHtml = '';
+  for (var n = 0; n < breakdown.length; n++) {
+    var adjHrs = breakdown[n].hrs * freqMult * helpMult * 4.33;
+    var adjCost = adjHrs * rate;
+    bdHtml += '<div class="breakdown-row">';
+    bdHtml += '<span class="breakdown-task">' + esc(breakdown[n].task) + '</span>';
+    bdHtml += '<span class="breakdown-hrs">' + adjHrs.toFixed(1) + ' hrs/mo</span>';
+    bdHtml += '<span class="breakdown-cost">$' + formatNum(Math.round(adjCost)) + '</span>';
+    bdHtml += '</div>';
+  }
+  bdHtml += '<div class="breakdown-row total-row">';
+  bdHtml += '<span class="breakdown-task">Total</span>';
+  bdHtml += '<span class="breakdown-hrs">' + Math.round(yourHrsMonth) + ' hrs/mo</span>';
+  bdHtml += '<span class="breakdown-cost">$' + formatNum(Math.round(monthlyCost)) + '/mo</span>';
+  bdHtml += '</div>';
+  if (wastedHrsMonth > 1) {
+    bdHtml += '<div style="background:var(--warn-light);border-top:2px solid var(--orange);padding:.75rem 1.5rem">';
+    bdHtml += '<span style="font-size:.78rem;color:var(--orange)">Of that total, an estimated <strong>' + wastedHrsMonth.toFixed(0) + ' hrs</strong> ($' + formatNum(Math.round(wastedCost)) + ') goes toward content you plan or draft but never publish.</span>';
+    bdHtml += '</div>';
+  }
+  document.getElementById('breakdownBody').innerHTML = bdHtml;
+
+  // 4. OPPORTUNITY COST - what you could do with this time instead
+  var insHtml = '';
+  insHtml += '<div class="insight-card"><div class="insight-icon">&#9201;</div><div class="insight-value">' + timeSavedAnnual + ' hrs</div><div class="insight-label">Hours you could reclaim per year with a production partner</div></div>';
+  for (var p = 0; p < Math.min(2, oppActivities.length); p++) {
+    insHtml += '<div class="insight-card"><div class="insight-icon">' + (p === 0 ? '&#128161;' : '&#127919;') + '</div><div class="insight-value">' + esc(oppActivities[p].value) + '</div><div class="insight-label">If you used that time to: ' + esc(oppActivities[p].activity.toLowerCase()) + '</div></div>';
+  }
+  document.getElementById('insightGrid').innerHTML = insHtml;
+
+  // 5. CONSISTENCY SCORE - quick visual gut-check
+  var gapHtml = '';
+  gapHtml += renderGapBar('Publishing consistency', pubScore);
+  gapHtml += renderGapBar('Estimated content quality', qualScore);
+  gapHtml += renderGapBar('Output vs. potential', outputScore);
+  document.getElementById('gapBars').innerHTML = gapHtml;
+
+  // 6. COMPARISON - the before/after that sells (right before CTA)
+  var compHtml = '';
+  compHtml += '<div class="compare-col">';
+  compHtml += '<div class="compare-col-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Current (DIY)</div>';
+  compHtml += '<div class="compare-metric"><div class="compare-metric-value">' + Math.round(yourHrsMonth) + ' hours/mo</div><div class="compare-metric-label">Your time on content</div></div>';
+  compHtml += '<div class="compare-metric"><div class="compare-metric-value">$' + formatNum(Math.round(monthlyCost)) + '/mo</div><div class="compare-metric-label">Hidden labor cost</div></div>';
+  compHtml += '<div class="compare-metric"><div class="compare-metric-value">' + actualPieces + ' pieces/mo</div><div class="compare-metric-label">Content output (estimated)</div></div>';
+  compHtml += '<div class="compare-metric"><div class="compare-metric-value">$' + formatNum(costPerPiece) + '</div><div class="compare-metric-label">Cost per piece</div></div>';
+  compHtml += '</div>';
+
+  compHtml += '<div class="compare-col">';
+  compHtml += '<div class="compare-col-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="8,12 11,15 16,9"/></svg> With a production partner</div>';
+  compHtml += '<div class="compare-metric"><div class="compare-metric-value">' + partnerHrs + ' hours/mo</div><div class="compare-metric-label">Your time on content</div></div>';
+  compHtml += '<div class="compare-metric"><div class="compare-metric-value">A fraction of $' + formatNum(Math.round(monthlyCost)) + '</div><div class="compare-metric-label">Predictable monthly investment</div></div>';
+  compHtml += '<div class="compare-metric"><div class="compare-metric-value">' + potentialPieces + '+ pieces/mo</div><div class="compare-metric-label">Content output</div></div>';
+  compHtml += '<div class="compare-metric"><div class="compare-metric-value">' + timeSavedMonthly + ' hrs back</div><div class="compare-metric-label">Time returned to your core work</div></div>';
+  compHtml += '</div>';
+  document.getElementById('compareBody').innerHTML = compHtml;
+
+  // Reset gate form
+  document.getElementById('gateForm').style.display = 'flex';
+  document.getElementById('gateSuccess').style.display = 'none';
+  document.getElementById('gateEmail').value = '';
+  document.getElementById('gateBtn').disabled = false;
+
+  // Scroll to results
+  setTimeout(function() {
+    document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+
+function renderGapBar(label, pct) {
+  var cls = pct < 40 ? 'low' : pct < 70 ? 'mid' : 'high';
+  var h = '<div class="gap-bar-row">';
+  h += '<div class="gap-bar-label"><span>' + esc(label) + '</span><span>' + pct + '%</span></div>';
+  h += '<div class="gap-bar-track"><div class="gap-bar-fill ' + cls + '" style="width:' + pct + '%"></div></div>';
+  h += '</div>';
+  return h;
+}
+
+/* ============================
+   EMAIL GATE
+   ============================ */
+function submitGate() {
+  var email = document.getElementById('gateEmail').value.trim();
+  if (!email || email.indexOf('@') < 1 || email.indexOf('.', email.indexOf('@')) < 0 || email.length < 5) return;
+
+  var btn = document.getElementById('gateBtn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  // Pull from shared compute (populated by showResults()). If the user somehow
+  // submits before showResults has run, recompute on the fly.
+  var r = state.computed || computeResults();
+
+  // Build monthly breakdown with adjusted hours + cost per row (matching on-site render math)
+  var breakdownMonthly = r.breakdown.map(function(b){
+    var adjHrs = b.hrs * r.freqMult * r.helpMult * 4.33;
+    return {
+      task: b.task,
+      adjHrs: Number(adjHrs.toFixed(1)),
+      adjCost: Math.round(adjHrs * r.rate)
+    };
+  });
+
+  var costNarrative = '';
+  if (r.annualCost && r.rate) {
+    costNarrative = 'At $' + r.rate + '/hr spending ' + Math.round(r.yourHrsMonth) + ' hrs/month, you\'re absorbing about $' + formatNum(Math.round(r.annualCost)) + '/year in opportunity cost.';
+  }
+
+  var payload = {
+    email: email,
+    source: 'Content Cost Calculator',
+    _gotcha: '',
+    role: state.role,
+    hourly_rate: state.hourlyRate,
+    platforms: state.platforms.join(', '),
+    frequency: state.frequency,
+    has_help: state.hasHelp,
+    // Primary numbers (back-compat + hero)
+    annual_cost: Math.round(r.annualCost),
+    monthly_cost: Math.round(r.monthlyCost),
+    monthly_hours: Math.round(r.yourHrsMonth),
+    cost_narrative: costNarrative,
+    headline_tier: r.headlineTier,
+    // Breakdown table
+    platform_breakdown: breakdownMonthly,
+    // Waste
+    wasted_hours: Math.round(r.wastedHrsMonth),
+    wasted_cost: Math.round(r.wastedCost),
+    // Output
+    actual_pieces: r.actualPieces,
+    potential_pieces: r.potentialPieces,
+    cost_per_piece: r.costPerPiece,
+    // Opportunity
+    opp_activities: r.oppActivities,
+    // Partner comparison
+    partner_hrs: r.partnerHrs,
+    time_saved_monthly: r.timeSavedMonthly,
+    time_saved_annual: r.timeSavedAnnual,
+    // Consistency bars
+    consistency_scores: {
+      pubScore: r.pubScore,
+      qualScore: r.qualScore,
+      outputScore: r.outputScore
+    }
+  };
+
+  fetch('https://nathanpeavey.app.n8n.cloud/webhook/clarityforge-forms', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  })
+  .then(function(response) {
+    if (response.ok) {
+      document.getElementById('gateForm').style.display = 'none';
+      document.getElementById('gateSuccess').style.display = 'block';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Send it';
+    }
+  })
+  .catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Send it';
+  });
+}
+
+/* ============================
+   UTILITIES
+   ============================ */
+function esc(s) {
+  var d = document.createElement('div');
+  d.appendChild(document.createTextNode(s));
+  return d.innerHTML;
+}
+
+function formatNum(n) {
+  return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+/* ============================
+   INIT
+   ============================ */
+renderStep();
+</script>
+
+<!-- LinkedIn Insight Tag -->
+<script type="text/javascript">
+_linkedin_partner_id = "9160108";
+window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+</script><script type="text/javascript">
+(function(l) {
+if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
+window.lintrk.q=[]}
+var s = document.getElementsByTagName("script")[0];
+var b = document.createElement("script");
+b.type = "text/javascript";b.async = true;
+b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+s.parentNode.insertBefore(b, s);})(window.lintrk);
+</script>
+<noscript>
+<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=9160108&fmt=gif" />
+</noscript>
+</body>
+</html>
