@@ -1,1 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>TEPM Team Hub · ClarityForge Studios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep-navy: #1A2A3A;
+    --navy: #2A3D4F;
+    --gold: #FFB64D;
+    --orange: #E8713A;
+    --orange-dark: #D4622E;
+    --near-black: #1C1E22;
+    --dark-gray: #3D4550;
+    --medium-gray: #6B7785;
+    --light-gray: #B0B8C1;
+    --border-gray: #DFE2E6;
+    --section-gray: #F2F3F5;
+    --warm-white: #FAFAF8;
+    --pure-white: #FFFFFF;
+    --success: #4A8C5E;
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--warm-white);
+    color: var(--near-black);
+    line-height: 1.55;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .display { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.01em; line-height: 1.15; }
 
+  .topbar {
+    background: var(--deep-navy);
+    color: var(--warm-white);
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.15);
+  }
+  .topbar-brand {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--warm-white);
+    text-decoration: none;
+    margin-right: auto;
+    letter-spacing: -0.01em;
+  }
+  .topbar-brand span { color: var(--gold); }
+  .topbar-search { flex: 1; max-width: 360px; position: relative; }
+  .topbar-search input {
+    width: 100%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    color: var(--warm-white);
+    padding: 0.55rem 0.9rem 0.55rem 2.4rem;
+    font-family: inherit;
+    font-size: 0.92rem;
+    outline: none;
+    transition: all 0.15s;
+  }
+  .topbar-search input::placeholder { color: rgba(250,250,248,0.5); }
+  .topbar-search input:focus {
+    background: rgba(255,255,255,0.14);
+    border-color: var(--gold);
+  }
+  .topbar-search::before {
+    content: '⌕';
+    position: absolute;
+    left: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(250,250,248,0.5);
+    font-size: 1.2rem;
+  }
+  .search-count {
+    position: absolute;
+    right: 0.7rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.72rem;
+    color: var(--gold);
+    font-weight: 600;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .search-count.show { opacity: 1; }
+
+  .hero {
+    background: var(--deep-navy);
+    color: var(--warm-white);
+    padding: 3.5rem 2rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: radial-gradient(ellipse at 80% 40%, rgba(255,182,77,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
+  .hero-tag {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin-bottom: 0.7rem;
+    color: var(--warm-white);
+  }
+  .hero h1 em { font-style: normal; color: var(--gold); }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--light-gray);
+    max-width: 620px;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-note {
+    display: inline-block;
+    background: rgba(232,113,58,0.12);
+    border: 1px solid rgba(232,113,58,0.3);
+    color: var(--warm-white);
+    padding: 0.7rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 1.8rem;
+    max-width: 620px;
+  }
+  .hero-note strong { color: var(--gold); }
+
+  .quick-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.8rem;
+  }
+  .quick-action {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+    text-decoration: none;
+    color: var(--warm-white);
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .quick-action:hover {
+    background: rgba(255,182,77,0.1);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+  .quick-action-icon { font-size: 1.4rem; margin-bottom: 0.25rem; }
+  .quick-action-title { font-weight: 600; font-size: 0.98rem; color: var(--warm-white); }
+  .quick-action-meta { font-size: 0.78rem; color: rgba(250,250,248,0.55); }
+
+  .role-banner {
+    background: var(--gold);
+    color: var(--deep-navy);
+    padding: 0.9rem 2rem;
+    border-bottom: 1px solid var(--orange-dark);
+    position: sticky;
+    top: 58px;
+    z-index: 90;
+  }
+  .role-banner-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .role-banner-label { font-size: 0.92rem; font-weight: 700; color: var(--deep-navy); }
+  .role-banner-pills {
+    display: flex;
+    gap: 0.4rem;
+    background: rgba(26,42,58,0.12);
+    border-radius: 999px;
+    padding: 0.25rem;
+  }
+  .role-btn {
+    background: transparent;
+    border: none;
+    color: var(--deep-navy);
+    padding: 0.45rem 1.1rem;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .role-btn:hover { background: rgba(26,42,58,0.08); }
+  .role-btn.active { background: var(--deep-navy); color: var(--gold); }
+  .role-banner-hint {
+    font-size: 0.82rem;
+    color: var(--orange-dark);
+    margin-left: auto;
+    font-weight: 500;
+  }
+
+  .main-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 4rem;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2.5rem;
+  }
+  .side-nav {
+    position: sticky;
+    top: 130px;
+    align-self: start;
+    max-height: calc(100vh - 150px);
+    overflow-y: auto;
+  }
+  .side-nav-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--medium-gray);
+    margin-bottom: 0.7rem;
+  }
+  .side-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    border-left: 1px solid var(--border-gray);
+  }
+  .side-nav a {
+    display: block;
+    padding: 0.5rem 0.9rem;
+    color: var(--dark-gray);
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-left: 2px solid transparent;
+    margin-left: -1px;
+    transition: all 0.15s;
+  }
+  .side-nav a:hover { color: var(--deep-navy); background: var(--section-gray); }
+  .side-nav a.active {
+    color: var(--deep-navy);
+    font-weight: 600;
+    border-left-color: var(--gold);
+    background: var(--section-gray);
+  }
+
+  .content { min-width: 0; }
+  section { margin-bottom: 3rem; scroll-margin-top: 150px; }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid var(--border-gray);
+  }
+  .section-num { font-family: var(--font-display); font-size: 0.95rem; color: var(--gold); }
+  h2.section-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--deep-navy);
+    letter-spacing: -0.01em;
+  }
+  section p { color: var(--dark-gray); margin-bottom: 0.9rem; }
+
+  details {
+    background: var(--pure-white);
+    border: 1px solid var(--border-gray);
+    border-radius: 6px;
+    margin-bottom: 0.6rem;
+    transition: all 0.15s;
+  }
+  details[open] { border-color: var(--medium-gray); box-shadow: 0 2px 12px rgba(26,42,58,0.04); }
+  summary {
+    padding: 0.95rem 1.15rem;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: '+';
+    margin-left: auto;
+    color: var(--orange);
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1;
+  }
+  details[open] summary::after { content: '−'; }
+  summary:hover { background: var(--section-gray); }
+  details[open] summary { border-bottom: 1px solid var(--border-gray); }
+  .summary-title { font-weight: 600; color: var(--deep-navy); font-size: 1rem; }
+  .summary-meta { font-size: 0.8rem; color: var(--medium-gray); margin-left: 0.4rem; }
+  .summary-meta::before { content: '· '; }
+  .details-body { padding: 1.1rem 1.15rem 1.25rem; }
+  .details-body p:last-child { margin-bottom: 0; }
+  .details-body a {
+    color: var(--orange);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(232,113,58,0.3);
+  }
+  .details-body a:hover { color: var(--orange-dark); border-bottom-color: var(--orange-dark); }
+
+  .flow { display: flex; flex-direction: column; gap: 0.5rem; }
+  .flow-step {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    gap: 0.8rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px dashed var(--border-gray);
+    align-items: start;
+  }
+  .flow-step:last-child { border-bottom: none; }
+  .flow-num { font-family: var(--font-display); font-size: 1rem; color: var(--gold); line-height: 1.3; }
+  .flow-title { font-weight: 600; color: var(--deep-navy); font-size: 0.96rem; }
+  .flow-who { font-size: 0.8rem; color: var(--medium-gray); margin-top: 0.18rem; }
+  .flow-desc { font-size: 0.93rem; color: var(--dark-gray); margin-top: 0.32rem; }
+
+  .obd {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+    margin-bottom: 1rem;
+    padding: 0.85rem;
+    background: var(--section-gray);
+    border-radius: 6px;
+    font-size: 0.85rem;
+  }
+  .obd-label {
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--medium-gray);
+    margin-bottom: 0.18rem;
+  }
+  .obd-value { color: var(--deep-navy); font-weight: 600; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.7rem;
+  }
+  .card {
+    background: var(--pure-white);
+    border: 1px solid var(--border-gray);
+    border-radius: 6px;
+    padding: 1rem 1.1rem;
+  }
+  .card-title { font-weight: 600; color: var(--deep-navy); font-size: 0.96rem; margin-bottom: 0.25rem; }
+  .card-meta { font-size: 0.86rem; color: var(--dark-gray); }
+  .card-meta a { color: var(--orange); text-decoration: none; }
+  .card-meta a:hover { color: var(--orange-dark); }
+  .tag {
+    display: inline-block;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.55rem;
+    border-radius: 3px;
+    margin-bottom: 0.5rem;
+  }
+  .tag-podcast { background: rgba(42,61,79,0.1); color: var(--navy); }
+  .tag-newsletter { background: rgba(232,113,58,0.12); color: var(--orange-dark); }
+  .tag-both { background: rgba(74,140,94,0.12); color: var(--success); }
+  .tag-editor { background: rgba(255,182,77,0.18); color: var(--orange-dark); }
+  .tag-ref { background: var(--section-gray); color: var(--medium-gray); }
+
+  .callout {
+    background: rgba(255,182,77,0.08);
+    border-left: 3px solid var(--gold);
+    padding: 0.95rem 1.15rem;
+    border-radius: 0 4px 4px 0;
+    margin: 1rem 0;
+    font-size: 0.93rem;
+    color: var(--dark-gray);
+  }
+  .callout strong { color: var(--deep-navy); }
+
+  .change-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(74,140,94,0.18);
+    color: #9be0b3;
+    padding: 0.28rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    border: 1px solid rgba(74,140,94,0.3);
+    font-family: inherit;
+  }
+  .change-badge:hover { background: rgba(74,140,94,0.28); }
+  .change-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #6cd498;
+  }
+
+  .modal-backdrop {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(26,42,58,0.55);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal {
+    background: var(--pure-white);
+    max-width: 520px;
+    width: 100%;
+    border-radius: 8px;
+    padding: 1.6rem;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+  }
+  .modal h3 { font-family: var(--font-display); font-size: 1.3rem; color: var(--deep-navy); margin-bottom: 0.8rem; }
+  .modal-close {
+    position: absolute;
+    top: 0.8rem; right: 1rem;
+    background: none; border: none;
+    font-size: 1.6rem;
+    color: var(--medium-gray);
+    cursor: pointer;
+    line-height: 1;
+  }
+  .modal ul { margin: 0 0 0 1.2rem; }
+  .modal li { margin-bottom: 0.4rem; font-size: 0.92rem; color: var(--dark-gray); }
+
+  body[data-role="podcast"] .role-newsletter:not(.role-both) { display: none; }
+  body[data-role="newsletter"] .role-podcast:not(.role-both) { display: none; }
+
+  .search-hidden { display: none !important; }
+  .search-empty-state {
+    display: none;
+    padding: 2rem;
+    text-align: center;
+    color: var(--medium-gray);
+    background: var(--pure-white);
+    border: 1px dashed var(--border-gray);
+    border-radius: 6px;
+  }
+  .search-empty-state.show { display: block; }
+
+  footer {
+    background: var(--deep-navy);
+    color: rgba(250,250,248,0.55);
+    padding: 1.6rem 2rem;
+    text-align: center;
+    font-size: 0.84rem;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  .offline-strip {
+    background: var(--section-gray);
+    border-top: 1px solid var(--border-gray);
+    padding: 1.6rem 2rem;
+  }
+  .offline-strip-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .offline-strip-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--medium-gray);
+    margin-bottom: 0.9rem;
+  }
+  .offline-strip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.7rem;
+  }
+  .offline-link {
+    background: var(--pure-white);
+    border: 1px solid var(--border-gray);
+    border-radius: 6px;
+    padding: 0.85rem 1rem;
+    text-decoration: none;
+    color: var(--deep-navy);
+    transition: all 0.15s;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .offline-link:hover {
+    border-color: var(--gold);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(26,42,58,0.06);
+  }
+  .offline-link-title { font-weight: 600; font-size: 0.92rem; color: var(--deep-navy); }
+  .offline-link-meta { font-size: 0.78rem; color: var(--medium-gray); }
+
+  @media (max-width: 880px) {
+    .main-wrap { grid-template-columns: 1fr; padding: 1.5rem 1.25rem 3rem; gap: 1rem; }
+    .side-nav { position: static; max-height: none; margin-bottom: 1rem; }
+    .side-nav ul { flex-direction: row; flex-wrap: wrap; border-left: none; gap: 0.3rem; }
+    .side-nav a { padding: 0.35rem 0.75rem; border-left: none; border: 1px solid var(--border-gray); border-radius: 4px; font-size: 0.82rem; }
+    .side-nav a.active { border-color: var(--gold); }
+    .topbar { padding: 0.7rem 1rem; }
+    .topbar-search { order: 3; flex-basis: 100%; max-width: 100%; }
+    .hero { padding: 2.5rem 1.25rem 2.25rem; }
+    .role-banner { padding: 0.8rem 1.25rem; top: 92px; }
+    .role-banner-hint { display: none; }
+    .side-nav { top: auto; }
+    section { scroll-margin-top: 180px; }
+    .obd { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body data-role="all">
+
+<div class="topbar">
+  <a href="#top" class="topbar-brand">TEPM<span>·</span>Hub</a>
+  <div class="topbar-search">
+    <input type="text" id="search" placeholder="Search this hub..." aria-label="Search">
+    <span class="search-count" id="searchCount"></span>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-tag">Texas Energy &amp; Power · Team Hub</div>
+    <h1 class="display">Everything the team needs, <em>one page.</em></h1>
+    <p class="hero-sub">
+      Your operating reference for the Energy Capital Podcast and the Texas Energy and Power newsletter. Workflows, tools, calendars, who to ask. The role toggle below filters to what you actually work on.
+      <button class="change-badge" onclick="document.getElementById('changes').classList.add('open')">Recently updated</button>
+    </p>
+
+    <div class="hero-note">
+      <strong>Internal only.</strong> This hub and everything linked from it (Drive, Slack, pipeline data) stays inside the team. Do not share links externally. Guest pipeline data is admin-only and not for redistribution.
+    </div>
+
+    <div class="quick-actions">
+      <a class="quick-action role-podcast" href="https://drive.google.com/drive/folders/1Cll-1CYPU5-R8mGD1Y4B0lF7J5inM8wd?usp=drive_link" target="_blank">
+        <span class="quick-action-icon">📝</span>
+        <span class="quick-action-title">Substack drafts</span>
+        <span class="quick-action-meta">Drive · 0. Substack &amp; Socials</span>
+      </a>
+      <a class="quick-action role-newsletter" href="https://drive.google.com/drive/folders/1Fe3Id33KgfiRucOUWVvBu2yWISmYVs-B?usp=sharing" target="_blank">
+        <span class="quick-action-icon">📰</span>
+        <span class="quick-action-title">Newsletter drafts</span>
+        <span class="quick-action-meta">Drive · 2. Newsletter</span>
+      </a>
+      <a class="quick-action" href="https://calendar.google.com/calendar/u/0/r?cid=c_5e1231dbb1526ac5abc1f8d109bb655e6c540d14e29e56d11e0c912569fcd15d@group.calendar.google.com" target="_blank">
+        <span class="quick-action-icon">📅</span>
+        <span class="quick-action-title">TEPM Editorial Calendar</span>
+        <span class="quick-action-meta">Recordings, releases, ERCOT</span>
+      </a>
+      <a class="quick-action" href="https://tepm-team.slack.com/" target="_blank">
+        <span class="quick-action-icon">💬</span>
+        <span class="quick-action-title">Slack · TEPM Team</span>
+        <span class="quick-action-meta">#intake · #ec-guests · #editorial</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="role-banner">
+  <div class="role-banner-inner">
+    <span class="role-banner-label">I work on:</span>
+    <div class="role-banner-pills" role="tablist">
+      <button class="role-btn active" data-role="all" onclick="setRole('all')">Everything</button>
+      <button class="role-btn" data-role="podcast" onclick="setRole('podcast')">Podcast</button>
+      <button class="role-btn" data-role="newsletter" onclick="setRole('newsletter')">Newsletter</button>
+    </div>
+    <span class="role-banner-hint">Your choice is remembered.</span>
+  </div>
+</div>
+
+<div class="main-wrap">
+  <nav class="side-nav" aria-label="Section navigation">
+    <div class="side-nav-title">Sections</div>
+    <ul>
+      <li><a href="#team" class="nav-link">Team</a></li>
+      <li class="role-podcast"><a href="#podcast-flow" class="nav-link">Podcast workflow</a></li>
+      <li class="role-newsletter"><a href="#newsletter-flow" class="nav-link">Newsletter workflow</a></li>
+      <li><a href="#calendar" class="nav-link">Calendar</a></li>
+      <li><a href="#drive" class="nav-link">Drive structure</a></li>
+      <li><a href="#slack" class="nav-link">Slack channels</a></li>
+      <li><a href="#automation" class="nav-link">Automations</a></li>
+      <li><a href="#help" class="nav-link">Who to ask</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+
+    <div class="search-empty-state" id="emptyState">
+      No sections match that search. Try a name, a tool, or a workflow keyword.
+    </div>
+
+    <section id="team" data-search="team people who members nate doug elizabeth emma josh matt tiffany seyi carl contact email phone">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <h2 class="section-title">Team</h2>
+      </div>
+      <p>Everyone listed has full access to the Google Drive folders. Click a name for contact info and role detail.</p>
+
+      <details>
+        <summary>
+          <span class="summary-title">Nate Peavey</span>
+          <span class="summary-meta">Owns the podcast · Both teams</span>
+        </summary>
+        <div class="details-body">
+          <p>Owns the Energy Capital Podcast end-to-end: production, guest pipeline coordination with Emma, recording setup, publishing, distribution. Also owns the systems and the TEPM Team Hub. First stop for anything technical, access-related, or process-design.</p>
+          <p><strong>Email:</strong> <a href="mailto:nathan@clarityforgestudios.com">nathan@clarityforgestudios.com</a></p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title">Doug Lewin</span>
+          <span class="summary-meta">Founder of TEPM · Both teams</span>
+        </summary>
+        <div class="details-body">
+          <p>Strategic voice across the operation. Final editorial direction. Original creator of Texas Energy and Power Media and the Energy Capital Podcast. Backup on Grid Roundups.</p>
+          <p><strong>Email:</strong> <a href="mailto:douglewin@gmail.com">douglewin@gmail.com</a></p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title">Elizabeth Souder-Philyaw</span>
+          <span class="summary-meta">Editor · Both teams</span>
+        </summary>
+        <div class="details-body">
+          <p>Edits podcast Substack posts, Grid Roundups, Deep Dives, and Reading and Podcast Picks. Final pass before anything publishes. Applies the editorial filter (declarative voice, named actors and mechanisms, no editorial commentary, no em dashes, established science never the manipulated claim).</p>
+          <p><strong>Email:</strong> <a href="mailto:esouder.philyaw@gmail.com">esouder.philyaw@gmail.com</a></p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title">Emma</span>
+          <span class="summary-meta">Guest outreach + Reading &amp; Podcast Picks · Both teams</span>
+        </summary>
+        <div class="details-body">
+          <p>Manages the guest pipeline, runs outreach, and coordinates recording scheduling. Owns Reading and Podcast Picks on the newsletter side.</p>
+          <p><strong>Email:</strong> <a href="mailto:emma@texasenergyandpower.com">emma@texasenergyandpower.com</a></p>
+        </div>
+      </details>
+
+      <details class="role-podcast">
+        <summary>
+          <span class="summary-title">Josh Rhodes</span>
+          <span class="summary-meta">Co-host, Energy Capital · Podcast</span>
+        </summary>
+        <div class="details-body">
+          <p>Co-host of the Energy Capital Podcast. Scores Targeted guest fit weekly via the Monday Slack prompt (about two minutes each Monday).</p>
+          <p><strong>Email:</strong> <a href="mailto:rhodes@ideasmiths.net">rhodes@ideasmiths.net</a></p>
+        </div>
+      </details>
+
+      <details class="role-podcast">
+        <summary>
+          <span class="summary-title">Matt Boms</span>
+          <span class="summary-meta">Co-host, Energy Capital · Podcast</span>
+        </summary>
+        <div class="details-body">
+          <p>Co-host of the Energy Capital Podcast. Scores Targeted guest fit weekly via the Monday Slack prompt.</p>
+          <p><strong>Email:</strong> <a href="mailto:mboms@texasadvancedenergy.org">mboms@texasadvancedenergy.org</a></p>
+        </div>
+      </details>
+
+      <details class="role-newsletter">
+        <summary>
+          <span class="summary-title">Tiffany Wu</span>
+          <span class="summary-meta">Grid Roundups lead · Newsletter</span>
+        </summary>
+        <div class="details-body">
+          <p>Owns Grid Roundups. Sources primarily from ERCOT and PUC meeting coverage, using the meeting events on the shared TEPM calendar as anchors. Also backup on Reading and Podcast Picks.</p>
+          <p><strong>Email:</strong> <a href="mailto:tiffany@mcadamsenergygroup.com">tiffany@mcadamsenergygroup.com</a></p>
+        </div>
+      </details>
+
+      <details class="role-newsletter">
+        <summary>
+          <span class="summary-title">Seyi Fabode</span>
+          <span class="summary-meta">Deep Dives lead · Newsletter</span>
+        </summary>
+        <div class="details-body">
+          <p>Owns long-form Deep Dive pieces. Cadence set by the editorial calendar; commissioned topics align with Doug's editorial direction.</p>
+          <p><strong>Email:</strong> <a href="mailto:seyi@asha-labs.com">seyi@asha-labs.com</a></p>
+        </div>
+      </details>
+
+      <details class="role-podcast">
+        <summary>
+          <span class="summary-title">Carl</span>
+          <span class="summary-meta">Production support + editor · Podcast</span>
+        </summary>
+        <div class="details-body">
+          <p>Handles podcast audio and video editing, clip creation, Substack draft prep, and social scheduling. Works in Descript, Riverside exports, and the Drive guest folders.</p>
+          <p><strong>Email:</strong> <a href="mailto:carl@clarityforgestudios.com">carl@clarityforgestudios.com</a></p>
+        </div>
+      </details>
+    </section>
+
+    <section id="podcast-flow" class="role-podcast" data-search="podcast workflow episode recording riverside descript substack publish pipeline">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Podcast workflow</h2>
+      </div>
+      <p>From booking through publish. Click any phase to expand.</p>
+
+      <div class="obd">
+        <div class="obd-item">
+          <div class="obd-label">Owner</div>
+          <div class="obd-value">Nate</div>
+        </div>
+        <div class="obd-item">
+          <div class="obd-label">Production support + editor</div>
+          <div class="obd-value">Carl</div>
+        </div>
+        <div class="obd-item">
+          <div class="obd-label">Done means</div>
+          <div class="obd-value">Live on Substack + YouTube, clips scheduled, guest pack sent</div>
+        </div>
+      </div>
+
+      <details>
+        <summary>
+          <span class="summary-title">Phase 1 · Book and schedule the guest</span>
+          <span class="summary-meta">Emma + Nate</span>
+        </summary>
+        <div class="details-body">
+          <div class="flow">
+            <div class="flow-step">
+              <div class="flow-num">01</div>
+              <div>
+                <div class="flow-title">Pipeline work</div>
+                <div class="flow-who">Emma · Guest pipeline (admin-only)</div>
+                <div class="flow-desc">Emma moves guests through Targeted → Contacted → In Conversation → Confirmed. Hosts score Targeted guests each Monday via the Slack prompt.</div>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-num">02</div>
+              <div>
+                <div class="flow-title">Calendar invite goes out</div>
+                <div class="flow-who">Nate · Google Calendar</div>
+                <div class="flow-desc">Recording event lands on the TEPM Editorial Calendar with the guest's name. Riverside link in the description.</div>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-num">03</div>
+              <div>
+                <div class="flow-title">Guest folder created in Drive</div>
+                <div class="flow-who">Nate or Carl · <a href="https://drive.google.com/drive/folders/1NhDRlIBRU2zzttOJLPQxaB4G32e25UEp?usp=sharing" target="_blank">2026 Podcasts</a></div>
+                <div class="flow-desc">Format: <code>MM.DD.YY - Guest Name</code>. Subfolders: <em>0. Files</em>, <em>Pro Clips</em>, <em>Simple Clips</em>.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title">Phase 2 · Record</span>
+          <span class="summary-meta">Hosts + guest in Riverside</span>
+        </summary>
+        <div class="details-body">
+          <div class="flow">
+            <div class="flow-step">
+              <div class="flow-num">01</div>
+              <div>
+                <div class="flow-title">Riverside session</div>
+                <div class="flow-who">Nate + hosts + guest</div>
+                <div class="flow-desc">Standard Riverside setup. Local recording on each side, uploaded after.</div>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-num">02</div>
+              <div>
+                <div class="flow-title">Export and hand off</div>
+                <div class="flow-who">Nate → Carl</div>
+                <div class="flow-desc">Audio and video export from Riverside. Files land in the guest's <em>0. Files</em> folder. Often deleted after publish since the source is no longer needed.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title">Phase 3 · Draft Substack post + select clips</span>
+          <span class="summary-meta">Nate or Carl</span>
+        </summary>
+        <div class="details-body">
+          <div class="flow">
+            <div class="flow-step">
+              <div class="flow-num">01</div>
+              <div>
+                <div class="flow-title">Use the template</div>
+                <div class="flow-who"><a href="https://drive.google.com/drive/folders/1Cll-1CYPU5-R8mGD1Y4B0lF7J5inM8wd?usp=drive_link" target="_blank">Drive · 0. Substack &amp; Socials</a> · 0. Template</div>
+                <div class="flow-desc">The template has tabs for Substack, Timestamps, Resources, Socials, YouTube, Guest Socials, Guest Email. Copy the template, rename with date and guest, fill in.</div>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-num">02</div>
+              <div>
+                <div class="flow-title">Pro Clips and Simple Clips</div>
+                <div class="flow-who">Carl · Descript + Riverside</div>
+                <div class="flow-desc">Pro Clips are polished Descript exports. Simple Clips are raw cuts from Riverside or Descript. Both land in the guest folder.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title">Phase 4 · Editorial review</span>
+          <span class="summary-meta">Elizabeth</span>
+        </summary>
+        <div class="details-body">
+          <p>Elizabeth edits the Substack draft directly in the Google Doc. Editorial filter applies (declarative voice, named actors, no editorial commentary, no em dashes).</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title">Phase 5 · Publish and distribute</span>
+          <span class="summary-meta">Nate + Carl</span>
+        </summary>
+        <div class="details-body">
+          <div class="flow">
+            <div class="flow-step">
+              <div class="flow-num">01</div>
+              <div>
+                <div class="flow-title">Substack publish</div>
+                <div class="flow-who">Nate · <a href="https://www.texasenergyandpower.com/" target="_blank">texasenergyandpower.com</a></div>
+                <div class="flow-desc">Episode goes live on the Substack publication.</div>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-num">02</div>
+              <div>
+                <div class="flow-title">Social distribution</div>
+                <div class="flow-who">Carl · Typefully + YouTube</div>
+                <div class="flow-desc">Clips schedule through Typefully. YouTube version uploads. Guest receives the email pack with copy and clips for amplification.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <section id="newsletter-flow" class="role-newsletter" data-search="newsletter workflow grid roundup deep dive reading podcast picks tiffany seyi emma intake ercot puc">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Newsletter workflow</h2>
+      </div>
+      <p>Three formats, three workflows. All three pass through Elizabeth before publish.</p>
+
+      <details>
+        <summary>
+          <span class="summary-title">Grid Roundups</span>
+          <span class="summary-meta">Owner: Tiffany · Backup: Doug</span>
+        </summary>
+        <div class="details-body">
+          <div class="obd">
+            <div class="obd-item"><div class="obd-label">Source</div><div class="obd-value">ERCOT/PUC meetings (primary)</div></div>
+            <div class="obd-item"><div class="obd-label">Cadence</div><div class="obd-value">As needed, when there's pressing info</div></div>
+            <div class="obd-item"><div class="obd-label">Location</div><div class="obd-value"><a href="https://drive.google.com/drive/folders/1GXee_DkKclA6NdnIXeEH8Sp3V4sARZ-f?usp=drive_link" target="_blank">Drive · 1. Grid Roundups</a></div></div>
+          </div>
+          <p>Grid Roundup discussion happens in <strong>#general</strong> on Slack (not #intake, which is for R&amp;P Picks). Primary participants: Tiffany, Doug, Elizabeth.</p>
+          <div class="flow">
+            <div class="flow-step">
+              <div class="flow-num">01</div>
+              <div>
+                <div class="flow-title">Watch the ERCOT/PUC meetings</div>
+                <div class="flow-who">Tiffany · Shared TEPM Calendar</div>
+                <div class="flow-desc">The TEPM Editorial Calendar shows upcoming ERCOT board meetings, PUC open meetings, and committee dates. Tiffany uses these as the primary source for Grid Roundup coverage, pulling key items from each.</div>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-num">02</div>
+              <div>
+                <div class="flow-title">Draft in the yearly working doc</div>
+                <div class="flow-who">Tiffany</div>
+                <div class="flow-desc">The 2026 Grid Roundups doc holds every issue as its own tab inside. Tiffany adds the next tab when there's pressing info to cover.</div>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-num">03</div>
+              <div>
+                <div class="flow-title">Editorial review</div>
+                <div class="flow-who">Elizabeth</div>
+                <div class="flow-desc">Edits in-doc.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title">Deep Dives</span>
+          <span class="summary-meta">Owner: Seyi · Backup: Doug</span>
+        </summary>
+        <div class="details-body">
+          <div class="obd">
+            <div class="obd-item"><div class="obd-label">Source</div><div class="obd-value">Editorial calendar + breaking topics</div></div>
+            <div class="obd-item"><div class="obd-label">Cadence</div><div class="obd-value">Per editorial calendar</div></div>
+            <div class="obd-item"><div class="obd-label">Location</div><div class="obd-value"><a href="https://drive.google.com/drive/folders/1GSLqsUF14lwPVbzGcjzp274i_0-UJauS?usp=drive_link" target="_blank">Drive · 3. Deep Dive</a></div></div>
+          </div>
+          <div class="flow">
+            <div class="flow-step">
+              <div class="flow-num">01</div>
+              <div>
+                <div class="flow-title">Topic confirmed with Doug</div>
+                <div class="flow-who">Seyi + Doug</div>
+                <div class="flow-desc">Topics commissioned through editorial planning. Doug weighs in on direction.</div>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-num">02</div>
+              <div>
+                <div class="flow-title">Draft</div>
+                <div class="flow-who">Seyi · <a href="https://drive.google.com/drive/folders/1GSLqsUF14lwPVbzGcjzp274i_0-UJauS?usp=drive_link" target="_blank">3. Deep Dive folder</a></div>
+                <div class="flow-desc">Seyi creates each piece as its own doc in this folder. Longer-form. Specific actors, specific mechanisms, sourcing throughout.</div>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-num">03</div>
+              <div>
+                <div class="flow-title">Editorial review</div>
+                <div class="flow-who">Elizabeth</div>
+                <div class="flow-desc">Same editorial filter as everything else. Purple blocks on the calendar mark release dates.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title">Reading &amp; Podcast Picks</span>
+          <span class="summary-meta">Owner: Emma · Backup: Tiffany</span>
+        </summary>
+        <div class="details-body">
+          <div class="obd">
+            <div class="obd-item"><div class="obd-label">Source</div><div class="obd-value">Everyone, via #intake + direct doc edits</div></div>
+            <div class="obd-item"><div class="obd-label">Cadence</div><div class="obd-value">Weekly, Sundays (goal)</div></div>
+            <div class="obd-item"><div class="obd-label">Location</div><div class="obd-value"><a href="https://docs.google.com/document/d/1lcXGshT3VdsracggR9ehMEwiUJua6hso61ODtllCiEs/edit?usp=drive_link" target="_blank">Reading and Podcast Picks - DRAFT</a></div></div>
+          </div>
+          <p>R&amp;P discussion happens in <strong>#intake</strong> on Slack. This is the primary purpose of that channel.</p>
+          <div class="flow">
+            <div class="flow-step">
+              <div class="flow-num">01</div>
+              <div>
+                <div class="flow-title">Capture picks throughout the week</div>
+                <div class="flow-who">Everyone · #intake</div>
+                <div class="flow-desc">Reading or hearing something good? Drop it in #intake or directly in the R&amp;P doc. Goal: 5–8 picks per issue.</div>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-num">02</div>
+              <div>
+                <div class="flow-title">Emma compiles + writes framing</div>
+                <div class="flow-who">Emma</div>
+                <div class="flow-desc">The R&amp;P doc is a single long-running document. Three tabs inside: <em>JAN 2026 to PRESENT</em> (active), <em>SAVE FOR FUTURE EMAIL</em>, <em>PRE-JAN 2026</em>. Emma adds framing on what's worth the click and why.</div>
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-num">03</div>
+              <div>
+                <div class="flow-title">Editorial review</div>
+                <div class="flow-who">Elizabeth</div>
+                <div class="flow-desc">Final pass for voice, claim discipline, and the no-em-dash standard. Orange blocks on the calendar mark release dates.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <section id="calendar" data-search="calendar meetings recording release ercot puc editorial planning">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Calendar</h2>
+      </div>
+      <p>Everyone uses the shared <strong>TEPM Editorial Calendar</strong>. Color codes signal publication type so you can read the week at a glance.</p>
+
+      <div class="grid">
+        <div class="card role-podcast">
+          <span class="tag tag-podcast">Blue</span>
+          <div class="card-title">Podcast events</div>
+          <div class="card-meta">Recording sessions and release dates. Format: <em>Podcast - [Guest Name]</em>.</div>
+        </div>
+        <div class="card role-newsletter">
+          <span class="tag tag-newsletter">Green</span>
+          <div class="card-title">Grid Roundups</div>
+          <div class="card-meta">Release dates. Numbered (e.g., <em>Grid Roundup #92</em>).</div>
+        </div>
+        <div class="card role-newsletter">
+          <span class="tag tag-newsletter">Orange</span>
+          <div class="card-title">Reading &amp; Podcast Picks</div>
+          <div class="card-meta">Sundays, when published.</div>
+        </div>
+        <div class="card role-newsletter">
+          <span class="tag tag-newsletter">Purple</span>
+          <div class="card-title">Deep Dives</div>
+          <div class="card-meta">Seyi's long-form releases.</div>
+        </div>
+        <div class="card">
+          <span class="tag tag-ref">Reference</span>
+          <div class="card-title">ERCOT / PUC meetings</div>
+          <div class="card-meta">Board meetings, committee meetings, open meetings. Tiffany's primary Grid Roundup source.</div>
+        </div>
+        <div class="card">
+          <span class="tag tag-both">Standing</span>
+          <div class="card-title">TEPM editorial planning</div>
+          <div class="card-meta">Every other Monday, 1:30–2:15 PM CT. Full team. Google Meet on the invite.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="drive" data-search="drive folders google substack newsletter podcast files folders structure">
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <h2 class="section-title">Drive structure</h2>
+      </div>
+      <p>Root path: <strong>ClarityForge Studios → 2. Texas Energy &amp; Power</strong>. Direct links below.</p>
+
+      <details class="role-podcast">
+        <summary>
+          <span class="summary-title">1. Podcast</span>
+          <span class="summary-meta">Substack drafts, yearly episode folders, External Pods</span>
+        </summary>
+        <div class="details-body">
+          <p><a href="https://drive.google.com/drive/folders/1lfAQMFux--jhKs5liV0ITtrtXeaZAtfh?usp=sharing" target="_blank">Open the 1. Podcast folder</a></p>
+          <p><strong><a href="https://drive.google.com/drive/folders/1Cll-1CYPU5-R8mGD1Y4B0lF7J5inM8wd?usp=drive_link" target="_blank">0. Substack &amp; Socials</a></strong>. All per-episode Substack draft docs. The <em>0. Template</em> doc has the canonical tab structure (Substack, Timestamps, Resources, Socials, YouTube, Guest Socials, Guest Email). Carl uses it to build each new episode draft.</p>
+          <p><strong><a href="https://drive.google.com/drive/folders/1NhDRlIBRU2zzttOJLPQxaB4G32e25UEp?usp=sharing" target="_blank">2026 Podcasts</a></strong>. Each guest gets a master folder named <code>MM.DD.YY - Guest Name</code>. Subfolders inside:</p>
+          <ul style="margin-left: 1.2rem; color: var(--dark-gray); font-size: 0.92rem;">
+            <li><strong>0. Files</strong>. Premiere assemblies and source audio. Often deleted after publish.</li>
+            <li><strong>Pro Clips</strong>. Polished Descript clip exports.</li>
+            <li><strong>Simple Clips</strong>. Raw cuts from Riverside or Descript.</li>
+          </ul>
+          <p style="margin-top: 0.6rem;"><strong>External Pods</strong>. Outside appearances by hosts.</p>
+        </div>
+      </details>
+
+      <details class="role-newsletter">
+        <summary>
+          <span class="summary-title">2. Newsletter</span>
+          <span class="summary-meta">Grid Roundups, Reading &amp; Podcast Picks, Deep Dives</span>
+        </summary>
+        <div class="details-body">
+          <p><a href="https://drive.google.com/drive/folders/1Fe3Id33KgfiRucOUWVvBu2yWISmYVs-B?usp=sharing" target="_blank">Open the 2. Newsletter folder</a></p>
+          <p><strong><a href="https://drive.google.com/drive/folders/1GXee_DkKclA6NdnIXeEH8Sp3V4sARZ-f?usp=drive_link" target="_blank">1. Grid Roundups</a></strong>. Yearly working docs (currently <em>2026 - Grid Roundups</em>). Each issue lives as its own tab inside that doc. Tiffany's home base.</p>
+          <p><strong><a href="https://docs.google.com/document/d/1lcXGshT3VdsracggR9ehMEwiUJua6hso61ODtllCiEs/edit?usp=drive_link" target="_blank">2. Reading &amp; Podcast Picks - DRAFT</a></strong>. One long-running document with three internal tabs (active / save for later / archive). Emma's home base.</p>
+          <p><strong><a href="https://drive.google.com/drive/folders/1GSLqsUF14lwPVbzGcjzp274i_0-UJauS?usp=drive_link" target="_blank">3. Deep Dive</a></strong>. Seyi puts each Deep Dive doc here, numbered sequentially (1, 2, 3...).</p>
+        </div>
+      </details>
+    </section>
+
+    <section id="slack" data-search="slack channels intake ec-guests editorial general">
+      <div class="section-head">
+        <span class="section-num">05</span>
+        <h2 class="section-title">Slack channels</h2>
+      </div>
+      <p>The TEPM Team workspace is at <a href="https://tepm-team.slack.com/" target="_blank" style="color: var(--orange); border-bottom: 1px solid rgba(232,113,58,0.3); text-decoration: none;">tepm-team.slack.com</a>. Each channel has one job. Rule of thumb: if you'd DM one person, channel-post it instead. Async-first.</p>
+
+      <div class="grid">
+        <div class="card">
+          <span class="tag tag-both">All</span>
+          <div class="card-title">#general</div>
+          <div class="card-meta">Default channel. Grid Roundup discussion happens here. Anything that doesn't fit a specific channel.</div>
+        </div>
+        <div class="card role-newsletter">
+          <span class="tag tag-newsletter">Newsletter</span>
+          <div class="card-title">#intake</div>
+          <div class="card-meta">Primary purpose: Reading &amp; Podcast Picks. Drop articles, podcasts, and links worth featuring. Emma monitors.</div>
+        </div>
+        <div class="card role-podcast">
+          <span class="tag tag-podcast">Podcast</span>
+          <div class="card-title">#ec-guests</div>
+          <div class="card-meta">Weekly pipeline report. Monday host scoring. Idle guest alerts.</div>
+        </div>
+        <div class="card">
+          <span class="tag tag-editor">Editorial</span>
+          <div class="card-title">#editorial</div>
+          <div class="card-meta">Editorial questions and draft notifications.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="automation" data-search="automation pipeline weekly report scoring idle">
+      <div class="section-head">
+        <span class="section-num">06</span>
+        <h2 class="section-title">What runs in the background</h2>
+      </div>
+      <p>A handful of automations run quietly so the team doesn't have to remember things the system can remember. You don't need to touch any of these. If something here looks broken or you have an idea for a new one, message Nate.</p>
+
+      <details class="role-podcast">
+        <summary>
+          <span class="summary-title">Weekly Pipeline Report</span>
+          <span class="summary-meta">Fridays 4pm CT · #ec-guests</span>
+        </summary>
+        <div class="details-body">
+          <p>Posts pipeline health snapshot: Targeted count vs. threshold, gap coverage by topic, host balance (Matt / Josh / Either), what's new this week. Snapshot only, no action required from you.</p>
+        </div>
+      </details>
+
+      <details class="role-podcast">
+        <summary>
+          <span class="summary-title">Monday Guest Scoring</span>
+          <span class="summary-meta">Mondays 8am CT · #ec-guests</span>
+        </summary>
+        <div class="details-body">
+          <p>Tells Matt and Josh how many new Targeted guests need their fit score. Each link opens a blind scoring portal. About two minutes per host.</p>
+        </div>
+      </details>
+
+      <details class="role-podcast">
+        <summary>
+          <span class="summary-title">Idle Guest Watcher</span>
+          <span class="summary-meta">Daily 8am CT · #ec-guests</span>
+        </summary>
+        <div class="details-body">
+          <p>Flags any guest in Contacted or In Conversation status who's gone quiet beyond the configured threshold. Posts to #ec-guests so Nate or Emma can follow up.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="summary-title">Editorial calendar sync</span>
+          <span class="summary-meta">Continuous · Internal</span>
+        </summary>
+        <div class="details-body">
+          <p>Release dates from the editorial pipeline roll up to the shared Google Calendar so everyone sees the same publishing rhythm.</p>
+        </div>
+      </details>
+
+      <details class="role-newsletter">
+        <summary>
+          <span class="summary-title">#intake → ClickUp <em>(planned)</em></span>
+          <span class="summary-meta">Coming soon</span>
+        </summary>
+        <div class="details-body">
+          <p>Will auto-create ClickUp items from #intake submissions with URL parsed and beat tagged. Cuts the manual capture step.</p>
+        </div>
+      </details>
+
+      <details class="role-podcast">
+        <summary>
+          <span class="summary-title">Host-facing guest pipeline view <em>(planned)</em></span>
+          <span class="summary-meta">Coming soon</span>
+        </summary>
+        <div class="details-body">
+          <p>The full guest CRM is currently admin-only. A planned automation will sync a read-only view to ClickUp or a shared Google Sheet so hosts can see the full pipeline without needing CRM access. Two-way sync so any updates flow back to the source of truth.</p>
+        </div>
+      </details>
+
+      <div class="callout">
+        <strong>Got an automation idea?</strong> If you find yourself doing the same manual thing twice a week, it can probably be automated. Drop the idea in #general or DM Nate.
+      </div>
+    </section>
+
+    <section id="help" data-search="help who to ask contact escalation">
+      <div class="section-head">
+        <span class="section-num">07</span>
+        <h2 class="section-title">Who to ask</h2>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-title">Systems, access, tooling</div>
+          <div class="card-meta">Nate · <a href="mailto:nathan@clarityforgestudios.com">nathan@clarityforgestudios.com</a></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Editorial, voice, structure</div>
+          <div class="card-meta">Elizabeth · <a href="mailto:esouder.philyaw@gmail.com">esouder.philyaw@gmail.com</a></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Strategic direction</div>
+          <div class="card-meta">Doug · <a href="mailto:douglewin@gmail.com">douglewin@gmail.com</a></div>
+        </div>
+        <div class="card role-podcast">
+          <div class="card-title">Guest pipeline, outreach</div>
+          <div class="card-meta">Emma · <a href="mailto:emma@texasenergyandpower.com">emma@texasenergyandpower.com</a></div>
+        </div>
+        <div class="card role-podcast">
+          <div class="card-title">Episode production, clips, edits</div>
+          <div class="card-meta">Carl · <a href="mailto:carl@clarityforgestudios.com">carl@clarityforgestudios.com</a></div>
+        </div>
+        <div class="card role-newsletter">
+          <div class="card-title">Grid Roundup specifics</div>
+          <div class="card-meta">Tiffany · <a href="mailto:tiffany@mcadamsenergygroup.com">tiffany@mcadamsenergygroup.com</a></div>
+        </div>
+        <div class="card role-newsletter">
+          <div class="card-title">Deep Dive specifics</div>
+          <div class="card-meta">Seyi · <a href="mailto:seyi@asha-labs.com">seyi@asha-labs.com</a></div>
+        </div>
+        <div class="card role-podcast">
+          <div class="card-title">Co-host (Energy Capital)</div>
+          <div class="card-meta">Josh · <a href="mailto:rhodes@ideasmiths.net">rhodes@ideasmiths.net</a></div>
+        </div>
+        <div class="card role-podcast">
+          <div class="card-title">Co-host (Energy Capital)</div>
+          <div class="card-meta">Matt · <a href="mailto:mboms@texasadvancedenergy.org">mboms@texasadvancedenergy.org</a></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div class="offline-strip">
+  <div class="offline-strip-inner">
+    <div class="offline-strip-title">Take it offline</div>
+    <div class="offline-strip-grid">
+      <a class="offline-link" href="TEPM_Podcast_Team_Cheat_Sheet.pdf" download>
+        <div class="offline-link-title">Podcast cheat sheet</div>
+        <div class="offline-link-meta">PDF · printable</div>
+      </a>
+      <a class="offline-link" href="TEPM_Newsletter_Team_Cheat_Sheet.pdf" download>
+        <div class="offline-link-title">Newsletter cheat sheet</div>
+        <div class="offline-link-meta">PDF · printable</div>
+      </a>
+      <a class="offline-link" href="tepm-bookmarks.html" download>
+        <div class="offline-link-title">Chrome bookmarks</div>
+        <div class="offline-link-meta">Import file · one-click setup</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="changes">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('changes').classList.remove('open')">×</button>
+    <h3>Recent updates</h3>
+    <p style="font-size: 0.88rem; color: var(--medium-gray); margin-bottom: 0.9rem;">What's new in this version of the hub.</p>
+    <ul>
+      <li><strong>May 2026:</strong> Nate listed as podcast owner with Carl as production support and editor.</li>
+      <li><strong>May 2026:</strong> Backups updated: Doug on Grid Roundups, Tiffany on R&amp;P Picks.</li>
+      <li><strong>May 2026:</strong> Slack workspace separated to TEPM Team. #podcast-prod removed.</li>
+      <li><strong>May 2026:</strong> #intake clarified as primary R&amp;P channel; Grid Roundups discussed in #general.</li>
+      <li><strong>May 2026:</strong> Substack URL set to texasenergyandpower.com.</li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  Texas Energy &amp; Power · Operating system by <a href="https://clarityforgestudios.com">ClarityForge Studios</a> · Last updated May 2026
+</footer>
+
+<script>
+  function setRole(role) {
+    document.body.setAttribute('data-role', role);
+    document.querySelectorAll('.role-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-role') === role);
+    });
+    try { localStorage.setItem('tepm-role', role); } catch(e) {}
+  }
+  try {
+    const saved = localStorage.getItem('tepm-role');
+    if (saved) setRole(saved);
+  } catch(e) {}
+
+  const searchInput = document.getElementById('search');
+  const searchCount = document.getElementById('searchCount');
+  const emptyState = document.getElementById('emptyState');
+  const sections = document.querySelectorAll('section[data-search]');
+
+  searchInput.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase().trim();
+    if (!q) {
+      sections.forEach(s => s.classList.remove('search-hidden'));
+      document.querySelectorAll('details').forEach(d => d.classList.remove('search-hidden'));
+      searchCount.classList.remove('show');
+      emptyState.classList.remove('show');
+      return;
+    }
+    let visibleCount = 0;
+    sections.forEach(section => {
+      const searchText = (section.getAttribute('data-search') || '').toLowerCase();
+      const bodyText = section.textContent.toLowerCase();
+      const match = searchText.includes(q) || bodyText.includes(q);
+      section.classList.toggle('search-hidden', !match);
+      if (match) {
+        visibleCount++;
+        section.querySelectorAll('details').forEach(d => {
+          const dText = d.textContent.toLowerCase();
+          if (dText.includes(q)) {
+            d.setAttribute('open', '');
+            d.classList.remove('search-hidden');
+          } else {
+            d.classList.add('search-hidden');
+          }
+        });
+      }
+    });
+    searchCount.textContent = visibleCount + ' section' + (visibleCount === 1 ? '' : 's');
+    searchCount.classList.add('show');
+    emptyState.classList.toggle('show', visibleCount === 0);
+  });
+
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sectionIds = Array.from(navLinks).map(a => a.getAttribute('href').slice(1));
+
+  function updateActiveNav() {
+    let current = sectionIds[0];
+    const scrollPos = window.scrollY + 180;
+    for (const id of sectionIds) {
+      const el = document.getElementById(id);
+      if (el && el.offsetTop <= scrollPos) current = id;
+    }
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
+
+  document.getElementById('changes').addEventListener('click', (e) => {
+    if (e.target.id === 'changes') e.currentTarget.classList.remove('open');
+  });
+</script>
+
+</body>
+</html>
