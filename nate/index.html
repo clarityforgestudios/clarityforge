@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Nathan Peavey Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: a geologist's core sample. The career reads bottom to top as strata, the 2024 to now layer is the pay zone. Accent is Texas flag navy: reads state government, not party. Left-aligned, two columns on desktop, one on phones. */
+:root {
+  --paper: #F2F4F6;
+  --ink: #141C28;
+  --muted: #545E6B;
+  --rule: #C8CFD8;
+  --trace: #1A3F7C;
+  --panel: #E6EAF0;
+  --sand: #D8B964;
+  --shale: #98A5A0;
+  --lime: #A8C1CF;
+  --silt: #C9B99A;
+  --display: "EB Garamond", "Garamond", "Iowan Old Style", Georgia, serif;
+  --body: "Public Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #11161E;
+    --ink: #E5EAF1;
+    --muted: #9CA8B8;
+    --rule: #2C3646;
+    --trace: #8FB2EA;
+    --panel: #1A2230;
+    --sand: #A88F45;
+    --shale: #5F6B67;
+    --lime: #5E7C8C;
+    --silt: #8A7C60;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #11161E;
+  --ink: #E5EAF1;
+  --muted: #9CA8B8;
+  --rule: #2C3646;
+  --trace: #8FB2EA;
+  --panel: #1A2230;
+  --sand: #A88F45;
+  --shale: #5F6B67;
+  --lime: #5E7C8C;
+  --silt: #8A7C60;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--trace); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--trace); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+/* Hero */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 56px;
+  align-items: start;
+  padding: 64px 0 48px;
+  border-bottom: 1px solid var(--rule);
+}
+.name {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(2.8rem, 6vw, 4.6rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  margin: 0 0 14px;
+  text-wrap: balance;
+}
+.role {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.55rem;
+  line-height: 1.3;
+  color: var(--muted);
+  margin: 0 0 28px;
+}
+.lede { font-size: 1.12rem; max-width: 34em; margin: 0 0 28px; }
+.contact { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 0.95rem; color: var(--muted); margin: 0; padding: 0; list-style: none; }
+.contact strong { color: var(--ink); font-weight: 600; }
+
+/* Fit switcher */
+.fit { margin-top: 40px; }
+.fit h2 { font-family: var(--display); font-weight: 500; font-size: 1.5rem; margin: 0 0 12px; }
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 18px; }
+.tabs button {
+  font: 600 0.9rem var(--body);
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 7px 14px;
+  cursor: pointer;
+}
+.tabs button:hover { border-color: var(--trace); }
+.tabs button[aria-pressed="true"] { background: var(--trace); border-color: var(--trace); color: var(--paper); }
+.pitch { border-left: 3px solid var(--trace); padding: 2px 0 2px 18px; }
+.pitch p { margin: 0 0 10px; max-width: 36em; }
+.pitch ul { margin: 0; padding-left: 1.1em; }
+.pitch li { margin: 4px 0; }
+.pitch .note { font-size: 0.92rem; color: var(--muted); font-style: italic; margin-top: 10px; }
+.pitch[hidden] { display: none; }
+
+/* Core sample */
+.core figure { margin: 0; }
+.core svg { width: 100%; height: auto; display: block; }
+.core figcaption { font-size: 0.88rem; color: var(--muted); margin-top: 10px; }
+.yr { font: 600 11px var(--body); fill: var(--muted); font-variant-numeric: tabular-nums; }
+.lt { font: 600 12.5px var(--body); fill: var(--ink); }
+.ls { font: 400 11.5px var(--body); fill: var(--muted); }
+.lead-line { stroke: var(--rule); stroke-width: 1; }
+.pay-tag { font: italic 500 14px var(--display); fill: var(--trace); }
+
+/* Sections */
+section.block { padding: 48px 0; border-bottom: 1px solid var(--rule); }
+section.block > h2 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 3.2vw, 2.3rem);
+  line-height: 1.15;
+  margin: 0 0 8px;
+  text-wrap: balance;
+}
+.intro { color: var(--muted); max-width: 40em; margin: 0 0 28px; }
+
+/* Numbers */
+.numbers { display: flex; flex-wrap: wrap; gap: 20px 40px; margin: 0; }
+.numbers div { min-width: 140px; }
+.numbers dt {
+  font-family: var(--display);
+  font-size: 2.4rem;
+  line-height: 1;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.numbers dd { margin: 6px 0 0; font-size: 0.92rem; color: var(--muted); max-width: 14em; }
+
+/* Case studies */
+.case { padding: 28px 0; border-top: 1px solid var(--rule); }
+.case:first-of-type { border-top: 0; padding-top: 4px; }
+.case-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px; margin-bottom: 16px; }
+.case h3 { font-family: var(--display); font-weight: 600; font-size: 1.45rem; margin: 0; }
+.case h3 span { font-weight: 400; font-style: italic; color: var(--muted); font-size: 1.1rem; margin-left: 8px; }
+.case-link { font-weight: 600; font-size: 0.95rem; }
+.case-link.plain { color: var(--muted); font-weight: 400; }
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
+.steps div { padding: 0 18px; border-left: 1px solid var(--rule); }
+.steps div:first-child { padding-left: 0; border-left: 0; }
+.steps h4 { font: 700 0.85rem var(--body); margin: 0 0 6px; color: var(--trace); }
+.steps p { margin: 0; font-size: 0.96rem; }
+
+/* Two columns */
+.cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.cols h3 { font-family: var(--display); font-weight: 600; font-size: 1.3rem; margin: 0 0 8px; }
+.cols ul { margin: 0; padding-left: 1.1em; }
+.cols li { margin: 5px 0; }
+
+/* Writing sample */
+.sample { background: var(--panel); border-radius: 6px; padding: 28px 32px; max-width: 46em; }
+.sample .label { font-family: var(--body); font-size: 0.88rem; line-height: 1.5; color: var(--muted); margin: 0 0 16px; }
+.sample h3 { font-family: var(--display); font-weight: 600; font-size: 1.5rem; line-height: 1.2; margin: 0 0 12px; text-wrap: balance; }
+.sample p { font-family: var(--display); font-size: 1.18rem; line-height: 1.6; margin: 0 0 12px; }
+.sample .src { font-family: var(--body); font-size: 0.85rem; color: var(--muted); margin: 14px 0 0; }
+
+/* Strategy loop */
+.loop { position: relative; }
+.loop ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 14px; }
+.loop li { background: var(--trace); color: var(--paper); border-radius: 8px; padding: 16px 16px 18px; position: relative; }
+.loop li:not(:last-child)::after { content: ""; position: absolute; right: -11px; top: 50%; width: 8px; height: 8px; border-top: 2px solid var(--trace); border-right: 2px solid var(--trace); transform: translateY(-50%) rotate(45deg); }
+.loop h3 { font-family: var(--display); font-weight: 600; font-size: 1.3rem; margin: 0 0 6px; color: var(--paper); }
+.loop p { margin: 0; font-size: 0.92rem; line-height: 1.45; opacity: .9; }
+.loop-return { height: 30px; margin: 0 10%; border: 2px solid var(--trace); border-top: 0; border-radius: 0 0 18px 18px; position: relative; }
+.loop-return::before { content: ""; position: absolute; left: -7px; top: -2px; width: 10px; height: 10px; border-left: 2px solid var(--trace); border-top: 2px solid var(--trace); transform: rotate(45deg); background: var(--paper); }
+.loop-label { text-align: center; margin: 8px 0 0; font-family: var(--display); font-style: italic; font-size: 1.15rem; color: var(--trace); }
+.calls-h { font-family: var(--display); font-weight: 600; font-size: 1.4rem; margin: 40px 0 12px; }
+.calls-wrap { overflow-x: auto; }
+.calls { width: 100%; border-collapse: collapse; font-size: 0.96rem; }
+.calls th { text-align: left; font: 700 0.85rem var(--body); color: var(--muted); padding: 0 16px 8px 0; border-bottom: 2px solid var(--trace); }
+.calls td { vertical-align: top; padding: 12px 16px 12px 0; border-bottom: 1px solid var(--rule); }
+.calls td:first-child { font-weight: 600; white-space: nowrap; }
+.calls td:last-child { color: var(--ink); }
+.calls td:nth-child(2) { color: var(--muted); width: 26%; }
+.calls td:nth-child(4) { color: var(--trace); font-weight: 600; width: 24%; }
+
+/* Path */
+.path { list-style: none; counter-reset: step; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0,1fr)); gap: 0; position: relative; }
+.path::before { content: ""; position: absolute; left: 0; right: 0; top: 15px; border-top: 2px solid var(--trace); }
+.path li { counter-increment: step; position: relative; padding: 44px 14px 0 0; }
+.path li::before { content: counter(step); position: absolute; top: 0; left: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--paper); border: 2px solid var(--trace); color: var(--trace); font: 700 0.9rem/28px var(--body); text-align: center; }
+.path li:first-child::before { background: var(--trace); color: var(--paper); }
+.path h3 { font-family: var(--display); font-weight: 600; font-size: 1.2rem; margin: 0 0 4px; }
+.path p { margin: 0; font-size: 0.93rem; color: var(--muted); }
+.path-example { margin: 24px 0 0; font-size: 0.95rem; }
+
+/* Reels */
+.reels { display: flex; gap: 22px; align-items: flex-start; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x mandatory; }
+.reel { margin: 0; flex: 0 0 210px; scroll-snap-align: start; }
+.reel.square { flex-basis: 300px; }
+.reel:nth-child(2) { margin-top: 56px; }
+.reel:nth-child(3) { margin-top: 18px; }
+.reel:nth-child(4) { margin-top: 72px; }
+.reel video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 14px; background: var(--ink); display: block; }
+.reel.square video { aspect-ratio: 1 / 1; }
+.reel figcaption { font-size: 0.88rem; color: var(--muted); margin-top: 8px; }
+
+/* Brands */
+.brand { padding: 32px 0; border-top: 1px solid var(--rule); }
+.brand:first-of-type { border-top: 0; padding-top: 4px; }
+.brand-head { margin-bottom: 18px; }
+.brand h3 { font-family: var(--display); font-weight: 600; font-size: 1.7rem; line-height: 1.15; margin: 0 0 4px; }
+.brand-what { margin: 0; color: var(--muted); font-style: italic; font-family: var(--display); font-size: 1.15rem; }
+.brand-body { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 40px; }
+.brand-body h4 { font: 700 0.85rem var(--body); margin: 0 0 8px; }
+.brand-body ul { margin: 0; padding-left: 1.1em; }
+.brand-body li { margin: 5px 0; }
+.strategy { border-left: 3px solid var(--trace); padding-left: 18px; }
+.strategy h4 { color: var(--trace); }
+.execution h4 { color: var(--muted); }
+.execution li { color: var(--muted); }
+.proof { margin: 18px 0 0; font-size: 0.95rem; }
+.proof strong { margin-right: 8px; }
+.proof a { margin-left: 6px; font-weight: 600; }
+
+/* One load moment: the core builds from the bottom up */
+.strata { animation: core-in 1100ms cubic-bezier(.2,.7,.2,1) both; }
+@keyframes core-in { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+@media (prefers-reduced-motion: reduce) { .strata { animation: none; } }
+
+footer { padding: 40px 0 64px; }
+footer p { margin: 0 0 8px; }
+footer .big { font-family: var(--display); font-size: 1.6rem; }
+
+@media (max-width: 860px) {
+  .loop ol { grid-template-columns: 1fr; gap: 10px; margin-left: 26px; }
+  .loop li:not(:last-child)::after { right: auto; left: 50%; top: auto; bottom: -9px; transform: translateX(-50%) rotate(135deg); }
+  .loop-return { position: absolute; left: 0; top: 24px; bottom: 60px; height: auto; width: 18px; margin: 0; border: 2px solid var(--trace); border-right: 0; border-radius: 18px 0 0 18px; }
+  .loop-return::before { left: auto; right: -6px; top: -7px; transform: rotate(135deg); }
+  .loop-label { text-align: left; margin-left: 26px; }
+  .calls td:first-child { white-space: normal; }
+  .path { grid-template-columns: 1fr; }
+  .path::before { left: 15px; right: auto; top: 0; bottom: 0; border-top: 0; border-left: 2px solid var(--trace); }
+  .path li { padding: 4px 0 18px 50px; }
+  .reel:nth-child(n) { margin-top: 0; }
+  .brand-body { grid-template-columns: 1fr; gap: 22px; }
+  .hero { grid-template-columns: 1fr; gap: 36px; padding-top: 44px; }
+  .core { max-width: 440px; }
+  .steps { grid-template-columns: 1fr 1fr; row-gap: 18px; }
+  .steps div:nth-child(3) { padding-left: 0; border-left: 0; }
+}
+@media (max-width: 520px) {
+  .calls thead { display: none; }
+  .calls, .calls tbody, .calls tr, .calls td { display: block; width: auto; }
+  .calls tr { padding: 12px 0; border-bottom: 1px solid var(--rule); }
+  .calls td { border: 0; padding: 2px 0; }
+  .calls td:nth-child(2) { width: auto; font-style: italic; }
+  .calls td:nth-child(4) { width: auto; }
+  body { font-size: 16px; }
+  .wrap { padding: 0 18px; }
+  .steps { grid-template-columns: 1fr; }
+  .steps div { padding: 0; border-left: 0; }
+  .cols { grid-template-columns: 1fr; }
+  .sample { padding: 22px 20px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <header class="hero">
+    <div>
+      <h1 class="name">Nathan Peavey</h1>
+      <p class="role">Communications strategist and producer</p>
+      <p class="lede">I help run policy media brands like Volts, Energy Capital and Project Vanguard, from the strategy and positioning to every episode, post and clip that carries it. My specialty is Texas energy, the grid and oil and gas, and the approach works for any issue an office owns.</p>
+      <ul class="contact">
+        <li><strong>nathan@clarityforgestudios.com</strong></li>
+        <li>Bend, Oregon, Austin native</li>
+      </ul>
+
+      <div class="fit">
+        <h2>Where I fit</h2>
+        <div class="tabs" role="group" aria-label="Choose an office">
+          <button type="button" id="tab-overview" data-view="overview" aria-pressed="true">Any office</button>
+          <button type="button" id="tab-rrc" data-view="rrc" aria-pressed="false">Railroad Commission</button>
+          <button type="button" id="tab-governor" data-view="governor" aria-pressed="false">Governor's Office</button>
+          <button type="button" id="tab-house" data-view="house" aria-pressed="false">House office</button>
+        </div>
+
+        <div class="pitch" data-pitch="overview">
+          <p>Small comms shops need someone who can set the message and make the content. I do both for three policy media brands and have done it for a legislative advocacy campaign.</p>
+          <ul>
+            <li>Message strategy, content pillars and editorial standards</li>
+            <li>Plain-English explainers, video and social, produced fast</li>
+            <li>Interview and on-camera prep for the person at the microphone</li>
+          </ul>
+        </div>
+
+        <div class="pitch" data-pitch="rrc" hidden>
+          <p>I've worked the oilfield as a wellsite geologist, and today I produce Texas energy policy media. I can turn orphan wells, flaring and gas bills into plain-English content Texans actually read, and produce it myself.</p>
+          <ul>
+            <li>Explainers on orphan wells, flaring and gas utility costs, written for rural and oilfield Texans</li>
+            <li>Fast-turn video from commission meetings and hearings, captioned and ready for social</li>
+            <li>Digital and social strategy for a commissioner's office of three</li>
+          </ul>
+          <p class="note">See the orphan wells writing sample below.</p>
+        </div>
+
+        <div class="pitch" data-pitch="governor" hidden>
+          <p>Grid reliability, power bills and data centers will be front-page fights. I produce the Texas grid show where regulators, researchers and industry explain those issues, so I can build the message and make the content.</p>
+          <ul>
+            <li>Plain-English reactions to PUC and ERCOT decisions within 24 to 72 hours</li>
+            <li>Video, social and digital strategy for an energy and affordability agenda</li>
+            <li>Interview and on-camera prep for principals, built from coaching podcast hosts</li>
+          </ul>
+        </div>
+
+        <div class="pitch" data-pitch="house" hidden>
+          <p>Many member offices have one communications person. I write, shoot, edit and run social, and I've organized GOTV in Texas, so I can carry an office's whole comms load from day one.</p>
+          <ul>
+            <li>Releases, newsletters and social posts in the member's voice</li>
+            <li>Same-day video from floor debates and committee hearings</li>
+            <li>Constituent outreach and digital strategy built on 9+ years of marketing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="core">
+      <figure>
+        <svg viewBox="0 0 380 440" role="img" aria-labelledby="core-title core-desc">
+          <title id="core-title">Career core sample</title>
+          <desc id="core-desc">Career layers from 2012 at the bottom to 2026 at the top: geoscience and wellsite geology, Hillary for Texas organizing, video production, digital marketing, marketing strategy, and since 2024 ClarityForge Studios running policy media brands.</desc>
+          <defs>
+            <pattern id="p-sand" width="10" height="10" patternUnits="userSpaceOnUse">
+              <rect width="10" height="10" style="fill: var(--sand)"/>
+              <circle cx="2.5" cy="3" r="1" style="fill: var(--ink); opacity: .35"/>
+              <circle cx="7.5" cy="7.5" r="1" style="fill: var(--ink); opacity: .35"/>
+            </pattern>
+            <pattern id="p-lime" width="20" height="10" patternUnits="userSpaceOnUse">
+              <rect width="20" height="10" style="fill: var(--lime)"/>
+              <path d="M0 0.5H20M0 5.5H20M5 0.5V5.5M15 5.5V10" style="stroke: var(--ink); stroke-width: .8; opacity: .3; fill: none"/>
+            </pattern>
+            <pattern id="p-shale" width="14" height="6" patternUnits="userSpaceOnUse">
+              <rect width="14" height="6" style="fill: var(--shale)"/>
+              <path d="M1 2H8M8 5H13" style="stroke: var(--ink); stroke-width: .9; opacity: .35"/>
+            </pattern>
+            <pattern id="p-silt" width="12" height="8" patternUnits="userSpaceOnUse">
+              <rect width="12" height="8" style="fill: var(--silt)"/>
+              <path d="M1 2H6" style="stroke: var(--ink); stroke-width: .9; opacity: .35"/>
+              <circle cx="9" cy="6" r=".9" style="fill: var(--ink); opacity: .35"/>
+            </pattern>
+            <pattern id="p-pay" width="8" height="8" patternUnits="userSpaceOnUse">
+              <rect width="8" height="8" style="fill: var(--trace)"/>
+              <circle cx="2" cy="2" r=".9" style="fill: var(--paper); opacity: .45"/>
+              <circle cx="6" cy="6" r=".9" style="fill: var(--paper); opacity: .45"/>
+            </pattern>
+          </defs>
+
+          <!-- year axis: y = 420 - (year - 2012) * 26.667 -->
+          <g>
+            <text class="yr" x="44" y="424" text-anchor="end">2012</text>
+            <text class="yr" x="44" y="317" text-anchor="end">2016</text>
+            <text class="yr" x="44" y="210" text-anchor="end">2020</text>
+            <text class="yr" x="44" y="104" text-anchor="end">2024</text>
+            <text class="yr" x="44" y="24" text-anchor="end">Now</text>
+          </g>
+
+          <!-- layers, bottom to top -->
+          <g class="strata">
+          <rect x="54" y="313.3" width="64" height="106.7" fill="url(#p-sand)"/>
+          <rect x="54" y="286.7" width="64" height="26.6" fill="url(#p-lime)"/>
+          <rect x="54" y="206.7" width="64" height="80" fill="url(#p-shale)"/>
+          <rect x="54" y="153.3" width="64" height="53.4" fill="url(#p-silt)"/>
+          <rect x="54" y="100" width="64" height="53.3" fill="url(#p-lime)"/>
+          <rect x="54" y="20" width="64" height="80" fill="url(#p-pay)"/>
+          </g>
+          <rect x="54" y="20" width="64" height="400" style="fill: none; stroke: var(--ink); stroke-width: 1.2"/>
+
+          <!-- labels -->
+          <g>
+            <line class="lead-line" x1="122" y1="60" x2="134" y2="60"/>
+            <text class="lt" x="140" y="50">ClarityForge Studios</text>
+            <text class="ls" x="140" y="66">Strategy for policy media brands</text>
+            <text class="pay-tag" x="140" y="84">where it pays off</text>
+
+            <line class="lead-line" x1="122" y1="126.7" x2="134" y2="126.7"/>
+            <text class="lt" x="140" y="123">Marketing strategy</text>
+            <text class="ls" x="140" y="139">360training, Affirma</text>
+
+            <line class="lead-line" x1="122" y1="180" x2="134" y2="180"/>
+            <text class="lt" x="140" y="176">Digital marketing</text>
+            <text class="ls" x="140" y="192">Thoro Studios, $10M+ ad spend</text>
+
+            <line class="lead-line" x1="122" y1="246.7" x2="134" y2="246.7"/>
+            <text class="lt" x="140" y="243">Video production</text>
+            <text class="ls" x="140" y="259">COO, Red Wolf Cinema</text>
+
+            <line class="lead-line" x1="122" y1="300" x2="134" y2="300"/>
+            <text class="lt" x="140" y="296">Hillary for Texas</text>
+            <text class="ls" x="140" y="312">Organizing fellow, GOTV</text>
+
+            <line class="lead-line" x1="122" y1="366.7" x2="134" y2="366.7"/>
+            <text class="lt" x="140" y="363">Geoscience</text>
+            <text class="ls" x="140" y="379">Texas A&amp;M, wellsite geologist</text>
+          </g>
+        </svg>
+        <figcaption>My career as a geologist's core sample, read bottom to top. Thicker layers mean more years.</figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <section class="block" aria-labelledby="numbers-h">
+    <h2 id="numbers-h">Reach and scale</h2>
+    <p class="intro">The audiences these brands reach every month. Volts figures come from the show's Substack and Apple Podcasts dashboards, fall 2026.</p>
+    <dl class="numbers">
+      <div><dt>94,000+</dt><dd>Volts subscribers, the national audience I help grow</dd></div>
+      <div><dt>85,000</dt><dd>inboxes reached by every Volts newsletter send</dd></div>
+      <div><dt>300,000+</dt><dd>Volts podcast plays a month across Substack and Apple</dd></div>
+      <div><dt>150+</dt><dd>podcast episodes I've produced across my clients</dd></div>
+      <div><dt>$10M+</dt><dd>ad spend managed across 45+ clients</dd></div>
+      <div><dt>200%+</dt><dd>of the 2016 GOTV volunteer goal</dd></div>
+    </dl>
+  </section>
+
+  <section class="block" aria-labelledby="strategy-h">
+    <h2 id="strategy-h">How I set strategy</h2>
+    <p class="intro">Every brand I run starts here, and goes back around the loop once the numbers come in. Production only starts after these calls are made.</p>
+    <div class="loop">
+      <ol>
+        <li><h3>Audience</h3><p>Who has to hear this, and what they already believe.</p></li>
+        <li><h3>Position</h3><p>The one thing this brand owns, like being the first read on Texas grid policy.</p></li>
+        <li><h3>Pillars</h3><p>Three or four recurring topics that every piece ladders up to.</p></li>
+        <li><h3>Standards</h3><p>Rules for guests, framing and tone, so the team decides the way I would.</p></li>
+        <li><h3>Channels</h3><p>Which format carries which message, and on what calendar.</p></li>
+      </ol>
+      <div class="loop-return" aria-hidden="true"></div>
+      <p class="loop-label">Measure what landed, adjust the plan, go again</p>
+    </div>
+
+    <h3 class="calls-h">Calls I've made</h3>
+    <div class="calls-wrap">
+      <table class="calls">
+        <thead><tr><th scope="col">Brand</th><th scope="col">The question</th><th scope="col">The call</th><th scope="col">For an office, that's</th></tr></thead>
+        <tbody>
+          <tr><td>Energy Capital</td><td>How do we stay the first read on Texas energy policy?</td><td>A rapid-reaction playbook: within 24 to 72 hours, every piece answers what changed, who it affects and what comes next.</td><td>Rapid response when a bill moves or an agency rules</td></tr>
+          <tr><td>Energy Capital</td><td>Which guests make the cut?</td><td>Mechanism over position, and Texas as the lens. The pitch we receive is rarely the episode we should make, so every guest gets reframed.</td><td>Choosing the validators and voices who carry the message</td></tr>
+          <tr><td>Volts</td><td>How do we grow a national audience without taking more of the host's time?</td><td>Run the community on a fixed monthly calendar, built so the host gives five minutes, not hours.</td><td>A comms program the principal can feed in five minutes a week</td></tr>
+          <tr><td>Volts</td><td>A key distribution channel suddenly dropped. What now?</td><td>Escalate directly with the platform, and build a monthly crossover program with other shows so reach never depends on one channel.</td><td>Partner amplification so the message doesn't ride on one outlet</td></tr>
+          <tr><td>Project Vanguard</td><td>How do we reach veterans and tradespeople across party lines?</td><td>All-of-the-above energy and national security framing, with partisan hot-button terms left out on purpose.</td><td>Messaging that holds up with rural and Republican-leaning Texans</td></tr>
+          <tr><td>Project Vanguard</td><td>How does the brand grow past what one founder can post?</td><td>A content playbook so the founder and partners post on their own, in one voice.</td><td>Toolkits so allies and agencies carry the message in one voice</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="work-h">
+    <h2 id="work-h">Brands I help run</h2>
+    <p class="intro">Strategy comes first on each one. The episodes, posts and clips are how that strategy gets carried out.</p>
+
+    <article class="brand">
+      <div class="brand-head">
+        <h3>Texas Energy and Power</h3>
+        <p class="brand-what">Doug Lewin's Texas grid platform: a newsletter and the weekly Energy Capital Podcast</p>
+      </div>
+      <div class="brand-body">
+        <div class="strategy">
+          <h4>Strategy</h4>
+          <ul>
+            <li>Content pillars that keep every channel on Texas policy, markets and grid reliability</li>
+            <li>Editorial standards for guests: mechanism over position, and Texas as the lens</li>
+            <li>Host coaching and an interview guide that carried the show through a host change</li>
+          </ul>
+        </div>
+        <div class="execution">
+          <h4>Execution</h4>
+          <ul>
+            <li>Weekly podcast production and guest booking</li>
+            <li>Newsletter posts built from each conversation</li>
+            <li>Clips and posts for YouTube, LinkedIn, X and Reddit</li>
+            <li>A guest pipeline run out of a CRM</li>
+          </ul>
+        </div>
+      </div>
+      <p class="proof"><strong>Proof</strong> The show has a 4.9 rating on Apple Podcasts and credits ClarityForge Studios as its producer. <a href="https://podcasts.apple.com/podcast/id1726252628">Listen on Apple Podcasts</a></p>
+    </article>
+
+    <article class="brand">
+      <div class="brand-head">
+        <h3>Volts</h3>
+        <p class="brand-what">David Roberts' national climate and energy podcast and newsletter, 423 episodes since 2021</p>
+      </div>
+      <div class="brand-body">
+        <div class="strategy">
+          <h4>Strategy</h4>
+          <ul>
+            <li>Grow a national audience by running the community like a product</li>
+            <li>A clear way in for new listeners, and crossover guests who bring new audiences</li>
+            <li>Turn each episode into clips, guides and posts that travel beyond the show</li>
+          </ul>
+        </div>
+        <div class="execution">
+          <h4>Execution</h4>
+          <ul>
+            <li>A monthly community thread on a fixed calendar</li>
+            <li>The Volts Jump-Start Guide for new listeners</li>
+            <li>Guest follow-up with the live episode and clips</li>
+            <li>Platform issues escalated directly with Substack</li>
+          </ul>
+        </div>
+      </div>
+      <p class="proof"><strong>Proof</strong> 94,000+ subscribers, about 26,000 people reading each email within a week, and a monthly program that runs on five minutes of the host's time. <a href="https://www.volts.wtf">volts.wtf</a></p>
+    </article>
+
+    <article class="brand">
+      <div class="brand-head">
+        <h3>Project Vanguard</h3>
+        <p class="brand-what">A veteran-focused energy organization building careers, projects and policy support for veterans in energy</p>
+      </div>
+      <div class="brand-body">
+        <div class="strategy">
+          <h4>Strategy</h4>
+          <ul>
+            <li>Three content pillars: people, projects and policies</li>
+            <li>All-of-the-above, national security framing that reaches veterans, tradespeople and energy professionals across party lines</li>
+            <li>A content playbook so the founder and partners can post on their own</li>
+          </ul>
+        </div>
+        <div class="execution">
+          <h4>Execution</h4>
+          <ul>
+            <li>Podcast, newsletter and video production</li>
+            <li>Social on LinkedIn, YouTube and Facebook</li>
+            <li>A field kit for man-on-the-street video at industry events</li>
+          </ul>
+        </div>
+      </div>
+      <p class="proof"><strong>Proof</strong> Episodes and samples on request.</p>
+    </article>
+  </section>
+
+  <section class="block" aria-labelledby="path-h">
+    <h2 id="path-h">From breaking news to published</h2>
+    <p class="intro">How the strategy gets carried out when a story breaks. Rapid reactions go out within 24 to 72 hours of the news.</p>
+    <ol class="path">
+      <li><h3>Something breaks</h3><p>An ERCOT alert, a PUC vote, a committee hearing or a new bill.</p></li>
+      <li><h3>Frame it</h3><p>Decide the message: what changed, who it affects and what comes next.</p></li>
+      <li><h3>Capture</h3><p>Record the host or principal, or pull footage from the hearing.</p></li>
+      <li><h3>Cut</h3><p>Edit, caption and brand the clip, newsletter post and social copy.</p></li>
+      <li><h3>Publish</h3><p>Release on podcast, newsletter, YouTube, LinkedIn, X and Reddit while the news is live.</p></li>
+      <li><h3>Follow through</h3><p>Send guests and partners their clips, see what landed and feed it into the next one.</p></li>
+    </ol>
+    <p class="path-example">In practice: the SB 819 Senate hearing became eight captioned, branded testimony videos for Advanced Power Alliance's rural energy campaign, delivered 8 days after the final brief.</p>
+  </section>
+
+  <section class="block" aria-labelledby="clips-h">
+    <h2 id="clips-h">Clips</h2>
+    <p class="intro">Short-form video cut for social. Tap to play with sound.</p>
+    <div class="reels">
+      <figure class="reel square"><video controls playsinline preload="none" poster="clips/policy.jpg"><source src="clips/policy.mp4" type="video/mp4"></video><figcaption>Project Vanguard, grassroots advocacy</figcaption></figure>
+      <figure class="reel"><video controls playsinline preload="none" poster="clips/science_2.jpg"><source src="clips/science_2.mp4" type="video/mp4"></video><figcaption>Explainer clip, science</figcaption></figure>
+      <figure class="reel"><video controls playsinline preload="none" poster="clips/economy.jpg"><source src="clips/economy.mp4" type="video/mp4"></video><figcaption>Explainer clip, economy</figcaption></figure>
+      <figure class="reel"><video controls playsinline preload="none" poster="clips/nature.jpg"><source src="clips/nature.mp4" type="video/mp4"></video><figcaption>Interview clip, nature</figcaption></figure>
+    </div>
+  </section>
+
+
+
+  <section class="block" id="sample" aria-labelledby="sample-h">
+    <h2 id="sample-h">Writing sample</h2>
+    <p class="intro">A short public explainer on a Railroad Commission issue, written the way I'd write for an office.</p>
+    <div class="sample">
+      <p class="label">Spec writing sample by Nate Peavey. Not written for, approved by or affiliated with Commissioner-elect Rosenthal or the Railroad Commission.</p>
+      <h3>Texas has more abandoned oil wells than ever. Here's why that matters.</h3>
+      <p>An orphan well is an oil or gas well whose operator went broke or walked away without plugging it. Left open, it can leak gas, and old wells can blow out. One near Toyah in West Texas spewed a foul plume for 19 days.</p>
+      <p>Texas had 10,029 of them in August 2025, up 1,682 in a single year. The state plugged 775 with its own money that year, 225 short of its target. By the end of 2025 the list passed 11,000, a 20-year high.</p>
+      <p>When an operator can't pay, taxpayers do. Commissioner-elect Jon Rosenthal has said he wants to speed up plugging and raise the bonds drillers post for new permits. Bigger bonds mean operators, not taxpayers, cover more of the cleanup.</p>
+      <p class="src">Sources: <a href="https://rrc.state.tx.us/media/xgtpvwhf/2025-oilfield-cleanup-program-annual-report_final.pdf">Railroad Commission FY 2025 cleanup report</a>, <a href="https://www.houstonchronicle.com/business/energy/article/orphan-wells-texas-oil-record-21307063.php">Houston Chronicle</a>, <a href="https://www.newsfromthestates.com/node/344904">Texas Tribune</a>, <a href="https://www.spglobal.com/energy/en/news-research/latest-news/electric-power/110426-rosenthal-wins-texas-oil-gas-regulator-seat-first-for-a-democrat-since-1995">S&amp;P Global</a>.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p class="big">Let's talk.</p>
+    <p><strong>nathan@clarityforgestudios.com</strong></p>
+    <p>B.S. Environmental Geoscience, Texas A&amp;M. R&eacute;sum&eacute; and clips on request.</p>
+  </footer>
+
+</main>
+<script>
+(function () {
+  var views = ["overview", "rrc", "governor", "house"];
+  var buttons = document.querySelectorAll(".tabs button");
+  var pitches = document.querySelectorAll(".pitch");
+  function show(view) {
+    if (views.indexOf(view) === -1) view = "overview";
+    buttons.forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.view === view ? "true" : "false"); });
+    pitches.forEach(function (p) { p.hidden = p.dataset.pitch !== view; });
+    var sample = document.getElementById("sample");
+    if (sample) sample.hidden = (view === "governor" || view === "house");
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () {
+      var v = b.dataset.view;
+      if (v === "overview") {
+        try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+        show("overview");
+      } else {
+        location.hash = v;
+      }
+    });
+  });
+  window.addEventListener("hashchange", function () { show(location.hash.slice(1)); });
+  show(location.hash.slice(1));
+})();
+</script>
+</body>
+</html>
