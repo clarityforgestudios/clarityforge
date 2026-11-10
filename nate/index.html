@@ -216,6 +216,7 @@ section.block > h2 {
 .reels { display: flex; gap: 22px; align-items: flex-start; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x mandatory; }
 .reel { margin: 0; flex: 0 0 210px; scroll-snap-align: start; }
 .reel.square { flex-basis: 300px; }
+.swipe-hint { margin: 10px 0 0; font-size: 15px; color: var(--muted); }
 .reel:nth-child(2) { margin-top: 56px; }
 .reel:nth-child(3) { margin-top: 18px; }
 .reel:nth-child(4) { margin-top: 72px; }
@@ -576,11 +577,12 @@ footer .big { font-family: var(--display); font-size: 1.6rem; }
     <h2 id="clips-h">Clips</h2>
     <p class="intro">Short-form video cut for social. Tap to play with sound.</p>
     <div class="reels">
-      <figure class="reel square"><video controls playsinline preload="none" poster="clips/policy.jpg"><source src="clips/policy.mp4" type="video/mp4"></video><figcaption>Project Vanguard, grassroots advocacy</figcaption></figure>
-      <figure class="reel"><video controls playsinline preload="none" poster="clips/science_2.jpg"><source src="clips/science_2.mp4" type="video/mp4"></video><figcaption>Explainer clip, science</figcaption></figure>
       <figure class="reel"><video controls playsinline preload="none" poster="clips/economy.jpg"><source src="clips/economy.mp4" type="video/mp4"></video><figcaption>Explainer clip, economy</figcaption></figure>
+      <figure class="reel square"><video controls playsinline preload="none" poster="clips/policy.jpg"><source src="clips/policy.mp4" type="video/mp4"></video><figcaption>Project Vanguard, grassroots advocacy</figcaption></figure>
       <figure class="reel"><video controls playsinline preload="none" poster="clips/nature.jpg"><source src="clips/nature.mp4" type="video/mp4"></video><figcaption>Interview clip, nature</figcaption></figure>
+      <figure class="reel"><video controls playsinline preload="none" poster="clips/science_2.jpg"><source src="clips/science_2.mp4" type="video/mp4"></video><figcaption>Explainer clip, science</figcaption></figure>
     </div>
+    <p class="swipe-hint" id="swipe-hint" hidden>Swipe for more clips</p>
   </section>
 
 
@@ -601,7 +603,7 @@ footer .big { font-family: var(--display); font-size: 1.6rem; }
   <footer>
     <p class="big">Let's talk.</p>
     <p><strong>nathan@clarityforgestudios.com</strong></p>
-    <p>B.S. Environmental Geoscience, Texas A&amp;M. R&eacute;sum&eacute; and clips on request.</p>
+    <p>B.S. Environmental Geoscience, Texas A&amp;M. R&eacute;sum&eacute; on request.</p>
   </footer>
 
 </main>
@@ -630,6 +632,14 @@ footer .big { font-family: var(--display); font-size: 1.6rem; }
   });
   window.addEventListener("hashchange", function () { show(location.hash.slice(1)); });
   show(location.hash.slice(1));
+})();
+</script>
+<script>
+(function(){
+  var row=document.querySelector(".reels"), hint=document.getElementById("swipe-hint");
+  if(!row||!hint) return;
+  function check(){ hint.hidden = row.scrollWidth <= row.clientWidth + 4 || row.scrollLeft + row.clientWidth >= row.scrollWidth - 4; }
+  check(); window.addEventListener("resize", check); row.addEventListener("scroll", check, {passive:true});
 })();
 </script>
 </body>
